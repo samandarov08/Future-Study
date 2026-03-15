@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do'stlik | Speaking | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .sp-wrap{max-width:860px;margin:0 auto;padding:60px 48px 100px;}
+    .vocab-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:36px 40px;margin-bottom:24px;}
+    .vocab-wrap h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:22px;}
+    .part-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:36px 40px;margin-bottom:20px;}
+    .part-label{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border-radius:99px;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:20px;}
+    .part-label.p1{background:rgba(79,142,247,.15);color:var(--accent2);border:1px solid rgba(79,142,247,.25);}
+    .part-label.p2{background:rgba(167,139,250,.15);color:#c4b5fd;border:1px solid rgba(167,139,250,.25);}
+    .part-label.p3{background:rgba(251,191,36,.15);color:#fcd34d;border:1px solid rgba(251,191,36,.25);}
+    .part-card h3{font-family:var(--font);font-size:17px;font-weight:700;color:var(--text);margin-bottom:16px;}
+    .q-item{margin-bottom:14px;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;}
+    .q-head{display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;transition:background var(--ease);}
+    .q-head:hover{background:rgba(255,255,255,.04);}
+    .q-num{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:var(--font);font-size:11px;font-weight:700;color:#fff;flex-shrink:0;}
+    .q-text{flex:1;font-size:15px;color:var(--text);font-weight:500;}
+    .q-toggle{font-size:12px;color:var(--accent);font-weight:600;padding:4px 12px;border:1px solid rgba(79,142,247,.3);border-radius:99px;white-space:nowrap;}
+    .q-body{display:none;padding:0 18px 18px 56px;}
+    .q-item.open .q-body{display:block;}
+    .q-answer{font-size:14px;color:var(--muted);line-height:1.8;font-weight:300;}
+    .q-answer b{color:var(--accent2);font-weight:600;}
+    .q-tip{margin-top:10px;padding:10px 14px;background:rgba(79,142,247,.06);border:1px solid rgba(79,142,247,.15);border-radius:var(--radius-sm);font-size:13px;color:var(--muted);}
+    .q-tip b{color:var(--accent2);}
+    .part2-card{background:rgba(167,139,250,.06);border:1px solid rgba(167,139,250,.2);border-radius:var(--radius-sm);padding:20px 22px;margin-bottom:16px;}
+    .part2-card h4{font-family:var(--font);font-size:15px;font-weight:700;color:#c4b5fd;margin-bottom:12px;}
+    .part2-card ul{margin:0;padding-left:18px;}
+    .part2-card ul li{font-size:14px;color:var(--muted);margin-bottom:6px;font-weight:300;}
+    .done-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:8px;}
+    .done-bar p{color:var(--muted);font-size:15px;font-weight:300;}
+    .done-btn{padding:11px 26px;border:none;border-radius:99px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:14px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease);}
+    .done-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,142,247,.4);}
+    .done-btn.done{background:linear-gradient(135deg,#22c55e,#4ade80);}
+    .nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:28px;}
+    .nav-btns a{font-size:14px;color:var(--muted);}
+    .nav-btns a.next{color:var(--accent2);font-weight:500;}
+    @media(max-width:768px){.sp-wrap{padding:40px 20px 80px;}.part-card{padding:24px 20px;}.vocab-wrap{padding:24px 20px;}}
+  </style>
+</head>
+<body class="theme-1">
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="english.html">English</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+
+<div class="sp-wrap">
+  <div class="breadcrumb reveal">English <span>›</span> Speaking <span>›</span> Do'stlik</div>
+  <div class="reveal" style="margin-bottom:40px;">
+    <p class="s-label">Speaking · 8-mavzu</p>
+    <h1 style="font-family:var(--font);font-size:clamp(28px,4vw,46px);font-weight:800;letter-spacing:-1px;line-height:1.1;color:var(--text);margin-bottom:10px;">🤝 Do'stlik</h1>
+    <p style="font-size:15px;color:var(--muted);font-weight:300;">IELTS Speaking · Part 1, 2, 3 · Namuna javoblar bilan</p>
+  </div>
+
+
+  <!-- PART 1 -->
+  <div class="part-card reveal">
+    <div class="part-label p1">📝 Part 1 — Shaxsiy savollar</div>
+    <h3>O'zingiz haqingizda gapirib bering</h3>
+  <div class="q-item" id="p1q1">
+    <div class="q-head" onclick="toggleQ('p1q1')">
+      <div class="q-num">1</div>
+      <div class="q-text">Do you have many friends or just a few close ones?</div>
+      <div class="q-toggle" id="p1q1-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer">I prefer quality over quantity when it comes to friendship. I have a small but very close <b>social circle</b> — perhaps four or five people I would consider <b>genuine</b> friends. These are people I can trust completely and rely on in difficult times. I believe deep <b>loyalty</b> and <b>mutual</b> support define real friendship far more than the number of connections.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Use 'quality over quantity' — examiners love this phrase</div>
+    </div>
+  </div>
+  <div class="q-item" id="p1q2">
+    <div class="q-head" onclick="toggleQ('p1q2')">
+      <div class="q-num">2</div>
+      <div class="q-text">How do you usually make new friends?</div>
+      <div class="q-toggle" id="p1q2-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer">I tend to form friendships naturally through shared experiences — studying together, working on projects, or participating in activities I enjoy. I'm not someone who makes friends instantly; I prefer to build <b>trust</b> gradually. Once there's a strong <b>bond</b>, however, those friendships tend to last a very long time.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Describe your personality honestly</div>
+    </div>
+  </div>
+  <div class="q-item" id="p1q3">
+    <div class="q-head" onclick="toggleQ('p1q3')">
+      <div class="q-num">3</div>
+      <div class="q-text">Is it easy to maintain friendships as you get older?</div>
+      <div class="q-toggle" id="p1q3-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer">It definitely becomes harder. As people grow up, they move to different cities, start careers and families, and naturally have less free time. <b>Long-distance friendships</b> require more deliberate effort — regular messages, video calls, and occasional visits. <b>Social media</b> helps, but it can't fully replace face-to-face interaction.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Acknowledge the challenge + offer solutions</div>
+    </div>
+  </div>
+  <div class="q-item" id="p1q4">
+    <div class="q-head" onclick="toggleQ('p1q4')">
+      <div class="q-num">4</div>
+      <div class="q-text">What qualities do you value most in a friend?</div>
+      <div class="q-toggle" id="p1q4-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer"><b>Trust</b> and <b>loyalty</b> are the qualities I value above everything else. A true friend is someone who supports you unconditionally, is honest even when honesty is uncomfortable, and shows genuine <b>empathy</b> when you're struggling. <b>Mutual</b> respect and the ability to resolve <b>conflict</b> without damaging the relationship are also essential.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> List qualities + briefly explain each one</div>
+    </div>
+  </div>
+  <div class="q-item" id="p1q5">
+    <div class="q-head" onclick="toggleQ('p1q5')">
+      <div class="q-num">5</div>
+      <div class="q-text">Do you think social media has helped or harmed friendships?</div>
+      <div class="q-toggle" id="p1q5-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer"><b>Social media</b> has made it easier to stay connected across distances, which is genuinely valuable for <b>long-distance friendships</b>. However, it has also created a culture of superficial connection — people collect followers rather than nurturing real <b>bonds</b>. I think it's a useful tool but shouldn't replace meaningful face-to-face <b>companionship</b>.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Give balanced view: helped + harmed with examples</div>
+    </div>
+  </div>
+  </div>
+
+  <!-- PART 2 -->
+  <div class="part-card reveal">
+    <div class="part-label p2">🎤 Part 2 — Uzoq monolog</div>
+    <h3>1-2 daqiqa gapiring</h3>
+  <div class="part2-card">
+    <h4>Describe a good friend who is important to you</h4>
+    <ul><li>Who this person is</li><li>How you met</li><li>What kind of person they are</li><li>Why this friendship is important to you</li></ul>
+  </div>
+  <div class="q-item" id="p2q1">
+    <div class="q-head" onclick="toggleQ('p2q1')">
+      <div class="q-num">1</div>
+      <div class="q-text">Namuna javobni ko'ring</div>
+      <div class="q-toggle" id="p2q1-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body"><div class="q-answer">I would like to talk about my closest friend, whom I have known since we were both around ten years old. We met at primary school and have been inseparable ever since, which makes ours a true <b>childhood friendship</b>. What makes this person so special is their remarkable combination of honesty and kindness — they always tell me the truth, even when it is not what I want to hear, but they do so with genuine <b>empathy</b> and care. Our friendship has survived many challenges: disagreements, periods of living in different cities, and the inevitable changes that come with growing up. Through all of it, the <b>trust</b> and <b>loyalty</b> between us has never wavered. This friendship is important to me because it provides a sense of stability and belonging that is hard to find elsewhere. There is something incredibly reassuring about having someone who has known you for years, who accepts you completely, and who you know will always be there regardless of circumstance.</div></div>
+  </div>
+  </div>
+
+  <!-- PART 3 -->
+  <div class="part-card reveal">
+    <div class="part-label p3">💬 Part 3 — Muhokama</div>
+    <h3>Chuqurroq fikrlash va baholash</h3>
+  <div class="q-item" id="p3q1">
+    <div class="q-head" onclick="toggleQ('p3q1')">
+      <div class="q-num">1</div>
+      <div class="q-text">How have friendships changed in modern society?</div>
+      <div class="q-toggle" id="p3q1-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer">Modern friendships are increasingly mediated by <b>social media</b> and digital communication. While this allows people to maintain larger <b>social circles</b>, many researchers argue that the depth of friendship has declined. The concept of <b>companionship</b> — spending genuine, uninterrupted time together — is less common as people are constantly distracted by screens and notifications.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Reference research or trends to add depth</div>
+    </div>
+  </div>
+  <div class="q-item" id="p3q2">
+    <div class="q-head" onclick="toggleQ('p3q2')">
+      <div class="q-num">2</div>
+      <div class="q-text">Do you think friendships between men and women are different from same-gender friendships?</div>
+      <div class="q-toggle" id="p3q2-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer">I think friendships vary enormously between individuals, so generalisations are dangerous. That said, research does suggest some patterns — men's friendships often centre around shared activities, while women's friendships tend to involve more emotional disclosure. Cross-gender friendships can be particularly rich because they offer different perspectives and forms of <b>support</b>.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Avoid stereotypes — acknowledge individual variation</div>
+    </div>
+  </div>
+  <div class="q-item" id="p3q3">
+    <div class="q-head" onclick="toggleQ('p3q3')">
+      <div class="q-num">3</div>
+      <div class="q-text">Is it possible to have genuine friendship online?</div>
+      <div class="q-toggle" id="p3q3-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer">I believe online friendships can be entirely <b>genuine</b>. Shared interests, <b>mutual</b> support, and meaningful conversation can absolutely develop through digital platforms. However, physical presence — the ability to share experiences in real life — adds a depth that online interaction alone struggles to replicate. The best online friendships tend to eventually become in-person ones.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Give a nuanced yes with conditions</div>
+    </div>
+  </div>
+  </div>
+
+  <!-- VOCABULARY -->
+  <div class="vocab-wrap reveal">
+    <h3>📘 Foydali so'zlar — Do'stlik</h3>
+    <div class="vocab-grid">
+      <div class="vocab-card"><h4>trust</h4><p>ishonch</p></div>
+      <div class="vocab-card"><h4>loyalty</h4><p>sadoqat</p></div>
+      <div class="vocab-card"><h4>companionship</h4><p>hamroh bo'lish</p></div>
+      <div class="vocab-card"><h4>acquaintance</h4><p>tanish</p></div>
+      <div class="vocab-card"><h4>long-distance friendship</h4><p>uzoq masofali do'stlik</p></div>
+      <div class="vocab-card"><h4>bond</h4><p>bog'liq, aloqa</p></div>
+      <div class="vocab-card"><h4>mutual</h4><p>o'zaro</p></div>
+      <div class="vocab-card"><h4>support</h4><p>qo'llab-quvvatlash</p></div>
+      <div class="vocab-card"><h4>genuine</h4><p>haqiqiy, chin</p></div>
+      <div class="vocab-card"><h4>conflict</h4><p>ziddiyat, kelishmovchilik</p></div>
+      <div class="vocab-card"><h4>social circle</h4><p>ijtimoiy doira</p></div>
+      <div class="vocab-card"><h4>childhood friend</h4><p>bolalik do'sti</p></div>
+      <div class="vocab-card"><h4>empathy</h4><p>empatiya, tushunish</p></div>
+      <div class="vocab-card"><h4>social media</h4><p>ijtimoiy tarmoq</p></div>
+      <div class="vocab-card"><h4>quality over quantity</h4><p>sifat miqdordan muhim</p></div>
+      <div class="vocab-card"><h4>relationship</h4><p>munosabat</p></div>
+    </div>
+  </div>
+  <div class="done-bar reveal">
+    <p>✅ Barcha savollarga javob berdingizmi?</p>
+    <button class="done-btn" id="doneBtn" onclick="markDone()">✅ Tugatdim</button>
+  </div>
+
+  <div class="nav-btns reveal">
+    <a href="speaking-city.html">← Shahar va Qishloq</a>
+    <a href="speaking-books.html" class="next">Kitob va Kino →</a>
+  </div>
+</div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth=getAuth(initializeApp({apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",authDomain:"it-study-a45fa.firebaseapp.com",projectId:"it-study-a45fa",storageBucket:"it-study-a45fa.firebasestorage.app",messagingSenderId:"973750187023",appId:"1:973750187023:web:c38b839da825ffa0681f7a"}));
+const ua=document.getElementById("userArea");
+onAuthStateChanged(auth,u=>{if(u){const n=u.displayName||u.email;ua.outerHTML=`<div class="profile-pill" onclick="location.href='profile.html'" style="cursor:pointer"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`;}else{ua.textContent="Kirish";ua.href="login.html";}});
+</script>
+<script>
+function toggleQ(id){var el=document.getElementById(id);var btn=document.getElementById(id+'-btn');var open=el.classList.toggle('open');btn.textContent=open?'🙈 Yashirish':"👁 Ko'rish";}
+if(localStorage.getItem('speakingFriendship')){var b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi';b.classList.add('done');}
+function markDone(){localStorage.setItem('speakingFriendship','true');var b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi!';b.classList.add('done');}
+</script>
+<script>var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.06});document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});</script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

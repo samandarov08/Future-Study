@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading 6 | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .reading-wrap{max-width:860px;margin:0 auto;padding:64px 48px 100px;}
+    .passage{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:44px 48px;margin-bottom:24px;line-height:2;font-size:16px;color:var(--text);}
+    .passage h2{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:28px;text-transform:uppercase;line-height:1.4;}
+    .passage h3{font-family:var(--font);font-size:17px;font-weight:700;color:var(--accent2);margin:32px 0 14px;}
+    .passage h4{font-family:var(--font);font-size:15px;font-weight:700;color:var(--accent);margin:22px 0 10px;}
+    .passage p{margin-bottom:18px;color:var(--muted);font-weight:300;}
+    .passage b{color:var(--accent2);font-weight:600;}
+    .tr{font-style:italic;font-size:13px;color:var(--muted);opacity:0.7;margin-left:3px;}
+    .vocab-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;margin-bottom:24px;}
+    .vocab-wrap h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:24px;}
+    .comp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;margin-bottom:24px;}
+    .comp-card h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:28px;}
+    .comp-q{margin-bottom:24px;}
+    .comp-q p{font-size:15px;color:var(--text);margin-bottom:10px;font-weight:500;}
+    .comp-options{display:flex;flex-direction:column;gap:8px;}
+    .comp-opt{padding:11px 16px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:14px;color:var(--muted);transition:background var(--ease),border-color var(--ease),color var(--ease);}
+    .comp-opt:hover{background:rgba(79,142,247,0.1);border-color:var(--accent);color:var(--text);}
+    .comp-opt.correct{background:rgba(34,197,94,0.18)!important;border-color:#22c55e!important;color:#86efac!important;}
+    .comp-opt.wrong{background:rgba(239,68,68,0.18)!important;border-color:#ef4444!important;color:#fca5a5!important;}
+    .comp-opt.show-correct{background:rgba(34,197,94,0.08);border-color:rgba(34,197,94,0.35);color:#86efac;}
+    .done-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+    .done-bar p{color:var(--muted);font-size:15px;font-weight:300;}
+    .done-btn{padding:12px 28px;border:none;border-radius:99px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:15px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease);}
+    .done-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,142,247,0.4);}
+    .done-btn.done{background:linear-gradient(135deg,#22c55e,#4ade80);}
+    .nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:32px;}
+    .nav-btns a{font-size:14px;color:var(--muted);}
+    .nav-btns a.next{color:var(--accent2);font-weight:500;}
+    @media(max-width:768px){.reading-wrap{padding:40px 20px 80px;}.passage{padding:28px 22px;}}
+  </style>
+</head>
+<body class="theme-1">
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="english.html">English</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+
+<div class="reading-wrap">
+  <div class="breadcrumb reveal">English <span>›</span> Reading <span>›</span> Dars 6</div>
+  <div class="reveal" style="margin-bottom:40px;">
+    <p class="s-label">Reading 6 / 10</p>
+    <h1 style="font-family:var(--font);font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-1px;line-height:1.1;color:var(--text);margin-bottom:12px;">Psixologiya va Inson Xulqi 🧠</h1>
+    <p style="font-size:15px;color:var(--muted);font-weight:300;">IELTS Academic · ~1250 so'z · O'rta daraja</p>
+  </div>
+
+  <div class="passage reveal">
+    <h2>THE PSYCHOLOGY OF HUMAN BEHAVIOUR: UNDERSTANDING WHY WE DO WHAT WE DO</h2>
+    <p>Psychology — the scientific study of the human mind and behaviour — has made remarkable progress over the past century in <b>illuminating</b><span class="tr">(yorqinlashtirmoq, tushuntirmoq)</span> the forces that drive human thought, emotion, and action. From the early psychoanalytic theories of Sigmund Freud to contemporary <b>neuroscience</b><span class="tr">(neyrologiya)</span> and <b>behavioural economics</b><span class="tr">(xulqiy iqtisodiyot)</span>, our understanding of why people behave as they do has grown enormously — though many fundamental mysteries remain.</p>
+    <p>Understanding human behaviour is not merely an academic exercise. It has profound practical implications for fields as diverse as medicine, education, marketing, public policy, and conflict resolution. By understanding what motivates people, what biases distort their <b>judgment</b><span class="tr">(hukm, baho)</span>, and what conditions support or undermine <b>well-being</b><span class="tr">(farovonlik)</span>, psychologists can help individuals and societies make better decisions and build more <b>flourishing</b><span class="tr">(gullab-yashnayotgan)</span> communities.</p>
+
+    <h3>1. Key Theories of Human Behaviour</h3>
+    <h4>1.1 Behaviourism</h4>
+    <p><b>Behaviourism</b><span class="tr">(xulq-atvorchilik)</span>, developed by psychologists such as John Watson and B.F. Skinner in the early 20th century, holds that behaviour is primarily determined by environmental stimuli and learned associations, rather than internal mental states. Through the mechanisms of <b>classical conditioning</b><span class="tr">(klassik shartlash)</span> — in which organisms learn to associate neutral stimuli with significant events — and <b>operant conditioning</b><span class="tr">(operant shartlash)</span> — in which behaviour is shaped by its consequences — behaviourism provided powerful tools for understanding and modifying human actions. While later developments showed that behaviourism alone could not account for the full richness of human psychology, its insights remain highly influential in fields such as <b>cognitive-behavioural therapy</b><span class="tr">(kognitiv-xulqiy terapiya)</span>.</p>
+    <h4>1.2 Cognitive Psychology</h4>
+    <p><b>Cognitive psychology</b><span class="tr">(kognitiv psixologiya)</span> focuses on mental processes such as perception, memory, language, problem-solving, and decision-making. A foundational insight of cognitive psychology is that human beings do not simply respond to the world as it is; rather, they construct <b>mental representations</b><span class="tr">(aqliy tasvirlar)</span> of reality that are shaped by their prior experiences, expectations, and <b>cognitive schemas</b><span class="tr">(kognitiv sxemalar)</span>. This helps explain why two people can witness the same event and interpret it very differently.</p>
+
+    <h3>2. Cognitive Biases and Decision-Making</h3>
+    <h4>2.1 Heuristics and Biases</h4>
+    <p>One of the most significant contributions of modern psychology is the discovery that human decision-making is far less rational than classical economic theory assumed. The Nobel Prize-winning research of Daniel Kahneman and Amos Tversky demonstrated that people rely heavily on <b>heuristics</b><span class="tr">(evristika, odatiy usullar)</span> — mental shortcuts that often produce reasonable judgments but can also lead to systematic errors known as <b>cognitive biases</b><span class="tr">(kognitiv tarafkashlik)</span>. Common biases include <b>confirmation bias</b><span class="tr">(tasdiqlash tarafkashligi)</span> — the tendency to seek information that supports existing beliefs — and the <b>availability heuristic</b><span class="tr">(mavjudlik evristikasi)</span> — judging the likelihood of events based on how easily examples come to mind.</p>
+    <h4>2.2 Behavioural Economics</h4>
+    <p>The field of <b>behavioural economics</b><span class="tr">(xulqiy iqtisodiyot)</span> applies insights from psychology to economic decision-making, challenging the traditional economic model of the perfectly rational, self-interested individual. Research in this field has shown that people are strongly influenced by factors such as how choices are presented — a phenomenon known as <b>framing</b><span class="tr">(ramkalash, taqdim etish usuli)</span> — and whether options are presented as defaults — known as the <b>nudge</b><span class="tr">(yengil rag'batlantirish)</span> effect. These insights have been applied in public policy to encourage behaviours such as saving for retirement, organ donation, and healthy eating.</p>
+
+    <h3>3. Social Psychology and Group Behaviour</h3>
+    <h4>3.1 Conformity and Social Influence</h4>
+    <p>Human beings are fundamentally social animals, and much of our behaviour is shaped by the groups we belong to and the social norms we <b>internalise</b><span class="tr">(ichki qabul qilmoq)</span>. Classic experiments by Solomon Asch demonstrated the power of <b>conformity</b><span class="tr">(muvofiqlik, mos kelish)</span> — people's tendency to change their behaviour or stated beliefs to match those of the group, even when they privately disagree. Stanley Milgram's famous <b>obedience</b><span class="tr">(itoatkorlik)</span> experiments showed the disturbing extent to which ordinary people will follow authority figures' instructions, even when this causes harm to others.</p>
+    <h4>3.2 Prejudice and Discrimination</h4>
+    <p><b>Prejudice</b><span class="tr">(oldindan o'ylangan fikr, tarafkashlik)</span> — a negative attitude towards members of a group based on their perceived group membership rather than individual qualities — and discrimination — the unequal treatment of individuals based on such attitudes — remain major social problems. Social psychologists have identified several psychological mechanisms that contribute to prejudice, including <b>in-group bias</b><span class="tr">(o'z guruhini afzal ko'rish)</span> — the tendency to favour members of one's own group — and <b>stereotyping</b><span class="tr">(stereotiplash)</span> — the application of oversimplified generalisations to members of a group. Research suggests that intergroup <b>contact</b><span class="tr">(aloqa, munosabat)</span> under positive conditions is one of the most effective strategies for reducing prejudice.</p>
+
+    <h3>4. Mental Health and Well-being</h3>
+    <p><b>Mental health</b><span class="tr">(ruhiy salomatlik)</span> — encompassing emotional, psychological, and social well-being — is increasingly recognised as fundamental to overall health and quality of life. Mental health disorders, including depression, anxiety, and <b>schizophrenia</b><span class="tr">(shizofreniya)</span>, affect approximately one in four people globally at some point in their lives, yet stigma and limited access to care mean that the majority of those affected do not receive adequate treatment. Advances in <b>neuroscience</b><span class="tr">(neyrologiya)</span> are gradually revealing the biological underpinnings of mental illness, while psychological therapies such as <b>cognitive-behavioural therapy</b><span class="tr">(kognitiv-xulqiy terapiya)</span> and <b>mindfulness-based interventions</b><span class="tr">(diqqat asosidagi aralashuvlar)</span> have shown strong evidence of effectiveness for a range of conditions.</p>
+
+    <h3>Conclusion</h3>
+    <p>The study of human psychology offers profound insights into what it means to be human — our capacity for both reason and <b>irrationality</b><span class="tr">(mantiqsizlik)</span>, compassion and prejudice, individual achievement and social cooperation. As our understanding of the brain and behaviour continues to grow, psychology will play an increasingly important role in addressing some of the most pressing challenges facing individuals and societies, from mental health crises to political <b>polarisation</b><span class="tr">(qutblashuv)</span> and social inequality.</p>
+  </div>
+
+  <div class="vocab-wrap reveal">
+    <h3>📘 Muhim so'zlar — Reading 6</h3>
+    <div class="vocab-grid">
+      <div class="vocab-card"><h4>illuminating</h4><p>tushuntirmoq, yorqinlashtirmoq</p></div>
+      <div class="vocab-card"><h4>neuroscience</h4><p>neyrologiya</p></div>
+      <div class="vocab-card"><h4>behavioural economics</h4><p>xulqiy iqtisodiyot</p></div>
+      <div class="vocab-card"><h4>judgment</h4><p>hukm, baho</p></div>
+      <div class="vocab-card"><h4>flourishing</h4><p>gullab-yashnayotgan</p></div>
+      <div class="vocab-card"><h4>behaviourism</h4><p>xulq-atvorchilik</p></div>
+      <div class="vocab-card"><h4>classical conditioning</h4><p>klassik shartlash</p></div>
+      <div class="vocab-card"><h4>operant conditioning</h4><p>operant shartlash</p></div>
+      <div class="vocab-card"><h4>cognitive-behavioural therapy</h4><p>kognitiv-xulqiy terapiya</p></div>
+      <div class="vocab-card"><h4>cognitive psychology</h4><p>kognitiv psixologiya</p></div>
+      <div class="vocab-card"><h4>mental representations</h4><p>aqliy tasvirlar</p></div>
+      <div class="vocab-card"><h4>cognitive schemas</h4><p>kognitiv sxemalar</p></div>
+      <div class="vocab-card"><h4>heuristics</h4><p>evristika, odatiy usullar</p></div>
+      <div class="vocab-card"><h4>cognitive biases</h4><p>kognitiv tarafkashlik</p></div>
+      <div class="vocab-card"><h4>confirmation bias</h4><p>tasdiqlash tarafkashligi</p></div>
+      <div class="vocab-card"><h4>framing</h4><p>ramkalash, taqdim etish usuli</p></div>
+      <div class="vocab-card"><h4>nudge</h4><p>yengil rag'batlantirish</p></div>
+      <div class="vocab-card"><h4>conformity</h4><p>muvofiqlik</p></div>
+      <div class="vocab-card"><h4>obedience</h4><p>itoatkorlik</p></div>
+      <div class="vocab-card"><h4>prejudice</h4><p>tarafkashlik, oldindan fikr</p></div>
+      <div class="vocab-card"><h4>in-group bias</h4><p>o'z guruhini afzal ko'rish</p></div>
+      <div class="vocab-card"><h4>stereotyping</h4><p>stereotiplash</p></div>
+      <div class="vocab-card"><h4>mental health</h4><p>ruhiy salomatlik</p></div>
+      <div class="vocab-card"><h4>schizophrenia</h4><p>shizofreniya</p></div>
+      <div class="vocab-card"><h4>mindfulness-based interventions</h4><p>diqqat asosidagi aralashuvlar</p></div>
+      <div class="vocab-card"><h4>irrationality</h4><p>mantiqsizlik</p></div>
+      <div class="vocab-card"><h4>polarisation</h4><p>qutblashuv</p></div>
+      <div class="vocab-card"><h4>internalise</h4><p>ichki qabul qilmoq</p></div>
+      <div class="vocab-card"><h4>contact</h4><p>aloqa, munosabat</p></div>
+      <div class="vocab-card"><h4>well-being</h4><p>farovonlik</p></div>
+
+    </div>
+  </div>
+
+  <div class="comp-card reveal">
+    <h3>❓ Tushunish savollari</h3>
+    <div class="comp-q">
+      <p>1. What is the main claim of behaviourism?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Behaviour is determined purely by genetics</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) Behaviour is primarily determined by environmental stimuli and learned associations</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) All behaviour is motivated by unconscious desires</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Humans always make perfectly rational decisions</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>2. What is 'confirmation bias' as described in the passage?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) The tendency to make quick decisions under pressure</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) Judging events based on how easily examples come to mind</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) The tendency to seek information that supports existing beliefs</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) The influence of social groups on individual behaviour</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>3. What did Asch's conformity experiments demonstrate?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) People always make independent decisions regardless of the group</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) People change their stated beliefs to match the group even when they privately disagree</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) Social groups always improve individual decision-making</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) People only conform when they feel threatened</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>4. According to the passage, what is one effective strategy for reducing prejudice?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Educating people about stereotypes through lectures</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) Separating different groups to avoid conflict</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) Intergroup contact under positive conditions</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Legal punishment for discriminatory behaviour</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>5. What barrier does the passage identify in mental health treatment?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) A lack of effective psychological therapies</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) Stigma and limited access to care</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) Governments refusing to fund mental health services</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) People not wanting to improve their mental health</div>
+      </div>
+    </div>
+
+    <p id="compScore" style="margin-top:24px;font-family:var(--font);font-size:16px;font-weight:700;color:var(--accent2);min-height:24px;"></p>
+  </div>
+
+  <div class="done-bar reveal">
+    <p>📖 Matnni o'qib, savollarga javob berdingizmi?</p>
+    <button class="done-btn" id="doneBtn" onclick="markDone()">✅ O'qib bo'ldim</button>
+  </div>
+  <div class="nav-btns reveal">
+    <a href="reading-5.html">← Reading 5</a>
+    <a href="reading-7.html" class="next">Reading 7 → Texnologiya va inson salomatligi</a>
+  </div>
+</div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth=getAuth(initializeApp({apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",authDomain:"it-study-a45fa.firebaseapp.com",projectId:"it-study-a45fa",storageBucket:"it-study-a45fa.firebasestorage.app",messagingSenderId:"973750187023",appId:"1:973750187023:web:c38b839da825ffa0681f7a"}));
+const ua=document.getElementById("userArea");
+onAuthStateChanged(auth,u=>{if(u){const n=u.displayName||u.email;ua.outerHTML=`<div class="profile-pill"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`;}else{ua.textContent="Kirish";ua.href="login.html";}});
+</script>
+<script>
+let ca=0,cc=0;
+function ans(el,correct){const g=el.closest('.comp-options');if(g.dataset.done)return;g.dataset.done="1";ca++;if(correct){el.classList.add('correct');cc++;}else{el.classList.add('wrong');[...g.children].forEach(o=>{if(o!==el)o.classList.add('show-correct');});}if(ca===5){document.getElementById('compScore').textContent=`Natija: ${cc} / 5 ✅`;localStorage.setItem('reading6Comp',cc);}}
+if(localStorage.getItem('reading6Done')){const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi';b.classList.add('done');}
+function markDone(){localStorage.setItem('reading6Done','true');const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi!';b.classList.add('done');}
+</script>
+<script>const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.04});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

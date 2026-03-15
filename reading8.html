@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading 8 | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .reading-wrap{max-width:860px;margin:0 auto;padding:64px 48px 100px;}
+    .passage{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:44px 48px;margin-bottom:24px;line-height:2;font-size:16px;color:var(--text);}
+    .passage h2{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:28px;text-transform:uppercase;line-height:1.4;}
+    .passage h3{font-family:var(--font);font-size:17px;font-weight:700;color:var(--accent2);margin:32px 0 14px;}
+    .passage h4{font-family:var(--font);font-size:15px;font-weight:700;color:var(--accent);margin:22px 0 10px;}
+    .passage p{margin-bottom:18px;color:var(--muted);font-weight:300;}
+    .passage b{color:var(--accent2);font-weight:600;}
+    .tr{font-style:italic;font-size:13px;color:var(--muted);opacity:0.7;margin-left:3px;}
+    .vocab-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;margin-bottom:24px;}
+    .vocab-wrap h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:24px;}
+    .comp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;margin-bottom:24px;}
+    .comp-card h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:28px;}
+    .comp-q{margin-bottom:24px;}
+    .comp-q p{font-size:15px;color:var(--text);margin-bottom:10px;font-weight:500;}
+    .comp-options{display:flex;flex-direction:column;gap:8px;}
+    .comp-opt{padding:11px 16px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:14px;color:var(--muted);transition:background var(--ease),border-color var(--ease),color var(--ease);}
+    .comp-opt:hover{background:rgba(79,142,247,0.1);border-color:var(--accent);color:var(--text);}
+    .comp-opt.correct{background:rgba(34,197,94,0.18)!important;border-color:#22c55e!important;color:#86efac!important;}
+    .comp-opt.wrong{background:rgba(239,68,68,0.18)!important;border-color:#ef4444!important;color:#fca5a5!important;}
+    .comp-opt.show-correct{background:rgba(34,197,94,0.08);border-color:rgba(34,197,94,0.35);color:#86efac;}
+    .done-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+    .done-bar p{color:var(--muted);font-size:15px;font-weight:300;}
+    .done-btn{padding:12px 28px;border:none;border-radius:99px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:15px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease);}
+    .done-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,142,247,0.4);}
+    .done-btn.done{background:linear-gradient(135deg,#22c55e,#4ade80);}
+    .nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:32px;}
+    .nav-btns a{font-size:14px;color:var(--muted);}
+    .nav-btns a.next{color:var(--accent2);font-weight:500;}
+    @media(max-width:768px){.reading-wrap{padding:40px 20px 80px;}.passage{padding:28px 22px;}}
+  </style>
+</head>
+<body class="theme-1">
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="english.html">English</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+
+<div class="reading-wrap">
+  <div class="breadcrumb reveal">English <span>›</span> Reading <span>›</span> Dars 8</div>
+  <div class="reveal" style="margin-bottom:40px;">
+    <p class="s-label">Reading 8 / 10</p>
+    <h1 style="font-family:var(--font);font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-1px;line-height:1.1;color:var(--text);margin-bottom:12px;">Zamonaviy Shaharsozlik va Yashil Shaharlar 🏙️</h1>
+    <p style="font-size:15px;color:var(--muted);font-weight:300;">IELTS Academic · ~1200 so'z · O'rta daraja</p>
+  </div>
+
+  <div class="passage reveal">
+    <h2>URBAN PLANNING AND THE QUEST FOR SUSTAINABLE CITIES</h2>
+    <p>More than half of the world's population now lives in <b>urban areas</b><span class="tr">(shahar hududlari)</span>, and this proportion is expected to reach two-thirds by 2050. Cities are engines of economic growth, cultural innovation, and social progress, but they also concentrate some of humanity's most pressing challenges: poverty, inequality, pollution, <b>traffic congestion</b><span class="tr">(yo'l tirbandligi)</span>, and vulnerability to climate change. How we design and manage our cities will have a profound impact on both human well-being and environmental <b>sustainability</b><span class="tr">(barqarorlik)</span>.</p>
+    <p>Urban planning — the discipline concerned with the design and regulation of land use, transportation, and public space in cities — has evolved significantly over the past century. Early approaches focused on <b>segregating</b><span class="tr">(ajratmoq, bo'lmoq)</span> different land uses to reduce industrial pollution in residential areas. Contemporary planning takes a more integrated approach, recognising the importance of mixed-use development, walkability, access to green space, and community participation in shaping <b>liveable</b><span class="tr">(yashashga qulay)</span> cities.</p>
+
+    <h3>1. The Smart City Concept</h3>
+    <h4>1.1 Technology and Urban Management</h4>
+    <p>The concept of the "<b>smart city</b><span class="tr">(aqlli shahar)</span>" has gained prominence as a framework for using digital technology to improve urban services and quality of life. Smart city initiatives use data collected from sensors, cameras, and connected devices to optimise <b>traffic flow</b><span class="tr">(transport harakati)</span>, reduce energy consumption, improve <b>waste management</b><span class="tr">(chiqindilarni boshqarish)</span>, and enhance public safety. Singapore, Barcelona, and Copenhagen are frequently cited as leading examples of smart city development, having invested heavily in digital <b>infrastructure</b><span class="tr">(infratuzilma)</span> and data-driven governance.</p>
+    <h4>1.2 Challenges of Smart Cities</h4>
+    <p>Critics, however, caution that the smart city agenda comes with significant risks. The extensive use of surveillance technology raises serious concerns about privacy and civil liberties. The benefits of smart city initiatives may be distributed unequally, primarily serving more <b>affluent</b><span class="tr">(badavlat, boy)</span> residents while less privileged communities remain underserved. There are also concerns about the cost of digital infrastructure, technological <b>obsolescence</b><span class="tr">(eskirish)</span>, and the security risks associated with connecting critical urban systems to the internet.</p>
+
+    <h3>2. Green and Sustainable Urban Design</h3>
+    <h4>2.1 Green Spaces and Biodiversity</h4>
+    <p>Research consistently demonstrates the benefits of <b>green spaces</b><span class="tr">(yashil hududlar)</span> — parks, gardens, urban forests, and waterways — for both physical and mental health. Access to nature reduces stress, encourages physical activity, and <b>fosters</b><span class="tr">(rivojlantirmoq)</span> social cohesion. Green infrastructure also provides important environmental services: trees absorb CO₂ and <b>particulate matter</b><span class="tr">(zarralar)</span>, reduce the urban heat island effect, and manage <b>stormwater</b><span class="tr">(yomg'ir suvi)</span> runoff. Cities such as Singapore — known as the "City in a Garden" — have made green infrastructure central to their urban development strategy.</p>
+    <h4>2.2 Sustainable Transportation</h4>
+    <p>Transportation accounts for a significant proportion of urban greenhouse gas emissions and air pollution. Sustainable urban transportation strategies aim to reduce private car use through investment in high-quality <b>public transit</b><span class="tr">(jamoat transporti)</span>, cycling infrastructure, and pedestrian-friendly streetscapes. Cities such as Amsterdam, Copenhagen, and Vienna have achieved dramatic reductions in car dependency through consistent long-term investment in alternatives. The growth of <b>electric vehicles</b><span class="tr">(elektr transport vositalari)</span> also offers the potential to reduce transport emissions, although this requires parallel investment in renewable energy to avoid simply shifting the environmental burden.</p>
+
+    <h3>3. Housing and Social Equity</h3>
+    <h4>3.1 The Housing Crisis</h4>
+    <p>Many of the world's major cities are experiencing severe <b>housing shortages</b><span class="tr">(uy-joy tanqisligi)</span> and <b>affordability crises</b><span class="tr">(qulaylik inqirozlari)</span>, driven by population growth, rising land costs, and insufficient new construction. Rapidly rising housing costs are forcing low- and middle-income residents out of city centres, increasing <b>commuting</b><span class="tr">(kundalik yurib-kelish)</span> distances, undermining community cohesion, and exacerbating inequality. Addressing the housing crisis requires a combination of measures: increasing housing supply, protecting affordable housing stock, and regulating speculative investment in residential property.</p>
+    <h4>3.2 Inclusive Urban Development</h4>
+    <p>Inclusive urban development seeks to ensure that the benefits of city life are accessible to all residents, regardless of income, age, disability, or cultural background. This includes providing affordable housing, accessible public transportation, quality public schools, healthcare facilities, and public spaces that welcome diverse communities. <b>Participatory planning</b><span class="tr">(ishtirokiy rejalashtirish)</span> — involving local communities in decisions that affect their neighbourhoods — is increasingly recognised as essential for creating cities that reflect the needs and priorities of all their residents, not just the most powerful or <b>affluent</b>.</p>
+
+    <h3>Conclusion</h3>
+    <p>The future of cities will be shaped by the choices made today about how to design, build, and govern them. Getting these choices right requires integrating social, economic, and environmental considerations into urban planning; embracing innovation while managing its risks; and ensuring that the benefits of urban life are shared equitably. The sustainable city of the future is not merely a technological achievement but a social and political one — a place where all people can live with dignity, opportunity, and connection to both community and nature.</p>
+  </div>
+
+  <div class="vocab-wrap reveal">
+    <h3>📘 Muhim so'zlar — Reading 8</h3>
+    <div class="vocab-grid">
+      <div class="vocab-card"><h4>urban areas</h4><p>shahar hududlari</p></div>
+      <div class="vocab-card"><h4>traffic congestion</h4><p>yo'l tirbandligi</p></div>
+      <div class="vocab-card"><h4>sustainability</h4><p>barqarorlik</p></div>
+      <div class="vocab-card"><h4>segregating</h4><p>ajratmoq</p></div>
+      <div class="vocab-card"><h4>liveable</h4><p>yashashga qulay</p></div>
+      <div class="vocab-card"><h4>smart city</h4><p>aqlli shahar</p></div>
+      <div class="vocab-card"><h4>traffic flow</h4><p>transport harakati</p></div>
+      <div class="vocab-card"><h4>waste management</h4><p>chiqindilarni boshqarish</p></div>
+      <div class="vocab-card"><h4>infrastructure</h4><p>infratuzilma</p></div>
+      <div class="vocab-card"><h4>affluent</h4><p>badavlat, boy</p></div>
+      <div class="vocab-card"><h4>obsolescence</h4><p>eskirish</p></div>
+      <div class="vocab-card"><h4>green spaces</h4><p>yashil hududlar</p></div>
+      <div class="vocab-card"><h4>fosters</h4><p>rivojlantirmoq</p></div>
+      <div class="vocab-card"><h4>particulate matter</h4><p>zarralar</p></div>
+      <div class="vocab-card"><h4>stormwater</h4><p>yomg'ir suvi</p></div>
+      <div class="vocab-card"><h4>public transit</h4><p>jamoat transporti</p></div>
+      <div class="vocab-card"><h4>electric vehicles</h4><p>elektr transport vositalari</p></div>
+      <div class="vocab-card"><h4>housing shortages</h4><p>uy-joy tanqisligi</p></div>
+      <div class="vocab-card"><h4>commuting</h4><p>kundalik yurib-kelish</p></div>
+      <div class="vocab-card"><h4>participatory planning</h4><p>ishtirokiy rejalashtirish</p></div>
+
+    </div>
+  </div>
+
+  <div class="comp-card reveal">
+    <h3>❓ Tushunish savollari</h3>
+    <div class="comp-q">
+      <p>1. What proportion of the world's population is expected to live in cities by 2050?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) One third</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) One half</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) Two thirds</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Three quarters</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>2. What is a major criticism of smart city initiatives?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) They are too slow to implement</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) Surveillance raises privacy concerns and benefits may be unequal</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) They reduce economic growth in cities</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Smart cities use too much green space</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>3. What environmental benefit do urban trees provide according to the passage?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) They generate electricity for cities</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) They absorb CO₂ and reduce the urban heat island effect</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) They replace the need for sewage systems</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) They make buildings structurally stronger</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>4. What is 'participatory planning'?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Planning conducted only by government officials</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) Involving local communities in decisions about their neighbourhoods</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) Using technology to automate urban planning decisions</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Planning based only on economic data</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>5. According to the conclusion, what is a sustainable city fundamentally?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) A city with the most advanced technology</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) A city with no traffic and pollution</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) A social and political achievement where all people live with dignity</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) A city that generates all its own energy</div>
+      </div>
+    </div>
+
+    <p id="compScore" style="margin-top:24px;font-family:var(--font);font-size:16px;font-weight:700;color:var(--accent2);min-height:24px;"></p>
+  </div>
+
+  <div class="done-bar reveal">
+    <p>📖 Matnni o'qib, savollarga javob berdingizmi?</p>
+    <button class="done-btn" id="doneBtn" onclick="markDone()">✅ O'qib bo'ldim</button>
+  </div>
+  <div class="nav-btns reveal">
+    <a href="reading-7.html">← Reading 7</a>
+    <a href="reading-9.html" class="next">Reading 9 → Madaniyat va jamiyat</a>
+  </div>
+</div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth=getAuth(initializeApp({apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",authDomain:"it-study-a45fa.firebaseapp.com",projectId:"it-study-a45fa",storageBucket:"it-study-a45fa.firebasestorage.app",messagingSenderId:"973750187023",appId:"1:973750187023:web:c38b839da825ffa0681f7a"}));
+const ua=document.getElementById("userArea");
+onAuthStateChanged(auth,u=>{if(u){const n=u.displayName||u.email;ua.outerHTML=`<div class="profile-pill"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`;}else{ua.textContent="Kirish";ua.href="login.html";}});
+</script>
+<script>
+let ca=0,cc=0;
+function ans(el,correct){const g=el.closest('.comp-options');if(g.dataset.done)return;g.dataset.done="1";ca++;if(correct){el.classList.add('correct');cc++;}else{el.classList.add('wrong');[...g.children].forEach(o=>{if(o!==el)o.classList.add('show-correct');});}if(ca===5){document.getElementById('compScore').textContent=`Natija: ${cc} / 5 ✅`;localStorage.setItem('reading8Comp',cc);}}
+if(localStorage.getItem('reading8Done')){const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi';b.classList.add('done');}
+function markDone(){localStorage.setItem('reading8Done','true');const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi!';b.classList.add('done');}
+</script>
+<script>const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.04});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

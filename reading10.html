@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading 10 | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .reading-wrap{max-width:860px;margin:0 auto;padding:64px 48px 100px;}
+    .passage{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:44px 48px;margin-bottom:24px;line-height:2;font-size:16px;color:var(--text);}
+    .passage h2{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:28px;text-transform:uppercase;line-height:1.4;}
+    .passage h3{font-family:var(--font);font-size:17px;font-weight:700;color:var(--accent2);margin:32px 0 14px;}
+    .passage h4{font-family:var(--font);font-size:15px;font-weight:700;color:var(--accent);margin:22px 0 10px;}
+    .passage p{margin-bottom:18px;color:var(--muted);font-weight:300;}
+    .passage b{color:var(--accent2);font-weight:600;}
+    .tr{font-style:italic;font-size:13px;color:var(--muted);opacity:0.7;margin-left:3px;}
+    .vocab-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;margin-bottom:24px;}
+    .vocab-wrap h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:24px;}
+    .comp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;margin-bottom:24px;}
+    .comp-card h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:28px;}
+    .comp-q{margin-bottom:24px;}
+    .comp-q p{font-size:15px;color:var(--text);margin-bottom:10px;font-weight:500;}
+    .comp-options{display:flex;flex-direction:column;gap:8px;}
+    .comp-opt{padding:11px 16px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:14px;color:var(--muted);transition:background var(--ease),border-color var(--ease),color var(--ease);}
+    .comp-opt:hover{background:rgba(79,142,247,0.1);border-color:var(--accent);color:var(--text);}
+    .comp-opt.correct{background:rgba(34,197,94,0.18)!important;border-color:#22c55e!important;color:#86efac!important;}
+    .comp-opt.wrong{background:rgba(239,68,68,0.18)!important;border-color:#ef4444!important;color:#fca5a5!important;}
+    .comp-opt.show-correct{background:rgba(34,197,94,0.08);border-color:rgba(34,197,94,0.35);color:#86efac;}
+    .done-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+    .done-bar p{color:var(--muted);font-size:15px;font-weight:300;}
+    .done-btn{padding:12px 28px;border:none;border-radius:99px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:15px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease);}
+    .done-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,142,247,0.4);}
+    .done-btn.done{background:linear-gradient(135deg,#22c55e,#4ade80);}
+    .nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:32px;}
+    .nav-btns a{font-size:14px;color:var(--muted);}
+    .nav-btns a.next{color:var(--accent2);font-weight:500;}
+    @media(max-width:768px){.reading-wrap{padding:40px 20px 80px;}.passage{padding:28px 22px;}}
+  </style>
+</head>
+<body class="theme-1">
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="english.html">English</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+
+<div class="reading-wrap">
+  <div class="breadcrumb reveal">English <span>›</span> Reading <span>›</span> Dars 10</div>
+  <div class="reveal" style="margin-bottom:40px;">
+    <p class="s-label">Reading 10 / 10</p>
+    <h1 style="font-family:var(--font);font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-1px;line-height:1.1;color:var(--text);margin-bottom:12px;">Ilmiy Kashfiyotlar va Insoniyat Kelajagi 🔬</h1>
+    <p style="font-size:15px;color:var(--muted);font-weight:300;">IELTS Academic · ~1300 so'z · Yuqori daraja</p>
+  </div>
+
+  <div class="passage reveal">
+    <h2>SCIENTIFIC DISCOVERY AND THE FUTURE OF HUMANITY</h2>
+    <p>Throughout human history, scientific discovery has been the primary engine of progress — enabling longer, healthier lives; reducing <b>poverty</b><span class="tr">(qashshoqlik)</span>; and expanding our understanding of the universe. From the discovery of <b>penicillin</b><span class="tr">(penitsillin)</span> to the development of the internet, from the mapping of the human <b>genome</b><span class="tr">(genom)</span> to the detection of <b>gravitational waves</b><span class="tr">(tortishish to'lqinlari)</span>, the pace of scientific progress has accelerated dramatically over the past century and shows no signs of slowing.</p>
+    <p>Yet science does not operate in a <b>vacuum</b><span class="tr">(bo'shliqda, mustaqil ravishda)</span>. It is a deeply human enterprise, shaped by the social, cultural, economic, and political contexts in which it takes place. Who funds research, who conducts it, and whose interests it serves are questions with profound implications for what we know and how we apply that knowledge. Understanding the <b>sociology</b><span class="tr">(sotsiologiya)</span> of science — the social processes through which scientific knowledge is produced, <b>validated</b><span class="tr">(tasdiqlangan)</span>, and communicated — is essential for evaluating scientific claims critically and responsibly.</p>
+
+    <h3>1. The Nature of Scientific Progress</h3>
+    <h4>1.1 How Science Advances</h4>
+    <p>The philosopher of science Thomas Kuhn famously argued that scientific progress does not occur through the gradual <b>accumulation</b><span class="tr">(to'planish)</span> of knowledge but through periodic "<b>paradigm shifts</b><span class="tr">(paradigma o'zgarishlari)</span>" — revolutionary changes in the conceptual frameworks through which scientists understand the world. These shifts — such as the Copernican revolution in astronomy, Darwin's theory of <b>evolution</b><span class="tr">(evolyutsiya)</span>, or Einstein's theory of relativity — fundamentally transform scientific understanding and open up entirely new fields of research. Between such revolutions, science progresses through "<b>normal science</b><span class="tr">(odatiy ilm)</span>" — systematic investigation within established frameworks.</p>
+    <h4>1.2 Peer Review and Scientific Integrity</h4>
+    <p>A cornerstone of modern science is <b>peer review</b><span class="tr">(tengdosh ekspertizasi)</span> — the process by which research is evaluated by independent experts before publication. This process helps ensure that published research is methodologically sound and that claims are supported by <b>evidence</b><span class="tr">(dalil)</span>. However, peer review is not infallible. The <b>replication crisis</b><span class="tr">(takrorlash inqirozi)</span> — the discovery that many findings in psychology, medicine, and other fields cannot be replicated by independent researchers — has raised serious concerns about the reliability of the scientific literature. This has prompted calls for greater transparency, open data, and pre-registration of research studies.</p>
+
+    <h3>2. Frontier Sciences and Emerging Technologies</h3>
+    <h4>2.1 Biotechnology and Genetic Engineering</h4>
+    <p>The development of <b>CRISPR-Cas9</b><span class="tr">(CRISPR-Kas9)</span> and other gene-editing technologies has given scientists an unprecedented ability to modify the <b>genetic code</b><span class="tr">(genetik kod)</span> of living organisms with remarkable precision. The potential applications are extraordinary: treating inherited genetic diseases, developing new medicines and agricultural crops, and even potentially eliminating pathogens such as malaria from entire ecosystems. However, gene editing also raises profound ethical questions, particularly about the possibility of making <b>heritable</b><span class="tr">(meros bo'lib o'tadigan)</span> changes to the human <b>germline</b><span class="tr">(jinsiy hujayralar)</span> — changes that would be passed down to future generations — without their consent.</p>
+    <h4>2.2 Space Exploration and Astronomy</h4>
+    <p>The renewed interest in <b>space exploration</b><span class="tr">(kosmosni o'rganish)</span> — driven by both government agencies such as NASA and private companies such as SpaceX — has opened exciting new <b>frontiers</b><span class="tr">(chegaralar, soha)</span>. Missions to Mars aim not only to expand scientific knowledge but potentially to establish the foundation for human <b>colonisation</b><span class="tr">(kolonizatsiya)</span> of another planet — a prospect that raises profound ethical and philosophical questions about humanity's responsibilities towards other worlds. Meanwhile, advances in <b>telescope technology</b><span class="tr">(teleskop texnologiyasi)</span> — including the James Webb Space Telescope — are revealing the universe in unprecedented detail, challenging existing theories about its formation and evolution.</p>
+
+    <h3>3. Science, Society and Ethics</h3>
+    <h4>3.1 Scientific Literacy and Public Trust</h4>
+    <p>The relationship between science and society depends critically on public trust and <b>scientific literacy</b><span class="tr">(ilmiy savodxonlik)</span> — the ability of citizens to understand and evaluate scientific claims. In recent years, this trust has been challenged by the spread of <b>misinformation</b><span class="tr">(yolg'on ma'lumot)</span> through social media, the politicisation of scientific issues such as climate change and vaccine safety, and high-profile cases of scientific <b>fraud</b><span class="tr">(firibgarlik)</span>. Rebuilding and maintaining public trust in science requires not only improving science communication but also ensuring that scientific institutions are genuinely accountable to the communities they serve.</p>
+    <h4>3.2 Research Funding and Priorities</h4>
+    <p>The direction of scientific research is heavily influenced by funding decisions made by governments, corporations, and <b>philanthropic</b><span class="tr">(xayriya)</span> organisations. These decisions reflect both scientific priorities — addressing the most pressing and solvable problems — and non-scientific ones, including commercial interests, national security concerns, and political considerations. Critics argue that research funding is insufficiently focused on the health challenges facing the world's poorest populations — so-called "<b>neglected diseases</b><span class="tr">(e'tibordan chetda qolgan kasalliklar)</span>" — and too heavily <b>concentrated</b><span class="tr">(to'plangan)</span> in wealthy nations with the most sophisticated research infrastructure.</p>
+
+    <h3>Conclusion</h3>
+    <p>Scientific discovery has given humanity extraordinary power — to heal disease, to communicate instantly across the globe, to reshape living organisms, and perhaps one day to become a multi-planetary species. With this power comes immense responsibility. The greatest scientific challenges of the coming century — developing clean energy, defeating infectious disease, understanding the human mind, and exploring the cosmos — will require not only <b>brilliant</b><span class="tr">(yorqin, aqlli)</span> science but also wisdom, ethical reflection, and a commitment to ensuring that the benefits of discovery are shared equitably across all of humanity.</p>
+  </div>
+
+  <div class="vocab-wrap reveal">
+    <h3>📘 Muhim so'zlar — Reading 10</h3>
+    <div class="vocab-grid">
+      <div class="vocab-card"><h4>penicillin</h4><p>penitsillin</p></div>
+      <div class="vocab-card"><h4>genome</h4><p>genom</p></div>
+      <div class="vocab-card"><h4>gravitational waves</h4><p>tortishish to'lqinlari</p></div>
+      <div class="vocab-card"><h4>sociology</h4><p>sotsiologiya</p></div>
+      <div class="vocab-card"><h4>validated</h4><p>tasdiqlangan</p></div>
+      <div class="vocab-card"><h4>accumulation</h4><p>to'planish</p></div>
+      <div class="vocab-card"><h4>paradigm shifts</h4><p>paradigma o'zgarishlari</p></div>
+      <div class="vocab-card"><h4>evolution</h4><p>evolyutsiya</p></div>
+      <div class="vocab-card"><h4>peer review</h4><p>tengdosh ekspertizasi</p></div>
+      <div class="vocab-card"><h4>evidence</h4><p>dalil</p></div>
+      <div class="vocab-card"><h4>replication crisis</h4><p>takrorlash inqirozi</p></div>
+      <div class="vocab-card"><h4>CRISPR-Cas9</h4><p>gen tahrirlash texnologiyasi</p></div>
+      <div class="vocab-card"><h4>genetic code</h4><p>genetik kod</p></div>
+      <div class="vocab-card"><h4>heritable</h4><p>meros bo'lib o'tadigan</p></div>
+      <div class="vocab-card"><h4>germline</h4><p>jinsiy hujayralar</p></div>
+      <div class="vocab-card"><h4>space exploration</h4><p>kosmosni o'rganish</p></div>
+      <div class="vocab-card"><h4>frontiers</h4><p>chegaralar, soha</p></div>
+      <div class="vocab-card"><h4>colonisation</h4><p>kolonizatsiya</p></div>
+      <div class="vocab-card"><h4>scientific literacy</h4><p>ilmiy savodxonlik</p></div>
+      <div class="vocab-card"><h4>misinformation</h4><p>yolg'on ma'lumot</p></div>
+      <div class="vocab-card"><h4>fraud</h4><p>firibgarlik</p></div>
+      <div class="vocab-card"><h4>philanthropic</h4><p>xayriya</p></div>
+      <div class="vocab-card"><h4>neglected diseases</h4><p>e'tibordan chetda qolgan kasalliklar</p></div>
+      <div class="vocab-card"><h4>brilliant</h4><p>yorqin, aqlli</p></div>
+      <div class="vocab-card"><h4>vacuum</h4><p>bo'shliqda</p></div>
+      <div class="vocab-card"><h4>normal science</h4><p>odatiy ilm</p></div>
+
+    </div>
+  </div>
+
+  <div class="comp-card reveal">
+    <h3>❓ Tushunish savollari</h3>
+    <div class="comp-q">
+      <p>1. According to Thomas Kuhn, how does scientific progress mainly occur?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Through gradual accumulation of small discoveries</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) Only through government-funded research</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) Through periodic revolutionary paradigm shifts</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) By individual scientists working in isolation</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>2. What is the 'replication crisis' in science?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Scientists copying each other's research without permission</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) The problem of expensive scientific equipment being difficult to reproduce</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) The discovery that many published findings cannot be independently reproduced</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) A shortage of scientists in certain research fields</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>3. What ethical concern about CRISPR gene editing is raised in the passage?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) It is too expensive for most countries to afford</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) It could make heritable changes to future generations without their consent</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) It might accidentally create new diseases</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) It gives too much power to agricultural companies</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>4. What criticism is made about research funding priorities?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Too much money is spent on space exploration</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) Research funding favours wealthy nations and neglects diseases of the poorest populations</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) Private companies fund too much research compared to governments</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Scientific research has become too expensive</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>5. What does the conclusion say the greatest scientific challenges will require?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Brilliant science alone</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) Only government funding and political will</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) Brilliant science combined with wisdom, ethics, and equitable sharing of benefits</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) International competition between nations to drive innovation</div>
+      </div>
+    </div>
+
+    <p id="compScore" style="margin-top:24px;font-family:var(--font);font-size:16px;font-weight:700;color:var(--accent2);min-height:24px;"></p>
+  </div>
+
+  <div class="done-bar reveal">
+    <p>📖 Matnni o'qib, savollarga javob berdingizmi?</p>
+    <button class="done-btn" id="doneBtn" onclick="markDone()">✅ O'qib bo'ldim</button>
+  </div>
+  <div class="nav-btns reveal">
+    <a href="reading-9.html">← Reading 9</a>
+    <a href="english.html" class="next">← English bo'limiga qaytish</a>
+  </div>
+</div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth=getAuth(initializeApp({apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",authDomain:"it-study-a45fa.firebaseapp.com",projectId:"it-study-a45fa",storageBucket:"it-study-a45fa.firebasestorage.app",messagingSenderId:"973750187023",appId:"1:973750187023:web:c38b839da825ffa0681f7a"}));
+const ua=document.getElementById("userArea");
+onAuthStateChanged(auth,u=>{if(u){const n=u.displayName||u.email;ua.outerHTML=`<div class="profile-pill"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`;}else{ua.textContent="Kirish";ua.href="login.html";}});
+</script>
+<script>
+let ca=0,cc=0;
+function ans(el,correct){const g=el.closest('.comp-options');if(g.dataset.done)return;g.dataset.done="1";ca++;if(correct){el.classList.add('correct');cc++;}else{el.classList.add('wrong');[...g.children].forEach(o=>{if(o!==el)o.classList.add('show-correct');});}if(ca===5){document.getElementById('compScore').textContent=`Natija: ${cc} / 5 ✅`;localStorage.setItem('reading10Comp',cc);}}
+if(localStorage.getItem('reading10Done')){const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi';b.classList.add('done');}
+function markDone(){localStorage.setItem('reading10Done','true');const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi!';b.classList.add('done');}
+</script>
+<script>const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.04});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

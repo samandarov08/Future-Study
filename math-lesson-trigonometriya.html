@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trigonometriya | Math | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .lesson-wrap{max-width:860px;margin:0 auto;padding:64px 48px 100px;}
+    .terms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-bottom:8px;}
+    .term-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;transition:border-color var(--ease),transform var(--ease);}
+    .term-card:hover{border-color:var(--accent);transform:translateY(-3px);}
+    .term-en{font-family:var(--font);font-size:15px;font-weight:700;color:var(--accent2);margin-bottom:4px;}
+    .term-uz{font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:300;}
+    .term-desc{font-size:13px;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);padding-top:8px;margin-top:6px;}
+    .formula-block{background:var(--bg2);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:24px 28px;margin-bottom:16px;}
+    .formula-title{font-family:var(--font);font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:14px;}
+    .formula-main{font-size:20px;color:var(--text);margin-bottom:10px;line-height:1.8;}
+    .formula-note{font-size:13px;color:var(--muted);line-height:1.7;margin-top:10px;font-weight:300;}
+    .formula-note b{color:var(--accent2);font-weight:600;}
+    .example-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:14px;}
+    .example-header{display:flex;align-items:center;gap:14px;padding:18px 26px;cursor:pointer;user-select:none;transition:background var(--ease);}
+    .example-header:hover{background:rgba(255,255,255,0.04);}
+    .example-num{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:var(--font);font-weight:700;font-size:13px;color:#fff;flex-shrink:0;}
+    .example-question{font-size:15px;color:var(--text);font-weight:500;flex:1;}
+    .example-toggle{font-size:12px;color:var(--accent);font-weight:600;white-space:nowrap;padding:5px 13px;border:1px solid rgba(79,142,247,0.3);border-radius:99px;transition:background var(--ease);}
+    .example-header:hover .example-toggle{background:rgba(79,142,247,0.1);}
+    .example-body{display:none;padding:0 26px 26px;border-top:1px solid var(--border);}
+    .example-card.open .example-body{display:block;}
+    .steps{margin-top:18px;}
+    .step{display:flex;gap:14px;margin-bottom:14px;}
+    .step-num{width:26px;height:26px;border-radius:50%;background:rgba(79,142,247,0.12);border:1px solid rgba(79,142,247,0.3);display:flex;align-items:center;justify-content:center;font-family:var(--font);font-size:11px;font-weight:700;color:var(--accent);flex-shrink:0;margin-top:2px;}
+    .step-content{flex:1;}
+    .step-label{font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+    .step-math{font-size:16px;color:var(--text);line-height:1.8;margin-bottom:5px;}
+    .step-explain{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300;}
+    .answer-box{margin-top:18px;padding:14px 18px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.25);border-radius:var(--radius-sm);display:flex;align-items:center;gap:12px;}
+    .answer-box .label{font-family:var(--font);font-size:12px;font-weight:700;color:#22c55e;letter-spacing:0.5px;white-space:nowrap;}
+    .answer-box .val{font-size:17px;color:#86efac;}
+    .try-box{margin-top:12px;padding:12px 16px;background:rgba(79,142,247,0.06);border:1px solid rgba(79,142,247,0.2);border-radius:var(--radius-sm);font-size:13px;color:var(--muted);font-style:italic;}
+    .try-box b{color:var(--accent2);font-style:normal;font-weight:600;}
+    .section-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:36px 40px;margin-bottom:24px;}
+    .done-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:8px;}
+    .done-bar p{color:var(--muted);font-size:15px;font-weight:300;}
+    .done-btn{padding:12px 28px;border:none;border-radius:99px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:15px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease);}
+    .done-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,142,247,0.4);}
+    .done-btn.done{background:linear-gradient(135deg,#22c55e,#4ade80);}
+    .nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:32px;}
+    .nav-btns a{font-size:14px;color:var(--muted);}
+    .nav-btns a.next{color:var(--accent2);font-weight:500;}
+    @media(max-width:768px){.lesson-wrap{padding:40px 20px 80px;}.section-box{padding:24px 20px;}.formula-block{padding:18px 20px;}.example-header{padding:14px 18px;}.example-body{padding:0 18px 18px;}}
+  </style>
+</head>
+<body class="theme-1">
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="math.html">Math</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+<div class="lesson-wrap">
+  <div class="breadcrumb reveal">Math <span>›</span> Trigonometriya</div>
+  <div class="reveal" style="margin-bottom:48px;">
+    <p class="s-label">Math · 7-dars</p>
+    <h1 style="font-family:var(--font);font-size:clamp(32px,5vw,54px);font-weight:800;letter-spacing:-1.5px;line-height:1.08;color:var(--text);margin-bottom:14px;">
+      Trigonometriya<br>
+      <span style="background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Trigonometry 📐</span>
+    </h1>
+    <p style="font-size:16px;color:var(--muted);font-weight:300;max-width:520px;line-height:1.7;">Atamalar → Formulalar → 10 ta yechilgan misol. Har bir qadamni tushunib o'rganing.</p>
+  </div>
+
+  <p class="s-label reveal">1-bosqich</p>
+  <h2 class="s-title reveal" style="margin-bottom:24px;">Atamalar 📖</h2>
+  <div class="section-box reveal">
+    <div class="terms-grid">
+      <div class="term-card">
+        <div class="term-en">Sine / Sinus</div>
+        <div class="term-uz">\(\sin\alpha\)</div>
+        <div class="term-desc">To'g'ri burchakli uchburchakda: \(\sin\alpha = \frac{\text{qarshi katet}}{\text{gipotenuza}}\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Cosine / Kosinus</div>
+        <div class="term-uz">\(\cos\alpha\)</div>
+        <div class="term-desc">\(\cos\alpha = \frac{\text{yonma-yon katet}}{\text{gipotenuza}}\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Tangent / Tangens</div>
+        <div class="term-uz">\(\tan\alpha\)</div>
+        <div class="term-desc">\(\tan\alpha = \frac{\sin\alpha}{\cos\alpha} = \frac{\text{qarshi katet}}{\text{yonma-yon katet}}\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Cotangent / Kotangent</div>
+        <div class="term-uz">\(\cot\alpha\)</div>
+        <div class="term-desc">\(\cot\alpha = \frac{\cos\alpha}{\sin\alpha}\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Unit circle</div>
+        <div class="term-uz">Birlik aylana</div>
+        <div class="term-desc">Markazi (0,0) da, radiusi 1 bo'lgan aylana. \((\cos\alpha, \sin\alpha)\) — nuqta koordinatasi.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Radian</div>
+        <div class="term-uz">Radian — burchak o'lchovi</div>
+        <div class="term-desc">\(180° = \pi \text{ radian}\), \(1° = \frac{\pi}{180}\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Quadrant</div>
+        <div class="term-uz">Chorak</div>
+        <div class="term-desc">Koordinata tekisligining to'rt bo'lagi. I, II, III, IV choraks.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Reference angle</div>
+        <div class="term-uz">Asosiy burchak</div>
+        <div class="term-desc">Har qanday burchakni birinchi chorakdagi o'tkir burchakka keltirish.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Pythagorean identity</div>
+        <div class="term-uz">Pifagor tenglamasi</div>
+        <div class="term-desc">\(\sin^2\alpha + \cos^2\alpha = 1\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Period / Davr</div>
+        <div class="term-uz">Funksiyaning takrorlanish davri</div>
+        <div class="term-desc">\(\sin\) va \(\cos\) uchun davr \(2\pi\), \(\tan\) uchun \(\pi\).</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Amplitude</div>
+        <div class="term-uz">Amplituda</div>
+        <div class="term-desc">\(y = A\sin(x)\) da \(A\) — eng katta qiymat.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Phase shift</div>
+        <div class="term-uz">Fazaviy siljish</div>
+        <div class="term-desc">\(y = \sin(x - c)\) da \(c\) — grafik gorizontal siljishi.</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="s-label reveal" style="margin-top:16px;">2-bosqich</p>
+  <h2 class="s-title reveal" style="margin-bottom:24px;">Formulalar 📐</h2>
+  <div class="formula-block reveal">
+    <div class="formula-title">Asosiy qiymatlar</div>
+        <div class="formula-main">\[\sin 0°=0,\;\sin 30°=\tfrac{1}{2},\;\sin 45°=\tfrac{\sqrt{2}}{2},\;\sin 60°=\tfrac{\sqrt{3}}{2},\;\sin 90°=1\]</div>
+        <div class="formula-main">\[\cos 0°=1,\;\cos 30°=\tfrac{\sqrt{3}}{2},\;\cos 45°=\tfrac{\sqrt{2}}{2},\;\cos 60°=\tfrac{1}{2},\;\cos 90°=0\]</div>
+        <div class="formula-main">\[\tan 0°=0,\;\tan 30°=\tfrac{1}{\sqrt{3}},\;\tan 45°=1,\;\tan 60°=\sqrt{3}\]</div>
+        <div class="formula-note">Bu qiymatlarni yodlash shart — barcha masalalarda kerak bo'ladi!</div>
+  </div>
+  <div class="formula-block reveal">
+    <div class="formula-title">Asosiy tengliklar</div>
+        <div class="formula-main">\[\sin^2\alpha + \cos^2\alpha = 1\]</div>
+        <div class="formula-main">\[1 + \tan^2\alpha = \frac{1}{\cos^2\alpha}\]</div>
+        <div class="formula-main">\[1 + \cot^2\alpha = \frac{1}{\sin^2\alpha}\]</div>
+  </div>
+  <div class="formula-block reveal">
+    <div class="formula-title">Qo'shish formulalari</div>
+        <div class="formula-main">\[\sin(\alpha \pm \beta) = \sin\alpha\cos\beta \pm \cos\alpha\sin\beta\]</div>
+        <div class="formula-main">\[\cos(\alpha \pm \beta) = \cos\alpha\cos\beta \mp \sin\alpha\sin\beta\]</div>
+        <div class="formula-main">\[\tan(\alpha + \beta) = \frac{\tan\alpha + \tan\beta}{1 - \tan\alpha\tan\beta}\]</div>
+  </div>
+  <div class="formula-block reveal">
+    <div class="formula-title">Ikkilangan burchak</div>
+        <div class="formula-main">\[\sin 2\alpha = 2\sin\alpha\cos\alpha\]</div>
+        <div class="formula-main">\[\cos 2\alpha = \cos^2\alpha - \sin^2\alpha = 1 - 2\sin^2\alpha = 2\cos^2\alpha - 1\]</div>
+  </div>
+
+  <p class="s-label reveal" style="margin-top:16px;">3-bosqich</p>
+  <h2 class="s-title reveal" style="margin-bottom:24px;">Yechilgan misollar 🧮</h2>
+  <p style="color:var(--muted);font-size:15px;margin-bottom:24px;font-weight:300;" class="reveal">Har bir misol ustiga bosing — bosqichma-bosqich yechimni ko'ring.</p>
+  <div class="example-card reveal" id="ex1">
+    <div class="example-header" onclick="toggleEx('ex1')">
+      <div class="example-num">1</div>
+      <div class="example-question">\(\sin^2 30° + \cos^2 30°\) ni hisoblang.</div>
+      <div class="example-toggle" id="ex1-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Qiymatlarni qo'yamiz:</div>
+            <div class="step-math">\(\left(\frac{1}{2}\right)^2 + \left(\frac{\sqrt{3}}{2}\right)^2\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Hisob:</div>
+            <div class="step-math">\(\frac{1}{4} + \frac{3}{4} = 1\)</div>
+            <div class='step-explain'>Pifagor tenglamasi tasdiqlandi!</div>
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(1\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex2">
+    <div class="example-header" onclick="toggleEx('ex2')">
+      <div class="example-num">2</div>
+      <div class="example-question">\(\tan 45° + \sin 90°\) ni hisoblang.</div>
+      <div class="example-toggle" id="ex2-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Qiymatlardan:</div>
+            <div class="step-math">\(\tan 45° = 1,\quad \sin 90° = 1\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Natija:</div>
+            <div class="step-math">\(1 + 1 = 2\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(2\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex3">
+    <div class="example-header" onclick="toggleEx('ex3')">
+      <div class="example-num">3</div>
+      <div class="example-question">\(\sin 60° \cdot \cos 30° - \cos 60° \cdot \sin 30°\) ni hisoblang.</div>
+      <div class="example-toggle" id="ex3-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Bu \(\sin(60° - 30°)\) formulasi:</div>
+            <div class="step-math">\(= \sin 30° = \frac{1}{2}\)</div>
+            <div class='step-explain'>Qo'shish formulasini tanidingizmi?</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">To'g'ridan hisoblash:</div>
+            <div class="step-math">\(\frac{\sqrt{3}}{2}\cdot\frac{\sqrt{3}}{2} - \frac{1}{2}\cdot\frac{1}{2} = \frac{3}{4} - \frac{1}{4} = \frac{1}{2}\checkmark\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(\dfrac{1}{2}\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex4">
+    <div class="example-header" onclick="toggleEx('ex4')">
+      <div class="example-num">4</div>
+      <div class="example-question">\(\sin\alpha = \frac{3}{5}\) va \(\alpha\) birinchi chorakda. \(\cos\alpha\) ni toping.</div>
+      <div class="example-toggle" id="ex4-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Pifagor tenglamasidan:</div>
+            <div class="step-math">\(\cos^2\alpha = 1 - \sin^2\alpha = 1 - \frac{9}{25} = \frac{16}{25}\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">I chorakda cos musbat:</div>
+            <div class="step-math">\(\cos\alpha = \frac{4}{5}\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(\cos\alpha = \dfrac{4}{5}\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex5">
+    <div class="example-header" onclick="toggleEx('ex5')">
+      <div class="example-num">5</div>
+      <div class="example-question">\(\sin 2\alpha\) ni toping, agar \(\sin\alpha = \frac{1}{2}\) va \(\cos\alpha = \frac{\sqrt{3}}{2}\).</div>
+      <div class="example-toggle" id="ex5-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Ikkilangan burchak formulasi:</div>
+            <div class="step-math">\(\sin 2\alpha = 2\sin\alpha\cos\alpha\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Hisob:</div>
+            <div class="step-math">\(= 2 \cdot \frac{1}{2} \cdot \frac{\sqrt{3}}{2} = \frac{\sqrt{3}}{2}\)</div>
+            <div class='step-explain'>Bu aslida \(\sin 60°\).</div>
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(\dfrac{\sqrt{3}}{2}\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex6">
+    <div class="example-header" onclick="toggleEx('ex6')">
+      <div class="example-num">6</div>
+      <div class="example-question">\(\cos^2\alpha - \sin^2\alpha\) ifodani soddalshtiring.</div>
+      <div class="example-toggle" id="ex6-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Ikkilangan burchak formulasi:</div>
+            <div class="step-math">\(\cos^2\alpha - \sin^2\alpha = \cos 2\alpha\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(\cos 2\alpha\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex7">
+    <div class="example-header" onclick="toggleEx('ex7')">
+      <div class="example-num">7</div>
+      <div class="example-question">\(\tan\alpha = \sqrt{3}\) bo'lsa, \(\alpha\) ni toping (\(0° \leq \alpha \leq 360°\)).</div>
+      <div class="example-toggle" id="ex7-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">\(\tan 60° = \sqrt{3}\)</div>
+            <div class="step-math">\(\alpha_1 = 60°\)</div>
+            <div class='step-explain'>I chorakda.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">\(\tan\) III chorakda ham musbat:</div>
+            <div class="step-math">\(\alpha_2 = 180° + 60° = 240°\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(\alpha = 60°\text{ yoki }240°\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex8">
+    <div class="example-header" onclick="toggleEx('ex8')">
+      <div class="example-num">8</div>
+      <div class="example-question">\(\sin(45° + 30°)\) ni hisoblang.</div>
+      <div class="example-toggle" id="ex8-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Qo'shish formulasi:</div>
+            <div class="step-math">\(\sin 45°\cos 30° + \cos 45°\sin 30°\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Qiymatlarni qo'yamiz:</div>
+            <div class="step-math">\(\frac{\sqrt{2}}{2}\cdot\frac{\sqrt{3}}{2} + \frac{\sqrt{2}}{2}\cdot\frac{1}{2}\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Natija:</div>
+            <div class="step-math">\(\frac{\sqrt{6}}{4} + \frac{\sqrt{2}}{4} = \frac{\sqrt{6}+\sqrt{2}}{4}\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(\dfrac{\sqrt{6}+\sqrt{2}}{4}\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex9">
+    <div class="example-header" onclick="toggleEx('ex9')">
+      <div class="example-num">9</div>
+      <div class="example-question">\(2\sin^2\alpha + 3\cos^2\alpha = 2.5\) tenglamasini yeching.</div>
+      <div class="example-toggle" id="ex9-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">\(\cos^2\alpha = 1 - \sin^2\alpha\) ni qo'yamiz:</div>
+            <div class="step-math">\(2\sin^2\alpha + 3(1 - \sin^2\alpha) = 2.5\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Ochib yozamiz:</div>
+            <div class="step-math">\(2\sin^2\alpha + 3 - 3\sin^2\alpha = 2.5\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label"></div>
+            <div class="step-math">\(-\sin^2\alpha = -0.5 \Rightarrow \sin^2\alpha = 0.5\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-label">Natija:</div>
+            <div class="step-math">\(\sin\alpha = \pm\frac{\sqrt{2}}{2} \Rightarrow \alpha = 45°, 135°, 225°, 315°\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(\alpha = 45°,\;135°,\;225°,\;315°\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex10">
+    <div class="example-header" onclick="toggleEx('ex10')">
+      <div class="example-num">10</div>
+      <div class="example-question">\(\frac{1 - \cos 2\alpha}{\sin 2\alpha}\) ifodani soddalashtiring.</div>
+      <div class="example-toggle" id="ex10-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">\(1 - \cos 2\alpha = 2\sin^2\alpha\):</div>
+            <div class="step-math">\(\frac{2\sin^2\alpha}{\sin 2\alpha}\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">\(\sin 2\alpha = 2\sin\alpha\cos\alpha\):</div>
+            <div class="step-math">\(\frac{2\sin^2\alpha}{2\sin\alpha\cos\alpha}\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Qisqartiring:</div>
+            <div class="step-math">\(\frac{\sin\alpha}{\cos\alpha} = \tan\alpha\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(\tan\alpha\)</span></div>
+
+    </div>
+  </div>
+
+  <div class="done-bar reveal">
+    <p>✅ Darsni o'qib, misollarni yechdingizmi?</p>
+    <button class="done-btn" id="doneBtn" onclick="markDone()">✅ Darsni tugatdim</button>
+  </div>
+  <div class="nav-btns reveal">
+    <a href="math-lesson-logarifm.html">← Logarifm</a>
+    <a href="math-lesson-ehtimollik.html" class="next">Ehtimollik →</a>
+  </div>
+</div>
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth=getAuth(initializeApp({apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",authDomain:"it-study-a45fa.firebaseapp.com",projectId:"it-study-a45fa",storageBucket:"it-study-a45fa.firebasestorage.app",messagingSenderId:"973750187023",appId:"1:973750187023:web:c38b839da825ffa0681f7a"}));
+const ua=document.getElementById("userArea");
+onAuthStateChanged(auth,u=>{if(u){const n=u.displayName||u.email;ua.outerHTML=`<div class="profile-pill"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`;}else{ua.textContent="Kirish";ua.href="login.html";}});
+</script>
+<script>
+function toggleEx(id){const c=document.getElementById(id);const b=document.getElementById(id+'-btn');const o=c.classList.toggle('open');b.textContent=o?'🙈 Yashirish':"👁 Ko'rish";}
+if(localStorage.getItem('mathTrigonometriya')){const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi';b.classList.add('done');}
+function markDone(){localStorage.setItem('mathTrigonometriya','true');const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi!';b.classList.add('done');}
+</script>
+<script>const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.04});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\[",right:"\\]",display:true},{left:"\\(",right:"\\)",display:false}]});});</script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading 4 | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .reading-wrap{max-width:860px;margin:0 auto;padding:64px 48px 100px;}
+    .passage{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:44px 48px;margin-bottom:24px;line-height:2;font-size:16px;color:var(--text);}
+    .passage h2{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:28px;text-transform:uppercase;line-height:1.4;}
+    .passage h3{font-family:var(--font);font-size:17px;font-weight:700;color:var(--accent2);margin:32px 0 14px;}
+    .passage h4{font-family:var(--font);font-size:15px;font-weight:700;color:var(--accent);margin:22px 0 10px;}
+    .passage p{margin-bottom:18px;color:var(--muted);font-weight:300;}
+    .passage b{color:var(--accent2);font-weight:600;}
+    .tr{font-style:italic;font-size:13px;color:var(--muted);opacity:0.7;margin-left:3px;}
+    .vocab-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;margin-bottom:24px;}
+    .vocab-wrap h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:24px;}
+    .comp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;margin-bottom:24px;}
+    .comp-card h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:28px;}
+    .comp-q{margin-bottom:24px;}
+    .comp-q p{font-size:15px;color:var(--text);margin-bottom:10px;font-weight:500;}
+    .comp-options{display:flex;flex-direction:column;gap:8px;}
+    .comp-opt{padding:11px 16px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:14px;color:var(--muted);transition:background var(--ease),border-color var(--ease),color var(--ease);}
+    .comp-opt:hover{background:rgba(79,142,247,0.1);border-color:var(--accent);color:var(--text);}
+    .comp-opt.correct{background:rgba(34,197,94,0.18)!important;border-color:#22c55e!important;color:#86efac!important;}
+    .comp-opt.wrong{background:rgba(239,68,68,0.18)!important;border-color:#ef4444!important;color:#fca5a5!important;}
+    .comp-opt.show-correct{background:rgba(34,197,94,0.08);border-color:rgba(34,197,94,0.35);color:#86efac;}
+    .done-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+    .done-bar p{color:var(--muted);font-size:15px;font-weight:300;}
+    .done-btn{padding:12px 28px;border:none;border-radius:99px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:15px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease);}
+    .done-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,142,247,0.4);}
+    .done-btn.done{background:linear-gradient(135deg,#22c55e,#4ade80);}
+    .nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:32px;}
+    .nav-btns a{font-size:14px;color:var(--muted);}
+    .nav-btns a.next{color:var(--accent2);font-weight:500;}
+    @media(max-width:768px){.reading-wrap{padding:40px 20px 80px;}.passage{padding:28px 22px;}}
+  </style>
+</head>
+<body class="theme-1">
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="english.html">English</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+
+<div class="reading-wrap">
+  <div class="breadcrumb reveal">English <span>›</span> Reading <span>›</span> Dars 4</div>
+  <div class="reveal" style="margin-bottom:40px;">
+    <p class="s-label">Reading 4 / 10</p>
+    <h1 style="font-family:var(--font);font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-1px;line-height:1.1;color:var(--text);margin-bottom:12px;">Global Iqtisodiyot va Biznes Dunyosi 📈</h1>
+    <p style="font-size:15px;color:var(--muted);font-weight:300;">IELTS Academic · ~1200 so'z · O'rta daraja</p>
+  </div>
+
+  <div class="passage reveal">
+    <h2>GLOBALISATION, ENTREPRENEURSHIP AND THE MODERN ECONOMY</h2>
+    <p>The global economy has <b>undergone</b><span class="tr">(o'tmoq, boshidan kechirmoq)</span> dramatic changes over the past century. From the <b>industrial revolution</b><span class="tr">(sanoat inqilobi)</span> that transformed manufacturing to the digital revolution reshaping services and trade, economic systems have continuously evolved in response to technological change, political developments, and shifting <b>consumer preferences</b><span class="tr">(iste'molchilar afzalliklari)</span>. Today, we live in a world defined by increasing <b>interconnectedness</b><span class="tr">(o'zaro bog'liqlik)</span>, rapid innovation, and <b>unprecedented</b><span class="tr">(mislsiz)</span> economic complexity.</p>
+    <p><b>Globalisation</b><span class="tr">(globallashuv)</span> — the process through which economies, cultures, and societies become increasingly linked — has been one of the defining forces of the late 20th and early 21st centuries. It has enabled countries to <b>specialise</b><span class="tr">(ixtisoslashmoq)</span> in what they produce most efficiently, access larger markets, and benefit from the exchange of ideas and technologies. However, globalisation has also been <b>controversial</b><span class="tr">(bahsli, tortishuv mavzusi)</span>, as its benefits have not been equally distributed, and it has contributed to the <b>displacement</b><span class="tr">(siqib chiqarish)</span> of workers in industries that cannot compete with cheaper international <b>labour</b><span class="tr">(ishchi kuchi)</span>.</p>
+
+    <h3>1. The Rise of Entrepreneurship</h3>
+    <h4>1.1 What is Entrepreneurship?</h4>
+    <p><b>Entrepreneurship</b><span class="tr">(tadbirkorlik)</span> — the process of creating a new business by taking on financial risk in hopes of profit — has become a central engine of economic growth and innovation. <b>Entrepreneurs</b><span class="tr">(tadbirkorlar)</span> identify <b>market gaps</b><span class="tr">(bozordagi bo'shliqlar)</span>, develop new products or services, and create jobs. In recent decades, the rise of the internet and digital platforms has dramatically lowered the <b>barriers to entry</b><span class="tr">(kirish to'siqlari)</span> for new businesses, enabling individuals to reach global markets at minimal cost. This has given rise to a new generation of <b>start-ups</b><span class="tr">(yangi kompaniyalar)</span> that have disrupted traditional industries.</p>
+    <h4>1.2 Social Entrepreneurship</h4>
+    <p>A growing movement within entrepreneurship is <b>social entrepreneurship</b><span class="tr">(ijtimoiy tadbirkorlik)</span> — the creation of businesses whose primary goal is to generate positive social or environmental impact rather than purely financial profit. Social entrepreneurs tackle issues such as poverty, access to clean water, education inequality, and climate change through <b>innovative</b><span class="tr">(innovatsion)</span> business models. While these ventures often face unique challenges in securing <b>funding</b><span class="tr">(moliyalashtirish)</span> and scaling their impact, they represent a growing recognition that business can be a powerful force for good.</p>
+
+    <h3>2. Supply Chains and Global Trade</h3>
+    <h4>2.1 Modern Supply Chains</h4>
+    <p>Modern products are rarely made in a single location. A smartphone, for example, may contain <b>components</b><span class="tr">(qismlar)</span> sourced from dozens of countries, assembled in another, and sold globally. These complex <b>supply chains</b><span class="tr">(ta'minot zanjirlari)</span> have enabled companies to minimise costs and access <b>specialised</b><span class="tr">(ixtisoslashtirilgan)</span> expertise, but they have also created <b>vulnerabilities</b><span class="tr">(zaifliklar)</span>. The COVID-19 pandemic exposed these vulnerabilities dramatically: disruptions to global supply chains led to <b>shortages</b><span class="tr">(tanqislik)</span> of everything from semiconductors to medical equipment.</p>
+    <h4>2.2 Trade Agreements and Protectionism</h4>
+    <p>International <b>trade agreements</b><span class="tr">(savdo shartnomalari)</span> have played a crucial role in facilitating globalisation by reducing <b>tariffs</b><span class="tr">(bojlar)</span> and other barriers to trade between countries. However, in recent years there has been a <b>resurgence</b><span class="tr">(qayta ko'tarilish)</span> of <b>protectionist</b><span class="tr">(himoyalovchi)</span> sentiment in many countries, driven by concerns about job losses, national security, and the desire to maintain strategic industries. This tension between free trade and protectionism remains one of the central debates in global economic policy.</p>
+
+    <h3>3. Inequality and Economic Justice</h3>
+    <h4>3.1 Wealth Inequality</h4>
+    <p>Despite the remarkable economic growth of recent decades, <b>wealth inequality</b><span class="tr">(boylik tengsizligi)</span> has increased in many countries. The wealthiest 1% of the global population now owns more than half of the world's total <b>wealth</b><span class="tr">(boylik)</span>, while billions of people live in <b>poverty</b><span class="tr">(qashshoqlik)</span>. Economists debate the causes of this inequality — ranging from technological change and globalisation to tax policies and <b>inheritance</b><span class="tr">(meros)</span> — as well as the most effective ways to address it. Proposed solutions include progressive taxation, strengthened social safety nets, and improved access to education and healthcare.</p>
+    <h4>3.2 Sustainable Economic Development</h4>
+    <p>Increasingly, economists and policymakers are recognising that <b>sustainable development</b><span class="tr">(barqaror rivojlanish)</span> — growth that meets the needs of the present without compromising the ability of future generations to meet their own needs — must be at the heart of economic planning. This requires moving away from economic models that <b>prioritise</b><span class="tr">(ustuvor qilmoq)</span> short-term growth at the expense of environmental health and social equity. The concept of a "<b>circular economy</b><span class="tr">(aylanma iqtisodiyot)</span>," in which waste is minimised and resources are continually reused, is gaining traction as one component of a more sustainable approach.</p>
+
+    <h3>Conclusion</h3>
+    <p>The modern economy is characterised by extraordinary dynamism and complexity. Globalisation, technological innovation, and entrepreneurship have created remarkable opportunities for growth and prosperity. Yet they have also generated significant challenges — including inequality, environmental degradation, and economic <b>insecurity</b><span class="tr">(iqtisodiy beqarorlik)</span>. Addressing these challenges requires not just technical solutions but a fundamental <b>rethinking</b><span class="tr">(qayta ko'rib chiqish)</span> of what we mean by economic success and who benefits from it.</p>
+  </div>
+
+  <div class="vocab-wrap reveal">
+    <h3>📘 Muhim so'zlar — Reading 4</h3>
+    <div class="vocab-grid">
+      <div class="vocab-card"><h4>globalisation</h4><p>globallashuv</p></div>
+      <div class="vocab-card"><h4>interconnectedness</h4><p>o'zaro bog'liqlik</p></div>
+      <div class="vocab-card"><h4>consumer preferences</h4><p>iste'molchilar afzalliklari</p></div>
+      <div class="vocab-card"><h4>specialise</h4><p>ixtisoslashmoq</p></div>
+      <div class="vocab-card"><h4>controversial</h4><p>bahsli</p></div>
+      <div class="vocab-card"><h4>displacement</h4><p>siqib chiqarish</p></div>
+      <div class="vocab-card"><h4>entrepreneurship</h4><p>tadbirkorlik</p></div>
+      <div class="vocab-card"><h4>market gaps</h4><p>bozordagi bo'shliqlar</p></div>
+      <div class="vocab-card"><h4>barriers to entry</h4><p>kirish to'siqlari</p></div>
+      <div class="vocab-card"><h4>start-ups</h4><p>yangi kompaniyalar</p></div>
+      <div class="vocab-card"><h4>social entrepreneurship</h4><p>ijtimoiy tadbirkorlik</p></div>
+      <div class="vocab-card"><h4>funding</h4><p>moliyalashtirish</p></div>
+      <div class="vocab-card"><h4>supply chains</h4><p>ta'minot zanjirlari</p></div>
+      <div class="vocab-card"><h4>vulnerabilities</h4><p>zaifliklar</p></div>
+      <div class="vocab-card"><h4>shortages</h4><p>tanqislik</p></div>
+      <div class="vocab-card"><h4>trade agreements</h4><p>savdo shartnomalari</p></div>
+      <div class="vocab-card"><h4>tariffs</h4><p>bojlar</p></div>
+      <div class="vocab-card"><h4>protectionist</h4><p>himoyalovchi</p></div>
+      <div class="vocab-card"><h4>resurgence</h4><p>qayta ko'tarilish</p></div>
+      <div class="vocab-card"><h4>wealth inequality</h4><p>boylik tengsizligi</p></div>
+      <div class="vocab-card"><h4>poverty</h4><p>qashshoqlik</p></div>
+      <div class="vocab-card"><h4>inheritance</h4><p>meros</p></div>
+      <div class="vocab-card"><h4>sustainable development</h4><p>barqaror rivojlanish</p></div>
+      <div class="vocab-card"><h4>circular economy</h4><p>aylanma iqtisodiyot</p></div>
+      <div class="vocab-card"><h4>insecurity</h4><p>beqarorlik</p></div>
+      <div class="vocab-card"><h4>rethinking</h4><p>qayta ko'rib chiqish</p></div>
+      <div class="vocab-card"><h4>components</h4><p>qismlar</p></div>
+      <div class="vocab-card"><h4>innovative</h4><p>innovatsion</p></div>
+      <div class="vocab-card"><h4>specialised</h4><p>ixtisoslashtirilgan</p></div>
+      <div class="vocab-card"><h4>prioritise</h4><p>ustuvor qilmoq</p></div>
+
+    </div>
+  </div>
+
+  <div class="comp-card reveal">
+    <h3>❓ Tushunish savollari</h3>
+    <div class="comp-q">
+      <p>1. What is described as one of the defining forces of the late 20th century?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) The invention of the internet alone</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) Globalisation and increasing economic interconnectedness</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) The growth of protectionism</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) The decline of manufacturing industries</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>2. What has lowered barriers to entry for new businesses in recent decades?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Government subsidies for entrepreneurs</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) Reduced competition in global markets</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) The rise of the internet and digital platforms</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Lower corporate tax rates worldwide</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>3. What did the COVID-19 pandemic reveal about global supply chains?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) They were too expensive to maintain</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) They were resistant to all external shocks</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) They contained significant vulnerabilities to disruption</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) They worked perfectly during the crisis</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>4. What is the 'circular economy' concept?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) An economy where all countries trade equally</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) A model where waste is minimised and resources are continually reused</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) A financial system based on cryptocurrency</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) An economy focused purely on services rather than manufacturing</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>5. What does the author suggest is needed to address modern economic challenges?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Simply creating more technology companies</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) Returning to closed national economies</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) Technical solutions combined with rethinking what economic success means</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Eliminating all forms of international trade</div>
+      </div>
+    </div>
+
+    <p id="compScore" style="margin-top:24px;font-family:var(--font);font-size:16px;font-weight:700;color:var(--accent2);min-height:24px;"></p>
+  </div>
+
+  <div class="done-bar reveal">
+    <p>📖 Matnni o'qib, savollarga javob berdingizmi?</p>
+    <button class="done-btn" id="doneBtn" onclick="markDone()">✅ O'qib bo'ldim</button>
+  </div>
+  <div class="nav-btns reveal">
+    <a href="reading-3.html">← Reading 3</a>
+    <a href="reading-5.html" class="next">Reading 5 → Atrof-muhit va ekologiya</a>
+  </div>
+</div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth=getAuth(initializeApp({apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",authDomain:"it-study-a45fa.firebaseapp.com",projectId:"it-study-a45fa",storageBucket:"it-study-a45fa.firebasestorage.app",messagingSenderId:"973750187023",appId:"1:973750187023:web:c38b839da825ffa0681f7a"}));
+const ua=document.getElementById("userArea");
+onAuthStateChanged(auth,u=>{if(u){const n=u.displayName||u.email;ua.outerHTML=`<div class="profile-pill"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`;}else{ua.textContent="Kirish";ua.href="login.html";}});
+</script>
+<script>
+let ca=0,cc=0;
+function ans(el,correct){const g=el.closest('.comp-options');if(g.dataset.done)return;g.dataset.done="1";ca++;if(correct){el.classList.add('correct');cc++;}else{el.classList.add('wrong');[...g.children].forEach(o=>{if(o!==el)o.classList.add('show-correct');});}if(ca===5){document.getElementById('compScore').textContent=`Natija: ${cc} / 5 ✅`;localStorage.setItem('reading4Comp',cc);}}
+if(localStorage.getItem('reading4Done')){const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi';b.classList.add('done');}
+function markDone(){localStorage.setItem('reading4Done','true');const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi!';b.classList.add('done');}
+</script>
+<script>const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.04});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

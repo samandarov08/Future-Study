@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Dev Questions | Future-Study</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-1">
+
+<header class="navbar">
+  <div class="logo">Future-Study</div>
+  <nav>
+    <a href="project.html">Home</a>
+    <a href="web.html">Web Dev</a>
+    <a href="web-questions.html">Questions</a>
+    <a href="web-tests.html">Tests</a>
+  </nav>
+  <button id="themeToggle">🌙</button>
+</header>
+
+<div style="max-width:860px;margin:70px auto;padding:20px;">
+  <h1 style="font-family:var(--font);font-size:36px;text-align:center;margin-bottom:40px;">❓ Web Development Questions</h1>
+  <p style="text-align:center;color:var(--muted);margin-bottom:40px;">Click a question to reveal the answer</p>
+
+  <div class="question-card" onclick="this.classList.toggle('open')">
+    <div class="question">1. What is the difference between frontend and backend development?</div>
+    <div class="answer">Frontend focuses on the user interface and design (HTML, CSS, JS), while backend handles server logic, databases, and application functionality.</div>
+  </div>
+
+  <div class="question-card" onclick="this.classList.toggle('open')">
+    <div class="question">2. Why is semantic HTML important?</div>
+    <div class="answer">Semantic HTML improves accessibility, SEO, and makes code more structured and meaningful for both browsers and developers.</div>
+  </div>
+
+  <div class="question-card" onclick="this.classList.toggle('open')">
+    <div class="question">3. What is responsive design?</div>
+    <div class="answer">Responsive design ensures websites adapt to different screen sizes and devices using CSS media queries and flexible layouts.</div>
+  </div>
+
+  <div class="question-card" onclick="this.classList.toggle('open')">
+    <div class="question">4. What is an API?</div>
+    <div class="answer">API (Application Programming Interface) allows different software systems to communicate and exchange data with each other.</div>
+  </div>
+
+  <div class="question-card" onclick="this.classList.toggle('open')">
+    <div class="question">5. Why is version control important?</div>
+    <div class="answer">Version control (like Git) helps track code changes, collaborate with teams, revert mistakes, and manage the entire code history.</div>
+  </div>
+
+  <div class="question-card" onclick="this.classList.toggle('open')">
+    <div class="question">6. What is the difference between a class and an ID in CSS?</div>
+    <div class="answer">An ID (#) is unique and can only be used once per page. A class (.) can be reused on multiple elements. IDs have higher specificity than classes.</div>
+  </div>
+
+  <div class="question-card" onclick="this.classList.toggle('open')">
+    <div class="question">7. What does the DOM stand for and what is it?</div>
+    <div class="answer">DOM stands for Document Object Model. It is a programming interface that represents the HTML document as a tree of objects that JavaScript can interact with.</div>
+  </div>
+
+  <div class="question-card" onclick="this.classList.toggle('open')">
+    <div class="question">8. What is the difference between == and === in JavaScript?</div>
+    <div class="answer">== checks for equality with type coercion (e.g., "5" == 5 is true). === checks for strict equality without coercion (e.g., "5" === 5 is false). Always prefer ===.</div>
+  </div>
+
+  <div class="question-card" onclick="this.classList.toggle('open')">
+    <div class="question">9. What is CSS Flexbox used for?</div>
+    <div class="answer">Flexbox is a CSS layout model that makes it easy to align and distribute elements in a container, especially in one direction (row or column).</div>
+  </div>
+
+  <div class="question-card" onclick="this.classList.toggle('open')">
+    <div class="question">10. What is the purpose of localStorage in JavaScript?</div>
+    <div class="answer">localStorage allows you to store key-value data in the browser that persists even after the page is closed. It is useful for saving user preferences or session data.</div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+    <a href="web.html" style="color:var(--muted);font-size:14px;">← Back to Web Dev</a>
+  </div>
+</div>
+
+<script type="module" src="header.js"></script>
+
+
+
+<script src="theme-switcher.js"></script>
+</body>
+</html>

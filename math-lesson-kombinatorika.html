@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kombinatorika | Math | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .lesson-wrap{max-width:860px;margin:0 auto;padding:64px 48px 100px;}
+    .terms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-bottom:8px;}
+    .term-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;transition:border-color var(--ease),transform var(--ease);}
+    .term-card:hover{border-color:var(--accent);transform:translateY(-3px);}
+    .term-en{font-family:var(--font);font-size:15px;font-weight:700;color:var(--accent2);margin-bottom:4px;}
+    .term-uz{font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:300;}
+    .term-desc{font-size:13px;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);padding-top:8px;margin-top:6px;}
+    .formula-block{background:var(--bg2);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:24px 28px;margin-bottom:16px;}
+    .formula-title{font-family:var(--font);font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:14px;}
+    .formula-main{font-size:20px;color:var(--text);margin-bottom:10px;line-height:1.8;}
+    .formula-note{font-size:13px;color:var(--muted);line-height:1.7;margin-top:10px;font-weight:300;}
+    .formula-note b{color:var(--accent2);font-weight:600;}
+    .example-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:14px;}
+    .example-header{display:flex;align-items:center;gap:14px;padding:18px 26px;cursor:pointer;user-select:none;transition:background var(--ease);}
+    .example-header:hover{background:rgba(255,255,255,0.04);}
+    .example-num{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:var(--font);font-weight:700;font-size:13px;color:#fff;flex-shrink:0;}
+    .example-question{font-size:15px;color:var(--text);font-weight:500;flex:1;}
+    .example-toggle{font-size:12px;color:var(--accent);font-weight:600;white-space:nowrap;padding:5px 13px;border:1px solid rgba(79,142,247,0.3);border-radius:99px;transition:background var(--ease);}
+    .example-header:hover .example-toggle{background:rgba(79,142,247,0.1);}
+    .example-body{display:none;padding:0 26px 26px;border-top:1px solid var(--border);}
+    .example-card.open .example-body{display:block;}
+    .steps{margin-top:18px;}
+    .step{display:flex;gap:14px;margin-bottom:14px;}
+    .step-num{width:26px;height:26px;border-radius:50%;background:rgba(79,142,247,0.12);border:1px solid rgba(79,142,247,0.3);display:flex;align-items:center;justify-content:center;font-family:var(--font);font-size:11px;font-weight:700;color:var(--accent);flex-shrink:0;margin-top:2px;}
+    .step-content{flex:1;}
+    .step-label{font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+    .step-math{font-size:16px;color:var(--text);line-height:1.8;margin-bottom:5px;}
+    .step-explain{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300;}
+    .answer-box{margin-top:18px;padding:14px 18px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.25);border-radius:var(--radius-sm);display:flex;align-items:center;gap:12px;}
+    .answer-box .label{font-family:var(--font);font-size:12px;font-weight:700;color:#22c55e;letter-spacing:0.5px;white-space:nowrap;}
+    .answer-box .val{font-size:17px;color:#86efac;}
+    .try-box{margin-top:12px;padding:12px 16px;background:rgba(79,142,247,0.06);border:1px solid rgba(79,142,247,0.2);border-radius:var(--radius-sm);font-size:13px;color:var(--muted);font-style:italic;}
+    .try-box b{color:var(--accent2);font-style:normal;font-weight:600;}
+    .section-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:36px 40px;margin-bottom:24px;}
+    .done-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:8px;}
+    .done-bar p{color:var(--muted);font-size:15px;font-weight:300;}
+    .done-btn{padding:12px 28px;border:none;border-radius:99px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:15px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease);}
+    .done-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,142,247,0.4);}
+    .done-btn.done{background:linear-gradient(135deg,#22c55e,#4ade80);}
+    .nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:32px;}
+    .nav-btns a{font-size:14px;color:var(--muted);}
+    .nav-btns a.next{color:var(--accent2);font-weight:500;}
+    @media(max-width:768px){.lesson-wrap{padding:40px 20px 80px;}.section-box{padding:24px 20px;}.formula-block{padding:18px 20px;}.example-header{padding:14px 18px;}.example-body{padding:0 18px 18px;}}
+  </style>
+</head>
+<body class="theme-1">
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="math.html">Math</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+<div class="lesson-wrap">
+  <div class="breadcrumb reveal">Math <span>›</span> Kombinatorika</div>
+  <div class="reveal" style="margin-bottom:48px;">
+    <p class="s-label">Math · 9-dars</p>
+    <h1 style="font-family:var(--font);font-size:clamp(32px,5vw,54px);font-weight:800;letter-spacing:-1.5px;line-height:1.08;color:var(--text);margin-bottom:14px;">
+      Kombinatorika<br>
+      <span style="background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Combinatorics 🔄</span>
+    </h1>
+    <p style="font-size:16px;color:var(--muted);font-weight:300;max-width:520px;line-height:1.7;">Atamalar → Formulalar → 10 ta yechilgan misol. Har bir qadamni tushunib o'rganing.</p>
+  </div>
+
+  <p class="s-label reveal">1-bosqich</p>
+  <h2 class="s-title reveal" style="margin-bottom:24px;">Atamalar 📖</h2>
+  <div class="section-box reveal">
+    <div class="terms-grid">
+      <div class="term-card">
+        <div class="term-en">Factorial / Faktorial</div>
+        <div class="term-uz">\(n! = 1 \times 2 \times \cdots \times n\)</div>
+        <div class="term-desc">\(5! = 120,\; 0! = 1,\; 1! = 1\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Permutation / Joylash (tartib)</div>
+        <div class="term-uz">Tartibi muhim tanlov</div>
+        <div class="term-desc">\(P_n^k = \frac{n!}{(n-k)!}\) — n dan k tani tartib bilan</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Combination / Kombinatsiya</div>
+        <div class="term-uz">Tartibi muhim emas</div>
+        <div class="term-desc">\(C_n^k = \binom{n}{k} = \frac{n!}{k!(n-k)!}\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Arrangement</div>
+        <div class="term-uz">Joylashtirish</div>
+        <div class="term-desc">n ta buyumni joylashtirish: \(n!\) ta usul</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Binomial coefficient</div>
+        <div class="term-uz">Binom koeffitsiyenti</div>
+        <div class="term-desc">\(\binom{n}{k}\) — Paskal uchburchagidagi son</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Pascal's triangle</div>
+        <div class="term-uz">Paskal uchburchagi</div>
+        <div class="term-desc">\(\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Repetition allowed</div>
+        <div class="term-uz">Takrorlash bilan</div>
+        <div class="term-desc">\(n^k\) — n ta elementdan k tani takrorlash bilan tanlov</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Multinomial</div>
+        <div class="term-uz">Ko'payli kombinatorika</div>
+        <div class="term-desc">\(\frac{n!}{n_1! n_2! \cdots n_k!}\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Pigeonhole principle</div>
+        <div class="term-uz">Kabutar ini prinsipi</div>
+        <div class="term-desc">n+1 ta buyum n ta qutiga joylashsa, bir qutida ≥ 2 ta bor.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Inclusion-Exclusion</div>
+        <div class="term-uz">Kiritish-chiqarish</div>
+        <div class="term-desc">\(|A \cup B| = |A| + |B| - |A \cap B|\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Stars and Bars</div>
+        <div class="term-uz">Yulduzlar va tayoqlar</div>
+        <div class="term-desc">Hisoblash usuli: bo'linadigan elementlar.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Derangement</div>
+        <div class="term-uz">O'z joyiga qaytmaslik</div>
+        <div class="term-desc">Hech bir element o'z joyida bo'lmaydigan joylash soni.</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="s-label reveal" style="margin-top:16px;">2-bosqich</p>
+  <h2 class="s-title reveal" style="margin-bottom:24px;">Formulalar 📐</h2>
+  <div class="formula-block reveal">
+    <div class="formula-title">Asosiy formulalar</div>
+        <div class="formula-main">\[n! = 1 \times 2 \times 3 \times \cdots \times n,\quad 0! = 1\]</div>
+        <div class="formula-main">\[P_n^k = \frac{n!}{(n-k)!} \quad \text{(joylash, tartib muhim)}\]</div>
+        <div class="formula-main">\[C_n^k = \binom{n}{k} = \frac{n!}{k!(n-k)!} \quad \text{(kombinatsiya, tartib muhim emas)}\]</div>
+        <div class="formula-note"><b>Joylash:</b> TARTIB MUHIM (ABC ≠ BAC) &nbsp;|&nbsp; <b>Kombinatsiya:</b> TARTIB MUHIM EMAS (ABC = BAC)</div>
+  </div>
+  <div class="formula-block reveal">
+    <div class="formula-title">Binom teoremasi</div>
+        <div class="formula-main">\[(a + b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k} b^k\]</div>
+        <div class="formula-main">\[(a+b)^2 = a^2 + 2ab + b^2\]</div>
+        <div class="formula-main">\[(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3\]</div>
+  </div>
+  <div class="formula-block reveal">
+    <div class="formula-title">Muhim tengliklar</div>
+        <div class="formula-main">\[\binom{n}{0} = \binom{n}{n} = 1\]</div>
+        <div class="formula-main">\[\binom{n}{k} = \binom{n}{n-k}\]</div>
+        <div class="formula-main">\[\binom{n}{k} + \binom{n}{k+1} = \binom{n+1}{k+1}\]</div>
+  </div>
+
+  <p class="s-label reveal" style="margin-top:16px;">3-bosqich</p>
+  <h2 class="s-title reveal" style="margin-bottom:24px;">Yechilgan misollar 🧮</h2>
+  <p style="color:var(--muted);font-size:15px;margin-bottom:24px;font-weight:300;" class="reveal">Har bir misol ustiga bosing — bosqichma-bosqich yechimni ko'ring.</p>
+  <div class="example-card reveal" id="ex1">
+    <div class="example-header" onclick="toggleEx('ex1')">
+      <div class="example-num">1</div>
+      <div class="example-question">\(6!\) ni hisoblang.</div>
+      <div class="example-toggle" id="ex1-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Faktorial ta'rifi:</div>
+            <div class="step-math">\(6! = 1 \times 2 \times 3 \times 4 \times 5 \times 6\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Hisob:</div>
+            <div class="step-math">\(= 720\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(720\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex2">
+    <div class="example-header" onclick="toggleEx('ex2')">
+      <div class="example-num">2</div>
+      <div class="example-question">7 ta kitobdan 3 tasini tartib bilan tanlash: necha usul?</div>
+      <div class="example-toggle" id="ex2-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Bu joylash (P):</div>
+            <div class="step-math">\(P_7^3 = \frac{7!}{(7-3)!} = \frac{7!}{4!}\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Hisob:</div>
+            <div class="step-math">\(= 7 \times 6 \times 5 = 210\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(210 \text{ usul}\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex3">
+    <div class="example-header" onclick="toggleEx('ex3')">
+      <div class="example-num">3</div>
+      <div class="example-question">10 ta o'quvchidan 3 ta delegat tanlash: necha usul?</div>
+      <div class="example-toggle" id="ex3-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Bu kombinatsiya (tartib muhim emas):</div>
+            <div class="step-math">\(C_{10}^3 = \frac{10!}{3! \cdot 7!}\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Hisob:</div>
+            <div class="step-math">\(= \frac{10 \times 9 \times 8}{3 \times 2 \times 1} = \frac{720}{6} = 120\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(120 \text{ usul}\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex4">
+    <div class="example-header" onclick="toggleEx('ex4')">
+      <div class="example-num">4</div>
+      <div class="example-question">\(\binom{8}{3}\) ni hisoblang.</div>
+      <div class="example-toggle" id="ex4-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Formuladan:</div>
+            <div class="step-math">\(\binom{8}{3} = \frac{8!}{3! \cdot 5!} = \frac{8 \times 7 \times 6}{6}\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Hisob:</div>
+            <div class="step-math">\(= \frac{336}{6} = 56\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(56\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex5">
+    <div class="example-header" onclick="toggleEx('ex5')">
+      <div class="example-num">5</div>
+      <div class="example-question">\((x + y)^4\) ni yoying.</div>
+      <div class="example-toggle" id="ex5-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Binom teoremasi:</div>
+            <div class="step-math">\(\binom{4}{0}x^4 + \binom{4}{1}x^3y + \binom{4}{2}x^2y^2 + \binom{4}{3}xy^3 + \binom{4}{4}y^4\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Koeffitsientlar: 1, 4, 6, 4, 1</div>
+            <div class="step-math">\(x^4 + 4x^3y + 6x^2y^2 + 4xy^3 + y^4\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(x^4 + 4x^3y + 6x^2y^2 + 4xy^3 + y^4\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex6">
+    <div class="example-header" onclick="toggleEx('ex6')">
+      <div class="example-num">6</div>
+      <div class="example-question">\((2a - b)^3\) da \(a^2b\) ning koeffitsiyentini toping.</div>
+      <div class="example-toggle" id="ex6-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Binom: \(k = 1\) da \(a^{3-1}\) va \(b^1\) keladi</div>
+            <div class="step-math">\(\binom{3}{1}(2a)^2(-b)^1\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Hisob:</div>
+            <div class="step-math">\(3 \times 4a^2 \times (-b) = -12a^2b\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Koeffitsient:</div>
+            <div class="step-math">\(-12\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(-12\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex7">
+    <div class="example-header" onclick="toggleEx('ex7')">
+      <div class="example-num">7</div>
+      <div class="example-question">3 xil ko'ylak va 4 xil shim bor. Necha xil kiyinish mumkin?</div>
+      <div class="example-toggle" id="ex7-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Ko'paytirish qoidasi:</div>
+            <div class="step-math">\(3 \times 4 = 12\)</div>
+            <div class='step-explain'>Har bir ko'ylakka 4 ta shim mos keladi.</div>
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(12 \text{ xil}\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex8">
+    <div class="example-header" onclick="toggleEx('ex8')">
+      <div class="example-num">8</div>
+      <div class="example-question">MATEMATIKA so'zidagi harflarni tartiblab necha so'z hosil qilinadi?</div>
+      <div class="example-toggle" id="ex8-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Jami harf: 9, lekin M-3 ta, A-3 ta, T-1, E-1, I-1</div>
+            <div class="step-math">\(\frac{9!}{3! \cdot 3! \cdot 1! \cdot 1! \cdot 1!}\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Hisob:</div>
+            <div class="step-math">\(\frac{362880}{6 \times 6} = \frac{362880}{36} = 10080\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(10080 \text{ so'z}\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex9">
+    <div class="example-header" onclick="toggleEx('ex9')">
+      <div class="example-num">9</div>
+      <div class="example-question">6 kishi dumaloq stolga o'tirishning necha usuli bor?</div>
+      <div class="example-toggle" id="ex9-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Dumaloq joylash formulasi:</div>
+            <div class="step-math">\((n-1)! = (6-1)! = 5!\)</div>
+            <div class='step-explain'>Bir kishini mahkamlang, qolganlarni joylang.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Hisob:</div>
+            <div class="step-math">\(5! = 120\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(120 \text{ usul}\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex10">
+    <div class="example-header" onclick="toggleEx('ex10')">
+      <div class="example-num">10</div>
+      <div class="example-question">\(\binom{n}{2} = 15\) bo'lsa, \(n\) ni toping.</div>
+      <div class="example-toggle" id="ex10-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Formuladan:</div>
+            <div class="step-math">\(\frac{n(n-1)}{2} = 15\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label"></div>
+            <div class="step-math">\(n(n-1) = 30\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">\(n=6\): \(6 \times 5 = 30\checkmark\)</div>
+            <div class="step-math">\(n = 6\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(n = 6\)</span></div>
+
+    </div>
+  </div>
+
+  <div class="done-bar reveal">
+    <p>✅ Darsni o'qib, misollarni yechdingizmi?</p>
+    <button class="done-btn" id="doneBtn" onclick="markDone()">✅ Darsni tugatdim</button>
+  </div>
+  <div class="nav-btns reveal">
+    <a href="math-lesson-ehtimollik.html">← Ehtimollik</a>
+    <a href="math-lesson-geometriya.html" class="next">Geometriya →</a>
+  </div>
+</div>
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth=getAuth(initializeApp({apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",authDomain:"it-study-a45fa.firebaseapp.com",projectId:"it-study-a45fa",storageBucket:"it-study-a45fa.firebasestorage.app",messagingSenderId:"973750187023",appId:"1:973750187023:web:c38b839da825ffa0681f7a"}));
+const ua=document.getElementById("userArea");
+onAuthStateChanged(auth,u=>{if(u){const n=u.displayName||u.email;ua.outerHTML=`<div class="profile-pill"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`;}else{ua.textContent="Kirish";ua.href="login.html";}});
+</script>
+<script>
+function toggleEx(id){const c=document.getElementById(id);const b=document.getElementById(id+'-btn');const o=c.classList.toggle('open');b.textContent=o?'🙈 Yashirish':"👁 Ko'rish";}
+if(localStorage.getItem('mathKombinatorika')){const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi';b.classList.add('done');}
+function markDone(){localStorage.setItem('mathKombinatorika','true');const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi!';b.classList.add('done');}
+</script>
+<script>const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.04});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\[",right:"\\]",display:true},{left:"\\(",right:"\\)",display:false}]});});</script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Vocabulary Test | Future-Study</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-1">
+
+<header class="header">
+  <div class="logo"><a href="project.html">Future-Study</a></div>
+  <nav class="menu">
+    <a href="english.html">English</a>
+    <a href="tests.html">Tests</a>
+    <a href="project.html">Home</a>
+    <a href="profile.html" id="userArea">Login</a>
+  </nav>
+</header>
+
+<div class="test-page">
+  <div class="test-box">
+    <p class="test-counter" id="counter">Savol 1 / 52</p>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <h2 id="question"></h2>
+
+    <div class="answers">
+      <button class="answer-btn" onclick="checkAnswer(0)"></button>
+      <button class="answer-btn" onclick="checkAnswer(1)"></button>
+      <button class="answer-btn" onclick="checkAnswer(2)"></button>
+      <button class="answer-btn" onclick="checkAnswer(3)"></button>
+    </div>
+
+    <p id="result"></p>
+  </div>
+</div>
+
+<script type="module" src="header.js"></script>
+<script src="vocabulary-test-1.js"></script>
+
+
+
+<script src="theme-switcher.js"></script>
+</body>
+</html>

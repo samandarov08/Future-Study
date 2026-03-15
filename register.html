@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ro'yxatdan o'tish | Future-Study</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-1">
+
+<div class="auth-page">
+  <div class="auth-box">
+    <h2>Ro'yxatdan o'tish</h2>
+    <p class="auth-sub">Bepul hisob yarating</p>
+
+    <input type="text"     id="name"     placeholder="Ismingiz">
+    <input type="email"    id="email"    placeholder="Email manzilingiz">
+
+    <div class="input-wrap">
+      <input type="password" id="password"  placeholder="Parol (kamida 6 ta belgi)">
+      <span class="eye" onclick="togglePwd('password')">👁</span>
+    </div>
+
+    <div class="input-wrap">
+      <input type="password" id="password2" placeholder="Parolni tasdiqlang">
+      <span class="eye" onclick="togglePwd('password2')">👁</span>
+    </div>
+
+    <p id="errorMsg" class="auth-error"></p>
+
+    <button class="auth-btn" id="registerBtn">Account yaratish</button>
+
+    <p class="auth-link">
+      Allaqachon account bormi? <a href="login.html">Kirish</a>
+    </p>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, updateProfile }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey:            "AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",
+  authDomain:        "it-study-a45fa.firebaseapp.com",
+  projectId:         "it-study-a45fa",
+  storageBucket:     "it-study-a45fa.firebasestorage.app",
+  messagingSenderId: "973750187023",
+  appId:             "1:973750187023:web:c38b839da825ffa0681f7a"
+};
+
+const app  = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const btn      = document.getElementById("registerBtn");
+const errorMsg = document.getElementById("errorMsg");
+
+function showError(msg) { errorMsg.textContent = msg; }
+
+btn.onclick = async () => {
+  const name  = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const pass  = document.getElementById("password").value;
+  const pass2 = document.getElementById("password2").value;
+
+  if (!name || !email || !pass || !pass2) {
+    showError("Barcha maydonlarni to'ldiring"); return;
+  }
+  if (pass.length < 6) {
+    showError("Parol kamida 6 ta belgidan iborat bo'lishi kerak"); return;
+  }
+  if (pass !== pass2) {
+    showError("Parollar bir xil emas"); return;
+  }
+
+  btn.disabled    = true;
+  btn.textContent = "Yuklanmoqda...";
+  errorMsg.textContent = "";
+
+  try {
+    const cred = await createUserWithEmailAndPassword(auth, email, pass);
+    await updateProfile(cred.user, { displayName: name });
+    localStorage.setItem("username",  name);
+    localStorage.setItem("userEmail", email);
+    window.location.href = "login.html";
+  } catch (err) {
+    const map = {
+      "auth/email-already-in-use": "Bu email allaqachon ro'yxatdan o'tgan",
+      "auth/invalid-email":        "Email formati noto'g'ri",
+      "auth/weak-password":        "Parol juda oddiy"
+    };
+    showError(map[err.code] || err.message);
+    btn.disabled    = false;
+    btn.textContent = "Account yaratish";
+  }
+};
+
+window.togglePwd = (id) => {
+  const inp = document.getElementById(id);
+  inp.type  = inp.type === "password" ? "text" : "password";
+};
+</script>
+
+
+
+
+<script src="theme-switcher.js"></script>
+</body>
+</html>

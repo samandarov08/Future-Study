@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ish va Kelajak | Speaking | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .sp-wrap{max-width:860px;margin:0 auto;padding:60px 48px 100px;}
+    .vocab-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:36px 40px;margin-bottom:24px;}
+    .vocab-wrap h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:22px;}
+    .part-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:36px 40px;margin-bottom:20px;}
+    .part-label{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border-radius:99px;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:20px;}
+    .part-label.p1{background:rgba(79,142,247,.15);color:var(--accent2);border:1px solid rgba(79,142,247,.25);}
+    .part-label.p2{background:rgba(167,139,250,.15);color:#c4b5fd;border:1px solid rgba(167,139,250,.25);}
+    .part-label.p3{background:rgba(251,191,36,.15);color:#fcd34d;border:1px solid rgba(251,191,36,.25);}
+    .part-card h3{font-family:var(--font);font-size:17px;font-weight:700;color:var(--text);margin-bottom:16px;}
+    .q-item{margin-bottom:14px;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;}
+    .q-head{display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;transition:background var(--ease);}
+    .q-head:hover{background:rgba(255,255,255,.04);}
+    .q-num{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:var(--font);font-size:11px;font-weight:700;color:#fff;flex-shrink:0;}
+    .q-text{flex:1;font-size:15px;color:var(--text);font-weight:500;}
+    .q-toggle{font-size:12px;color:var(--accent);font-weight:600;padding:4px 12px;border:1px solid rgba(79,142,247,.3);border-radius:99px;white-space:nowrap;}
+    .q-body{display:none;padding:0 18px 18px 56px;}
+    .q-item.open .q-body{display:block;}
+    .q-answer{font-size:14px;color:var(--muted);line-height:1.8;font-weight:300;}
+    .q-answer b{color:var(--accent2);font-weight:600;}
+    .q-tip{margin-top:10px;padding:10px 14px;background:rgba(79,142,247,.06);border:1px solid rgba(79,142,247,.15);border-radius:var(--radius-sm);font-size:13px;color:var(--muted);}
+    .q-tip b{color:var(--accent2);}
+    .part2-card{background:rgba(167,139,250,.06);border:1px solid rgba(167,139,250,.2);border-radius:var(--radius-sm);padding:20px 22px;margin-bottom:16px;}
+    .part2-card h4{font-family:var(--font);font-size:15px;font-weight:700;color:#c4b5fd;margin-bottom:12px;}
+    .part2-card ul{margin:0;padding-left:18px;}
+    .part2-card ul li{font-size:14px;color:var(--muted);margin-bottom:6px;font-weight:300;}
+    .done-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:8px;}
+    .done-bar p{color:var(--muted);font-size:15px;font-weight:300;}
+    .done-btn{padding:11px 26px;border:none;border-radius:99px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:14px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease);}
+    .done-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,142,247,.4);}
+    .done-btn.done{background:linear-gradient(135deg,#22c55e,#4ade80);}
+    .nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:28px;}
+    .nav-btns a{font-size:14px;color:var(--muted);}
+    .nav-btns a.next{color:var(--accent2);font-weight:500;}
+    @media(max-width:768px){.sp-wrap{padding:40px 20px 80px;}.part-card{padding:24px 20px;}.vocab-wrap{padding:24px 20px;}}
+  </style>
+</head>
+<body class="theme-1">
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="english.html">English</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+
+<div class="sp-wrap">
+  <div class="breadcrumb reveal">English <span>›</span> Speaking <span>›</span> Ish va Kelajak</div>
+  <div class="reveal" style="margin-bottom:40px;">
+    <p class="s-label">Speaking · 6-mavzu</p>
+    <h1 style="font-family:var(--font);font-size:clamp(28px,4vw,46px);font-weight:800;letter-spacing:-1px;line-height:1.1;color:var(--text);margin-bottom:10px;">💼 Ish va Kelajak</h1>
+    <p style="font-size:15px;color:var(--muted);font-weight:300;">IELTS Speaking · Part 1, 2, 3 · Namuna javoblar bilan</p>
+  </div>
+
+
+  <!-- PART 1 -->
+  <div class="part-card reveal">
+    <div class="part-label p1">📝 Part 1 — Shaxsiy savollar</div>
+    <h3>O'zingiz haqingizda gapirib bering</h3>
+  <div class="q-item" id="p1q1">
+    <div class="q-head" onclick="toggleQ('p1q1')">
+      <div class="q-num">1</div>
+      <div class="q-text">What kind of job would you like to have in the future?</div>
+      <div class="q-toggle" id="p1q1-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer">I aspire to work in the technology sector, ideally as a software developer or in a role that combines creativity with technical <b>skills</b>. What matters most to me is <b>job satisfaction</b> — I want a <b>career</b> where I can keep learning, solve real problems, and see the impact of my work. A good <b>work-life balance</b> is also very important to me.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Use aspirational language: 'I aspire to', 'my goal is', 'ideally'</div>
+    </div>
+  </div>
+  <div class="q-item" id="p1q2">
+    <div class="q-head" onclick="toggleQ('p1q2')">
+      <div class="q-num">2</div>
+      <div class="q-text">What job did you want to do when you were a child?</div>
+      <div class="q-toggle" id="p1q2-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer">Like many children, I went through several phases. I wanted to be a doctor for a while because I admired the idea of helping people. Later I became fascinated by technology and computers. Looking back, even though my ambitions changed, they always reflected a desire to do something meaningful and make a positive contribution.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Use past tense + reflection: 'looking back'</div>
+    </div>
+  </div>
+  <div class="q-item" id="p1q3">
+    <div class="q-head" onclick="toggleQ('p1q3')">
+      <div class="q-num">3</div>
+      <div class="q-text">Is it important to enjoy your work?</div>
+      <div class="q-toggle" id="p1q3-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer">Absolutely. Research consistently shows that people who find meaning in their work are significantly more <b>productive</b> and creative. <b>Job satisfaction</b> also reduces stress and burnout. While financial stability is important, spending 8 hours a day doing something you dislike is ultimately unsustainable for both mental health and career growth.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Make a strong argument with evidence</div>
+    </div>
+  </div>
+  <div class="q-item" id="p1q4">
+    <div class="q-head" onclick="toggleQ('p1q4')">
+      <div class="q-num">4</div>
+      <div class="q-text">Would you prefer to work for a company or be self-employed?</div>
+      <div class="q-toggle" id="p1q4-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer">I think I would ultimately prefer <b>freelancing</b> or running my own small business. Being an <b>entrepreneur</b> offers creative freedom, flexibility, and the satisfaction of building something of your own. However, I recognise that starting out in a company is valuable for gaining experience, mentorship, and professional <b>networking</b>.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Acknowledge both options before giving preference</div>
+    </div>
+  </div>
+  <div class="q-item" id="p1q5">
+    <div class="q-head" onclick="toggleQ('p1q5')">
+      <div class="q-num">5</div>
+      <div class="q-text">How do you feel about doing an internship before working full-time?</div>
+      <div class="q-toggle" id="p1q5-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer"><b>Internships</b> are invaluable. They bridge the gap between theoretical knowledge and real-world experience. Even unpaid or short-term <b>internships</b> teach workplace etiquette, how to meet <b>deadlines</b>, and how to collaborate professionally. I firmly believe every student should gain some work experience before graduating.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Use strong positive language: 'invaluable', 'essential', 'bridge the gap'</div>
+    </div>
+  </div>
+  </div>
+
+  <!-- PART 2 -->
+  <div class="part-card reveal">
+    <div class="part-label p2">🎤 Part 2 — Uzoq monolog</div>
+    <h3>1-2 daqiqa gapiring</h3>
+  <div class="part2-card">
+    <h4>Describe your ideal job or career</h4>
+    <ul><li>What the job is</li><li>What skills it requires</li><li>What you would do in this job</li><li>Why it appeals to you</li></ul>
+  </div>
+  <div class="q-item" id="p2q1">
+    <div class="q-head" onclick="toggleQ('p2q1')">
+      <div class="q-num">1</div>
+      <div class="q-text">Namuna javobni ko'ring</div>
+      <div class="q-toggle" id="p2q1-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body"><div class="q-answer">My ideal job would be working as a software developer or digital product designer for a forward-thinking technology company. This role requires a combination of technical <b>skills</b> — programming, problem-solving, and data analysis — as well as creativity and strong communication abilities. In this position, I would spend my days designing and building digital products that genuinely improve people's lives, collaborating with a diverse team and continuously learning new technologies. What particularly appeals to me about this <b>career</b> is the perfect balance it offers between creativity and logic. No two projects are the same, which means the work remains stimulating and challenging. Additionally, the technology sector offers excellent opportunities for <b>promotion</b> and professional growth. I am also drawn to the possibility of eventually working <b>remotely</b> or even starting my own venture as an <b>entrepreneur</b>, which would give me the ultimate freedom to pursue projects I am truly passionate about.</div></div>
+  </div>
+  </div>
+
+  <!-- PART 3 -->
+  <div class="part-card reveal">
+    <div class="part-label p3">💬 Part 3 — Muhokama</div>
+    <h3>Chuqurroq fikrlash va baholash</h3>
+  <div class="q-item" id="p3q1">
+    <div class="q-head" onclick="toggleQ('p3q1')">
+      <div class="q-num">1</div>
+      <div class="q-text">How has the nature of work changed in the modern world?</div>
+      <div class="q-toggle" id="p3q1-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer">Work has been transformed by technology. <b>Remote work</b> has become standard for many industries, blurring the boundaries between professional and personal life. <b>Automation</b> has replaced routine jobs while creating new roles requiring advanced <b>skills</b>. The traditional concept of a stable, lifelong job with one employer has largely disappeared, replaced by more flexible, project-based <b>freelance</b> arrangements.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Use 'has been transformed', 'has replaced', 'has largely disappeared'</div>
+    </div>
+  </div>
+  <div class="q-item" id="p3q2">
+    <div class="q-head" onclick="toggleQ('p3q2')">
+      <div class="q-num">2</div>
+      <div class="q-text">What are the biggest challenges young people face when entering the job market?</div>
+      <div class="q-toggle" id="p3q2-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer">The most significant challenge is the skills gap — many graduates find their academic qualifications don't fully match what employers need. <b>Unemployment</b> among young people is persistently high in many countries. Additionally, the expectation of immediate experience creates a paradox — you need experience to get a job, but you need a job to gain experience. <b>Networking</b> and <b>internships</b> help bridge this gap.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Identify specific challenges with clear explanations</div>
+    </div>
+  </div>
+  <div class="q-item" id="p3q3">
+    <div class="q-head" onclick="toggleQ('p3q3')">
+      <div class="q-num">3</div>
+      <div class="q-text">Do you think work-life balance is achievable in today's world?</div>
+      <div class="q-toggle" id="p3q3-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer"><b>Work-life balance</b> is increasingly difficult to achieve in an always-connected digital world. The expectation to respond to messages outside working hours has intensified. However, I believe it is achievable with clear boundaries and the right workplace culture. Companies that prioritise employee wellbeing tend to have higher <b>productivity</b> and lower turnover — so good balance actually benefits employers too.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Acknowledge the difficulty + offer a solution</div>
+    </div>
+  </div>
+  </div>
+
+  <!-- VOCABULARY -->
+  <div class="vocab-wrap reveal">
+    <h3>📘 Foydali so'zlar — Ish va Kelajak</h3>
+    <div class="vocab-grid">
+      <div class="vocab-card"><h4>career</h4><p>martaba, karyera</p></div>
+      <div class="vocab-card"><h4>profession</h4><p>kasb</p></div>
+      <div class="vocab-card"><h4>entrepreneur</h4><p>tadbirkor</p></div>
+      <div class="vocab-card"><h4>work-life balance</h4><p>ish va hayot muvozanati</p></div>
+      <div class="vocab-card"><h4>promotion</h4><p>lavozim ko'tarilishi</p></div>
+      <div class="vocab-card"><h4>remote work</h4><p>masofaviy ish</p></div>
+      <div class="vocab-card"><h4>internship</h4><p>amaliyot</p></div>
+      <div class="vocab-card"><h4>salary</h4><p>maosh</p></div>
+      <div class="vocab-card"><h4>skill</h4><p>ko'nikma, mahorat</p></div>
+      <div class="vocab-card"><h4>ambition</h4><p>ambitsiya, intilish</p></div>
+      <div class="vocab-card"><h4>unemployment</h4><p>ishsizlik</p></div>
+      <div class="vocab-card"><h4>productivity</h4><p>unumdorlik</p></div>
+      <div class="vocab-card"><h4>networking</h4><p>aloqalar o'rnatish</p></div>
+      <div class="vocab-card"><h4>freelance</h4><p>mustaqil ishlash</p></div>
+      <div class="vocab-card"><h4>job satisfaction</h4><p>ishdan qoniqish</p></div>
+      <div class="vocab-card"><h4>deadline</h4><p>muddat</p></div>
+    </div>
+  </div>
+  <div class="done-bar reveal">
+    <p>✅ Barcha savollarga javob berdingizmi?</p>
+    <button class="done-btn" id="doneBtn" onclick="markDone()">✅ Tugatdim</button>
+  </div>
+
+  <div class="nav-btns reveal">
+    <a href="speaking-family.html">← Oila</a>
+    <a href="speaking-city.html" class="next">Shahar va Qishloq →</a>
+  </div>
+</div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth=getAuth(initializeApp({apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",authDomain:"it-study-a45fa.firebaseapp.com",projectId:"it-study-a45fa",storageBucket:"it-study-a45fa.firebasestorage.app",messagingSenderId:"973750187023",appId:"1:973750187023:web:c38b839da825ffa0681f7a"}));
+const ua=document.getElementById("userArea");
+onAuthStateChanged(auth,u=>{if(u){const n=u.displayName||u.email;ua.outerHTML=`<div class="profile-pill" onclick="location.href='profile.html'" style="cursor:pointer"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`;}else{ua.textContent="Kirish";ua.href="login.html";}});
+</script>
+<script>
+function toggleQ(id){var el=document.getElementById(id);var btn=document.getElementById(id+'-btn');var open=el.classList.toggle('open');btn.textContent=open?'🙈 Yashirish':"👁 Ko'rish";}
+if(localStorage.getItem('speakingWork')){var b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi';b.classList.add('done');}
+function markDone(){localStorage.setItem('speakingWork','true');var b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi!';b.classList.add('done');}
+</script>
+<script>var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.06});document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});</script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

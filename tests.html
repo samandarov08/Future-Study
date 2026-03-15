@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testlar | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .tests-wrap { max-width: 1000px; margin: 0 auto; padding: 60px 48px 100px; }
+    .test-category { margin-bottom: 48px; }
+    .cat-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .cat-icon { width: 46px; height: 46px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; background: rgba(79,142,247,0.12); border: 1px solid rgba(79,142,247,0.2); }
+    .cat-head h2 { font-family: var(--font); font-size: 20px; font-weight: 800; color: var(--text); }
+    .cat-head p  { font-size: 13px; color: var(--muted); margin-top: 2px; }
+    .tcard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+    .tcard { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 20px; display: flex; flex-direction: column; gap: 8px; transition: border-color var(--ease), transform var(--ease), box-shadow var(--ease); text-decoration: none; color: var(--text); cursor: pointer; }
+    .tcard:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 36px rgba(79,142,247,0.15); }
+    .tcard.done { border-color: rgba(34,197,94,0.35); }
+    .tcard-emoji { font-size: 26px; }
+    .tcard-name  { font-family: var(--font); font-size: 15px; font-weight: 700; color: var(--text); }
+    .tcard-sub   { font-size: 12px; color: var(--muted); line-height: 1.5; }
+    .tcard-score { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--border); font-size: 12px; font-weight: 600; color: var(--muted); display: flex; align-items: center; justify-content: space-between; }
+    .tcard.done .tcard-score { color: #22c55e; }
+    .tcard-score .mini-bar { flex: 1; height: 4px; background: rgba(255,255,255,0.07); border-radius: 99px; overflow: hidden; margin-left: 10px; }
+    .tcard-score .mini-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 99px; }
+    .tcard.done .tcard-score .mini-fill { background: linear-gradient(90deg, #22c55e, #4ade80); }
+    .tcard-big { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 28px; display: flex; align-items: center; gap: 20px; transition: border-color var(--ease), transform var(--ease); cursor: pointer; margin-bottom: 12px; }
+    .tcard-big:hover { border-color: var(--accent); transform: translateX(4px); }
+    .tcard-big.done  { border-color: rgba(34,197,94,0.35); }
+    .tcard-big-icon  { font-size: 36px; flex-shrink: 0; }
+    .tcard-big-info  { flex: 1; }
+    .tcard-big-info h3 { font-family: var(--font); font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .tcard-big-info p  { font-size: 13px; color: var(--muted); }
+    .tcard-big-score { text-align: right; flex-shrink: 0; }
+    .tcard-big-score .val { font-family: var(--font); font-size: 22px; font-weight: 800; color: var(--accent2); }
+    .tcard-big-score .lbl { font-size: 11px; color: var(--muted); }
+    .tcard-big-btn { padding: 10px 20px; border: none; border-radius: 99px; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; font-size: 13px; font-weight: 600; font-family: var(--font-body); cursor: pointer; flex-shrink: 0; transition: transform var(--ease), box-shadow var(--ease); }
+    .tcard-big-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(79,142,247,0.4); }
+    @media(max-width:768px) { .tests-wrap { padding: 40px 20px 80px; } }
+    @media(max-width:540px) { .tcard-grid { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body class="theme-1">
+
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="math.html">Math</a>
+    <a href="english.html">English</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+
+<div class="tests-wrap">
+
+  <div class="breadcrumb reveal">Testlar</div>
+  <div class="reveal" style="margin-bottom:48px;">
+    <p class="s-label">Barcha testlar</p>
+    <h1 style="font-family:var(--font);font-size:clamp(30px,5vw,50px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;color:var(--text);margin-bottom:12px;">
+      Bilimingizni<br>
+      <span style="background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">sinab ko'ring 🧪</span>
+    </h1>
+    <p style="font-size:15px;color:var(--muted);font-weight:300;">Har bir test 10 ta savol · Xato javobda to'g'risi ko'rsatiladi · Natija profilga saqlanadi</p>
+  </div>
+
+  <!-- MATH TESTS -->
+  <div class="test-category reveal">
+    <div class="cat-head">
+      <div class="cat-icon">🧮</div>
+      <div>
+        <h2>Matematika testlari</h2>
+        <p>11 ta mavzu bo'yicha — har biri 10 ta savol</p>
+      </div>
+    </div>
+    <div class="tcard-grid">
+      <div class="tcard" id="tc-tenglama" onclick="location.href='math-test-tenglama.html'">
+        <div class="tcard-emoji">⚖️</div>
+        <div class="tcard-name">Tenglama</div>
+        <div class="tcard-sub">Chiziqli, kvadrat, modul, sistema</div>
+        <div class="tcard-score" id="ts-tenglama"><span>Boshlanmagan</span></div>
+      </div>
+      <div class="tcard" id="tc-tengsizlik" onclick="location.href='math-test-tengsizlik.html'">
+        <div class="tcard-emoji">📊</div>
+        <div class="tcard-name">Tengsizlik</div>
+        <div class="tcard-sub">Chiziqli, kvadrat, modul, kasrli</div>
+        <div class="tcard-score" id="ts-tengsizlik"><span>Boshlanmagan</span></div>
+      </div>
+      <div class="tcard" id="tc-funksiya" onclick="location.href='math-test-funksiya.html'">
+        <div class="tcard-emoji">📈</div>
+        <div class="tcard-name">Funksiya</div>
+        <div class="tcard-sub">Cho'qqi, teskari, juft/toq, soha</div>
+        <div class="tcard-score" id="ts-funksiya"><span>Boshlanmagan</span></div>
+      </div>
+      <div class="tcard" id="tc-progressiya" onclick="location.href='math-test-progressiya.html'">
+        <div class="tcard-emoji">🔢</div>
+        <div class="tcard-name">Progressiya</div>
+        <div class="tcard-sub">AP, GP, yig'indi, Gauss</div>
+        <div class="tcard-score" id="ts-progressiya"><span>Boshlanmagan</span></div>
+      </div>
+      <div class="tcard" id="tc-foiz" onclick="location.href='math-test-foiz.html'">
+        <div class="tcard-emoji">💯</div>
+        <div class="tcard-name">Foiz va Nisbat</div>
+        <div class="tcard-sub">Chegirma, ustama, proporsiya</div>
+        <div class="tcard-score" id="ts-foiz"><span>Boshlanmagan</span></div>
+      </div>
+      <div class="tcard" id="tc-logarifm" onclick="location.href='math-test-logarifm.html'">
+        <div class="tcard-emoji">🔬</div>
+        <div class="tcard-name">Logarifm</div>
+        <div class="tcard-sub">Xossalar, tenglamalar, asoslar</div>
+        <div class="tcard-score" id="ts-logarifm"><span>Boshlanmagan</span></div>
+      </div>
+      <div class="tcard" id="tc-trigonometriya" onclick="location.href='math-test-trigonometriya.html'">
+        <div class="tcard-emoji">📐</div>
+        <div class="tcard-name">Trigonometriya</div>
+        <div class="tcard-sub">sin, cos, tan, formulalar</div>
+        <div class="tcard-score" id="ts-trigonometriya"><span>Boshlanmagan</span></div>
+      </div>
+      <div class="tcard" id="tc-ehtimollik" onclick="location.href='math-test-ehtimollik.html'">
+        <div class="tcard-emoji">🎲</div>
+        <div class="tcard-name">Ehtimollik</div>
+        <div class="tcard-sub">Klassik, bog'liq emas, kutilgan qiymat</div>
+        <div class="tcard-score" id="ts-ehtimollik"><span>Boshlanmagan</span></div>
+      </div>
+      <div class="tcard" id="tc-kombinatorika" onclick="location.href='math-test-kombinatorika.html'">
+        <div class="tcard-emoji">🔄</div>
+        <div class="tcard-name">Kombinatorika</div>
+        <div class="tcard-sub">C(n,k), P(n,k), faktorial, binom</div>
+        <div class="tcard-score" id="ts-kombinatorika"><span>Boshlanmagan</span></div>
+      </div>
+      <div class="tcard" id="tc-geometriya" onclick="location.href='math-test-geometriya.html'">
+        <div class="tcard-emoji">📐</div>
+        <div class="tcard-name">Geometriya</div>
+        <div class="tcard-sub">Pifagor, yuza, aylana, koordinata</div>
+        <div class="tcard-score" id="ts-geometriya"><span>Boshlanmagan</span></div>
+      </div>
+      <div class="tcard" id="tc-stereometriya" onclick="location.href='math-test-stereometriya.html'">
+        <div class="tcard-emoji">🧊</div>
+        <div class="tcard-name">Stereometriya</div>
+        <div class="tcard-sub">Kub, silindr, konus, shar, piramida</div>
+        <div class="tcard-score" id="ts-stereometriya"><span>Boshlanmagan</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRAMMAR TESTS -->
+  <div class="test-category reveal">
+    <div class="cat-head">
+      <div class="cat-icon" style="background:rgba(251,191,36,0.12);border-color:rgba(251,191,36,0.2);">✏️</div>
+      <div>
+        <h2>Grammar testlari</h2>
+        <p>10 ta grammatika mavzusi bo'yicha — har biri 10 ta savol</p>
+      </div>
+    </div>
+    <div class="tcard-grid">
+      <div class="tcard" id="tc-g-presentsimple" onclick="location.href='grammar-test-present-simple.html'">
+        <div class="tcard-emoji">📝</div>
+        <div class="tcard-name">Present Simple</div>
+        <div class="tcard-sub">Doimiy harakatlar, odatlar, haqiqatlar</div>
+        <div class="tcard-score" id="ts-g-presentsimple"><span>Boshlanmagan</span></div>
+      </div>
+      <div class="tcard" id="tc-g-pastsimple" onclick="location.href='grammar-test-past-simple.html'">
+        <div class="tcard-emoji">📝</div>
+        <div class="tcard-name">Past Simple</div>
+        <div class="tcard-sub">O'tgan zamonda tugallangan harakatlar</div>
+        <div class="tcard-score" id="ts-g-pastsimple"><span>Boshlanmagan</span></div>
+      </div>
+      <div class="tcard" id="tc-g-futuresimple" onclick="location.href='grammar-test-future-simple.html'">
+        <div class="tcard-emoji">📝</div>
+        <div class="tcard-name">Future Simple</div>
+        <div class="tcard-sub">Kelasi zamon, va'da, bashorat</div>
+        <div class="tcard-score" id="ts-g-futuresimple"><span>Boshlanmagan</span></div>
+      </div>
+      <div class="tcard" id="tc-g-presentcontinuous" onclick="location.href='grammar-test-present-continuous.html'">
+        <div class="tcard-emoji">📝</div>
+        <div class="tcard-name">Present Continuous</div>
+        <div class="tcard-sub">Hozir bo'layotgan harakatlar</div>
+        <div class="tcard-score" id="ts-g-presentcontinuous"><span>Boshlanmagan</span></div>
+      </div>
+      <div class="tcard" id="tc-g-presentperfect" onclick="location.href='grammar-test-present-perfect.html'">
+        <div class="tcard-emoji">📝</div>
+        <div class="tcard-name">Present Perfect</div>
+        <div class="tcard-sub">have/has + p.p. — tajriba, natija</div>
+        <div class="tcard-score" id="ts-g-presentperfect"><span>Boshlanmagan</span></div>
+      </div>
+      <div class="tcard" id="tc-g-zerofirst" onclick="location.href='grammar-test-zero-first-conditional.html'">
+        <div class="tcard-emoji">📝</div>
+        <div class="tcard-name">Zero/First Conditional</div>
+        <div class="tcard-sub">If + Present Simple → haqiqat yoki ehtimol</div>
+        <div class="tcard-score" id="ts-g-zerofirst"><span>Boshlanmagan</span></div>
+      </div>
+      <div class="tcard" id="tc-g-second" onclick="location.href='grammar-test-second-conditional.html'">
+        <div class="tcard-emoji">📝</div>
+        <div class="tcard-name">Second Conditional</div>
+        <div class="tcard-sub">If + Past Simple → xayoliy holat</div>
+        <div class="tcard-score" id="ts-g-second"><span>Boshlanmagan</span></div>
+      </div>
+      <div class="tcard" id="tc-g-passive" onclick="location.href='grammar-test-passive-voice.html'">
+        <div class="tcard-emoji">📝</div>
+        <div class="tcard-name">Passive Voice</div>
+        <div class="tcard-sub">is/was/were + Past Participle</div>
+        <div class="tcard-score" id="ts-g-passive"><span>Boshlanmagan</span></div>
+      </div>
+      <div class="tcard" id="tc-g-modal" onclick="location.href='grammar-test-modal-verbs.html'">
+        <div class="tcard-emoji">📝</div>
+        <div class="tcard-name">Modal Verbs</div>
+        <div class="tcard-sub">can, must, should, may, would</div>
+        <div class="tcard-score" id="ts-g-modal"><span>Boshlanmagan</span></div>
+      </div>
+      <div class="tcard" id="tc-g-articles" onclick="location.href='grammar-test-articles.html'">
+        <div class="tcard-emoji">📝</div>
+        <div class="tcard-name">Articles</div>
+        <div class="tcard-sub">a, an, the — qachon ishlatiladi</div>
+        <div class="tcard-score" id="ts-g-articles"><span>Boshlanmagan</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENGLISH TESTS -->
+  <div class="test-category reveal">
+    <div class="cat-head">
+      <div class="cat-icon" style="background:rgba(34,197,94,0.12);border-color:rgba(34,197,94,0.2);">📘</div>
+      <div>
+        <h2>Ingliz tili testlari</h2>
+        <p>Vocabulary va reading bo'yicha savollar</p>
+      </div>
+    </div>
+    <div class="tcard-big" id="tc-engvocab" onclick="location.href='vocabulary-test-1.html'">
+      <div class="tcard-big-icon">📖</div>
+      <div class="tcard-big-info">
+        <h3>English Vocabulary</h3>
+        <p>Reading darslari so'zlari bo'yicha 52 ta savol</p>
+      </div>
+      <div class="tcard-big-score" id="engVocabScore" style="display:none;">
+        <div class="val" id="engVocabVal">—</div>
+        <div class="lbl">natija</div>
+      </div>
+      <button class="tcard-big-btn">Boshlash →</button>
+    </div>
+  </div>
+
+  <!-- WEB DEV TESTS -->
+  <div class="test-category reveal">
+    <div class="cat-head">
+      <div class="cat-icon" style="background:rgba(167,139,250,0.12);border-color:rgba(167,139,250,0.2);">🧑‍💻</div>
+      <div>
+        <h2>Web Development testlari</h2>
+        <p>HTML, CSS, JavaScript bo'yicha savollar</p>
+      </div>
+    </div>
+    <div class="tcard-big" id="tc-webtest" onclick="location.href='web-tests.html'">
+      <div class="tcard-big-icon">🌐</div>
+      <div class="tcard-big-info">
+        <h3>Web Dev Test</h3>
+        <p>HTML, CSS, JavaScript asoslari — 10 ta savol</p>
+      </div>
+      <div class="tcard-big-score" id="webTestScore" style="display:none;">
+        <div class="val" id="webTestVal">—</div>
+        <div class="lbl">natija</div>
+      </div>
+      <button class="tcard-big-btn">Boshlash →</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Firebase Auth -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth = getAuth(initializeApp({
+  apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",
+  authDomain:"it-study-a45fa.firebaseapp.com",
+  projectId:"it-study-a45fa",
+  storageBucket:"it-study-a45fa.firebasestorage.app",
+  messagingSenderId:"973750187023",
+  appId:"1:973750187023:web:c38b839da825ffa0681f7a"
+}));
+const ua = document.getElementById("userArea");
+onAuthStateChanged(auth, u => {
+  if(u){ const n=u.displayName||u.email; ua.outerHTML=`<div class="profile-pill" onclick="location.href='profile.html'" style="cursor:pointer"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`; }
+  else { ua.textContent="Kirish"; ua.href="login.html"; }
+});
+</script>
+
+<!-- Scores -->
+<script>
+function loadScore(id, key, total) {
+  var score = localStorage.getItem(key);
+  if (score === null) return;
+  var pct  = Math.round(score / total * 100);
+  var card = document.getElementById("tc-" + id);
+  var box  = document.getElementById("ts-" + id);
+  if (!card || !box) return;
+  card.classList.add("done");
+  box.innerHTML = '<span>' + score + '/' + total + ' · ' + pct + '%</span><div class="mini-bar"><div class="mini-fill" style="width:' + pct + '%"></div></div>';
+}
+
+/* Math */
+loadScore("tenglama",      "mathTestTenglama",       10);
+loadScore("tengsizlik",    "mathTestTengsizlik",      10);
+loadScore("funksiya",      "mathTestFunksiya",        10);
+loadScore("progressiya",   "mathTestProgressiya",     10);
+loadScore("foiz",          "mathTestFoiz",            10);
+loadScore("logarifm",      "mathTestLogarifm",        10);
+loadScore("trigonometriya","mathTestTrigonometriya",  10);
+loadScore("ehtimollik",    "mathTestEhtimollik",      10);
+loadScore("kombinatorika", "mathTestKombinatorika",   10);
+loadScore("geometriya",    "mathTestGeometriya",      10);
+loadScore("stereometriya", "mathTestStereometriya",   10);
+
+/* Grammar */
+loadScore("g-presentsimple",    "grammarTestPresentSimple",        10);
+loadScore("g-pastsimple",       "grammarTestPastSimple",           10);
+loadScore("g-futuresimple",     "grammarTestFutureSimple",         10);
+loadScore("g-presentcontinuous","grammarTestPresentContinuous",    10);
+loadScore("g-presentperfect",   "grammarTestPresentPerfect",       10);
+loadScore("g-zerofirst",        "grammarTestZeroFirstConditional", 10);
+loadScore("g-second",           "grammarTestSecondConditional",    10);
+loadScore("g-passive",          "grammarTestPassiveVoice",         10);
+loadScore("g-modal",            "grammarTestModalVerbs",           10);
+loadScore("g-articles",         "grammarTestArticles",             10);
+
+/* English vocab */
+var engScore = localStorage.getItem("englishTestScore");
+var engTotal = localStorage.getItem("englishTestTotal") || 52;
+if (engScore) {
+  document.getElementById("tc-engvocab").classList.add("done");
+  document.getElementById("engVocabScore").style.display = "block";
+  document.getElementById("engVocabVal").textContent = engScore + "/" + engTotal;
+}
+
+/* Web dev */
+var webScore = localStorage.getItem("webTestScore");
+if (webScore) {
+  document.getElementById("tc-webtest").classList.add("done");
+  document.getElementById("webTestScore").style.display = "block";
+  document.getElementById("webTestVal").textContent = webScore + "/10";
+}
+</script>
+
+<!-- Scroll reveal -->
+<script>
+var ro = new IntersectionObserver(
+  function(es){ es.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); }); },
+  { threshold: 0.08 }
+);
+document.querySelectorAll('.reveal').forEach(function(el){ ro.observe(el); });
+</script>
+
+<script src="theme-switcher.js"></script>
+</body>
+</html>

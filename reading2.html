@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading 2 | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .reading-wrap{max-width:860px;margin:0 auto;padding:64px 48px 100px;}
+    .passage{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:44px 48px;margin-bottom:24px;line-height:2;font-size:16px;color:var(--text);}
+    .passage h2{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:28px;text-transform:uppercase;line-height:1.4;}
+    .passage h3{font-family:var(--font);font-size:17px;font-weight:700;color:var(--accent2);margin:32px 0 14px;}
+    .passage h4{font-family:var(--font);font-size:15px;font-weight:700;color:var(--accent);margin:22px 0 10px;}
+    .passage p{margin-bottom:18px;color:var(--muted);font-weight:300;}
+    .passage b{color:var(--accent2);font-weight:600;}
+    .tr{font-style:italic;font-size:13px;color:var(--muted);opacity:0.7;margin-left:3px;}
+    .vocab-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;margin-bottom:24px;}
+    .vocab-wrap h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:24px;}
+    .comp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;margin-bottom:24px;}
+    .comp-card h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:28px;}
+    .comp-q{margin-bottom:24px;}
+    .comp-q p{font-size:15px;color:var(--text);margin-bottom:10px;font-weight:500;}
+    .comp-options{display:flex;flex-direction:column;gap:8px;}
+    .comp-opt{padding:11px 16px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:14px;color:var(--muted);transition:background var(--ease),border-color var(--ease),color var(--ease);}
+    .comp-opt:hover{background:rgba(79,142,247,0.1);border-color:var(--accent);color:var(--text);}
+    .comp-opt.correct{background:rgba(34,197,94,0.18)!important;border-color:#22c55e!important;color:#86efac!important;}
+    .comp-opt.wrong{background:rgba(239,68,68,0.18)!important;border-color:#ef4444!important;color:#fca5a5!important;}
+    .comp-opt.show-correct{background:rgba(34,197,94,0.08);border-color:rgba(34,197,94,0.35);color:#86efac;}
+    .done-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+    .done-bar p{color:var(--muted);font-size:15px;font-weight:300;}
+    .done-btn{padding:12px 28px;border:none;border-radius:99px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:15px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease);}
+    .done-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,142,247,0.4);}
+    .done-btn.done{background:linear-gradient(135deg,#22c55e,#4ade80);}
+    .nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:32px;}
+    .nav-btns a{font-size:14px;color:var(--muted);}
+    .nav-btns a.next{color:var(--accent2);font-weight:500;}
+    @media(max-width:768px){.reading-wrap{padding:40px 20px 80px;}.passage{padding:28px 22px;}}
+  </style>
+</head>
+<body class="theme-1">
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="english.html">English</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+
+<div class="reading-wrap">
+  <div class="breadcrumb reveal">English <span>›</span> Reading <span>›</span> Dars 2</div>
+  <div class="reveal" style="margin-bottom:40px;">
+    <p class="s-label">Reading 2 / 10</p>
+    <h1 style="font-family:var(--font);font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-1px;line-height:1.1;color:var(--text);margin-bottom:12px;">Texnologiya va Sun'iy Intellekt 🤖</h1>
+    <p style="font-size:15px;color:var(--muted);font-weight:300;">IELTS Academic · ~1300 so'z · O'rta-Yuqori daraja</p>
+  </div>
+
+  <div class="passage reveal">
+    <h2>ARTIFICIAL INTELLIGENCE AND ITS TRANSFORMATIVE IMPACT ON SOCIETY</h2>
+
+    <p><b>Artificial intelligence</b><span class="tr">(sun'iy intellekt)</span>, commonly referred to as AI, has rapidly <b>transitioned</b><span class="tr">(o'tmoq)</span> from a theoretical concept explored in academic laboratories to a <b>pervasive</b><span class="tr">(keng tarqalgan)</span> technology that shapes virtually every aspect of modern life. From the recommendations served by streaming platforms to the <b>diagnostic tools</b><span class="tr">(tashxis vositalari)</span> used in hospitals, AI has become an <b>indispensable</b><span class="tr">(zarur, o'rnini bosib bo'lmaydigan)</span> component of the global economy and social fabric.</p>
+
+    <p>The development of AI is not a recent phenomenon. Its roots can be traced back to the 1950s, when <b>pioneering researchers</b><span class="tr">(kashshof tadqiqotchilar)</span> such as Alan Turing began exploring the concept of machine intelligence. However, it was the <b>convergence</b><span class="tr">(yaqinlashuv, birlashuv)</span> of vast datasets, increased <b>computational power</b><span class="tr">(hisoblash quvvati)</span>, and advanced <b>machine learning algorithms</b><span class="tr">(mashinani o'rgatish algoritmlari)</span> in the early 21st century that <b>propelled</b><span class="tr">(oldinga itarmoq)</span> AI into mainstream use.</p>
+
+    <h3>1. Types of Artificial Intelligence</h3>
+
+    <p>AI is broadly classified into three categories. <b>Narrow AI</b><span class="tr">(tor sun'iy intellekt)</span>, also known as Weak AI, is designed to perform a specific task — such as image recognition, language translation, or playing chess — with exceptional accuracy. This is the type of AI that currently exists in commercial applications. <b>General AI</b><span class="tr">(umumiy sun'iy intellekt)</span>, or Strong AI, would be capable of performing any <b>intellectual task</b><span class="tr">(intellektual vazifa)</span> that a human can do. This remains largely theoretical. Finally, <b>Superintelligence</b><span class="tr">(super intellekt)</span> refers to an AI that would surpass human intelligence across all domains — a concept that remains highly speculative and is the subject of intense ethical debate.</p>
+
+    <h4>1.1 Machine Learning and Deep Learning</h4>
+
+    <p>At the heart of modern AI is <b>machine learning</b><span class="tr">(mashinali o'rganish)</span> — a technique that enables computers to learn from data and improve their performance over time without being explicitly programmed. A more advanced subset, <b>deep learning</b><span class="tr">(chuqur o'rganish)</span>, uses <b>neural networks</b><span class="tr">(neyron tarmoqlar)</span> inspired by the structure of the human brain to process enormous amounts of data and identify complex <b>patterns</b><span class="tr">(naqshlar)</span>. This technology underlies many of today's most impressive AI applications, from facial recognition to self-driving cars.</p>
+
+    <h4>1.2 Natural Language Processing</h4>
+
+    <p><b>Natural language processing</b><span class="tr">(tabiiy til bilan ishlash)</span>, or NLP, is a branch of AI focused on enabling machines to understand, interpret, and generate human language. Recent <b>breakthroughs</b><span class="tr">(muhim kashfiyotlar)</span> in NLP — such as large language models — have enabled AI systems to engage in realistic conversations, summarise documents, write computer code, and even compose creative writing. These advances have raised fundamental questions about the nature of intelligence, creativity, and the future role of human labour.</p>
+
+    <h3>2. AI Across Key Industries</h3>
+
+    <h4>2.1 Healthcare</h4>
+
+    <p>In the medical field, AI is <b>revolutionising</b><span class="tr">(inqilob qilmoq)</span> diagnostics, drug discovery, and patient care. AI systems can analyse medical images — such as X-rays and MRI scans — with accuracy <b>comparable to</b><span class="tr">(teng keladigan)</span> or surpassing that of experienced radiologists. <b>Predictive models</b><span class="tr">(bashorat modellari)</span> can identify patients at high risk of developing conditions such as sepsis or heart failure, enabling early <b>intervention</b><span class="tr">(aralashuv)</span>. In drug development, AI significantly reduces the time and cost required to identify <b>viable compounds</b><span class="tr">(mos birikmalar)</span>, potentially accelerating the creation of treatments for diseases that have long <b>eluded</b><span class="tr">(qochib kelmoq)</span> conventional science.</p>
+
+    <h4>2.2 Education</h4>
+
+    <p>AI is transforming education through <b>personalised learning</b><span class="tr">(shaxsiylashtirilgan ta'lim)</span> platforms that adapt to the individual pace, strengths, and weaknesses of each student. Intelligent <b>tutoring systems</b><span class="tr">(o'qitish tizimlari)</span> can provide immediate feedback, identify <b>knowledge gaps</b><span class="tr">(bilim kamchiliklari)</span>, and suggest resources tailored to each learner. AI is also automating administrative tasks for educators, allowing teachers to devote more time to meaningful <b>pedagogical</b><span class="tr">(pedagogik)</span> interactions. However, concerns remain about the digital divide and equitable access to AI-powered tools.</p>
+
+    <h4>2.3 Finance and Economy</h4>
+
+    <p>In the financial sector, AI is used for <b>algorithmic trading</b><span class="tr">(algoritmik savdo)</span>, <b>fraud detection</b><span class="tr">(firibgarlikni aniqlash)</span>, credit scoring, and customer service automation. AI models analyse vast quantities of financial data in real time, identifying trends and <b>anomalies</b><span class="tr">(g'ayritabiiy hollar)</span> that human analysts might miss. However, the increasing <b>automation</b><span class="tr">(avtomatlashtirish)</span> of financial services raises important concerns about job displacement and the <b>concentration of wealth</b><span class="tr">(boylikning to'planishi)</span>.</p>
+
+    <h3>3. Ethical and Social Challenges</h3>
+
+    <p>Despite its extraordinary potential, AI presents significant ethical and social challenges that demand urgent attention from governments, corporations, and civil society.</p>
+
+    <h4>3.1 Bias and Fairness</h4>
+
+    <p>AI systems are only as unbiased as the data on which they are trained. When training data reflects historical <b>inequalities</b><span class="tr">(tengsizliklar)</span> — such as racial or gender discrimination — AI can perpetuate and even <b>amplify</b><span class="tr">(kuchaytirmoq)</span> these biases. This is particularly concerning in high-stakes domains such as hiring, criminal justice, and loan approval, where biased AI decisions can have profound real-world consequences for vulnerable <b>populations</b><span class="tr">(aholi guruhlari)</span>.</p>
+
+    <h4>3.2 Privacy and Surveillance</h4>
+
+    <p>The data-hungry nature of AI poses serious risks to individual privacy. AI-powered <b>surveillance systems</b><span class="tr">(kuzatuv tizimlari)</span>, combined with facial recognition technology, enable governments and corporations to monitor citizens at an unprecedented scale. The collection and use of personal data without informed <b>consent</b><span class="tr">(rozilik)</span> raises critical questions about <b>digital rights</b><span class="tr">(raqamli huquqlar)</span> and the limits of state power.</p>
+
+    <h4>3.3 The Future of Work</h4>
+
+    <p>Perhaps the most discussed societal impact of AI is its effect on <b>employment</b><span class="tr">(ish bandi)</span>. While AI is expected to create new industries and job categories, it is also likely to <b>displace</b><span class="tr">(o'rnini bosmoq)</span> a significant proportion of existing roles — particularly those involving repetitive, routine tasks. Economists debate whether this <b>disruption</b><span class="tr">(tartibni buzish)</span> will be comparable to previous industrial revolutions, which ultimately created more jobs than they destroyed, or whether it represents an entirely new and more fundamental challenge to the concept of human labour.</p>
+
+    <h3>4. Governance and the Future of AI</h3>
+
+    <p>The rapid advancement of AI has <b>outpaced</b><span class="tr">(ortda qoldirmoq)</span> the development of regulatory frameworks designed to govern its use. Governments around the world are now grappling with how to balance the economic benefits of AI innovation with the need to protect citizens from potential harms. The European Union's AI Act represents one of the most comprehensive attempts to regulate AI, establishing risk-based categories and imposing strict requirements on <b>high-risk applications</b><span class="tr">(yuqori xavfli ilovalar)</span>.</p>
+
+    <p>At the international level, achieving consensus on AI governance is complicated by <b>geopolitical competition</b><span class="tr">(geosiyosiy raqobat)</span> — particularly between the United States and China, which are engaged in an intense <b>technological race</b><span class="tr">(texnologik poyga)</span> for AI supremacy. The development of shared global norms and standards for AI safety, <b>transparency</b><span class="tr">(shaffoflik)</span>, and accountability remains one of the defining challenges of the 21st century.</p>
+
+    <h3>Conclusion</h3>
+
+    <p>Artificial intelligence represents one of the most <b>consequential</b><span class="tr">(muhim oqibatlarga ega)</span> technological developments in human history. Its potential to improve healthcare, education, scientific research, and economic productivity is immense. However, realising this potential while managing the associated risks — including bias, privacy erosion, job displacement, and threats to democratic governance — requires thoughtful, inclusive, and <b>proactive</b><span class="tr">(faol, tashabbuskor)</span> engagement from all sectors of society. The question is not whether AI will transform our world, but how we choose to shape that transformation.</p>
+  </div>
+
+  <!-- VOCAB -->
+  <div class="vocab-wrap reveal">
+    <h3>📘 Muhim so'zlar — Reading 2</h3>
+    <div class="vocab-grid">
+      <div class="vocab-card"><h4>artificial intelligence</h4><p>sun'iy intellekt</p></div>
+      <div class="vocab-card"><h4>pervasive</h4><p>keng tarqalgan, hamma joyda mavjud</p></div>
+      <div class="vocab-card"><h4>indispensable</h4><p>zarur, o'rnini bosib bo'lmaydigan</p></div>
+      <div class="vocab-card"><h4>convergence</h4><p>yaqinlashuv, birlashuv</p></div>
+      <div class="vocab-card"><h4>computational power</h4><p>hisoblash quvvati</p></div>
+      <div class="vocab-card"><h4>machine learning</h4><p>mashinali o'rganish</p></div>
+      <div class="vocab-card"><h4>deep learning</h4><p>chuqur o'rganish</p></div>
+      <div class="vocab-card"><h4>neural networks</h4><p>neyron tarmoqlar</p></div>
+      <div class="vocab-card"><h4>natural language processing</h4><p>tabiiy til bilan ishlash</p></div>
+      <div class="vocab-card"><h4>breakthroughs</h4><p>muhim kashfiyotlar</p></div>
+      <div class="vocab-card"><h4>revolutionising</h4><p>inqilob qilmoq</p></div>
+      <div class="vocab-card"><h4>predictive models</h4><p>bashorat modellari</p></div>
+      <div class="vocab-card"><h4>intervention</h4><p>aralashuv</p></div>
+      <div class="vocab-card"><h4>personalised learning</h4><p>shaxsiylashtirilgan ta'lim</p></div>
+      <div class="vocab-card"><h4>knowledge gaps</h4><p>bilim kamchiliklari</p></div>
+      <div class="vocab-card"><h4>algorithmic trading</h4><p>algoritmik savdo</p></div>
+      <div class="vocab-card"><h4>fraud detection</h4><p>firibgarlikni aniqlash</p></div>
+      <div class="vocab-card"><h4>automation</h4><p>avtomatlashtirish</p></div>
+      <div class="vocab-card"><h4>bias</h4><p>nohaqlik, tarafkashlik</p></div>
+      <div class="vocab-card"><h4>amplify</h4><p>kuchaytirmoq</p></div>
+      <div class="vocab-card"><h4>surveillance</h4><p>kuzatuv</p></div>
+      <div class="vocab-card"><h4>consent</h4><p>rozilik</p></div>
+      <div class="vocab-card"><h4>digital rights</h4><p>raqamli huquqlar</p></div>
+      <div class="vocab-card"><h4>displace</h4><p>o'rnini bosmoq, siqib chiqarmoq</p></div>
+      <div class="vocab-card"><h4>disruption</h4><p>tartibni buzish, inqilob</p></div>
+      <div class="vocab-card"><h4>outpaced</h4><p>ortda qoldirmoq</p></div>
+      <div class="vocab-card"><h4>geopolitical competition</h4><p>geosiyosiy raqobat</p></div>
+      <div class="vocab-card"><h4>transparency</h4><p>shaffoflik</p></div>
+      <div class="vocab-card"><h4>proactive</h4><p>faol, tashabbuskor</p></div>
+      <div class="vocab-card"><h4>consequential</h4><p>muhim oqibatlarga ega</p></div>
+    </div>
+  </div>
+
+  <!-- COMPREHENSION -->
+  <div class="comp-card reveal">
+    <h3>❓ Tushunish savollari</h3>
+    <div class="comp-q">
+      <p>1. What is "Narrow AI" according to the passage?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) AI that can perform all human intellectual tasks</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) AI designed to perform one specific task with high accuracy</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) AI that surpasses human intelligence in all areas</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) AI used only in scientific research</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>2. What does "deep learning" use to process data?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Simple mathematical equations</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) Traditional computer programs</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) Neural networks inspired by the human brain</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Human experts reviewing data manually</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>3. According to the passage, what is a concern about AI in hiring and criminal justice?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) AI decisions are too slow</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) AI can amplify historical biases from training data</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) AI cannot process enough data</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) AI always makes perfectly fair decisions</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>4. What is the main purpose of the European Union's AI Act?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) To ban artificial intelligence completely</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) To promote AI development without restrictions</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) To regulate AI by balancing innovation with citizen protection</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) To give governments full control over all AI systems</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>5. What does the author suggest is the most important question about AI's future?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Whether AI will ever become conscious</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) Whether AI will replace all human jobs</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) Whether AI will be affordable for everyone</div>
+        <div class="comp-opt" onclick="ans(this,true)">D) How humanity will shape AI's transformation of the world</div>
+      </div>
+    </div>
+    <p id="compScore" style="margin-top:24px;font-family:var(--font);font-size:16px;font-weight:700;color:var(--accent2);min-height:24px;"></p>
+  </div>
+
+  <div class="done-bar reveal">
+    <p>📖 Matnni o'qib, savollarga javob berdingizmi?</p>
+    <button class="done-btn" id="doneBtn" onclick="markDone()">✅ O'qib bo'ldim</button>
+  </div>
+  <div class="nav-btns reveal">
+    <a href="reading-1.html">← Reading 1</a>
+    <a href="reading-3.html" class="next">Reading 3 → Ta'lim va kelajak</a>
+  </div>
+</div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth=getAuth(initializeApp({apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",authDomain:"it-study-a45fa.firebaseapp.com",projectId:"it-study-a45fa",storageBucket:"it-study-a45fa.firebasestorage.app",messagingSenderId:"973750187023",appId:"1:973750187023:web:c38b839da825ffa0681f7a"}));
+const ua=document.getElementById("userArea");
+onAuthStateChanged(auth,u=>{if(u){const n=u.displayName||u.email;ua.outerHTML=`<div class="profile-pill"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`;}else{ua.textContent="Kirish";ua.href="login.html";}});
+</script>
+<script>
+let ca=0,cc=0;
+function ans(el,correct){const g=el.closest('.comp-options');if(g.dataset.done)return;g.dataset.done="1";ca++;if(correct){el.classList.add('correct');cc++;}else{el.classList.add('wrong');[...g.children].forEach(o=>{if(o!==el)o.classList.add('show-correct');});}if(ca===5){document.getElementById('compScore').textContent=`Natija: ${cc} / 5 ✅`;localStorage.setItem('reading2Comp',cc);}}
+if(localStorage.getItem('reading2Done')){const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi';b.classList.add('done');}
+function markDone(){localStorage.setItem('reading2Done','true');const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi!';b.classList.add('done');}
+</script>
+<script>const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.04});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Dev Tests | Future-Study</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-1">
+
+<header class="navbar">
+  <div class="logo">Future-Study</div>
+  <nav>
+    <a href="project.html">Home</a>
+    <a href="web.html">Web Dev</a>
+    <a href="web-questions.html">Questions</a>
+    <a href="web-tests.html">Tests</a>
+  </nav>
+  <button id="themeToggle">🌙</button>
+</header>
+
+<div class="test-page">
+  <div class="test-box">
+    <p class="test-counter" id="counter">Question 1 / 10</p>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <h2 id="question"></h2>
+
+    <div class="answers">
+      <button onclick="check(0)"></button>
+      <button onclick="check(1)"></button>
+      <button onclick="check(2)"></button>
+      <button onclick="check(3)"></button>
+    </div>
+
+    <p id="result"></p>
+  </div>
+</div>
+
+<script type="module" src="header.js"></script>
+<script>
+const questions = [
+  { q:"What does HTML stand for?",           options:["Hyper Text Markup Language","High Tech Modern Language","Hyperlinks Text Management","Home Tool Markup Language"], a:0 },
+  { q:"Which language is used for styling?", options:["HTML","CSS","Python","SQL"],                                                                                      a:1 },
+  { q:"Which language adds interactivity?",  options:["CSS","HTML","JavaScript","PHP"],                                                                                  a:2 },
+  { q:"Which tag creates a hyperlink?",      options:["<div>","<a>","<p>","<img>"],                                                                                      a:1 },
+  { q:"CSS stands for?",                     options:["Creative Style System","Cascading Style Sheets","Computer Style Syntax","Colorful Style Sheets"],                 a:1 },
+  { q:"Which is a JavaScript framework?",    options:["Laravel","React","Django","Flask"],                                                                               a:1 },
+  { q:"Which property changes text color?",  options:["font-style","color","background","text-align"],                                                                   a:1 },
+  { q:"Which symbol selects ID in CSS?",     options:[".","#","*","&"],                                                                                                  a:1 },
+  { q:"Which is a backend language?",        options:["Python","HTML","CSS","Bootstrap"],                                                                                a:0 },
+  { q:"Which tag inserts an image?",         options:["<image>","<img>","<pic>","<src>"],                                                                                a:1 }
+];
+
+let current = 0, score = 0;
+const btns = document.querySelectorAll(".answers button");
+
+function load() {
+  if (current >= questions.length) { showResult(); return; }
+
+  document.getElementById("counter").textContent =
+    `Question ${current + 1} / ${questions.length}`;
+  document.getElementById("progressFill").style.width =
+    (current / questions.length * 100) + "%";
+  document.getElementById("question").textContent = questions[current].q;
+  document.getElementById("result").textContent   = "";
+
+  btns.forEach((b, i) => {
+    b.textContent  = questions[current].options[i];
+    b.className    = "";
+    b.disabled     = false;
+  });
+}
+
+function check(choice) {
+  btns.forEach(b => b.disabled = true);
+  const correct = questions[current].a;
+
+  btns[choice].classList.add(choice === correct ? "correct" : "wrong");
+  btns[correct].classList.add("correct");
+
+  document.getElementById("result").textContent =
+    choice === correct ? "Correct ✅" :
+    "Wrong ❌ — Correct: " + questions[current].options[correct];
+
+  if (choice === correct) score++;
+  current++;
+  setTimeout(load, 1200);
+}
+
+function showResult() {
+  localStorage.setItem("webTestScore", score);
+  document.querySelector(".test-box").innerHTML = `
+    <div class="result-screen">
+      <h2>Test Finished 🎉</h2>
+      <p>Score: <strong>${score} / ${questions.length}</strong></p>
+      <button class="restart-btn" onclick="location.reload()">🔁 Try Again</button>
+      <br><br>
+      <a href="web.html" style="color:var(--muted);font-size:14px;">← Back to Web Dev</a>
+    </div>`;
+}
+
+load();
+</script>
+
+
+
+
+<script src="theme-switcher.js"></script>
+</body>
+</html>

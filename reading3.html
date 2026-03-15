@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading 3 | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .reading-wrap{max-width:860px;margin:0 auto;padding:64px 48px 100px;}
+    .passage{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:44px 48px;margin-bottom:24px;line-height:2;font-size:16px;color:var(--text);}
+    .passage h2{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:28px;text-transform:uppercase;line-height:1.4;}
+    .passage h3{font-family:var(--font);font-size:17px;font-weight:700;color:var(--accent2);margin:32px 0 14px;}
+    .passage h4{font-family:var(--font);font-size:15px;font-weight:700;color:var(--accent);margin:22px 0 10px;}
+    .passage p{margin-bottom:18px;color:var(--muted);font-weight:300;}
+    .passage b{color:var(--accent2);font-weight:600;}
+    .tr{font-style:italic;font-size:13px;color:var(--muted);opacity:0.7;margin-left:3px;}
+    .vocab-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;margin-bottom:24px;}
+    .vocab-wrap h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:24px;}
+    .comp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;margin-bottom:24px;}
+    .comp-card h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:28px;}
+    .comp-q{margin-bottom:24px;}
+    .comp-q p{font-size:15px;color:var(--text);margin-bottom:10px;font-weight:500;}
+    .comp-options{display:flex;flex-direction:column;gap:8px;}
+    .comp-opt{padding:11px 16px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:14px;color:var(--muted);transition:background var(--ease),border-color var(--ease),color var(--ease);}
+    .comp-opt:hover{background:rgba(79,142,247,0.1);border-color:var(--accent);color:var(--text);}
+    .comp-opt.correct{background:rgba(34,197,94,0.18)!important;border-color:#22c55e!important;color:#86efac!important;}
+    .comp-opt.wrong{background:rgba(239,68,68,0.18)!important;border-color:#ef4444!important;color:#fca5a5!important;}
+    .comp-opt.show-correct{background:rgba(34,197,94,0.08);border-color:rgba(34,197,94,0.35);color:#86efac;}
+    .done-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+    .done-bar p{color:var(--muted);font-size:15px;font-weight:300;}
+    .done-btn{padding:12px 28px;border:none;border-radius:99px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:15px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease);}
+    .done-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,142,247,0.4);}
+    .done-btn.done{background:linear-gradient(135deg,#22c55e,#4ade80);}
+    .nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:32px;}
+    .nav-btns a{font-size:14px;color:var(--muted);}
+    .nav-btns a.next{color:var(--accent2);font-weight:500;}
+    @media(max-width:768px){.reading-wrap{padding:40px 20px 80px;}.passage{padding:28px 22px;}}
+  </style>
+</head>
+<body class="theme-1">
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="english.html">English</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+
+<div class="reading-wrap">
+  <div class="breadcrumb reveal">English <span>›</span> Reading <span>›</span> Dars 3</div>
+  <div class="reveal" style="margin-bottom:40px;">
+    <p class="s-label">Reading 3 / 10</p>
+    <h1 style="font-family:var(--font);font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-1px;line-height:1.1;color:var(--text);margin-bottom:12px;">Ta'lim va Kelajak: Bilim Jamiyati 🎓</h1>
+    <p style="font-size:15px;color:var(--muted);font-weight:300;">IELTS Academic · ~1300 so'z · O'rta daraja</p>
+  </div>
+
+  <div class="passage reveal">
+    <h2>THE FUTURE OF EDUCATION: PREPARING STUDENTS FOR A RAPIDLY CHANGING WORLD</h2>
+    <p>The <b>landscape</b><span class="tr">(manzara, soha)</span> of education is <b>undergoing</b><span class="tr">(o'tmoq, boshidan kechirmoq)</span> a period of profound transformation. Driven by technological innovation, globalisation, and shifting <b>labour market demands</b><span class="tr">(mehnat bozori talablari)</span>, educators and policymakers worldwide are questioning whether <b>conventional</b><span class="tr">(an'anaviy)</span> educational models — designed for an industrial economy — remain adequate for preparing young people for the <b>complexities</b><span class="tr">(murakkabliklar)</span> of the 21st century.</p>
+    <p>Traditional education systems have long prioritised the <b>transmission</b><span class="tr">(uzatish, yetkazish)</span> of <b>factual knowledge</b><span class="tr">(faktik bilim)</span> and the development of subject-specific skills. While these remain important, the rapid pace of technological change means that many of the specific facts and technical skills taught today may become <b>obsolete</b><span class="tr">(eskirgan, eski)</span> within a decade. What is needed, many argue, is an education system that prioritises <b>adaptability</b><span class="tr">(moslashuvchanlik)</span>, <b>critical thinking</b><span class="tr">(tanqidiy fikrlash)</span>, creativity, and <b>emotional intelligence</b><span class="tr">(hissiy intellekt)</span>.</p>
+
+    <h3>1. The Shift Towards Competency-Based Education</h3>
+    <h4>1.1 21st Century Skills</h4>
+    <p>Educators around the world are increasingly advocating for a shift towards <b>competency-based education</b><span class="tr">(vakolat asosidagi ta'lim)</span> that emphasises the development of broad, transferable skills rather than narrow <b>subject mastery</b><span class="tr">(fan bo'yicha chuqur bilim)</span>. These so-called "21st century skills" include <b>collaboration</b><span class="tr">(hamkorlik)</span>, communication, digital <b>literacy</b><span class="tr">(savodxonlik)</span>, problem-solving, and <b>entrepreneurial thinking</b><span class="tr">(tadbirkorlik fikrlashi)</span>. Research consistently shows that <b>employers</b><span class="tr">(ish beruvchilar)</span> value these qualities as much as, if not more than, formal <b>qualifications</b><span class="tr">(malakalar, diplomlar)</span>.</p>
+    <h4>1.2 Project-Based Learning</h4>
+    <p>One of the most widely discussed <b>pedagogical</b><span class="tr">(pedagogik)</span> approaches is <b>project-based learning</b><span class="tr">(loyiha asosidagi o'qitish)</span>, in which students work collaboratively on real-world problems over extended periods. This approach encourages <b>inquiry</b><span class="tr">(so'roq qilish, tekshirish)</span>, deepens understanding, and develops practical skills. Evidence suggests that students taught through project-based methods show higher levels of engagement, better retention of knowledge, and improved ability to apply concepts to novel situations. Critics, however, argue that it can be difficult to <b>standardise</b><span class="tr">(standartlashtirmoq)</span> and assess.</p>
+
+    <h3>2. Technology in Education</h3>
+    <h4>2.1 Digital Learning Platforms</h4>
+    <p>The proliferation of <b>digital learning platforms</b><span class="tr">(raqamli ta'lim platformalari)</span> has democratised access to high-quality education. Massive Open Online Courses, or MOOCs, allow millions of learners worldwide to access courses offered by leading universities at little or no cost. These platforms have been particularly valuable in regions where access to qualified teachers or educational <b>infrastructure</b><span class="tr">(infratuzilma)</span> is limited. However, concerns persist about the high <b>dropout rates</b><span class="tr">(o'quv maskanini tark etish darajasi)</span> associated with online courses and the importance of face-to-face social interaction in learning.</p>
+    <h4>2.2 Artificial Intelligence in Education</h4>
+    <p>AI-powered tools are increasingly being used to <b>personalise</b><span class="tr">(shaxsiylashtrmoq)</span> the learning experience. Intelligent tutoring systems can adapt content, pacing, and difficulty to the individual learner, providing immediate, targeted feedback. AI can also assist teachers by automating <b>administrative tasks</b><span class="tr">(ma'muriy vazifalar)</span> such as grading, freeing them to focus on higher-order teaching activities. Despite these advances, many educators caution that technology should <b>complement</b><span class="tr">(to'ldirmoq)</span> rather than replace the irreplaceable human elements of teaching — mentorship, inspiration, and social development.</p>
+
+    <h3>3. Equity and Access in Education</h3>
+    <h4>3.1 The Digital Divide</h4>
+    <p>While technology offers tremendous potential for expanding educational access, it also risks widening existing <b>inequalities</b><span class="tr">(tengsizliklar)</span>. The "digital divide" — the gap between those with and without access to digital devices and <b>reliable internet connectivity</b><span class="tr">(ishonchli internet ulanishi)</span> — remains a significant barrier in many parts of the world. Even in wealthy nations, lower-income students often lack the devices, connectivity, and quiet study space needed to benefit fully from digital learning opportunities. Addressing this divide requires not only investment in technology but also in teacher training, <b>curriculum development</b><span class="tr">(o'quv dasturini ishlab chiqish)</span>, and community support.</p>
+    <h4>3.2 Inclusive Education</h4>
+    <p>A related challenge is ensuring that education systems are truly <b>inclusive</b><span class="tr">(inklyuziv, hamma uchun)</span> — that is, designed to meet the diverse needs of all learners, including those with physical or learning <b>disabilities</b><span class="tr">(nogironliklar)</span>, those from linguistic minority backgrounds, and those living in poverty. Inclusive education is not merely a moral <b>imperative</b><span class="tr">(majburiyat)</span> but also an economic one: maximising the potential of all citizens is essential for social cohesion and national <b>prosperity</b><span class="tr">(farovonlik)</span>.</p>
+
+    <h3>4. Rethinking Assessment and Qualifications</h3>
+    <p>Traditional systems of <b>assessment</b><span class="tr">(baholash)</span> — relying heavily on high-stakes examinations — are increasingly criticised for measuring <b>rote memorisation</b><span class="tr">(yodlash orqali o'rganish)</span> rather than deeper understanding or practical competence. There is growing interest in alternative approaches such as <b>portfolio assessment</b><span class="tr">(portfel baholash)</span>, continuous assessment, and <b>peer evaluation</b><span class="tr">(tengdoshlar tomonidan baholash)</span>, which may better capture the full range of a student's abilities. The rise of digital credentials and <b>micro-credentials</b><span class="tr">(mikro-sertifikatlar)</span> also challenges the traditional dominance of university degrees as the primary measure of educational achievement.</p>
+
+    <h3>Conclusion</h3>
+    <p>The future of education depends on our ability to build systems that are <b>equitable</b><span class="tr">(adolatli)</span>, flexible, and aligned with the realities of a rapidly changing world. This requires collaboration between governments, educators, technology developers, employers, and communities. Above all, it requires a commitment to placing the well-being and <b>potential</b><span class="tr">(salohiyat)</span> of every learner at the centre of educational policy and practice.</p>
+  </div>
+
+  <div class="vocab-wrap reveal">
+    <h3>📘 Muhim so'zlar — Reading 3</h3>
+    <div class="vocab-grid">
+      <div class="vocab-card"><h4>landscape</h4><p>manzara, soha</p></div>
+      <div class="vocab-card"><h4>undergoing</h4><p>boshidan kechirmoq</p></div>
+      <div class="vocab-card"><h4>labour market demands</h4><p>mehnat bozori talablari</p></div>
+      <div class="vocab-card"><h4>conventional</h4><p>an'anaviy</p></div>
+      <div class="vocab-card"><h4>obsolete</h4><p>eskirgan, eski</p></div>
+      <div class="vocab-card"><h4>adaptability</h4><p>moslashuvchanlik</p></div>
+      <div class="vocab-card"><h4>critical thinking</h4><p>tanqidiy fikrlash</p></div>
+      <div class="vocab-card"><h4>emotional intelligence</h4><p>hissiy intellekt</p></div>
+      <div class="vocab-card"><h4>competency-based education</h4><p>vakolat asosidagi ta'lim</p></div>
+      <div class="vocab-card"><h4>collaboration</h4><p>hamkorlik</p></div>
+      <div class="vocab-card"><h4>literacy</h4><p>savodxonlik</p></div>
+      <div class="vocab-card"><h4>entrepreneurial thinking</h4><p>tadbirkorlik fikrlashi</p></div>
+      <div class="vocab-card"><h4>qualifications</h4><p>malakalar, diplomlar</p></div>
+      <div class="vocab-card"><h4>project-based learning</h4><p>loyiha asosidagi o'qitish</p></div>
+      <div class="vocab-card"><h4>inquiry</h4><p>so'roq qilish, tekshirish</p></div>
+      <div class="vocab-card"><h4>standardise</h4><p>standartlashtirmoq</p></div>
+      <div class="vocab-card"><h4>digital learning platforms</h4><p>raqamli ta'lim platformalari</p></div>
+      <div class="vocab-card"><h4>infrastructure</h4><p>infratuzilma</p></div>
+      <div class="vocab-card"><h4>dropout rates</h4><p>o'quv maskanini tark etish darajasi</p></div>
+      <div class="vocab-card"><h4>personalise</h4><p>shaxsiylashtirmoq</p></div>
+      <div class="vocab-card"><h4>complement</h4><p>to'ldirmoq</p></div>
+      <div class="vocab-card"><h4>digital divide</h4><p>raqamli tafovut</p></div>
+      <div class="vocab-card"><h4>inequalities</h4><p>tengsizliklar</p></div>
+      <div class="vocab-card"><h4>curriculum development</h4><p>o'quv dasturini ishlab chiqish</p></div>
+      <div class="vocab-card"><h4>inclusive</h4><p>inklyuziv, hamma uchun</p></div>
+      <div class="vocab-card"><h4>disabilities</h4><p>nogironliklar</p></div>
+      <div class="vocab-card"><h4>prosperity</h4><p>farovonlik</p></div>
+      <div class="vocab-card"><h4>assessment</h4><p>baholash</p></div>
+      <div class="vocab-card"><h4>rote memorisation</h4><p>yodlash orqali o'rganish</p></div>
+      <div class="vocab-card"><h4>micro-credentials</h4><p>mikro-sertifikatlar</p></div>
+
+    </div>
+  </div>
+
+  <div class="comp-card reveal">
+    <h3>❓ Tushunish savollari</h3>
+    <div class="comp-q">
+      <p>1. Why do many educators argue that traditional education is no longer adequate?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) It teaches too many subjects at once</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) Specific facts and skills taught today may quickly become obsolete</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) Students do not enjoy learning in schools</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Teachers are not qualified enough</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>2. What is a key advantage of project-based learning according to the text?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) It is easier to assess than traditional methods</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) It focuses only on factual knowledge</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) It encourages inquiry and develops practical skills</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) It reduces the need for teachers</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>3. What is the 'digital divide' as described in the passage?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) The difference between online and offline courses</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) The gap between students who like technology and those who do not</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) The gap between those with and without access to devices and internet</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) The difference between rich and poor schools</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>4. What criticism is made of traditional examination systems?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) They are too easy for most students</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) They measure rote memorisation rather than deeper understanding</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) They take too long to complete</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) They are only used in wealthy countries</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>5. According to the conclusion, what is essential for the future of education?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Removing all technology from classrooms</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) Making university degrees the only valid qualification</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) Collaboration across governments, educators, technology developers and communities</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Focusing exclusively on science and mathematics</div>
+      </div>
+    </div>
+
+    <p id="compScore" style="margin-top:24px;font-family:var(--font);font-size:16px;font-weight:700;color:var(--accent2);min-height:24px;"></p>
+  </div>
+
+  <div class="done-bar reveal">
+    <p>📖 Matnni o'qib, savollarga javob berdingizmi?</p>
+    <button class="done-btn" id="doneBtn" onclick="markDone()">✅ O'qib bo'ldim</button>
+  </div>
+  <div class="nav-btns reveal">
+    <a href="reading-2.html">← Reading 2</a>
+    <a href="reading-4.html" class="next">Reading 4 → Iqtisodiyot va biznes</a>
+  </div>
+</div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth=getAuth(initializeApp({apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",authDomain:"it-study-a45fa.firebaseapp.com",projectId:"it-study-a45fa",storageBucket:"it-study-a45fa.firebasestorage.app",messagingSenderId:"973750187023",appId:"1:973750187023:web:c38b839da825ffa0681f7a"}));
+const ua=document.getElementById("userArea");
+onAuthStateChanged(auth,u=>{if(u){const n=u.displayName||u.email;ua.outerHTML=`<div class="profile-pill"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`;}else{ua.textContent="Kirish";ua.href="login.html";}});
+</script>
+<script>
+let ca=0,cc=0;
+function ans(el,correct){const g=el.closest('.comp-options');if(g.dataset.done)return;g.dataset.done="1";ca++;if(correct){el.classList.add('correct');cc++;}else{el.classList.add('wrong');[...g.children].forEach(o=>{if(o!==el)o.classList.add('show-correct');});}if(ca===5){document.getElementById('compScore').textContent=`Natija: ${cc} / 5 ✅`;localStorage.setItem('reading3Comp',cc);}}
+if(localStorage.getItem('reading3Done')){const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi';b.classList.add('done');}
+function markDone(){localStorage.setItem('reading3Done','true');const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi!';b.classList.add('done');}
+</script>
+<script>const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.04});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

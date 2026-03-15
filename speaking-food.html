@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ovqat | Speaking | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .sp-wrap{max-width:860px;margin:0 auto;padding:60px 48px 100px;}
+    .vocab-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:36px 40px;margin-bottom:24px;}
+    .vocab-wrap h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:22px;}
+    .part-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:36px 40px;margin-bottom:20px;}
+    .part-label{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border-radius:99px;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:20px;}
+    .part-label.p1{background:rgba(79,142,247,.15);color:var(--accent2);border:1px solid rgba(79,142,247,.25);}
+    .part-label.p2{background:rgba(167,139,250,.15);color:#c4b5fd;border:1px solid rgba(167,139,250,.25);}
+    .part-label.p3{background:rgba(251,191,36,.15);color:#fcd34d;border:1px solid rgba(251,191,36,.25);}
+    .part-card h3{font-family:var(--font);font-size:17px;font-weight:700;color:var(--text);margin-bottom:16px;}
+    .q-item{margin-bottom:14px;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;}
+    .q-head{display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;transition:background var(--ease);}
+    .q-head:hover{background:rgba(255,255,255,.04);}
+    .q-num{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:var(--font);font-size:11px;font-weight:700;color:#fff;flex-shrink:0;}
+    .q-text{flex:1;font-size:15px;color:var(--text);font-weight:500;}
+    .q-toggle{font-size:12px;color:var(--accent);font-weight:600;padding:4px 12px;border:1px solid rgba(79,142,247,.3);border-radius:99px;white-space:nowrap;}
+    .q-body{display:none;padding:0 18px 18px 56px;}
+    .q-item.open .q-body{display:block;}
+    .q-answer{font-size:14px;color:var(--muted);line-height:1.8;font-weight:300;}
+    .q-answer b{color:var(--accent2);font-weight:600;}
+    .q-tip{margin-top:10px;padding:10px 14px;background:rgba(79,142,247,.06);border:1px solid rgba(79,142,247,.15);border-radius:var(--radius-sm);font-size:13px;color:var(--muted);}
+    .q-tip b{color:var(--accent2);}
+    .part2-card{background:rgba(167,139,250,.06);border:1px solid rgba(167,139,250,.2);border-radius:var(--radius-sm);padding:20px 22px;margin-bottom:16px;}
+    .part2-card h4{font-family:var(--font);font-size:15px;font-weight:700;color:#c4b5fd;margin-bottom:12px;}
+    .part2-card ul{margin:0;padding-left:18px;}
+    .part2-card ul li{font-size:14px;color:var(--muted);margin-bottom:6px;font-weight:300;}
+    .done-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:8px;}
+    .done-bar p{color:var(--muted);font-size:15px;font-weight:300;}
+    .done-btn{padding:11px 26px;border:none;border-radius:99px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:14px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease);}
+    .done-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,142,247,.4);}
+    .done-btn.done{background:linear-gradient(135deg,#22c55e,#4ade80);}
+    .nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:28px;}
+    .nav-btns a{font-size:14px;color:var(--muted);}
+    .nav-btns a.next{color:var(--accent2);font-weight:500;}
+    @media(max-width:768px){.sp-wrap{padding:40px 20px 80px;}.part-card{padding:24px 20px;}.vocab-wrap{padding:24px 20px;}}
+  </style>
+</head>
+<body class="theme-1">
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="english.html">English</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+
+<div class="sp-wrap">
+  <div class="breadcrumb reveal">English <span>›</span> Speaking <span>›</span> Ovqat</div>
+  <div class="reveal" style="margin-bottom:40px;">
+    <p class="s-label">Speaking · 10-mavzu</p>
+    <h1 style="font-family:var(--font);font-size:clamp(28px,4vw,46px);font-weight:800;letter-spacing:-1px;line-height:1.1;color:var(--text);margin-bottom:10px;">🍽️ Ovqat</h1>
+    <p style="font-size:15px;color:var(--muted);font-weight:300;">IELTS Speaking · Part 1, 2, 3 · Namuna javoblar bilan</p>
+  </div>
+
+  <!-- PART 1 -->
+  <div class="part-card reveal">
+    <div class="part-label p1">📝 Part 1 — Shaxsiy savollar</div>
+    <h3>O'zingiz haqingizda gapirib bering</h3>
+  <div class="q-item" id="p1q1">
+    <div class="q-head" onclick="toggleQ('p1q1')">
+      <div class="q-num">1</div>
+      <div class="q-text">What is your favourite food and why?</div>
+      <div class="q-toggle" id="p1q1-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer">My absolute favourite is plov — the traditional Uzbek rice dish. What makes it special is the combination of <b>ingredients</b>: fragrant rice cooked in lamb fat, tender meat, sweet carrots, and aromatic spices. The <b>flavour</b> is rich and deeply satisfying. Beyond the taste, plov carries cultural significance — it's a dish associated with celebration, community, and hospitality.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Describe the food vividly — use sensory adjectives</div>
+    </div>
+  </div>
+  <div class="q-item" id="p1q2">
+    <div class="q-head" onclick="toggleQ('p1q2')">
+      <div class="q-num">2</div>
+      <div class="q-text">Do you enjoy cooking? Why or why not?</div>
+      <div class="q-toggle" id="p1q2-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer">I genuinely enjoy cooking, though I wouldn't call myself an expert. I find it a relaxing and creative activity after a long day. Following a <b>recipe</b> carefully and producing something <b>nutritious</b> and delicious is deeply satisfying. I particularly enjoy experimenting with different <b>cuisines</b> — recently I've been trying to cook some Asian dishes.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Use 'I find it', 'I particularly enjoy', 'recently I've been'</div>
+    </div>
+  </div>
+  <div class="q-item" id="p1q3">
+    <div class="q-head" onclick="toggleQ('p1q3')">
+      <div class="q-num">3</div>
+      <div class="q-text">Is the food in your country healthy?</div>
+      <div class="q-toggle" id="p1q3-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer">Traditional Uzbek <b>cuisine</b> is quite <b>nutritious</b> — it's based on fresh <b>ingredients</b>, whole grains, and plenty of vegetables. However, modern eating habits are changing, with <b>fast food</b> and <b>processed food</b> becoming increasingly popular, particularly among young people. I think it's important to maintain the tradition of home-cooked meals and <b>local produce</b>.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Distinguish traditional vs modern eating habits</div>
+    </div>
+  </div>
+  <div class="q-item" id="p1q4">
+    <div class="q-head" onclick="toggleQ('p1q4')">
+      <div class="q-num">4</div>
+      <div class="q-text">Do you prefer eating at home or at a restaurant?</div>
+      <div class="q-toggle" id="p1q4-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer">For everyday meals, I prefer eating at home — it's more <b>nutritious</b>, <b>portions</b> are controlled, and I know exactly what <b>ingredients</b> have been used. However, eating out is a wonderful social experience. Trying new <b>cuisines</b> at restaurants, particularly authentic <b>street food</b>, is one of my favourite ways to explore a new culture.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Give different contexts for each preference</div>
+    </div>
+  </div>
+  <div class="q-item" id="p1q5">
+    <div class="q-head" onclick="toggleQ('p1q5')">
+      <div class="q-num">5</div>
+      <div class="q-text">Have your eating habits changed in recent years?</div>
+      <div class="q-toggle" id="p1q5-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer">Yes, quite significantly. I've become much more conscious of eating a <b>balanced diet</b> and reducing my consumption of <b>processed food</b>. I now try to include more <b>organic</b>, locally sourced <b>ingredients</b> in my meals. I've also reduced my meat intake and explore more <b>vegetarian</b> options, primarily for health and environmental reasons.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Show personal development: 'I've become', 'I now try', 'I've also'</div>
+    </div>
+  </div>
+  </div>
+
+  <!-- PART 2 -->
+  <div class="part-card reveal">
+    <div class="part-label p2">🎤 Part 2 — Uzoq monolog</div>
+    <h3>1-2 daqiqa gapiring</h3>
+  <div class="part2-card">
+    <h4>Describe a meal or dish that is special to you</h4>
+    <ul><li>What the dish is</li><li>What ingredients it contains</li><li>When you usually eat it</li><li>Why it is special to you</li></ul>
+  </div>
+  <div class="q-item" id="p2q1">
+    <div class="q-head" onclick="toggleQ('p2q1')">
+      <div class="q-num">1</div>
+      <div class="q-text">Namuna javobni ko'ring</div>
+      <div class="q-toggle" id="p2q1-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body"><div class="q-answer">I would like to describe plov, which is the national dish of Uzbekistan and by far the most meaningful food in my life. Plov is made from rice, lamb, carrots, onions and a blend of spices, all cooked together in a large iron pot called a kazan. The <b>flavour</b> is extraordinarily rich — the rice absorbs all the aromas of the meat and spices during the long cooking process, creating something that is far greater than the sum of its <b>ingredients</b>. We usually eat plov at special occasions — weddings, celebrations, national holidays, and family gatherings. The preparation is itself a communal event: traditionally, the men of the family or community cook it together outdoors, which adds a social dimension to the experience. What makes plov truly special is that it represents Uzbek identity and hospitality. When you share plov with someone, it symbolises warmth, generosity and belonging. Every region of Uzbekistan has its own variation of the <b>recipe</b>, which reflects our country's rich <b>culinary</b> diversity. It is much more than food — it is a cultural experience.</div></div>
+  </div>
+  </div>
+
+  <!-- PART 3 -->
+  <div class="part-card reveal">
+    <div class="part-label p3">💬 Part 3 — Muhokama</div>
+    <h3>Chuqurroq fikrlash va baholash</h3>
+  <div class="q-item" id="p3q1">
+    <div class="q-head" onclick="toggleQ('p3q1')">
+      <div class="q-num">1</div>
+      <div class="q-text">How have eating habits changed in your country over the past few decades?</div>
+      <div class="q-toggle" id="p3q1-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer">Eating habits in Uzbekistan have shifted considerably. Traditional home-cooked meals and <b>local produce</b> are being replaced by <b>fast food</b>, <b>processed food</b>, and international <b>cuisines</b>, particularly in urban areas. Busy lifestyles leave less time for cooking, and food delivery apps have made convenience the priority. While this offers variety, it has also raised concerns about <b>nutrition</b> and the loss of <b>culinary</b> traditions.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Use 'has shifted', 'are being replaced' — present perfect and passive</div>
+    </div>
+  </div>
+  <div class="q-item" id="p3q2">
+    <div class="q-head" onclick="toggleQ('p3q2')">
+      <div class="q-num">2</div>
+      <div class="q-text">Do you think governments should regulate what food companies can sell?</div>
+      <div class="q-toggle" id="p3q2-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer">To a reasonable extent, yes. Governments have a responsibility to protect public health by setting standards for food safety and <b>nutrition</b> labelling. Restricting advertising of unhealthy <b>fast food</b> to children is particularly important. However, excessive regulation risks limiting consumer choice. The most effective approach combines clear information, incentives for healthier options, and education about <b>balanced diets</b>.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Take a measured position — neither extreme</div>
+    </div>
+  </div>
+  <div class="q-item" id="p3q3">
+    <div class="q-head" onclick="toggleQ('p3q3')">
+      <div class="q-num">3</div>
+      <div class="q-text">How serious is the problem of food waste globally?</div>
+      <div class="q-toggle" id="p3q3-btn">👁 Ko'rish</div>
+    </div>
+    <div class="q-body">
+      <div class="q-answer"><b>Food waste</b> is an enormous global problem. Approximately one third of all food produced is wasted, while millions of people face food insecurity. In wealthy countries, waste occurs largely at the consumer level — people buy too much and throw it away. Reducing <b>food waste</b> requires changes at every level: from smarter <b>portion</b> sizes in restaurants to better supply chain management and consumer education.</div>
+      <div class="q-tip">💡 <b>Maslahat:</b> Use statistics if possible, then offer solutions</div>
+    </div>
+  </div>
+  </div>
+  <!-- VOCABULARY -->
+  <div class="vocab-wrap reveal">
+    <h3>📘 Foydali so'zlar — Ovqat</h3>
+    <div class="vocab-grid">
+      <div class="vocab-card"><h4>cuisine</h4><p>oshpazlik, milliy taom</p></div>
+      <div class="vocab-card"><h4>ingredient</h4><p>tarkib, ingredient</p></div>
+      <div class="vocab-card"><h4>nutritious</h4><p>ozuqaviy</p></div>
+      <div class="vocab-card"><h4>flavour</h4><p>ta'm, arom</p></div>
+      <div class="vocab-card"><h4>recipe</h4><p>retsept</p></div>
+      <div class="vocab-card"><h4>organic</h4><p>organik</p></div>
+      <div class="vocab-card"><h4>processed food</h4><p>tayyor/qayta ishlangan ovqat</p></div>
+      <div class="vocab-card"><h4>diet</h4><p>parhez</p></div>
+      <div class="vocab-card"><h4>culinary</h4><p>oshpazlik (sifat)</p></div>
+      <div class="vocab-card"><h4>fast food</h4><p>tez tayyor ovqat</p></div>
+      <div class="vocab-card"><h4>street food</h4><p>ko'cha ovqati</p></div>
+      <div class="vocab-card"><h4>portion</h4><p>porsiya</p></div>
+      <div class="vocab-card"><h4>balanced diet</h4><p>muvozanatli ovqatlanish</p></div>
+      <div class="vocab-card"><h4>vegetarian</h4><p>vegetarian</p></div>
+      <div class="vocab-card"><h4>food waste</h4><p>ovqat isrof qilish</p></div>
+      <div class="vocab-card"><h4>local produce</h4><p>mahalliy mahsulotlar</p></div>
+    </div>
+  </div>
+
+  <div class="done-bar reveal">
+    <p>✅ Barcha savollarga javob berdingizmi?</p>
+    <button class="done-btn" id="doneBtn" onclick="markDone()">✅ Tugatdim</button>
+  </div>
+
+  <div class="nav-btns reveal">
+    <a href="speaking-books.html">← Kitob va Kino</a>
+    <a href="english.html" class="next">English bo'limiга qaytish →</a>
+  </div>
+</div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth=getAuth(initializeApp({apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",authDomain:"it-study-a45fa.firebaseapp.com",projectId:"it-study-a45fa",storageBucket:"it-study-a45fa.firebasestorage.app",messagingSenderId:"973750187023",appId:"1:973750187023:web:c38b839da825ffa0681f7a"}));
+const ua=document.getElementById("userArea");
+onAuthStateChanged(auth,u=>{if(u){const n=u.displayName||u.email;ua.outerHTML=`<div class="profile-pill" onclick="location.href='profile.html'" style="cursor:pointer"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`;}else{ua.textContent="Kirish";ua.href="login.html";}});
+</script>
+<script>
+function toggleQ(id){var el=document.getElementById(id);var btn=document.getElementById(id+'-btn');var open=el.classList.toggle('open');btn.textContent=open?'🙈 Yashirish':"👁 Ko'rish";}
+if(localStorage.getItem('speakingFood')){var b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi';b.classList.add('done');}
+function markDone(){localStorage.setItem('speakingFood','true');var b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi!';b.classList.add('done');}
+</script>
+<script>var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.06});document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});</script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

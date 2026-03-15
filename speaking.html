@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speaking | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .sp-index-wrap{max-width:1000px;margin:0 auto;padding:60px 48px 100px;}
+    .topics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:32px;}
+    .topic-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px 24px;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--text);transition:border-color var(--ease),transform var(--ease),box-shadow var(--ease);cursor:pointer;}
+    .topic-card:hover{border-color:var(--accent);transform:translateY(-5px);box-shadow:0 16px 40px rgba(79,142,247,0.15);}
+    .topic-card.done{border-color:rgba(34,197,94,0.4);}
+    .tc-emoji{font-size:32px;}
+    .tc-num{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;}
+    .tc-name{font-family:var(--font);font-size:17px;font-weight:700;color:var(--text);}
+    .tc-desc{font-size:13px;color:var(--muted);line-height:1.5;}
+    .tc-parts{display:flex;gap:6px;margin-top:4px;flex-wrap:wrap;}
+    .tc-part{font-size:11px;padding:3px 9px;border-radius:99px;border:1px solid var(--border);color:var(--muted);}
+    .tc-status{margin-top:auto;padding-top:12px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);font-weight:500;}
+    .topic-card.done .tc-status{color:#22c55e;}
+    @media(max-width:768px){.sp-index-wrap{padding:40px 20px 80px;}}
+  </style>
+</head>
+<body class="theme-1">
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="english.html">English</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+
+<div class="sp-index-wrap">
+  <div class="breadcrumb reveal">English <span>›</span> Speaking</div>
+  <div class="reveal" style="margin-bottom:12px;">
+    <p class="s-label">IELTS Speaking</p>
+    <h1 style="font-family:var(--font);font-size:clamp(30px,4vw,48px);font-weight:800;letter-spacing:-1px;line-height:1.1;color:var(--text);margin-bottom:12px;">🎤 Speaking darslari</h1>
+    <p style="font-size:15px;color:var(--muted);font-weight:300;max-width:540px;">10 ta mavzu · Har birida: so'zlar, Part 1 (5 savol), Part 2 (1 monolog), Part 3 (3 savol) · Namuna javoblar bilan</p>
+  </div>
+
+  <div class="topics-grid" id="topicsGrid">
+    <a class="topic-card" href="speaking-sport.html" id="tc-sport">
+      <div class="tc-emoji">🏃</div>
+      <div class="tc-num">Mavzu 1</div>
+      <div class="tc-name">Sport va Sog'liq</div>
+      <div class="tc-desc">Jismoniy faoliyat, sport turlari, sog'lom turmush</div>
+      <div class="tc-parts">
+        <span class="tc-part">Part 1 · 5 savol</span>
+        <span class="tc-part">Part 2 · monolog</span>
+        <span class="tc-part">Part 3 · 3 savol</span>
+      </div>
+      <div class="tc-status" id="s-sport">→ Boshlash</div>
+    </a>
+    <a class="topic-card" href="speaking-technology.html" id="tc-technology">
+      <div class="tc-emoji">💻</div>
+      <div class="tc-num">Mavzu 2</div>
+      <div class="tc-name">Texnologiya</div>
+      <div class="tc-desc">Qurilmalar, AI, ijtimoiy tarmoq, kelajak</div>
+      <div class="tc-parts">
+        <span class="tc-part">Part 1 · 5 savol</span>
+        <span class="tc-part">Part 2 · monolog</span>
+        <span class="tc-part">Part 3 · 3 savol</span>
+      </div>
+      <div class="tc-status" id="s-technology">→ Boshlash</div>
+    </a>
+    <a class="topic-card" href="speaking-education.html" id="tc-education">
+      <div class="tc-emoji">🎓</div>
+      <div class="tc-num">Mavzu 3</div>
+      <div class="tc-name">Ta'lim</div>
+      <div class="tc-desc">Maktab, universitet, o'rganish usullari</div>
+      <div class="tc-parts">
+        <span class="tc-part">Part 1 · 5 savol</span>
+        <span class="tc-part">Part 2 · monolog</span>
+        <span class="tc-part">Part 3 · 3 savol</span>
+      </div>
+      <div class="tc-status" id="s-education">→ Boshlash</div>
+    </a>
+    <a class="topic-card" href="speaking-travel.html" id="tc-travel">
+      <div class="tc-emoji">✈️</div>
+      <div class="tc-num">Mavzu 4</div>
+      <div class="tc-name">Sayohat</div>
+      <div class="tc-desc">Manzillar, turizm, madaniy tajriba</div>
+      <div class="tc-parts">
+        <span class="tc-part">Part 1 · 5 savol</span>
+        <span class="tc-part">Part 2 · monolog</span>
+        <span class="tc-part">Part 3 · 3 savol</span>
+      </div>
+      <div class="tc-status" id="s-travel">→ Boshlash</div>
+    </a>
+    <a class="topic-card" href="speaking-family.html" id="tc-family">
+      <div class="tc-emoji">👨‍👩‍👧</div>
+      <div class="tc-num">Mavzu 5</div>
+      <div class="tc-name">Oila</div>
+      <div class="tc-desc">Oilaviy munosabatlar, qadriyatlar, avlodlar</div>
+      <div class="tc-parts">
+        <span class="tc-part">Part 1 · 5 savol</span>
+        <span class="tc-part">Part 2 · monolog</span>
+        <span class="tc-part">Part 3 · 3 savol</span>
+      </div>
+      <div class="tc-status" id="s-family">→ Boshlash</div>
+    </a>
+    <a class="topic-card" href="speaking-work.html" id="tc-work">
+      <div class="tc-emoji">💼</div>
+      <div class="tc-num">Mavzu 6</div>
+      <div class="tc-name">Ish va Kelajak</div>
+      <div class="tc-desc">Karyera, martaba, tadbirkorlik, maqsadlar</div>
+      <div class="tc-parts">
+        <span class="tc-part">Part 1 · 5 savol</span>
+        <span class="tc-part">Part 2 · monolog</span>
+        <span class="tc-part">Part 3 · 3 savol</span>
+      </div>
+      <div class="tc-status" id="s-work">→ Boshlash</div>
+    </a>
+    <a class="topic-card" href="speaking-city.html" id="tc-city">
+      <div class="tc-emoji">🏙️</div>
+      <div class="tc-num">Mavzu 7</div>
+      <div class="tc-name">Shahar va Qishloq</div>
+      <div class="tc-desc">Shahar hayoti, infratuzilma, ko'chish</div>
+      <div class="tc-parts">
+        <span class="tc-part">Part 1 · 5 savol</span>
+        <span class="tc-part">Part 2 · monolog</span>
+        <span class="tc-part">Part 3 · 3 savol</span>
+      </div>
+      <div class="tc-status" id="s-city">→ Boshlash</div>
+    </a>
+    <a class="topic-card" href="speaking-friendship.html" id="tc-friendship">
+      <div class="tc-emoji">🤝</div>
+      <div class="tc-num">Mavzu 8</div>
+      <div class="tc-name">Do'stlik</div>
+      <div class="tc-desc">Ishonch, sadoqat, do'stlik munosabatlari</div>
+      <div class="tc-parts">
+        <span class="tc-part">Part 1 · 5 savol</span>
+        <span class="tc-part">Part 2 · monolog</span>
+        <span class="tc-part">Part 3 · 3 savol</span>
+      </div>
+      <div class="tc-status" id="s-friendship">→ Boshlash</div>
+    </a>
+    <a class="topic-card" href="speaking-books.html" id="tc-books">
+      <div class="tc-emoji">📚</div>
+      <div class="tc-num">Mavzu 9</div>
+      <div class="tc-name">Kitob va Kino</div>
+      <div class="tc-desc">Janrlar, mualliflar, filmlar, san'at</div>
+      <div class="tc-parts">
+        <span class="tc-part">Part 1 · 5 savol</span>
+        <span class="tc-part">Part 2 · monolog</span>
+        <span class="tc-part">Part 3 · 3 savol</span>
+      </div>
+      <div class="tc-status" id="s-books">→ Boshlash</div>
+    </a>
+    <a class="topic-card" href="speaking-food.html" id="tc-food">
+      <div class="tc-emoji">🍽️</div>
+      <div class="tc-num">Mavzu 10</div>
+      <div class="tc-name">Ovqat</div>
+      <div class="tc-desc">Milliy taomlar, pishirish, ovqatlanish odatlari</div>
+      <div class="tc-parts">
+        <span class="tc-part">Part 1 · 5 savol</span>
+        <span class="tc-part">Part 2 · monolog</span>
+        <span class="tc-part">Part 3 · 3 savol</span>
+      </div>
+      <div class="tc-status" id="s-food">→ Boshlash</div>
+    </a>
+  </div>
+</div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth=getAuth(initializeApp({apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",authDomain:"it-study-a45fa.firebaseapp.com",projectId:"it-study-a45fa",storageBucket:"it-study-a45fa.firebasestorage.app",messagingSenderId:"973750187023",appId:"1:973750187023:web:c38b839da825ffa0681f7a"}));
+const ua=document.getElementById("userArea");
+onAuthStateChanged(auth,u=>{if(u){const n=u.displayName||u.email;ua.outerHTML=`<div class="profile-pill" onclick="location.href='profile.html'" style="cursor:pointer"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`;}else{ua.textContent="Kirish";ua.href="login.html";}});
+</script>
+<script>
+var topics=[
+  {id:"sport",key:"speakingSport"},
+  {id:"technology",key:"speakingTechnology"},
+  {id:"education",key:"speakingEducation"},
+  {id:"travel",key:"speakingTravel"},
+  {id:"family",key:"speakingFamily"},
+  {id:"work",key:"speakingWork"},
+  {id:"city",key:"speakingCity"},
+  {id:"friendship",key:"speakingFriendship"},
+  {id:"books",key:"speakingBooks"},
+  {id:"food",key:"speakingFood"},
+];
+topics.forEach(function(t){
+  if(localStorage.getItem(t.key)){
+    var card=document.getElementById("tc-"+t.id);
+    var stat=document.getElementById("s-"+t.id);
+    if(card) card.classList.add("done");
+    if(stat) stat.textContent="✅ Bajarildi";
+  }
+});
+</script>
+<script>var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.06});document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});</script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

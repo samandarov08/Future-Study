@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grammar | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Grammar-specific styles */
+    .grammar-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+      transition: border-color var(--ease);
+    }
+    .grammar-section:hover { border-color: var(--accent); }
+
+    .grammar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 28px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .grammar-header-left { display: flex; align-items: center; gap: 16px; }
+
+    .grammar-num {
+      font-family: var(--font);
+      font-size: 13px; font-weight: 700;
+      color: var(--accent);
+      background: rgba(79,142,247,0.12);
+      padding: 4px 10px; border-radius: 99px;
+    }
+
+    .grammar-title {
+      font-family: var(--font);
+      font-size: 17px; font-weight: 700; color: var(--text);
+    }
+
+    .grammar-tag {
+      font-size: 11px; font-weight: 600; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--muted);
+      background: rgba(255,255,255,0.06);
+      padding: 4px 10px; border-radius: 99px;
+    }
+
+    .grammar-arrow {
+      color: var(--muted); font-size: 18px;
+      transition: transform var(--ease);
+    }
+    .grammar-section.open .grammar-arrow { transform: rotate(90deg); color: var(--accent); }
+
+    .grammar-body {
+      display: none;
+      padding: 0 28px 28px;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+    .grammar-section.open .grammar-body { display: block; }
+
+    .grammar-body p {
+      font-size: 15px; color: var(--muted); line-height: 1.8;
+      margin-bottom: 16px; font-weight: 300;
+    }
+
+    .grammar-body strong { color: var(--accent2); font-weight: 600; }
+
+    /* Formula box */
+    .formula {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 14px; color: var(--accent2);
+      line-height: 1.6;
+    }
+
+    /* Examples table */
+    .examples {
+      width: 100%; border-collapse: collapse; margin: 16px 0;
+    }
+    .examples th {
+      font-family: var(--font); font-size: 12px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: var(--accent); padding: 10px 16px;
+      border-bottom: 1px solid var(--border); text-align: left;
+    }
+    .examples td {
+      padding: 12px 16px; font-size: 14px; color: var(--muted);
+      border-bottom: 1px solid rgba(255,255,255,0.04); line-height: 1.6;
+    }
+    .examples td:first-child { color: var(--text); font-weight: 400; }
+    .examples tr:last-child td { border-bottom: none; }
+    .examples tr:hover td { background: rgba(79,142,247,0.05); }
+
+    /* Note box */
+    .note {
+      background: rgba(167,139,250,0.08);
+      border: 1px solid rgba(167,139,250,0.2);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      font-size: 14px; color: var(--muted);
+      margin-top: 16px; line-height: 1.7;
+    }
+    .note::before { content: "💡 "; }
+  
+  .g-test-btn {
+    padding: 9px 18px;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+  .g-test-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent2);
+    background: rgba(79,142,247,0.1);
+    transform: translateY(-2px);
+  }
+</style>
+</head>
+<body class="theme-1">
+
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="english.html">English</a>
+    <a href="tests.html">Testlar</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+
+<div style="max-width:860px;margin:0 auto;padding:64px 48px 100px;">
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb reveal">English <span>›</span> Grammar</div>
+
+  <!-- Title -->
+  <div class="reveal" style="margin-bottom:48px;">
+    <p class="s-label">Grammatika</p>
+    <h1 style="font-family:var(--font);font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-1.5px;line-height:1.08;color:var(--text);margin-bottom:14px;">
+      Ingliz tili grammatikasi ✏️
+    </h1>
+    <p style="font-size:16px;color:var(--muted);font-weight:300;max-width:500px;line-height:1.7;">
+      Asosiy qoidalarni o'rganing. Har bir bo'limni bosib oching.
+    </p>
+  </div>
+
+  <!-- ── TENSES ───────────────────────────────── -->
+  <p class="s-label reveal">Zamonlar</p>
+  <h2 class="s-title reveal" style="margin-bottom:24px;">Tenses</h2>
+
+  <!-- Present Simple -->
+  <div class="grammar-section reveal" onclick="toggle(this)">
+    <div class="grammar-header">
+      <div class="grammar-header-left">
+        <span class="grammar-num">01</span>
+        <span class="grammar-title">Present Simple</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="grammar-tag">Hozirgi zamon</span>
+        <span class="grammar-arrow">›</span>
+      </div>
+    </div>
+    <div class="grammar-body">
+      <p><strong>Present Simple</strong> — doimiy harakatlar, odatlar va umumiy haqiqatlar uchun ishlatiladi.</p>
+      <div class="formula">
+        (+) Subject + V1 / V1+s (he/she/it)<br>
+        (-) Subject + do/does + not + V1<br>
+        (?) Do/Does + Subject + V1?
+      </div>
+      <table class="examples">
+        <tr><th>Misol</th><th>Tarjima</th></tr>
+        <tr><td>I study every day.</td><td>Men har kuni o'qiyman.</td></tr>
+        <tr><td>She works in a hospital.</td><td>U kasalxonada ishlaydi.</td></tr>
+        <tr><td>They don't eat meat.</td><td>Ular go'sht yemaydi.</td></tr>
+        <tr><td>Does he speak English?</td><td>U inglizcha gapiradi?</td></tr>
+      </table>
+      <div class="note">always, usually, often, sometimes, never, every day — bu so'zlar Present Simple bilan ko'p ishlatiladi.</div>
+    </div>
+  </div>
+
+  <!-- Present Continuous -->
+  <div class="grammar-section reveal" onclick="toggle(this)">
+    <div class="grammar-header">
+      <div class="grammar-header-left">
+        <span class="grammar-num">02</span>
+        <span class="grammar-title">Present Continuous</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="grammar-tag">Hozir bo'layotgan</span>
+        <span class="grammar-arrow">›</span>
+      </div>
+    </div>
+    <div class="grammar-body">
+      <p><strong>Present Continuous</strong> — hozir, shu payt ro'y berayotgan harakatlar uchun.</p>
+      <div class="formula">
+        (+) Subject + am/is/are + V-ing<br>
+        (-) Subject + am/is/are + not + V-ing<br>
+        (?) Am/Is/Are + Subject + V-ing?
+      </div>
+      <table class="examples">
+        <tr><th>Misol</th><th>Tarjima</th></tr>
+        <tr><td>I am reading a book now.</td><td>Men hozir kitob o'qiyapman.</td></tr>
+        <tr><td>She is not sleeping.</td><td>U uxlamayapti.</td></tr>
+        <tr><td>Are they playing football?</td><td>Ular futbol o'ynayaptimi?</td></tr>
+        <tr><td>We are learning English.</td><td>Biz ingliz tilini o'rganmoqdamiz.</td></tr>
+      </table>
+      <div class="note">now, at the moment, currently, right now — bu so'zlar Present Continuous bilan ishlatiladi.</div>
+    </div>
+  </div>
+
+  <!-- Past Simple -->
+  <div class="grammar-section reveal" onclick="toggle(this)">
+    <div class="grammar-header">
+      <div class="grammar-header-left">
+        <span class="grammar-num">03</span>
+        <span class="grammar-title">Past Simple</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="grammar-tag">O'tgan zamon</span>
+        <span class="grammar-arrow">›</span>
+      </div>
+    </div>
+    <div class="grammar-body">
+      <p><strong>Past Simple</strong> — o'tgan zamonda tugallangan harakatlar uchun.</p>
+      <div class="formula">
+        (+) Subject + V2 (regular: V+ed)<br>
+        (-) Subject + did not + V1<br>
+        (?) Did + Subject + V1?
+      </div>
+      <table class="examples">
+        <tr><th>Misol</th><th>Tarjima</th></tr>
+        <tr><td>I watched a movie yesterday.</td><td>Men kecha kino ko'rdim.</td></tr>
+        <tr><td>She didn't come to school.</td><td>U maktabga kelmadi.</td></tr>
+        <tr><td>Did you call him?</td><td>Siz unga qo'ng'iroq qildingizmi?</td></tr>
+        <tr><td>They went to London last year.</td><td>Ular o'tgan yil Londonga bordi.</td></tr>
+      </table>
+      <div class="note">yesterday, last week/year/month, ago, in 2020 — bu so'zlar Past Simple bilan ishlatiladi.</div>
+    </div>
+  </div>
+
+  <!-- Future Simple -->
+  <div class="grammar-section reveal" onclick="toggle(this)">
+    <div class="grammar-header">
+      <div class="grammar-header-left">
+        <span class="grammar-num">04</span>
+        <span class="grammar-title">Future Simple</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="grammar-tag">Kelasi zamon</span>
+        <span class="grammar-arrow">›</span>
+      </div>
+    </div>
+    <div class="grammar-body">
+      <p><strong>Future Simple</strong> — kelasi zamonda bo'ladigan harakatlar, va'dalar, bashoratlar uchun.</p>
+      <div class="formula">
+        (+) Subject + will + V1<br>
+        (-) Subject + will not (won't) + V1<br>
+        (?) Will + Subject + V1?
+      </div>
+      <table class="examples">
+        <tr><th>Misol</th><th>Tarjima</th></tr>
+        <tr><td>I will call you tomorrow.</td><td>Men sizga ertaga qo'ng'iroq qilaman.</td></tr>
+        <tr><td>She won't be late.</td><td>U kech qolmaydi.</td></tr>
+        <tr><td>Will they come?</td><td>Ular kelishadimi?</td></tr>
+        <tr><td>It will rain tonight.</td><td>Bu kecha yomg'ir yog'adi.</td></tr>
+      </table>
+      <div class="note">tomorrow, next week/year, soon, in the future — bu so'zlar Future Simple bilan ishlatiladi.</div>
+    </div>
+  </div>
+
+  <!-- Present Perfect -->
+  <div class="grammar-section reveal" onclick="toggle(this)">
+    <div class="grammar-header">
+      <div class="grammar-header-left">
+        <span class="grammar-num">05</span>
+        <span class="grammar-title">Present Perfect</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="grammar-tag">Tajriba / natija</span>
+        <span class="grammar-arrow">›</span>
+      </div>
+    </div>
+    <div class="grammar-body">
+      <p><strong>Present Perfect</strong> — qachon bo'lgani noma'lum, lekin natijasi hozir sezilayotgan harakatlar uchun. Yoki hayotdagi tajribalar uchun.</p>
+      <div class="formula">
+        (+) Subject + have/has + V3 (past participle)<br>
+        (-) Subject + have/has + not + V3<br>
+        (?) Have/Has + Subject + V3?
+      </div>
+      <table class="examples">
+        <tr><th>Misol</th><th>Tarjima</th></tr>
+        <tr><td>I have visited London.</td><td>Men Londonga borgandim (hayotimda).</td></tr>
+        <tr><td>She has lost her keys.</td><td>U kalitlarini yo'qotib qo'ydi (hozir yo'q).</td></tr>
+        <tr><td>Have you ever eaten sushi?</td><td>Siz hech sushi yeganmisiz?</td></tr>
+        <tr><td>They have just arrived.</td><td>Ular hozirgina keldi.</td></tr>
+      </table>
+      <div class="note">ever, never, already, yet, just, recently, since, for — Present Perfect bilan ishlatiladigan kalit so'zlar.</div>
+    </div>
+  </div>
+
+  <!-- ── CONDITIONALS ────────────────────────── -->
+  <p class="s-label reveal" style="margin-top:52px;">Shartli gaplar</p>
+  <h2 class="s-title reveal" style="margin-bottom:24px;">Conditionals</h2>
+
+  <!-- Zero Conditional -->
+  <div class="grammar-section reveal" onclick="toggle(this)">
+    <div class="grammar-header">
+      <div class="grammar-header-left">
+        <span class="grammar-num">06</span>
+        <span class="grammar-title">Zero Conditional</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="grammar-tag">Umumiy haqiqat</span>
+        <span class="grammar-arrow">›</span>
+      </div>
+    </div>
+    <div class="grammar-body">
+      <p><strong>Zero Conditional</strong> — har doim to'g'ri bo'lgan faktlar va qoidalar uchun.</p>
+      <div class="formula">If + Present Simple, Present Simple</div>
+      <table class="examples">
+        <tr><th>Misol</th><th>Tarjima</th></tr>
+        <tr><td>If you heat water, it boils.</td><td>Agar suvni isitsa, u qaynaydi.</td></tr>
+        <tr><td>If it rains, the ground gets wet.</td><td>Agar yomg'ir yog'sa, yer ho'l bo'ladi.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- First Conditional -->
+  <div class="grammar-section reveal" onclick="toggle(this)">
+    <div class="grammar-header">
+      <div class="grammar-header-left">
+        <span class="grammar-num">07</span>
+        <span class="grammar-title">First Conditional</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="grammar-tag">Real imkoniyat</span>
+        <span class="grammar-arrow">›</span>
+      </div>
+    </div>
+    <div class="grammar-body">
+      <p><strong>First Conditional</strong> — real va mumkin bo'lgan kelasi holatlar uchun.</p>
+      <div class="formula">If + Present Simple, will + V1</div>
+      <table class="examples">
+        <tr><th>Misol</th><th>Tarjima</th></tr>
+        <tr><td>If I study hard, I will pass the exam.</td><td>Agar ko'p o'qisam, imtihondan o'taman.</td></tr>
+        <tr><td>If it rains, we won't go out.</td><td>Agar yomg'ir yog'sa, chiqmaymiz.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Second Conditional -->
+  <div class="grammar-section reveal" onclick="toggle(this)">
+    <div class="grammar-header">
+      <div class="grammar-header-left">
+        <span class="grammar-num">08</span>
+        <span class="grammar-title">Second Conditional</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="grammar-tag">Xayoliy holat</span>
+        <span class="grammar-arrow">›</span>
+      </div>
+    </div>
+    <div class="grammar-body">
+      <p><strong>Second Conditional</strong> — hozirda bo'lmagan yoki bo'lishi qiyin xayoliy vaziyatlar uchun.</p>
+      <div class="formula">If + Past Simple, would + V1</div>
+      <table class="examples">
+        <tr><th>Misol</th><th>Tarjima</th></tr>
+        <tr><td>If I had money, I would travel the world.</td><td>Agar pulim bo'lsa, dunyoni kezardim.</td></tr>
+        <tr><td>If she were a doctor, she would help people.</td><td>Agar u shifokor bo'lsa, odamlarga yordam berardi.</td></tr>
+      </table>
+      <div class="note">Second Conditional da "if I was" emas, to'g'ri shakl "if I were" dir.</div>
+    </div>
+  </div>
+
+  <!-- ── PASSIVE VOICE ───────────────────────── -->
+  <p class="s-label reveal" style="margin-top:52px;">Majhul nisbat</p>
+  <h2 class="s-title reveal" style="margin-bottom:24px;">Passive Voice</h2>
+
+  <div class="grammar-section reveal" onclick="toggle(this)">
+    <div class="grammar-header">
+      <div class="grammar-header-left">
+        <span class="grammar-num">09</span>
+        <span class="grammar-title">Passive Voice — asoslar</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="grammar-tag">Majhul nisbat</span>
+        <span class="grammar-arrow">›</span>
+      </div>
+    </div>
+    <div class="grammar-body">
+      <p><strong>Passive Voice</strong> — harakat kimga yoki nimaga qaratilgan bo'lsa, u bosh mavzu bo'ladi. Kim qilgani muhim emas yoki noma'lum.</p>
+      <div class="formula">
+        Subject + am/is/are/was/were + V3 (+ by + agent)<br><br>
+        Active:  Someone built this house in 1990.<br>
+        Passive: This house was built in 1990.
+      </div>
+      <table class="examples">
+        <tr><th>Active</th><th>Passive</th></tr>
+        <tr><td>They make cars here.</td><td>Cars are made here.</td></tr>
+        <tr><td>She wrote this book.</td><td>This book was written by her.</td></tr>
+        <tr><td>They will finish the project.</td><td>The project will be finished.</td></tr>
+        <tr><td>He has cleaned the room.</td><td>The room has been cleaned.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── MODAL VERBS ─────────────────────────── -->
+  <p class="s-label reveal" style="margin-top:52px;">Modal fe'llar</p>
+  <h2 class="s-title reveal" style="margin-bottom:24px;">Modal Verbs</h2>
+
+  <div class="grammar-section reveal" onclick="toggle(this)">
+    <div class="grammar-header">
+      <div class="grammar-header-left">
+        <span class="grammar-num">10</span>
+        <span class="grammar-title">Modal Verbs — can, must, should, may</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="grammar-tag">Yordamchi fe'llar</span>
+        <span class="grammar-arrow">›</span>
+      </div>
+    </div>
+    <div class="grammar-body">
+      <p><strong>Modal verbs</strong> — qobiliyat, majburiyat, ruxsat va ehtimolni ifodalaydi. Keyin har doim <strong>V1</strong> keladi.</p>
+      <table class="examples">
+        <tr><th>Modal</th><th>Ma'nosi</th><th>Misol</th></tr>
+        <tr><td><strong>can</strong></td><td>Qila oladi</td><td>I can swim. — Men suzishni bilaman.</td></tr>
+        <tr><td><strong>can't</strong></td><td>Qila olmaydi</td><td>She can't drive. — U mashina haydashni bilmaydi.</td></tr>
+        <tr><td><strong>must</strong></td><td>Shart / kerak</td><td>You must study. — Siz o'qishingiz shart.</td></tr>
+        <tr><td><strong>should</strong></td><td>Kerak (maslahat)</td><td>You should sleep early. — Erta uxlashingiz kerak.</td></tr>
+        <tr><td><strong>may</strong></td><td>Mumkin / ehtimol</td><td>It may rain. — Yomg'ir yog'ishi mumkin.</td></tr>
+        <tr><td><strong>might</strong></td><td>Balki (kamroq)</td><td>He might come. — U balki kelsa kerak.</td></tr>
+        <tr><td><strong>would</strong></td><td>Xayoliy / xushmuomala</td><td>I would like tea. — Men choy ichasam edi.</td></tr>
+      </table>
+      <div class="note">Modal verblardan keyin HECH QACHON "to" yoki "s/es" qo'shilmaydi: ❌ He cans swim / He can to swim. ✅ He can swim.</div>
+    </div>
+  </div>
+
+
+
+
+  <!-- ── ARTICLES ───────────────────────────────── -->
+  <p class="s-label reveal" style="margin-top:16px;">Articles</p>
+  <h2 class="s-title reveal" style="margin-bottom:24px;">Articles — a, an, the</h2>
+
+  <!-- Articles -->
+  <div class="grammar-section reveal" onclick="toggle(this)">
+    <div class="grammar-header">
+      <div class="grammar-header-left">
+        <span class="grammar-num">10</span>
+        <span class="grammar-title">Articles — a, an, the</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="grammar-tag">Artikl</span>
+        <span class="grammar-arrow">›</span>
+      </div>
+    </div>
+    <div class="grammar-body">
+      <p><strong>Articles</strong> — ingliz tilida ismlardan oldin qo'llaniladigan maxsus so'zlar. 3 ta article mavjud: <strong>a</strong>, <strong>an</strong> va <strong>the</strong>. Ba'zan article umuman ishlatilmaydi.</p>
+
+      <div class="formula">
+        a  + undosh tovush bilan boshlanadigan so'z &nbsp;→&nbsp; a book, a cat, a university<br>
+        an + unli tovush bilan boshlanadigan so'z &nbsp;&nbsp;→&nbsp; an apple, an hour, an egg<br>
+        the + ma'lum / aniq / yagona narsa &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→&nbsp; the sun, the best, the Nile<br>
+        — &nbsp;+ umumiy tushuncha / ism / ko'plik &nbsp;&nbsp;&nbsp;&nbsp;→&nbsp; Life is short. Dogs are cute.
+      </div>
+
+      <table class="examples">
+        <tr><th>Article</th><th>Qachon</th><th>Misol</th></tr>
+        <tr><td><strong>a</strong></td><td>Birinchi marta tilga olinayotgan, noaniq (undosh tovush)</td><td>I saw <strong>a</strong> dog. She is <strong>a</strong> teacher.</td></tr>
+        <tr><td><strong>an</strong></td><td>Birinchi marta tilga olinayotgan, noaniq (unli tovush)</td><td><strong>An</strong> apple. <strong>An</strong> honest man. <strong>An</strong> hour.</td></tr>
+        <tr><td><strong>the</strong></td><td>Avval tilga olingan, ma'lum, yagona narsalar, superlative</td><td><strong>The</strong> dog was big. <strong>The</strong> sun. <strong>The</strong> best.</td></tr>
+        <tr><td><strong>—</strong></td><td>Umumiy tushuncha, ism, ko'plik</td><td>I love <strong>music</strong>. <strong>Cats</strong> are friendly.</td></tr>
+      </table>
+
+      <h4 style="margin:20px 0 10px;font-family:var(--font);color:var(--accent2);font-size:15px;">A vs AN — Tovushga qarab, harfga emas!</h4>
+      <table class="examples">
+        <tr><th>So'z</th><th>Boshlanish tovushi</th><th>To'g'ri article</th></tr>
+        <tr><td>university</td><td>"yu" (undosh)</td><td><strong>a</strong> university</td></tr>
+        <tr><td>hour</td><td>"aw" (unli, h jim)</td><td><strong>an</strong> hour</td></tr>
+        <tr><td>honest</td><td>"o" (unli, h jim)</td><td><strong>an</strong> honest man</td></tr>
+        <tr><td>European</td><td>"yu" (undosh)</td><td><strong>a</strong> European country</td></tr>
+        <tr><td>umbrella</td><td>"a" (unli)</td><td><strong>an</strong> umbrella</td></tr>
+      </table>
+
+      <h4 style="margin:20px 0 10px;font-family:var(--font);color:var(--accent2);font-size:15px;">THE qachon ishlatiladi?</h4>
+      <table class="examples">
+        <tr><th>Holat</th><th>Misol</th></tr>
+        <tr><td>Avval tilga olingan narsa</td><td>I bought <em>a car</em>. <em>The car</em> is red.</td></tr>
+        <tr><td>Yagona narsalar</td><td><em>The</em> sun, <em>the</em> moon, <em>the</em> sky, <em>the</em> Earth</td></tr>
+        <tr><td>Superlative oldida</td><td><em>The</em> best, <em>the</em> tallest, <em>the</em> most beautiful</td></tr>
+        <tr><td>Daryo, dengiz, okean</td><td><em>The</em> Nile, <em>the</em> Pacific Ocean, <em>the</em> Aral Sea</td></tr>
+        <tr><td>Musiqa asboblari</td><td>play <em>the</em> piano, <em>the</em> guitar, <em>the</em> violin</td></tr>
+        <tr><td>Ordinal numbers</td><td><em>The</em> first, <em>the</em> second, <em>the</em> third</td></tr>
+      </table>
+
+      <h4 style="margin:20px 0 10px;font-family:var(--font);color:var(--accent2);font-size:15px;">Article ISHLATILMAYDI</h4>
+      <table class="examples">
+        <tr><th>Holat</th><th>Misol</th></tr>
+        <tr><td>Umumiy tushunchalar</td><td>Life is beautiful. Love is powerful.</td></tr>
+        <tr><td>Ko'plik umumiy ma'noda</td><td>Cats are cute. Books are useful.</td></tr>
+        <tr><td>Shahar, mamlakat nomlari (aksariyat)</td><td>I live in Tashkent. She is from France.</td></tr>
+        <tr><td>Sport va o'yinlar</td><td>He plays football / chess / tennis.</td></tr>
+        <tr><td>Ovqat, til, fan umumiy</td><td>I love music. She studies mathematics.</td></tr>
+        <tr><td>Hafta kunlari, oylar</td><td>See you on Monday. She was born in July.</td></tr>
+      </table>
+
+      <div class="note">🔑 Qisqa qoida: <strong>a/an</strong> = birinchi marta, noaniq &nbsp;|&nbsp; <strong>the</strong> = ma'lum, aniq, yagona &nbsp;|&nbsp; <strong>—</strong> = umumiy tushuncha</div>
+    </div>
+  </div>
+
+
+<!-- Firebase Auth -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth = getAuth(initializeApp({
+  apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",
+  authDomain:"it-study-a45fa.firebaseapp.com",
+  projectId:"it-study-a45fa",
+  storageBucket:"it-study-a45fa.firebasestorage.app",
+  messagingSenderId:"973750187023",
+  appId:"1:973750187023:web:c38b839da825ffa0681f7a"
+}));
+const ua = document.getElementById("userArea");
+onAuthStateChanged(auth, user => {
+  if(user){ const n=user.displayName||user.email; ua.outerHTML=`<div class="profile-pill"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`; }
+  else { ua.textContent="Kirish"; ua.href="login.html"; }
+});
+</script>
+
+<!-- Accordion toggle -->
+<script>
+function toggle(el) {
+  el.classList.toggle('open');
+}
+</script>
+
+<!-- Scroll reveal -->
+<script>
+const ro = new IntersectionObserver(
+  es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }),
+  {threshold:0.06}
+);
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+</script>
+
+<!-- Grammar Tests Section -->
+<div style="margin-top: 64px; margin-bottom: 64px;"></div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:36px 40px;">
+    <p class="s-label" style="margin-top: 64px; margin-bottom: 64px;"></p>>Grammar Testlar</p>
+    <h2 style="font-family:var(--font);font-size:22px;font-weight:800;color:var(--text);margin-bottom:8px;">Har bir mavzuni test qiling 🧪</h2>
+    <p style="color:var(--muted);font-size:14px;margin-bottom:24px;font-weight:300;">Darsni o'qib bo'lgandan keyin testni bajaring — 10 ta savol, to'g'ri javoblar izoh bilan</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;">
+      <a href="grammar-test-present-simple.html" class="g-test-btn">📝 Present Simple</a>
+      <a href="grammar-test-past-simple.html" class="g-test-btn">📝 Past Simple</a>
+      <a href="grammar-test-future-simple.html" class="g-test-btn">📝 Future Simple</a>
+      <a href="grammar-test-present-continuous.html" class="g-test-btn">📝 Present Continuous</a>
+      <a href="grammar-test-present-perfect.html" class="g-test-btn">📝 Present Perfect</a>
+      <a href="grammar-test-zero-first-conditional.html" class="g-test-btn">📝 Zero/First Conditional</a>
+      <a href="grammar-test-second-conditional.html" class="g-test-btn">📝 Second Conditional</a>
+      <a href="grammar-test-passive-voice.html" class="g-test-btn">📝 Passive Voice</a>
+      <a href="grammar-test-modal-verbs.html" class="g-test-btn">📝 Modal Verbs</a>
+      <a href="grammar-test-articles.html" class="g-test-btn">📝 Articles</a>
+    </div>
+  </div>
+</div>
+ <!-- Back button -->
+  <div style="margin-top:48px;text-align:center;" class="clear">
+    <a href="english.html" style="color:var(--muted);font-size:14px;">← English bo'limiga qaytish</a>
+  </div>
+
+</div>
+
+</div>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

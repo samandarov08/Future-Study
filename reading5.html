@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading 5 | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .reading-wrap{max-width:860px;margin:0 auto;padding:64px 48px 100px;}
+    .passage{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:44px 48px;margin-bottom:24px;line-height:2;font-size:16px;color:var(--text);}
+    .passage h2{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:28px;text-transform:uppercase;line-height:1.4;}
+    .passage h3{font-family:var(--font);font-size:17px;font-weight:700;color:var(--accent2);margin:32px 0 14px;}
+    .passage h4{font-family:var(--font);font-size:15px;font-weight:700;color:var(--accent);margin:22px 0 10px;}
+    .passage p{margin-bottom:18px;color:var(--muted);font-weight:300;}
+    .passage b{color:var(--accent2);font-weight:600;}
+    .tr{font-style:italic;font-size:13px;color:var(--muted);opacity:0.7;margin-left:3px;}
+    .vocab-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;margin-bottom:24px;}
+    .vocab-wrap h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:24px;}
+    .comp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;margin-bottom:24px;}
+    .comp-card h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:28px;}
+    .comp-q{margin-bottom:24px;}
+    .comp-q p{font-size:15px;color:var(--text);margin-bottom:10px;font-weight:500;}
+    .comp-options{display:flex;flex-direction:column;gap:8px;}
+    .comp-opt{padding:11px 16px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:14px;color:var(--muted);transition:background var(--ease),border-color var(--ease),color var(--ease);}
+    .comp-opt:hover{background:rgba(79,142,247,0.1);border-color:var(--accent);color:var(--text);}
+    .comp-opt.correct{background:rgba(34,197,94,0.18)!important;border-color:#22c55e!important;color:#86efac!important;}
+    .comp-opt.wrong{background:rgba(239,68,68,0.18)!important;border-color:#ef4444!important;color:#fca5a5!important;}
+    .comp-opt.show-correct{background:rgba(34,197,94,0.08);border-color:rgba(34,197,94,0.35);color:#86efac;}
+    .done-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+    .done-bar p{color:var(--muted);font-size:15px;font-weight:300;}
+    .done-btn{padding:12px 28px;border:none;border-radius:99px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:15px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease);}
+    .done-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,142,247,0.4);}
+    .done-btn.done{background:linear-gradient(135deg,#22c55e,#4ade80);}
+    .nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:32px;}
+    .nav-btns a{font-size:14px;color:var(--muted);}
+    .nav-btns a.next{color:var(--accent2);font-weight:500;}
+    @media(max-width:768px){.reading-wrap{padding:40px 20px 80px;}.passage{padding:28px 22px;}}
+  </style>
+</head>
+<body class="theme-1">
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="english.html">English</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+
+<div class="reading-wrap">
+  <div class="breadcrumb reveal">English <span>›</span> Reading <span>›</span> Dars 5</div>
+  <div class="reveal" style="margin-bottom:40px;">
+    <p class="s-label">Reading 5 / 10</p>
+    <h1 style="font-family:var(--font);font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-1px;line-height:1.1;color:var(--text);margin-bottom:12px;">Atrof-Muhit va Iqlim O'zgarishi 🌍</h1>
+    <p style="font-size:15px;color:var(--muted);font-weight:300;">IELTS Academic · ~1300 so'z · O'rta-Yuqori daraja</p>
+  </div>
+
+  <div class="passage reveal">
+    <h2>CLIMATE CHANGE AND THE GLOBAL ENVIRONMENTAL CRISIS</h2>
+    <p>Climate change represents one of the most significant <b>existential threats</b><span class="tr">(mavjudlikka tahdid)</span> facing humanity in the 21st century. Driven primarily by the <b>combustion</b><span class="tr">(yonish)</span> of <b>fossil fuels</b><span class="tr">(qazilma yoqilg'i)</span> — coal, oil, and natural gas — and accelerated by <b>deforestation</b><span class="tr">(o'rmonlarni yo'q qilish)</span> and industrial agriculture, the <b>accumulation</b><span class="tr">(to'planish)</span> of <b>greenhouse gases</b><span class="tr">(issiqxona gazlari)</span> in the Earth's atmosphere is causing average global temperatures to rise at an unprecedented rate.</p>
+    <p>The scientific consensus on climate change is <b>overwhelming</b><span class="tr">(kuchli, haddan ziyod)</span>. The <b>Intergovernmental Panel on Climate Change</b><span class="tr">(Iqlim O'zgarishi bo'yicha Hukumatlararo Panel)</span>, or IPCC, has concluded with near-certainty that human activity is the dominant cause of observed warming since the mid-20th century. The consequences of this warming are already being felt: rising sea levels, more frequent and intense <b>extreme weather events</b><span class="tr">(o'ta og'ir ob-havo hodisalari)</span>, <b>melting glaciers</b><span class="tr">(eriyotgan muzliklar)</span>, and the disruption of <b>ecosystems</b><span class="tr">(ekotizimlar)</span> on which human survival depends.</p>
+
+    <h3>1. Causes of Climate Change</h3>
+    <h4>1.1 Greenhouse Gas Emissions</h4>
+    <p>The primary driver of contemporary climate change is the <b>emission</b><span class="tr">(chiqarish, tarqatish)</span> of greenhouse gases — particularly carbon dioxide (CO₂) and methane — from human activities. The energy sector is the largest single source of these emissions, accounting for approximately 73% of global greenhouse gas output. <b>Deforestation</b><span class="tr">(o'rmonlarni yo'q qilish)</span> compounds this problem by removing <b>carbon sinks</b><span class="tr">(karbon yutuvchilar)</span> — forests, oceans, and soils that naturally absorb CO₂ from the atmosphere. When forests are cleared, this stored carbon is released, further <b>exacerbating</b><span class="tr">(yomonlashtirmoq)</span> the problem.</p>
+    <h4>1.2 Agricultural and Industrial Contributions</h4>
+    <p>Agriculture accounts for approximately 18-20% of global greenhouse gas emissions, primarily through livestock farming — which produces large quantities of methane — and the use of <b>nitrogen-based fertilisers</b><span class="tr">(azot asosidagi o'g'itlar)</span>, which release nitrous oxide. Industrial processes, including cement and steel production, also contribute significantly. The <b>built environment</b><span class="tr">(qurilgan muhit)</span> — including buildings and transportation — is responsible for a substantial portion of global energy demand and associated emissions.</p>
+
+    <h3>2. Consequences of Climate Change</h3>
+    <h4>2.1 Physical and Environmental Impacts</h4>
+    <p>The physical consequences of climate change are already measurable. Global average temperatures have risen by approximately 1.1°C above pre-industrial levels, and scientists warn that <b>exceeding</b><span class="tr">(oshib ketmoq)</span> 1.5°C of warming will trigger increasingly severe and irreversible impacts. These include the loss of the world's coral reefs due to <b>ocean acidification</b><span class="tr">(okean kislotalanishi)</span>, the <b>displacement</b><span class="tr">(siqib chiqarish)</span> of hundreds of millions of people from low-lying coastal areas due to sea-level rise, and the <b>extinction</b><span class="tr">(yo'q bo'lish)</span> of numerous plant and animal species as their <b>habitats</b><span class="tr">(yashash muhiti)</span> are destroyed.</p>
+    <h4>2.2 Human and Social Impacts</h4>
+    <p>Climate change also has profound human consequences. <b>Food security</b><span class="tr">(oziq-ovqat xavfsizligi)</span> is threatened by changing <b>precipitation patterns</b><span class="tr">(yog'ingarchilik naqshlari)</span>, more frequent droughts, and reduced <b>agricultural yields</b><span class="tr">(qishloq xo'jaligi mahsulotlari)</span> in already vulnerable regions. The World Health Organization projects that climate change will cause approximately 250,000 additional deaths per year between 2030 and 2050, due to malnutrition, malaria, diarrhoea, and heat stress. Communities in developing nations — which have contributed least to global emissions — are often most severely affected.</p>
+
+    <h3>3. Responses to Climate Change</h3>
+    <h4>3.1 Mitigation Strategies</h4>
+    <p><b>Mitigation</b><span class="tr">(yumshatish, kamaytirish)</span> — reducing greenhouse gas emissions to limit the extent of climate change — requires fundamental changes to energy systems, transportation, agriculture, and industry. The transition to <b>renewable energy</b><span class="tr">(qayta tiklanadigan energiya)</span> sources — solar, wind, hydroelectric, and geothermal power — is central to this effort. The cost of renewable energy has fallen dramatically in recent years, making it increasingly competitive with <b>fossil fuels</b>. <b>Energy efficiency</b><span class="tr">(energiya samaradorligi)</span> improvements in buildings, vehicles, and industrial processes can also significantly reduce emissions.</p>
+    <h4>3.2 Adaptation Strategies</h4>
+    <p>Even if emissions are rapidly reduced, some degree of further climate change is now <b>inevitable</b><span class="tr">(muqarrar)</span> due to the gases already in the atmosphere. <b>Adaptation</b><span class="tr">(moslashish)</span> — adjusting to actual or expected climate conditions — is therefore also essential. This includes building <b>sea walls</b><span class="tr">(dengiz devorlari)</span> to protect coastal communities, developing <b>drought-resistant</b><span class="tr">(qurg'oqchilikka chidamli)</span> crops, redesigning cities to cope with extreme heat, and developing early warning systems for <b>natural disasters</b><span class="tr">(tabiiy ofatlar)</span>.</p>
+    <h4>3.3 International Agreements</h4>
+    <p>International cooperation is essential for addressing climate change, as emissions anywhere in the world affect the climate everywhere. The <b>Paris Agreement</b><span class="tr">(Parij Shartnomasi)</span> of 2015, signed by nearly 200 countries, committed nations to limiting global warming to well below 2°C above pre-industrial levels. However, critics argue that the commitments made under the Paris Agreement are insufficient to meet this target, and that more ambitious action is urgently needed. The concept of <b>climate justice</b><span class="tr">(iqlim adolati)</span> — recognising that the burden of climate change falls disproportionately on the world's most vulnerable populations — has also gained increasing prominence in international negotiations.</p>
+
+    <h3>Conclusion</h3>
+    <p>Climate change is not merely an environmental issue — it is a profound challenge to human civilisation, economic systems, and social justice. Addressing it effectively requires unprecedented levels of political will, international cooperation, technological innovation, and social change. The decisions made in the next decade will determine the trajectory of the planet's climate for centuries to come, making this arguably the most consequential policy challenge in human history.</p>
+  </div>
+
+  <div class="vocab-wrap reveal">
+    <h3>📘 Muhim so'zlar — Reading 5</h3>
+    <div class="vocab-grid">
+      <div class="vocab-card"><h4>existential threats</h4><p>mavjudlikka tahdid</p></div>
+      <div class="vocab-card"><h4>fossil fuels</h4><p>qazilma yoqilg'i</p></div>
+      <div class="vocab-card"><h4>deforestation</h4><p>o'rmonlarni yo'q qilish</p></div>
+      <div class="vocab-card"><h4>greenhouse gases</h4><p>issiqxona gazlari</p></div>
+      <div class="vocab-card"><h4>accumulation</h4><p>to'planish</p></div>
+      <div class="vocab-card"><h4>extreme weather events</h4><p>o'ta og'ir ob-havo hodisalari</p></div>
+      <div class="vocab-card"><h4>ecosystems</h4><p>ekotizimlar</p></div>
+      <div class="vocab-card"><h4>emission</h4><p>chiqarish, tarqatish</p></div>
+      <div class="vocab-card"><h4>carbon sinks</h4><p>karbon yutuvchilar</p></div>
+      <div class="vocab-card"><h4>exacerbating</h4><p>yomonlashtirmoq</p></div>
+      <div class="vocab-card"><h4>ocean acidification</h4><p>okean kislotalanishi</p></div>
+      <div class="vocab-card"><h4>extinction</h4><p>yo'q bo'lish</p></div>
+      <div class="vocab-card"><h4>habitats</h4><p>yashash muhiti</p></div>
+      <div class="vocab-card"><h4>food security</h4><p>oziq-ovqat xavfsizligi</p></div>
+      <div class="vocab-card"><h4>agricultural yields</h4><p>qishloq xo'jaligi mahsulotlari</p></div>
+      <div class="vocab-card"><h4>mitigation</h4><p>yumshatish, kamaytirish</p></div>
+      <div class="vocab-card"><h4>renewable energy</h4><p>qayta tiklanadigan energiya</p></div>
+      <div class="vocab-card"><h4>energy efficiency</h4><p>energiya samaradorligi</p></div>
+      <div class="vocab-card"><h4>inevitable</h4><p>muqarrar</p></div>
+      <div class="vocab-card"><h4>adaptation</h4><p>moslashish</p></div>
+      <div class="vocab-card"><h4>drought-resistant</h4><p>qurg'oqchilikka chidamli</p></div>
+      <div class="vocab-card"><h4>natural disasters</h4><p>tabiiy ofatlar</p></div>
+      <div class="vocab-card"><h4>Paris Agreement</h4><p>Parij Shartnomasi</p></div>
+      <div class="vocab-card"><h4>climate justice</h4><p>iqlim adolati</p></div>
+      <div class="vocab-card"><h4>displacement</h4><p>siqib chiqarish</p></div>
+      <div class="vocab-card"><h4>precipitation patterns</h4><p>yog'ingarchilik naqshlari</p></div>
+      <div class="vocab-card"><h4>overwhelming</h4><p>kuchli, haddan ziyod</p></div>
+      <div class="vocab-card"><h4>exceeding</h4><p>oshib ketmoq</p></div>
+      <div class="vocab-card"><h4>sea walls</h4><p>dengiz devorlari</p></div>
+      <div class="vocab-card"><h4>built environment</h4><p>qurilgan muhit</p></div>
+
+    </div>
+  </div>
+
+  <div class="comp-card reveal">
+    <h3>❓ Tushunish savollari</h3>
+    <div class="comp-q">
+      <p>1. According to the passage, what is the primary driver of contemporary climate change?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Natural volcanic eruptions and solar activity</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) Emission of greenhouse gases from human activities</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) Changes in ocean currents</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Increased animal populations worldwide</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>2. What are 'carbon sinks' as described in the text?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Underground storage facilities for CO₂</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) Industrial equipment that captures carbon emissions</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) Forests, oceans and soils that naturally absorb CO₂</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Countries that produce the most carbon emissions</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>3. Who does the passage say is most severely affected by climate change?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Wealthy industrialised nations</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) Countries in cold climates</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) Communities in developing nations that have contributed least to emissions</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Only coastal populations worldwide</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>4. What is the difference between mitigation and adaptation?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Mitigation is short-term while adaptation is long-term</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) Mitigation reduces emissions while adaptation adjusts to unavoidable changes</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) Mitigation is more expensive than adaptation</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Adaptation prevents climate change while mitigation only slows it</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>5. What criticism is made of the Paris Agreement?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Too many countries refused to sign it</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) It focuses only on developed countries</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) The commitments made are insufficient to meet the 2°C target</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) It was signed too recently to have any effect</div>
+      </div>
+    </div>
+
+    <p id="compScore" style="margin-top:24px;font-family:var(--font);font-size:16px;font-weight:700;color:var(--accent2);min-height:24px;"></p>
+  </div>
+
+  <div class="done-bar reveal">
+    <p>📖 Matnni o'qib, savollarga javob berdingizmi?</p>
+    <button class="done-btn" id="doneBtn" onclick="markDone()">✅ O'qib bo'ldim</button>
+  </div>
+  <div class="nav-btns reveal">
+    <a href="reading-4.html">← Reading 4</a>
+    <a href="reading-6.html" class="next">Reading 6 → Psixologiya va inson xulqi</a>
+  </div>
+</div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth=getAuth(initializeApp({apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",authDomain:"it-study-a45fa.firebaseapp.com",projectId:"it-study-a45fa",storageBucket:"it-study-a45fa.firebasestorage.app",messagingSenderId:"973750187023",appId:"1:973750187023:web:c38b839da825ffa0681f7a"}));
+const ua=document.getElementById("userArea");
+onAuthStateChanged(auth,u=>{if(u){const n=u.displayName||u.email;ua.outerHTML=`<div class="profile-pill"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`;}else{ua.textContent="Kirish";ua.href="login.html";}});
+</script>
+<script>
+let ca=0,cc=0;
+function ans(el,correct){const g=el.closest('.comp-options');if(g.dataset.done)return;g.dataset.done="1";ca++;if(correct){el.classList.add('correct');cc++;}else{el.classList.add('wrong');[...g.children].forEach(o=>{if(o!==el)o.classList.add('show-correct');});}if(ca===5){document.getElementById('compScore').textContent=`Natija: ${cc} / 5 ✅`;localStorage.setItem('reading5Comp',cc);}}
+if(localStorage.getItem('reading5Done')){const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi';b.classList.add('done');}
+function markDone(){localStorage.setItem('reading5Done','true');const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi!';b.classList.add('done');}
+</script>
+<script>const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.04});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

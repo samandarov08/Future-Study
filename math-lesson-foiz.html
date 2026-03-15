@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foiz va nisbat | Math | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .lesson-wrap{max-width:860px;margin:0 auto;padding:64px 48px 100px;}
+    .terms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-bottom:8px;}
+    .term-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;transition:border-color var(--ease),transform var(--ease);}
+    .term-card:hover{border-color:var(--accent);transform:translateY(-3px);}
+    .term-en{font-family:var(--font);font-size:15px;font-weight:700;color:var(--accent2);margin-bottom:4px;}
+    .term-uz{font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:300;}
+    .term-desc{font-size:13px;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);padding-top:8px;margin-top:6px;}
+    .formula-block{background:var(--bg2);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:24px 28px;margin-bottom:16px;}
+    .formula-title{font-family:var(--font);font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:14px;}
+    .formula-main{font-size:20px;color:var(--text);margin-bottom:10px;line-height:1.8;}
+    .formula-note{font-size:13px;color:var(--muted);line-height:1.7;margin-top:10px;font-weight:300;}
+    .formula-note b{color:var(--accent2);font-weight:600;}
+    .example-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:14px;}
+    .example-header{display:flex;align-items:center;gap:14px;padding:18px 26px;cursor:pointer;user-select:none;transition:background var(--ease);}
+    .example-header:hover{background:rgba(255,255,255,0.04);}
+    .example-num{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:var(--font);font-weight:700;font-size:13px;color:#fff;flex-shrink:0;}
+    .example-question{font-size:15px;color:var(--text);font-weight:500;flex:1;}
+    .example-toggle{font-size:12px;color:var(--accent);font-weight:600;white-space:nowrap;padding:5px 13px;border:1px solid rgba(79,142,247,0.3);border-radius:99px;transition:background var(--ease);}
+    .example-header:hover .example-toggle{background:rgba(79,142,247,0.1);}
+    .example-body{display:none;padding:0 26px 26px;border-top:1px solid var(--border);}
+    .example-card.open .example-body{display:block;}
+    .steps{margin-top:18px;}
+    .step{display:flex;gap:14px;margin-bottom:14px;}
+    .step-num{width:26px;height:26px;border-radius:50%;background:rgba(79,142,247,0.12);border:1px solid rgba(79,142,247,0.3);display:flex;align-items:center;justify-content:center;font-family:var(--font);font-size:11px;font-weight:700;color:var(--accent);flex-shrink:0;margin-top:2px;}
+    .step-content{flex:1;}
+    .step-label{font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+    .step-math{font-size:16px;color:var(--text);line-height:1.8;margin-bottom:5px;}
+    .step-explain{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300;}
+    .answer-box{margin-top:18px;padding:14px 18px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.25);border-radius:var(--radius-sm);display:flex;align-items:center;gap:12px;}
+    .answer-box .label{font-family:var(--font);font-size:12px;font-weight:700;color:#22c55e;letter-spacing:0.5px;white-space:nowrap;}
+    .answer-box .val{font-size:17px;color:#86efac;}
+    .try-box{margin-top:12px;padding:12px 16px;background:rgba(79,142,247,0.06);border:1px solid rgba(79,142,247,0.2);border-radius:var(--radius-sm);font-size:13px;color:var(--muted);font-style:italic;}
+    .try-box b{color:var(--accent2);font-style:normal;font-weight:600;}
+    .section-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:36px 40px;margin-bottom:24px;}
+    .done-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:8px;}
+    .done-bar p{color:var(--muted);font-size:15px;font-weight:300;}
+    .done-btn{padding:12px 28px;border:none;border-radius:99px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:15px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease);}
+    .done-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,142,247,0.4);}
+    .done-btn.done{background:linear-gradient(135deg,#22c55e,#4ade80);}
+    .nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:32px;}
+    .nav-btns a{font-size:14px;color:var(--muted);}
+    .nav-btns a.next{color:var(--accent2);font-weight:500;}
+    @media(max-width:768px){.lesson-wrap{padding:40px 20px 80px;}.section-box{padding:24px 20px;}.formula-block{padding:18px 20px;}.example-header{padding:14px 18px;}.example-body{padding:0 18px 18px;}}
+  </style>
+</head>
+<body class="theme-1">
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="math.html">Math</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+<div class="lesson-wrap">
+  <div class="breadcrumb reveal">Math <span>›</span> Foiz va Nisbat</div>
+  <div class="reveal" style="margin-bottom:48px;">
+    <p class="s-label">Math · 5-dars</p>
+    <h1 style="font-family:var(--font);font-size:clamp(32px,5vw,54px);font-weight:800;letter-spacing:-1.5px;line-height:1.08;color:var(--text);margin-bottom:14px;">
+      Foiz va Nisbat<br>
+      <span style="background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Percentage & Ratio 💯</span>
+    </h1>
+    <p style="font-size:16px;color:var(--muted);font-weight:300;max-width:520px;line-height:1.7;">Atamalar → Formulalar → 10 ta yechilgan misol. Har bir qadamni tushunib o'rganing.</p>
+  </div>
+
+  <p class="s-label reveal">1-bosqich</p>
+  <h2 class="s-title reveal" style="margin-bottom:24px;">Atamalar 📖</h2>
+  <div class="section-box reveal">
+    <div class="terms-grid">
+      <div class="term-card">
+        <div class="term-en">Percentage / Foiz</div>
+        <div class="term-uz">Yuzdan bir qism</div>
+        <div class="term-desc">\(1\% = \frac{1}{100} = 0.01\). Masalan: \(25\% = 0.25\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Base / Asos</div>
+        <div class="term-uz">Foiz hisoblanadigan son</div>
+        <div class="term-desc">\(30\%\) of \(200\) da asos = \(200\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Rate / Stavka</div>
+        <div class="term-uz">Foiz miqdori</div>
+        <div class="term-desc">\(30\%\) da stavka = \(30\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Percentage of a number</div>
+        <div class="term-uz">Sonning foizi</div>
+        <div class="term-desc">\(p\%\) of \(N = \frac{p \cdot N}{100}\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Percentage increase</div>
+        <div class="term-uz">Foiz o'sish</div>
+        <div class="term-desc">\(\frac{\text{yangi} - \text{eski}}{\text{eski}} \times 100\%\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Percentage decrease</div>
+        <div class="term-uz">Foiz kamayish</div>
+        <div class="term-desc">\(\frac{\text{eski} - \text{yangi}}{\text{eski}} \times 100\%\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Ratio / Nisbat</div>
+        <div class="term-uz">Ikki sonning munosabati</div>
+        <div class="term-desc">\(a:b = \frac{a}{b}\). Masalan: \(3:4\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Proportion / Proporsiya</div>
+        <div class="term-uz">Ikki nisbat tengligI</div>
+        <div class="term-desc">\(\frac{a}{b} = \frac{c}{d} \Rightarrow ad = bc\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Simple interest</div>
+        <div class="term-uz">Oddiy foiz</div>
+        <div class="term-desc">\(I = P \cdot r \cdot t\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Compound interest</div>
+        <div class="term-uz">Murakkab foiz</div>
+        <div class="term-desc">\(A = P(1 + r)^t\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Discount / Chegirma</div>
+        <div class="term-uz">Narxdan kamaytirish</div>
+        <div class="term-desc">Asl narx × (1 - discount rate)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Markup / Ustama</div>
+        <div class="term-uz">Narxga qo'shish</div>
+        <div class="term-desc">Tannarx × (1 + markup rate)</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="s-label reveal" style="margin-top:16px;">2-bosqich</p>
+  <h2 class="s-title reveal" style="margin-bottom:24px;">Formulalar 📐</h2>
+  <div class="formula-block reveal">
+    <div class="formula-title">Foiz hisoblash</div>
+        <div class="formula-main">\[P = \frac{\text{qism}}{\text{butun}} \times 100\%\]</div>
+        <div class="formula-main">\[\text{qism} = \frac{P \times \text{butun}}{100}\]</div>
+        <div class="formula-main">\[\text{butun} = \frac{\text{qism} \times 100}{P}\]</div>
+        <div class="formula-note">Uchta formuladan qaysi ikkisi berilgan bo'lsa, uchinchisini topasiz.</div>
+  </div>
+  <div class="formula-block reveal">
+    <div class="formula-title">Foiz o'zgarish</div>
+        <div class="formula-main">\[\text{o'sish \%} = \frac{\text{yangi} - \text{eski}}{\text{eski}} \times 100\%\]</div>
+        <div class="formula-main">\[\text{yangi qiymat} = \text{eski} \times \left(1 + \frac{P}{100}\right)\]</div>
+  </div>
+  <div class="formula-block reveal">
+    <div class="formula-title">Nisbat va proporsiya</div>
+        <div class="formula-main">\[a : b = c : d \Rightarrow \frac{a}{b} = \frac{c}{d} \Rightarrow ad = bc\]</div>
+        <div class="formula-main">\[\text{Nisbatda bo'lish: } a : b \Rightarrow \text{birinchi qism} = \frac{a}{a+b} \times S\]</div>
+  </div>
+  <div class="formula-block reveal">
+    <div class="formula-title">Oddiy va Murakkab foiz</div>
+        <div class="formula-main">\[\text{Oddiy: } A = P(1 + rt)\]</div>
+        <div class="formula-main">\[\text{Murakkab: } A = P\left(1 + \frac{r}{n}\right)^{nt}\]</div>
+        <div class="formula-note"><b>P</b> — boshlang'ich summa &nbsp;|&nbsp; <b>r</b> — yillik foiz stavkasi &nbsp;|&nbsp; <b>t</b> — yil soni &nbsp;|&nbsp; <b>n</b> — yilda hisoblash soni</div>
+  </div>
+
+  <p class="s-label reveal" style="margin-top:16px;">3-bosqich</p>
+  <h2 class="s-title reveal" style="margin-bottom:24px;">Yechilgan misollar 🧮</h2>
+  <p style="color:var(--muted);font-size:15px;margin-bottom:24px;font-weight:300;" class="reveal">Har bir misol ustiga bosing — bosqichma-bosqich yechimni ko'ring.</p>
+  <div class="example-card reveal" id="ex1">
+    <div class="example-header" onclick="toggleEx('ex1')">
+      <div class="example-num">1</div>
+      <div class="example-question">\(250\) sonining \(40\%\) ini toping.</div>
+      <div class="example-toggle" id="ex1-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Formuladan:</div>
+            <div class="step-math">\(\frac{40 \times 250}{100}\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Hisob</div>
+            <div class="step-math">\(= \frac{10000}{100} = 100\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(100\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex2">
+    <div class="example-header" onclick="toggleEx('ex2')">
+      <div class="example-num">2</div>
+      <div class="example-question">Qaysi sonning \(30\%\) i — \(75\)?</div>
+      <div class="example-toggle" id="ex2-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Butun = qism × 100 / P</div>
+            <div class="step-math">\(\text{butun} = \frac{75 \times 100}{30}\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Hisob</div>
+            <div class="step-math">\(= \frac{7500}{30} = 250\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(250\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex3">
+    <div class="example-header" onclick="toggleEx('ex3')">
+      <div class="example-num">3</div>
+      <div class="example-question">Narx \(1200\) so'mdan \(1500\) so'mga o'sdi. Necha foizga o'sdi?</div>
+      <div class="example-toggle" id="ex3-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Foiz o'sish formulasi</div>
+            <div class="step-math">\(\frac{1500 - 1200}{1200} \times 100\%\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Hisob</div>
+            <div class="step-math">\(= \frac{300}{1200} \times 100\% = 25\%\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(25\%\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex4">
+    <div class="example-header" onclick="toggleEx('ex4')">
+      <div class="example-num">4</div>
+      <div class="example-question">Telefon narxi \(20\%\) chegirmadan keyin \(960\) so'm bo'ldi. Asl narxi nima edi?</div>
+      <div class="example-toggle" id="ex4-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Chegirmadan keyin narx = asl × 0.80</div>
+            <div class="step-math">\(\text{asl} \times 0.80 = 960\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Yechamiz</div>
+            <div class="step-math">\(\text{asl} = \frac{960}{0.80} = 1200 \text{ so'm}\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(1200 \text{ so'm}\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex5">
+    <div class="example-header" onclick="toggleEx('ex5')">
+      <div class="example-num">5</div>
+      <div class="example-question">\(a : b = 3 : 5\) va \(a + b = 48\). \(a\) va \(b\) ni toping.</div>
+      <div class="example-toggle" id="ex5-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">a ning ulushi:</div>
+            <div class="step-math">\(a = \frac{3}{3+5} \times 48 = \frac{3}{8} \times 48 = 18\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">b ni topamiz:</div>
+            <div class="step-math">\(b = 48 - 18 = 30\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Tekshirish:</div>
+            <div class="step-math">\(18 : 30 = 3 : 5 \checkmark\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(a = 18,\; b = 30\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex6">
+    <div class="example-header" onclick="toggleEx('ex6')">
+      <div class="example-num">6</div>
+      <div class="example-question">\(\frac{x}{4} = \frac{6}{8}\) proporsiyasidan \(x\) ni toping.</div>
+      <div class="example-toggle" id="ex6-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Kresт ko'paytirish (cross multiply):</div>
+            <div class="step-math">\(8x = 4 \times 6 = 24\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Yechamiz:</div>
+            <div class="step-math">\(x = \frac{24}{8} = 3\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(x = 3\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex7">
+    <div class="example-header" onclick="toggleEx('ex7')">
+      <div class="example-num">7</div>
+      <div class="example-question">Bankka \(P = 10000\) so'm qo'yildi. Yillik \(r = 15\%\), \(t = 3\) yil. Oddiy foiz bilan qancha bo'ladi?</div>
+      <div class="example-toggle" id="ex7-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Formuladan:</div>
+            <div class="step-math">\(A = P(1 + rt) = 10000(1 + 0.15 \times 3)\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Hisob:</div>
+            <div class="step-math">\(A = 10000(1 + 0.45) = 10000 \times 1.45\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Natija:</div>
+            <div class="step-math">\(A = 14500 \text{ so'm}\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(14500 \text{ so'm}\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex8">
+    <div class="example-header" onclick="toggleEx('ex8')">
+      <div class="example-num">8</div>
+      <div class="example-question">Murakkab foiz: \(P = 5000\), \(r = 10\%\), \(t = 2\) yil. Oxirgi summa?</div>
+      <div class="example-toggle" id="ex8-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Formuladan:</div>
+            <div class="step-math">\(A = 5000(1 + 0.10)^2\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Hisob:</div>
+            <div class="step-math">\(A = 5000 \times 1.1^2 = 5000 \times 1.21\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Natija:</div>
+            <div class="step-math">\(A = 6050 \text{ so'm}\)</div>
+            <div class='step-explain'>Oddiy foizdan (6000 so'm) ko'proq!</div>
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(6050 \text{ so'm}\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex9">
+    <div class="example-header" onclick="toggleEx('ex9')">
+      <div class="example-num">9</div>
+      <div class="example-question">Bir mahsulot tannarxi \(800\) so'm, ustama \(25\%\). Sotish narxi?</div>
+      <div class="example-toggle" id="ex9-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Formuladan:</div>
+            <div class="step-math">\(\text{narx} = 800 \times (1 + 0.25)\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Hisob:</div>
+            <div class="step-math">\(= 800 \times 1.25 = 1000 \text{ so'm}\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(1000 \text{ so'm}\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex10">
+    <div class="example-header" onclick="toggleEx('ex10')">
+      <div class="example-num">10</div>
+      <div class="example-question">Sinfdagi 25 o'quvchining 60% qizlar. Qancha o'g'il bola bor?</div>
+      <div class="example-toggle" id="ex10-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Qizlar soni:</div>
+            <div class="step-math">\(0.60 \times 25 = 15 \text{ qiz}\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">O'g'il bolalar:</div>
+            <div class="step-math">\(25 - 15 = 10\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Tekshirish:</div>
+            <div class="step-math">\(\frac{10}{25} \times 100\% = 40\%\checkmark\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(10 \text{ o'g'il bola}\)</span></div>
+
+    </div>
+  </div>
+
+  <div class="done-bar reveal">
+    <p>✅ Darsni o'qib, misollarni yechdingizmi?</p>
+    <button class="done-btn" id="doneBtn" onclick="markDone()">✅ Darsni tugatdim</button>
+  </div>
+  <div class="nav-btns reveal">
+    <a href="math-lesson-progressiya.html">← Progressiya</a>
+    <a href="math-lesson-logarifm.html" class="next">Logarifm →</a>
+  </div>
+</div>
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth=getAuth(initializeApp({apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",authDomain:"it-study-a45fa.firebaseapp.com",projectId:"it-study-a45fa",storageBucket:"it-study-a45fa.firebasestorage.app",messagingSenderId:"973750187023",appId:"1:973750187023:web:c38b839da825ffa0681f7a"}));
+const ua=document.getElementById("userArea");
+onAuthStateChanged(auth,u=>{if(u){const n=u.displayName||u.email;ua.outerHTML=`<div class="profile-pill"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`;}else{ua.textContent="Kirish";ua.href="login.html";}});
+</script>
+<script>
+function toggleEx(id){const c=document.getElementById(id);const b=document.getElementById(id+'-btn');const o=c.classList.toggle('open');b.textContent=o?'🙈 Yashirish':"👁 Ko'rish";}
+if(localStorage.getItem('mathFoiz')){const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi';b.classList.add('done');}
+function markDone(){localStorage.setItem('mathFoiz','true');const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi!';b.classList.add('done');}
+</script>
+<script>const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.04});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\[",right:"\\]",display:true},{left:"\\(",right:"\\)",display:false}]});});</script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

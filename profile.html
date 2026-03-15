@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .profile-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 48px 100px;
+    }
+
+    /* ── TOP CARD ─────────────────────────── */
+    .profile-top {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .profile-big-av {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font); font-size: 36px; font-weight: 800;
+      color: #fff; flex-shrink: 0;
+      box-shadow: 0 8px 28px rgba(79,142,247,0.35);
+    }
+
+    .profile-info { flex: 1; }
+    .profile-info h2 {
+      font-family: var(--font);
+      font-size: 26px; font-weight: 800;
+      color: var(--text); margin-bottom: 4px;
+    }
+    .profile-info .email {
+      font-size: 14px; color: var(--muted); margin-bottom: 12px;
+    }
+    .profile-info .joined {
+      font-size: 13px; color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 4px 12px; border-radius: 99px;
+      display: inline-block;
+    }
+
+    .logout-btn {
+      padding: 11px 24px; border: none; border-radius: 99px;
+      background: rgba(239,68,68,0.12);
+      border: 1px solid rgba(239,68,68,0.25);
+      color: #fca5a5; font-size: 14px; font-weight: 600;
+      font-family: var(--font-body); cursor: pointer;
+      transition: background var(--ease), transform var(--ease);
+      white-space: nowrap;
+    }
+    .logout-btn:hover { background: rgba(239,68,68,0.25); transform: translateY(-2px); }
+
+    /* ── OVERALL STATS ────────────────────── */
+    .overall-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .ov-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 16px;
+      text-align: center;
+      transition: border-color var(--ease), transform var(--ease);
+    }
+    .ov-item:hover { border-color: var(--accent); transform: translateY(-4px); }
+
+    .ov-val {
+      font-family: var(--font);
+      font-size: 32px; font-weight: 800;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; line-height: 1.1;
+    }
+    .ov-lbl { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+    /* ── SECTION CARD ─────────────────────── */
+    .prog-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 20px;
+    }
+
+    .prog-section-head {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .prog-icon {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: rgba(79,142,247,0.12);
+      border: 1px solid rgba(79,142,247,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+
+    .prog-section-head h3 {
+      font-family: var(--font); font-size: 18px; font-weight: 700;
+      color: var(--text); flex: 1;
+    }
+
+    .prog-section-head .done-count {
+      font-size: 13px; color: var(--accent2); font-weight: 600;
+    }
+
+    /* Progress bar */
+    .prog-bar-wrap { margin-bottom: 20px; }
+    .prog-bar-label {
+      display: flex; justify-content: space-between;
+      font-size: 12px; color: var(--muted); margin-bottom: 8px;
+    }
+    .prog-bar {
+      width: 100%; height: 8px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 99px; overflow: hidden;
+    }
+    .prog-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 99px;
+      transition: width 1s cubic-bezier(.22,1,.36,1);
+    }
+    .prog-fill.green  { background: linear-gradient(90deg,#22c55e,#4ade80); }
+    .prog-fill.purple { background: linear-gradient(90deg,#8b5cf6,#a78bfa); }
+
+    /* Lesson list */
+    .lesson-list { display: flex; flex-direction: column; gap: 8px; }
+
+    .lesson-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 14px; color: var(--muted);
+      text-decoration: none;
+      transition: background var(--ease), border-color var(--ease);
+    }
+    .lesson-row:hover { background: rgba(79,142,247,0.08); border-color: var(--accent); color: var(--text); }
+    .lesson-row.done  { border-color: rgba(34,197,94,0.3); }
+    .lesson-row.done .lesson-row-status { color: #22c55e; }
+
+    .lesson-row-num {
+      font-family: var(--font); font-size: 11px; font-weight: 700;
+      color: var(--accent); background: rgba(79,142,247,0.1);
+      padding: 2px 8px; border-radius: 99px; flex-shrink: 0;
+    }
+    .lesson-row-name { flex: 1; }
+    .lesson-row-status { font-size: 13px; flex-shrink: 0; }
+
+    /* Test scores */
+    .test-scores { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+
+    .test-score-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      text-align: center;
+    }
+    .test-score-item.done { border-color: rgba(34,197,94,0.3); }
+
+    .ts-val {
+      font-family: var(--font); font-size: 24px; font-weight: 800;
+      color: var(--accent2); line-height: 1.1;
+    }
+    .ts-name { font-size: 12px; color: var(--muted); margin-top: 5px; }
+    .ts-bar  { margin-top: 8px; height: 4px; background: rgba(255,255,255,0.07); border-radius: 99px; overflow: hidden; }
+    .ts-fill { height: 100%; background: linear-gradient(90deg,var(--accent),var(--accent2)); border-radius: 99px; }
+
+    @media(max-width:768px){
+      .profile-wrap { padding: 32px 20px 80px; }
+      .overall-grid { grid-template-columns: repeat(2,1fr); }
+      .test-scores  { grid-template-columns: 1fr 1fr; }
+      .profile-top  { flex-direction: column; text-align: center; }
+    }
+    @media(max-width:480px){
+      .overall-grid { grid-template-columns: repeat(2,1fr); }
+      .test-scores  { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="theme-1">
+
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="english.html">English</a>
+    <a href="math.html">Math</a>
+    <a href="tests.html">Testlar</a>
+  </nav>
+</header>
+
+<div class="profile-wrap">
+
+  <!-- TOP PROFILE CARD -->
+  <div class="profile-top reveal">
+    <div class="profile-big-av" id="bigAv">?</div>
+    <div class="profile-info">
+      <h2 id="profileName">Yuklanmoqda...</h2>
+      <div class="email" id="profileEmail">—</div>
+      <div class="joined" id="profileJoined">📅 —</div>
+    </div>
+    <button class="logout-btn" onclick="doLogout()">🚪 Chiqish</button>
+  </div>
+
+  <!-- OVERALL STATS -->
+  <div class="overall-grid reveal">
+    <div class="ov-item">
+      <div class="ov-val" id="ovMath">0</div>
+      <div class="ov-lbl">Math darslari</div>
+    </div>
+    <div class="ov-item">
+      <div class="ov-val" id="ovReading">0</div>
+      <div class="ov-lbl">Reading darslari</div>
+    </div>
+    <div class="ov-item">
+      <div class="ov-val" id="ovTests">0</div>
+      <div class="ov-lbl">Testlar bajarildi</div>
+    </div>
+    <div class="ov-item">
+      <div class="ov-val" id="ovTotal">0%</div>
+      <div class="ov-lbl">Umumiy progress</div>
+    </div>
+  </div>
+
+  <!-- MATH PROGRESS -->
+  <div class="prog-section reveal">
+    <div class="prog-section-head">
+      <div class="prog-icon">🧮</div>
+      <h3>Matematika darslari</h3>
+      <span class="done-count" id="mathDoneCount">0 / 11</span>
+    </div>
+
+    <div class="prog-bar-wrap">
+      <div class="prog-bar-label">
+        <span>Progress</span>
+        <span id="mathPct">0%</span>
+      </div>
+      <div class="prog-bar"><div class="prog-fill" id="mathBar" style="width:0%"></div></div>
+    </div>
+
+    <div class="lesson-list" id="mathList"></div>
+  </div>
+
+  <!-- ENGLISH READING PROGRESS -->
+  <div class="prog-section reveal">
+    <div class="prog-section-head">
+      <div class="prog-icon">📖</div>
+      <h3>Reading darslari</h3>
+      <span class="done-count" id="readDoneCount">0 / 10</span>
+    </div>
+
+    <div class="prog-bar-wrap">
+      <div class="prog-bar-label">
+        <span>Progress</span>
+        <span id="readPct">0%</span>
+      </div>
+      <div class="prog-bar"><div class="prog-fill green" id="readBar" style="width:0%"></div></div>
+    </div>
+
+    <div class="lesson-list" id="readList"></div>
+  </div>
+
+  <!-- ENGLISH OTHER -->
+  <div class="prog-section reveal">
+    <div class="prog-section-head">
+      <div class="prog-icon">📘</div>
+      <h3>English — Speaking & Grammar</h3>
+      <span class="done-count" id="engOtherCount">0 / 2</span>
+    </div>
+    <div class="lesson-list" id="engOtherList"></div>
+  </div>
+
+  <!-- TEST SCORES -->
+  <div class="prog-section reveal">
+    <div class="prog-section-head">
+      <div class="prog-icon">🧪</div>
+      <h3>Test natijalari</h3>
+      <span class="done-count" id="testDoneCount">0 / 3</span>
+    </div>
+
+    <div class="test-scores" id="testScores"></div>
+  </div>
+
+</div><!-- /profile-wrap -->
+
+<!-- Firebase -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const auth = getAuth(initializeApp({
+  apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",
+  authDomain:"it-study-a45fa.firebaseapp.com",
+  projectId:"it-study-a45fa",
+  storageBucket:"it-study-a45fa.firebasestorage.app",
+  messagingSenderId:"973750187023",
+  appId:"1:973750187023:web:c38b839da825ffa0681f7a"
+}));
+
+onAuthStateChanged(auth, (user) => {
+  if (!user) { window.location.href = "login.html"; return; }
+
+  // Fill profile info
+  const name = user.displayName || user.email.split('@')[0];
+  document.getElementById("bigAv").textContent       = name[0].toUpperCase();
+  document.getElementById("profileName").textContent = name;
+  document.getElementById("profileEmail").textContent= user.email;
+
+  // Join date
+  const joined = user.metadata.creationTime
+    ? new Date(user.metadata.creationTime).toLocaleDateString('uz-UZ',{year:'numeric',month:'long',day:'numeric'})
+    : '—';
+  document.getElementById("profileJoined").textContent = "📅 " + joined;
+
+  // Load all progress
+  loadProgress();
+});
+
+window.doLogout = function() {
+  signOut(auth).then(() => {
+    localStorage.removeItem("username");
+    localStorage.removeItem("userEmail");
+    window.location.href = "login.html";
+  });
+};
+</script>
+
+<script>
+function loadProgress() {
+
+  /* ── MATH ──────────────────────────────── */
+  const mathLessons = [
+    { key:"mathTenglama",      name:"Tenglama",       link:"math-lesson-tenglama.html" },
+    { key:"mathTengsizlik",    name:"Tengsizlik",      link:"math-lesson-tengsizlik.html" },
+    { key:"mathFunksiya",      name:"Funksiya",        link:"math-lesson-funksiya.html" },
+    { key:"mathProgressiya",   name:"Progressiya",     link:"math-lesson-progressiya.html" },
+    { key:"mathFoiz",          name:"Foiz va nisbat",  link:"math-lesson-foiz.html" },
+    { key:"mathLogarifm",      name:"Logarifm",        link:"math-lesson-logarifm.html" },
+    { key:"mathTrigonometriya",name:"Trigonometriya",  link:"math-lesson-trigonometriya.html" },
+    { key:"mathEhtimollik",    name:"Ehtimollik",      link:"math-lesson-ehtimollik.html" },
+    { key:"mathKombinatorika", name:"Kombinatorika",   link:"math-lesson-kombinatorika.html" },
+    { key:"mathGeometriya",    name:"Geometriya",      link:"math-lesson-geometriya.html" },
+    { key:"mathStereometriya", name:"Stereometriya",   link:"math-lesson-stereometriya.html" },
+  ];
+
+  var mathDone = 0;
+  var mathHtml = "";
+  mathLessons.forEach(function(l, i){
+    var done = !!localStorage.getItem(l.key);
+    if(done) mathDone++;
+    mathHtml += `
+      <a class="lesson-row ${done?'done':''}" href="${l.link}">
+        <span class="lesson-row-num">${i+1}</span>
+        <span class="lesson-row-name">${l.name}</span>
+        <span class="lesson-row-status">${done ? '✅' : '→'}</span>
+      </a>`;
+  });
+  document.getElementById("mathList").innerHTML = mathHtml;
+  document.getElementById("mathDoneCount").textContent = mathDone + " / " + mathLessons.length;
+  var mathPct = Math.round(mathDone/mathLessons.length*100);
+  document.getElementById("mathPct").textContent = mathPct + "%";
+  setTimeout(function(){ document.getElementById("mathBar").style.width = mathPct + "%"; }, 300);
+
+  /* ── READING ───────────────────────────── */
+  var readings = [
+    { key:"reading1Done",  name:"Reading 1 — Sog'lom ovqatlanish", link:"reading-1.html" },
+    { key:"reading2Done",  name:"Reading 2 — Texnologiya va AI",    link:"reading-2.html" },
+    { key:"reading3Done",  name:"Reading 3 — Ta'lim va kelajak",    link:"reading-3.html" },
+    { key:"reading4Done",  name:"Reading 4 — Iqtisodiyot",          link:"reading-4.html" },
+    { key:"reading5Done",  name:"Reading 5 — Ekologiya",            link:"reading-5.html" },
+    { key:"reading6Done",  name:"Reading 6 — Psixologiya",          link:"reading-6.html" },
+    { key:"reading7Done",  name:"Reading 7 — Tibbiyot",             link:"reading-7.html" },
+    { key:"reading8Done",  name:"Reading 8 — Shaharsozlik",         link:"reading-8.html" },
+    { key:"reading9Done",  name:"Reading 9 — Madaniyat",            link:"reading-9.html" },
+    { key:"reading10Done", name:"Reading 10 — Ilm-fan",             link:"reading-10.html" },
+  ];
+
+  var readDone = 0;
+  var readHtml = "";
+  readings.forEach(function(r, i){
+    var done = !!localStorage.getItem(r.key);
+    if(done) readDone++;
+    readHtml += `
+      <a class="lesson-row ${done?'done':''}" href="${r.link}">
+        <span class="lesson-row-num">${i+1}</span>
+        <span class="lesson-row-name">${r.name}</span>
+        <span class="lesson-row-status">${done ? '✅' : '→'}</span>
+      </a>`;
+  });
+  document.getElementById("readList").innerHTML = readHtml;
+  document.getElementById("readDoneCount").textContent = readDone + " / " + readings.length;
+  var readPct = Math.round(readDone/readings.length*100);
+  document.getElementById("readPct").textContent = readPct + "%";
+  setTimeout(function(){ document.getElementById("readBar").style.width = readPct + "%"; }, 400);
+
+  /* ── ENGLISH OTHER ─────────────────────── */
+  var engOther = [
+    { key:"speaking1Done", name:"Speaking — Ob-havo mavzusi", link:"speaking.html" },
+    { key:"reading1Done",  name:"Grammar darslari",           link:"grammar.html" },
+  ];
+  var engOtherDone = 0;
+  var engOtherHtml = "";
+  engOther.forEach(function(e, i){
+    var done = !!localStorage.getItem(e.key);
+    if(done) engOtherDone++;
+    engOtherHtml += `
+      <a class="lesson-row ${done?'done':''}" href="${e.link}">
+        <span class="lesson-row-num">${i+1}</span>
+        <span class="lesson-row-name">${e.name}</span>
+        <span class="lesson-row-status">${done ? '✅' : '→'}</span>
+      </a>`;
+  });
+  document.getElementById("engOtherList").innerHTML = engOtherHtml;
+  document.getElementById("engOtherCount").textContent = engOtherDone + " / " + engOther.length;
+
+  /* ── TEST SCORES ────────────────────────── */
+  var tests = [
+    {
+      name: "Math Test",
+      scoreKey: "mathTestScore",
+      total: 10
+    },
+    {
+      name: "English Vocabulary",
+      scoreKey: "englishTestScore",
+      totalKey: "englishTestTotal",
+      total: 52
+    },
+    {
+      name: "Web Dev Test",
+      scoreKey: "webTestScore",
+      total: 10
+    },
+  ];
+
+  var testDone = 0;
+  var testHtml = "";
+  tests.forEach(function(t){
+    var score = localStorage.getItem(t.scoreKey);
+    var total = t.totalKey ? (localStorage.getItem(t.totalKey) || t.total) : t.total;
+    var done  = score !== null;
+    if(done) testDone++;
+    var pct   = done ? Math.round(score / total * 100) : 0;
+    testHtml += `
+      <div class="test-score-item ${done?'done':''}">
+        <div class="ts-val">${done ? score+'/'+total : '—'}</div>
+        <div class="ts-name">${t.name}</div>
+        ${done ? `<div class="ts-bar"><div class="ts-fill" style="width:${pct}%"></div></div>` : ''}
+      </div>`;
+  });
+  document.getElementById("testScores").innerHTML = testHtml;
+  document.getElementById("testDoneCount").textContent = testDone + " / " + tests.length;
+
+  /* ── OVERALL STATS ──────────────────────── */
+  document.getElementById("ovMath").textContent    = mathDone + "/" + mathLessons.length;
+  document.getElementById("ovReading").textContent = readDone + "/" + readings.length;
+  document.getElementById("ovTests").textContent   = testDone + "/" + tests.length;
+
+  var totalDone  = mathDone + readDone + engOtherDone + testDone;
+  var totalItems = mathLessons.length + readings.length + engOther.length + tests.length;
+  var totalPct   = Math.round(totalDone / totalItems * 100);
+  document.getElementById("ovTotal").textContent = totalPct + "%";
+}
+</script>
+
+<!-- Scroll reveal -->
+<script>
+var ro = new IntersectionObserver(
+  function(es){ es.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); }); },
+  { threshold: 0.06 }
+);
+document.querySelectorAll('.reveal').forEach(function(el){ ro.observe(el); });
+</script>
+
+<script src="theme-switcher.js"></script>
+</body>
+</html>

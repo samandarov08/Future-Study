@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading 1 | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .reading-wrap{max-width:860px;margin:0 auto;padding:64px 48px 100px;}
+    .passage{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:44px 48px;margin-bottom:24px;line-height:2;font-size:16px;color:var(--text);}
+    .passage h2{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:28px;text-transform:uppercase;line-height:1.4;}
+    .passage h3{font-family:var(--font);font-size:17px;font-weight:700;color:var(--accent2);margin:32px 0 14px;}
+    .passage h4{font-family:var(--font);font-size:15px;font-weight:700;color:var(--accent);margin:22px 0 10px;}
+    .passage p{margin-bottom:18px;color:var(--muted);font-weight:300;}
+    .passage b{color:var(--accent2);font-weight:600;}
+    .tr{font-style:italic;font-size:13px;color:var(--muted);opacity:0.7;margin-left:3px;}
+    .vocab-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;margin-bottom:24px;}
+    .vocab-wrap h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:24px;}
+    .comp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;margin-bottom:24px;}
+    .comp-card h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:28px;}
+    .comp-q{margin-bottom:24px;}
+    .comp-q p{font-size:15px;color:var(--text);margin-bottom:10px;font-weight:500;}
+    .comp-options{display:flex;flex-direction:column;gap:8px;}
+    .comp-opt{padding:11px 16px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:14px;color:var(--muted);transition:background var(--ease),border-color var(--ease),color var(--ease);}
+    .comp-opt:hover{background:rgba(79,142,247,0.1);border-color:var(--accent);color:var(--text);}
+    .comp-opt.correct{background:rgba(34,197,94,0.18)!important;border-color:#22c55e!important;color:#86efac!important;}
+    .comp-opt.wrong{background:rgba(239,68,68,0.18)!important;border-color:#ef4444!important;color:#fca5a5!important;}
+    .comp-opt.show-correct{background:rgba(34,197,94,0.08);border-color:rgba(34,197,94,0.35);color:#86efac;}
+    .done-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+    .done-bar p{color:var(--muted);font-size:15px;font-weight:300;}
+    .done-btn{padding:12px 28px;border:none;border-radius:99px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:15px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease);}
+    .done-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,142,247,0.4);}
+    .done-btn.done{background:linear-gradient(135deg,#22c55e,#4ade80);}
+    .nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:32px;}
+    .nav-btns a{font-size:14px;color:var(--muted);}
+    .nav-btns a.next{color:var(--accent2);font-weight:500;}
+    @media(max-width:768px){.reading-wrap{padding:40px 20px 80px;}.passage{padding:28px 22px;}}
+  </style>
+</head>
+<body class="theme-1">
+
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="english.html">English</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+
+<div class="reading-wrap">
+  <div class="breadcrumb reveal">English <span>›</span> Reading <span>›</span> Dars 1</div>
+
+  <div class="reveal" style="margin-bottom:40px;">
+    <p class="s-label">Reading 1 / 10</p>
+    <h1 style="font-family:var(--font);font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-1px;line-height:1.1;color:var(--text);margin-bottom:12px;">Sog'lom turmush tarzi: ovqatlanish fani 🥦</h1>
+    <p style="font-size:15px;color:var(--muted);font-weight:300;">IELTS Academic · ~1400 so'z · O'rta daraja</p>
+  </div>
+
+  <div class="passage reveal">
+    <h2>THE SCIENCE AND SOCIETAL IMPACT OF MAINTAINING A HEALTHY DIET</h2>
+    <p>In recent decades, a healthy diet has <b>evolved</b><span class="tr">(rivojlanmoq)</span> from being a matter of <b>personal preference</b><span class="tr">(shaxsiy afzal ko'rish)</span> into a <b>global public health priority</b><span class="tr">(jahon sog'liqni saqlash ustuvorligi)</span>. As <b>lifestyle-related diseases</b><span class="tr">(turmush tarzi bilan bog'liq kasalliklar)</span> — such as obesity, diabetes, <b>cardiovascular disorders</b><span class="tr">(yurak-qon tomir kasalliklari)</span>, and certain types of cancer — continue to rise worldwide, scientists, <b>policymakers</b><span class="tr">(qaror qabul qiluvchilar)</span>, and nutrition experts are increasingly emphasising the <b>crucial</b><span class="tr">(muhim)</span> role of <b>dietary patterns</b><span class="tr">(ovqatlanish odatlari)</span> in shaping human health.</p>
+    <p>A healthy diet is no longer defined simply by the absence of harmful foods but by the presence of diverse, <b>nutrient-rich</b><span class="tr">(oziq moddalar bilan boy)</span> components that support long-term physical, cognitive, and emotional <b>wellbeing</b><span class="tr">(farovonlik)</span>. The <b>complexity</b><span class="tr">(murakkablik)</span> of modern food systems, combined with cultural influences, <b>economic inequality</b><span class="tr">(iqtisodiy tengsizlik)</span>, and <b>aggressive marketing</b><span class="tr">(agressiv reklama)</span> of <b>processed foods</b><span class="tr">(tayyor ovqatlar)</span>, has made it difficult for many individuals to sustain balanced eating habits.</p>
+    <p>At the same time, advances in <b>nutritional science</b><span class="tr">(ovqatlanish fanidagi yutuqlar)</span> have given us deeper insights into how specific <b>nutrients</b><span class="tr">(oziq moddalar)</span> interact with the human body, how <b>metabolic processes</b><span class="tr">(metabolizm jarayonlari)</span> vary among individuals, and how diet influences <b>gene expression</b><span class="tr">(gen ifodalanishi)</span> — a field known as <b>nutrigenomics</b><span class="tr">(nutrigenomika)</span>. This article explores the scientific foundations of a healthy diet, the challenges modern societies face, and the long-term <b>implications</b><span class="tr">(oqibatlar, ta'sirlar)</span> of dietary choices for individuals and nations.</p>
+
+    <h3>1. The Scientific Foundations of a Healthy Diet</h3>
+    <p>A healthy diet is built on the principle of <b>nutritional adequacy</b><span class="tr">(oziqlanish yetarliligi)</span>, meaning it must supply the body with essential <b>macronutrients</b><span class="tr">(asosiy oziq moddalar)</span> — carbohydrates, proteins, and fats — and <b>micronutrients</b><span class="tr">(mikroelementlar)</span> such as vitamins and minerals, in the right proportions. Contrary to popular belief, a healthy diet is not about eliminating entire food groups but about achieving balance, <b>moderation</b><span class="tr">(o'rta yo'l, me'yor)</span>, and diversity.</p>
+
+    <h4>1.1 Macronutrients and Their Functions</h4>
+    <p><b>Carbohydrates</b><span class="tr">(uglevodlar)</span> serve as the primary energy source for the body. Complex carbohydrates, found in whole grains, legumes, and vegetables, provide sustained energy and essential <b>fibre</b><span class="tr">(tolalar)</span> for digestion. In contrast, <b>refined carbohydrates</b><span class="tr">(raffinatsiyalangan uglevodlar)</span> — such as white bread, pastries, and sugary drinks — cause rapid spikes in blood glucose levels, contributing to <b>insulin resistance</b><span class="tr">(insulin qarshiligi)</span> and weight gain.</p>
+    <p><b>Proteins</b><span class="tr">(oqsillar)</span> are vital for muscle growth, tissue repair, enzyme production, and <b>immune function</b><span class="tr">(immunitet funksiyasi)</span>. Both plant-based sources (beans, lentils, tofu, nuts) and animal-based sources (meat, eggs, fish, dairy) can provide high-quality proteins, though plant-based diets are increasingly associated with reduced risk of chronic diseases.</p>
+    <p><b>Fats</b><span class="tr">(yog'lar)</span> play an essential role in hormone production, nutrient absorption, and cell membrane integrity. Healthy fats — particularly <b>unsaturated fats</b><span class="tr">(qoniqmagan yog'lar)</span> found in olive oil, avocados, nuts, and seeds — are beneficial for heart health. <b>Trans fats</b><span class="tr">(trans-yog'lar)</span> and excessive <b>saturated fats</b><span class="tr">(to'yingan yog'lar)</span>, however, contribute to <b>inflammation</b><span class="tr">(yallig'lanish)</span> and cardiovascular disease.</p>
+
+    <h4>1.2 Micronutrients and Their Importance</h4>
+    <p>Micronutrients are required in small amounts, but their impact on health is profound. <b>Vitamins</b><span class="tr">(vitaminlar)</span> regulate energy production, immunity, and cellular functions, while <b>minerals</b><span class="tr">(minerallar)</span> support bone health, nerve signalling, oxygen transport, and metabolic processes. Deficiencies in micronutrients such as iron, vitamin D, calcium, and B vitamins are common worldwide and can lead to <b>fatigue</b><span class="tr">(charchoq)</span>, weakened immunity, and <b>impaired cognitive development</b><span class="tr">(aqliy rivojlanishning buzilishi)</span>.</p>
+
+    <h4>1.3 The Role of Gut Health</h4>
+    <p>Recent scientific discoveries highlight the importance of the <b>gut microbiome</b><span class="tr">(ichak mikrobiomi)</span> — trillions of microorganisms living in the digestive tract. A diet rich in fibre, fermented foods, and diverse plants helps feed <b>beneficial bacteria</b><span class="tr">(foydali bakteriyalar)</span>, which in turn support digestion, regulate inflammation, and influence mental health through the <b>gut-brain axis</b><span class="tr">(ichak-miya bog'lanishi)</span>. Emerging research suggests that a healthy microbiome may even influence mood, anxiety levels, and <b>cognitive performance</b><span class="tr">(aqliy faoliyat samaradorligi)</span>.</p>
+
+    <h3>2. Modern Dietary Challenges</h3>
+    <p>Despite <b>unprecedented</b><span class="tr">(mislsiz)</span> access to food, many societies struggle with poor nutrition. This <b>paradox</b><span class="tr">(ziddiyat)</span> is often described as "<b>malnutrition</b><span class="tr">(noto'g'ri ovqatlanish)</span> in the age of abundance." Several modern challenges contribute to <b>unhealthy dietary patterns</b><span class="tr">(sog'lom bo'lmagan ovqatlanish odatlari)</span>.</p>
+
+    <h4>2.1 Processed Foods and Convenience Culture</h4>
+    <p><b>Ultra-processed foods</b><span class="tr">(ultra-tayyor ovqatlar)</span> are cheap, accessible, and <b>aggressively marketed</b><span class="tr">(agressiv reklama qilinadi)</span>. They often contain high levels of sugar, salt, <b>unhealthy fats</b><span class="tr">(sog'lom bo'lmagan yog'lar)</span>, and <b>artificial additives</b><span class="tr">(sun'iy qo'shimchalar)</span>, while lacking essential nutrients. Overconsumption of such foods has been strongly associated with <b>obesity</b><span class="tr">(semizlik)</span>, <b>hypertension</b><span class="tr">(qon bosimi ortishi)</span>, and <b>metabolic disorders</b><span class="tr">(metabolik buzilishlar)</span>.</p>
+    <p>The rise of <b>convenience culture</b><span class="tr">(qulaylik madaniyati)</span> means many people prioritise speed and taste over <b>nutritional value</b><span class="tr">(oziqlanish qiymati)</span>. <b>Fast-food chains</b><span class="tr">(tez tayyor ovqat zanjirlari)</span>, ready-made meals, and sugary beverages have become daily staples for millions around the world, especially in <b>urban environments</b><span class="tr">(shahar muhitlari)</span>.</p>
+
+    <h4>2.2 Economic Barriers and Food Inequality</h4>
+    <p>Access to healthy food is not evenly distributed. <b>Organic produce</b><span class="tr">(organik mahsulotlar)</span>, fresh fruits, lean proteins, and whole grains are often more expensive than processed alternatives. Low-income families may rely on cheaper foods that are high in calories yet low in nutrients — a phenomenon known as "<b>food deserts</b><span class="tr">(ovqat cho'llari)</span>", which exist in both developing and developed countries.</p>
+
+    <h4>2.3 Cultural Influences and Social Norms</h4>
+    <p><b>Cultural traditions</b><span class="tr">(madaniy an'analar)</span> strongly shape dietary choices. While some cultures promote balanced diets rich in vegetables and legumes, others rely heavily on fried foods, red meat, and sugary desserts. <b>Social events</b><span class="tr">(ijtimoiy tadbirlar)</span> often revolve around food, making overeating a widespread habit. Additionally, <b>portion sizes</b><span class="tr">(porsiyalar hajmi)</span> have increased dramatically over the last 30 years, contributing to excessive calorie intake.</p>
+
+    <h3>3. Long-Term Implications of Dietary Choices</h3>
+    <p>The consequences of dietary habits extend far beyond immediate physical health. Long-term dietary patterns influence <b>longevity</b><span class="tr">(umr davomiyligi)</span>, <b>mental wellbeing</b><span class="tr">(ruhiy sog'liq)</span>, economic productivity, and national healthcare costs.</p>
+
+    <h4>3.1 Impact on Chronic Diseases</h4>
+    <p>Unhealthy eating is a major risk factor for <b>non-communicable diseases</b><span class="tr">(yuqtirmaydigan kasalliklar)</span>. Diet-related illnesses result in millions of deaths each year and place immense pressure on <b>healthcare systems</b><span class="tr">(sog'liqni saqlash tizimi)</span>. Diets high in <b>sodium</b><span class="tr">(natriy, tuz)</span> increase the risk of hypertension and strokes. Excessive <b>sugar consumption</b><span class="tr">(shakar iste'moli)</span> leads to obesity and type 2 diabetes. Diets lacking fruits and vegetables contribute to cancer and <b>digestive problems</b><span class="tr">(hazm qilish muammolari)</span>.</p>
+
+    <h4>3.2 Mental Health and Cognitive Function</h4>
+    <p>Nutrition also affects <b>brain health</b><span class="tr">(miya sog'ligi)</span>. <b>Omega-3 fatty acids</b><span class="tr">(Omega-3 yog' kislotalari)</span>, <b>antioxidants</b><span class="tr">(antioksidantlar)</span>, and vitamins have been linked to improved memory, concentration, and <b>emotional regulation</b><span class="tr">(hissiy holatni boshqarish)</span>. Diets rich in processed foods, on the other hand, are associated with higher rates of <b>depression</b><span class="tr">(depressiya)</span> and <b>anxiety</b><span class="tr">(bezovtalik)</span>. Research on the <b>gut-brain connection</b><span class="tr">(ichak-miya aloqasi)</span> suggests that poor diet may alter brain chemistry through <b>inflammatory pathways</b><span class="tr">(yallig'lanish yo'llari)</span>.</p>
+
+    <h4>3.3 National and Global Economic Impact</h4>
+    <p>Countries with high rates of diet-related diseases face economic challenges due to decreased <b>workforce productivity</b><span class="tr">(mehnat unumdorligi)</span> and rising <b>medical expenses</b><span class="tr">(tibbiy xarajatlar)</span>. Encouraging healthy eating is therefore not just a medical issue but an <b>economic imperative</b><span class="tr">(iqtisodiy zarurat)</span>.</p>
+
+    <h3>4. Strategies for Maintaining a Healthy Diet</h3>
+    <p>Addressing the challenges of modern nutrition requires individual commitment, community support, and governmental intervention. Individuals can improve their dietary habits by prioritising <b>whole, unprocessed foods</b><span class="tr">(butun, qayta ishlanmagan ovqatlar)</span>, eating a variety of fruits and vegetables daily, limiting <b>added sugars</b><span class="tr">(qo'shimcha shakar)</span> and processed snacks, monitoring portion sizes, staying hydrated, cooking at home, and reading <b>nutrition labels</b><span class="tr">(oziq moddalar yorliqlari)</span> to make informed choices.</p>
+    <p><b>Public health campaigns</b><span class="tr">(ommaviy sog'liqni saqlash kampaniyalari)</span>, school programs, and workplace initiatives can increase <b>nutritional awareness</b><span class="tr">(ovqatlanish bo'yicha xabardorlik)</span>. Teaching children the benefits of healthy eating from a young age can lead to lifelong habits. Social movements promoting <b>plant-based diets</b><span class="tr">(o'simlikka asoslangan dietalar)</span>, sustainable agriculture, and <b>mindful eating</b><span class="tr">(ongli ovqatlanish)</span> also contribute to broader cultural change.</p>
+    <p>Governments play a vital role in shaping national dietary habits. Effective policies include taxing <b>sugary beverages</b><span class="tr">(shakarli ichimliklar)</span> and harmful foods, subsidising fruits, vegetables, and whole grains, implementing clearer <b>nutrition labelling standards</b><span class="tr">(ovqat yorlig'i standartlari)</span>, regulating food advertising especially to children, and supporting <b>school meal programs</b><span class="tr">(maktab ovqatlanish dasturlari)</span> that emphasise nutrition.</p>
+
+    <h3>Conclusion</h3>
+    <p>A healthy diet forms the foundation of long-term wellbeing. It supports physical strength, mental clarity, disease prevention, and overall quality of life. Although modern societies face significant challenges — such as processed food culture, economic inequality, and changing lifestyles — scientific knowledge and public awareness continue to grow. With a combination of individual responsibility, social support, and effective policy, it is possible to build <b>nutritional environments</b><span class="tr">(ovqatlanish muhitlari)</span> that promote health for current and future generations.</p>
+  </div>
+
+  <!-- VOCAB -->
+  <div class="vocab-wrap reveal">
+    <h3>📘 Muhim so'zlar — Reading 1</h3>
+    <div class="vocab-grid">
+      <div class="vocab-card"><h4>evolved</h4><p>rivojlandi, o'zgardi</p></div>
+      <div class="vocab-card"><h4>personal preference</h4><p>shaxsiy tanlov</p></div>
+      <div class="vocab-card"><h4>policymakers</h4><p>siyosat ishlab chiquvchilar</p></div>
+      <div class="vocab-card"><h4>dietary patterns</h4><p>ovqatlanish modeli</p></div>
+      <div class="vocab-card"><h4>nutrient-rich</h4><p>ozuqaga boy</p></div>
+      <div class="vocab-card"><h4>wellbeing</h4><p>farovonlik</p></div>
+      <div class="vocab-card"><h4>processed foods</h4><p>qayta ishlangan ovqatlar</p></div>
+      <div class="vocab-card"><h4>nutritional adequacy</h4><p>oziqlanish yetarliligi</p></div>
+      <div class="vocab-card"><h4>macronutrients</h4><p>makroelementlar</p></div>
+      <div class="vocab-card"><h4>micronutrients</h4><p>mikroelementlar</p></div>
+      <div class="vocab-card"><h4>moderation</h4><p>me'yor</p></div>
+      <div class="vocab-card"><h4>carbohydrates</h4><p>uglevodlar</p></div>
+      <div class="vocab-card"><h4>fibre</h4><p>tolalar</p></div>
+      <div class="vocab-card"><h4>insulin resistance</h4><p>insulin qarshiligi</p></div>
+      <div class="vocab-card"><h4>proteins</h4><p>oqsillar</p></div>
+      <div class="vocab-card"><h4>immune function</h4><p>immunitet funksiyasi</p></div>
+      <div class="vocab-card"><h4>unsaturated fats</h4><p>to'yinmagan yog'lar</p></div>
+      <div class="vocab-card"><h4>inflammation</h4><p>yallig'lanish</p></div>
+      <div class="vocab-card"><h4>gut microbiome</h4><p>ichak mikrobiomi</p></div>
+      <div class="vocab-card"><h4>gut-brain axis</h4><p>ichak-miya bog'lanishi</p></div>
+      <div class="vocab-card"><h4>malnutrition</h4><p>noto'g'ri ovqatlanish</p></div>
+      <div class="vocab-card"><h4>ultra-processed foods</h4><p>ultra qayta ishlangan ovqatlar</p></div>
+      <div class="vocab-card"><h4>obesity</h4><p>semizlik</p></div>
+      <div class="vocab-card"><h4>hypertension</h4><p>yuqori qon bosimi</p></div>
+      <div class="vocab-card"><h4>convenience culture</h4><p>qulaylik madaniyati</p></div>
+      <div class="vocab-card"><h4>food deserts</h4><p>sog'lom ovqat yetishmaydigan hudud</p></div>
+      <div class="vocab-card"><h4>longevity</h4><p>uzoq umr</p></div>
+      <div class="vocab-card"><h4>omega-3 fatty acids</h4><p>omega-3 yog' kislotalari</p></div>
+      <div class="vocab-card"><h4>antioxidants</h4><p>antioksidantlar</p></div>
+      <div class="vocab-card"><h4>depression</h4><p>depressiya</p></div>
+      <div class="vocab-card"><h4>anxiety</h4><p>xavotir</p></div>
+      <div class="vocab-card"><h4>economic imperative</h4><p>iqtisodiy zarurat</p></div>
+      <div class="vocab-card"><h4>mindful eating</h4><p>ongli ovqatlanish</p></div>
+      <div class="vocab-card"><h4>nutritional awareness</h4><p>ovqatlanish bo'yicha xabardorlik</p></div>
+      <div class="vocab-card"><h4>plant-based diets</h4><p>o'simlikka asoslangan dietalar</p></div>
+    </div>
+  </div>
+
+  <!-- COMPREHENSION -->
+  <div class="comp-card reveal">
+    <h3>❓ Tushunish savollari</h3>
+    <div class="comp-q">
+      <p>1. What does "nutritional adequacy" mean according to the text?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Eating only vegetables and fruits</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) Supplying the body with all needed macronutrients and micronutrients in right proportions</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) Avoiding all processed foods completely</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Eating the same foods every day</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>2. Which of the following is described as beneficial for heart health?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Saturated fats</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) Trans fats</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) Unsaturated fats from olive oil and avocados</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Refined carbohydrates</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>3. What is the "gut-brain axis" mentioned in the passage?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) A type of disease caused by poor diet</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) A diet plan for mental health</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) The connection between the digestive system and brain function</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) A scientific term for gut bacteria only</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>4. What are "food deserts" according to the passage?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Areas with too much food available</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) Areas where affordable healthy food is difficult to access</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) Desert regions where food cannot grow</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Restaurants that only serve fast food</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>5. Which nutrients are specifically linked to improved memory and concentration?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Sodium and saturated fats</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) Refined carbohydrates and sugar</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) Omega-3 fatty acids and antioxidants</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Trans fats and artificial additives</div>
+      </div>
+    </div>
+    <p id="compScore" style="margin-top:24px;font-family:var(--font);font-size:16px;font-weight:700;color:var(--accent2);min-height:24px;"></p>
+  </div>
+
+  <!-- DONE -->
+  <div class="done-bar reveal">
+    <p>📖 Matnni o'qib, savollarga javob berdingizmi?</p>
+    <button class="done-btn" id="doneBtn" onclick="markDone()">✅ O'qib bo'ldim</button>
+  </div>
+
+  <div class="nav-btns reveal">
+    <a href="english.html">← English bo'limi</a>
+    <a href="reading-2.html" class="next">Reading 2 → Texnologiya va AI</a>
+  </div>
+</div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth=getAuth(initializeApp({apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",authDomain:"it-study-a45fa.firebaseapp.com",projectId:"it-study-a45fa",storageBucket:"it-study-a45fa.firebasestorage.app",messagingSenderId:"973750187023",appId:"1:973750187023:web:c38b839da825ffa0681f7a"}));
+const ua=document.getElementById("userArea");
+onAuthStateChanged(auth,u=>{if(u){const n=u.displayName||u.email;ua.outerHTML=`<div class="profile-pill"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`;}else{ua.textContent="Kirish";ua.href="login.html";}});
+</script>
+<script>
+let ca=0,cc=0;
+function ans(el,correct){
+  const g=el.closest('.comp-options');
+  if(g.dataset.done)return;
+  g.dataset.done="1"; ca++;
+  if(correct){el.classList.add('correct');cc++;}
+  else{
+    el.classList.add('wrong');
+    [...g.children].forEach(o=>{if(o!==el)o.classList.add('show-correct');});
+  }
+  if(ca===5){
+    document.getElementById('compScore').textContent=`Natija: ${cc} / 5 ✅`;
+    localStorage.setItem('reading1Comp',cc);
+  }
+}
+if(localStorage.getItem('reading1Done')){
+  const b=document.getElementById('doneBtn');
+  b.textContent='✅ Bajarildi';b.classList.add('done');
+}
+function markDone(){
+  localStorage.setItem('reading1Done','true');
+  const b=document.getElementById('doneBtn');
+  b.textContent='✅ Bajarildi!';b.classList.add('done');
+}
+</script>
+<script>
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.04});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+</script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

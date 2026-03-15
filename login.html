@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Future-Study</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-1">
+
+<div class="auth-page">
+  <div class="auth-box">
+    <h2>Tizimga kirish</h2>
+    <p class="auth-sub">Future-Study platformasiga xush kelibsiz</p>
+
+    <input type="email"    id="email"    placeholder="Email manzilingiz">
+
+    <div class="input-wrap">
+      <input type="password" id="password" placeholder="Parolingiz">
+      <span class="eye" onclick="togglePwd()">👁</span>
+    </div>
+
+    <p id="errorMsg" class="auth-error"></p>
+
+    <button class="auth-btn" id="loginBtn">Kirish</button>
+
+    <p class="auth-link">
+      Yangi foydalanuvchi? <a href="register.html">Ro'yxatdan o'tish</a>
+    </p>
+    <p class="auth-link" style="margin-top:8px;">
+      <a href="#" id="forgotLink">Parolni unutdingizmi?</a>
+    </p>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey:            "AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",
+  authDomain:        "it-study-a45fa.firebaseapp.com",
+  projectId:         "it-study-a45fa",
+  storageBucket:     "it-study-a45fa.firebasestorage.app",
+  messagingSenderId: "973750187023",
+  appId:             "1:973750187023:web:c38b839da825ffa0681f7a"
+};
+
+const app  = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const loginBtn = document.getElementById("loginBtn");
+const errorMsg = document.getElementById("errorMsg");
+
+function showError(msg) { errorMsg.textContent = msg; }
+
+function getUzbekError(code) {
+  const map = {
+    "auth/user-not-found":   "Bu email ro'yxatdan o'tmagan",
+    "auth/wrong-password":   "Parol noto'g'ri",
+    "auth/invalid-email":    "Email formati noto'g'ri",
+    "auth/too-many-requests":"Juda ko'p urinish. Keyinroq urinib ko'ring",
+    "auth/invalid-credential":"Email yoki parol noto'g'ri"
+  };
+  return map[code] || "Xato yuz berdi. Qayta urinib ko'ring";
+}
+
+loginBtn.onclick = async () => {
+  const email    = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+
+  if (!email || !password) {
+    showError("Email va parolni kiriting");
+    return;
+  }
+
+  loginBtn.disabled     = true;
+  loginBtn.textContent  = "Kirish...";
+  errorMsg.textContent  = "";
+
+  try {
+    const cred = await signInWithEmailAndPassword(auth, email, password);
+    const user = cred.user;
+    // Sync to localStorage for pages that still read it
+    localStorage.setItem("username",  user.displayName || user.email);
+    localStorage.setItem("userEmail", user.email);
+    window.location.href = "project.html";
+  } catch (err) {
+    showError(getUzbekError(err.code));
+    loginBtn.disabled    = false;
+    loginBtn.textContent = "Kirish";
+  }
+};
+
+// Forgot password
+document.getElementById("forgotLink").onclick = async (e) => {
+  e.preventDefault();
+  const email = document.getElementById("email").value.trim();
+  if (!email) { showError("Avval email manzilingizni kiriting"); return; }
+  try {
+    await sendPasswordResetEmail(auth, email);
+    showError(""); 
+    alert("Parolni tiklash havolasi emailingizga yuborildi");
+  } catch (err) {
+    showError(getUzbekError(err.code));
+  }
+};
+
+// Password show/hide
+window.togglePwd = () => {
+  const inp = document.getElementById("password");
+  inp.type  = inp.type === "password" ? "text" : "password";
+};
+</script>
+
+
+
+
+<script src="theme-switcher.js"></script>
+</body>
+</html>

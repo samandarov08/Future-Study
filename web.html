@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Development | Future-Study</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-1">
+
+<header class="navbar">
+  <div class="logo">Future-Study</div>
+  <nav>
+    <a href="project.html">Home</a>
+    <a href="web-development.html">Vocabulary</a>
+    <a href="web-questions.html">Questions</a>
+    <a href="web-tests.html">Tests</a>
+  </nav>
+  <button id="themeToggle">🌙</button>
+</header>
+
+<main style="max-width:900px;margin:80px auto;padding:20px;text-align:center;">
+  <h1 style="font-family:var(--font);font-size:40px;margin-bottom:12px;">🧑‍💻 Web Development</h1>
+  <p style="color:var(--muted);margin-bottom:50px;">Learn modern web development step by step.</p>
+
+  <div class="test-cards">
+    <div class="test-card">
+      <h3>📘 Vocabulary</h3>
+      <p>Web development terms with explanations</p>
+      <button onclick="location.href='web-development.html'">Open</button>
+    </div>
+    <div class="test-card">
+      <h3>❓ Questions</h3>
+      <p>Interview and concept questions</p>
+      <button onclick="location.href='web-questions.html'">Open</button>
+    </div>
+    <div class="test-card">
+      <h3>📝 Tests</h3>
+      <p>Check your knowledge with 10 questions</p>
+      <button onclick="location.href='web-tests.html'">Open</button>
+    </div>
+  </div>
+</main>
+
+<script type="module" src="header.js"></script>
+
+
+
+<script src="theme-switcher.js"></script>
+</body>
+</html>

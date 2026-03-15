@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logarifm Test | Math | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .test-wrap{max-width:720px;margin:0 auto;padding:60px 48px 100px;}
+    .test-header{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px 36px;margin-bottom:24px;}
+    .test-header h1{font-family:var(--font);font-size:28px;font-weight:800;color:var(--text);margin-bottom:6px;}
+    .test-header p{font-size:15px;color:var(--muted);font-weight:300;}
+    .test-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:36px;}
+    .test-counter{font-size:12px;color:var(--muted);margin-bottom:12px;font-weight:500;letter-spacing:.5px;}
+    .progress-bar{width:100%;height:5px;background:rgba(255,255,255,.07);border-radius:99px;overflow:hidden;margin-bottom:24px;}
+    .progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:99px;transition:width .4s ease;}
+    #question{font-family:var(--font);font-size:19px;font-weight:700;margin-bottom:24px;line-height:1.5;color:var(--text);}
+    .answers{display:flex;flex-direction:column;gap:10px;}
+    .answers button{width:100%;padding:13px 18px;border:1px solid var(--border);border-radius:var(--radius-sm);background:rgba(255,255,255,.04);color:var(--text);font-size:14px;text-align:left;cursor:pointer;font-family:var(--font-body);transition:background var(--ease),border-color var(--ease),transform var(--ease);}
+    .answers button:hover:not(:disabled){background:rgba(79,142,247,.12);border-color:var(--accent);transform:translateX(4px);}
+    .answers button.correct{background:rgba(34,197,94,.18)!important;border-color:#22c55e!important;color:#86efac!important;}
+    .answers button.wrong{background:rgba(239,68,68,.18)!important;border-color:#ef4444!important;color:#fca5a5!important;}
+    .answers button:disabled{cursor:not-allowed;}
+    #result{margin-top:16px;font-size:14px;font-weight:600;min-height:20px;color:var(--accent2);}
+    .result-screen{text-align:center;padding:20px 0;}
+    .result-screen h2{font-family:var(--font);font-size:32px;font-weight:800;margin-bottom:12px;color:var(--text);}
+    .result-screen .score{font-size:56px;font-weight:800;font-family:var(--font);background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:16px 0;}
+    .result-screen p{color:var(--muted);margin-bottom:28px;font-size:16px;}
+    .result-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+    .restart-btn{padding:13px 28px;border:none;border-radius:99px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:15px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease);}
+    .restart-btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(79,142,247,.4);}
+    .lesson-btn{padding:13px 28px;border:1.5px solid var(--border);border-radius:99px;background:transparent;color:var(--text);font-size:15px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:background var(--ease);}
+    .lesson-btn:hover{background:var(--surface2);}
+    .nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:24px;}
+    .nav-btns a{font-size:14px;color:var(--muted);}
+    .nav-btns a.next{color:var(--accent2);font-weight:500;}
+    @media(max-width:768px){.test-wrap{padding:40px 20px 80px;}}
+  </style>
+</head>
+<body class="theme-1">
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="math.html">Math</a>
+    <a href="project.html">Bosh sahifa</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+
+<div class="test-wrap">
+  <div class="test-header reveal">
+    <p class="s-label">Math Test · 6-mavzu</p>
+    <h1>🔬 Logarifm — Test</h1>
+    <p>10 ta savol · Har bir savolda 4 ta variant · Xato javobda to'g'risi ko'rsatiladi</p>
+  </div>
+
+  <div class="test-box reveal">
+    <p class="test-counter" id="counter">Savol 1 / 10</p>
+    <div class="progress-bar"><div class="progress-fill" id="pFill"></div></div>
+    <div id="question"></div>
+    <div class="answers">
+      <button onclick="ans(0)"></button>
+      <button onclick="ans(1)"></button>
+      <button onclick="ans(2)"></button>
+      <button onclick="ans(3)"></button>
+    </div>
+    <p id="result"></p>
+  </div>
+
+  <div class="nav-btns reveal">
+    <a href="math-lesson-logarifm.html">← Darsga qaytish</a>
+    <a href="math.html" class="next">Barcha Math darslari →</a>
+  </div>
+</div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth=getAuth(initializeApp({apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",authDomain:"it-study-a45fa.firebaseapp.com",projectId:"it-study-a45fa",storageBucket:"it-study-a45fa.firebasestorage.app",messagingSenderId:"973750187023",appId:"1:973750187023:web:c38b839da825ffa0681f7a"}));
+const ua=document.getElementById("userArea");
+onAuthStateChanged(auth,u=>{if(u){const n=u.displayName||u.email;ua.outerHTML=`<div class="profile-pill" onclick="location.href='profile.html'" style="cursor:pointer"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`;}else{ua.textContent="Kirish";ua.href="login.html";}});
+</script>
+
+<script>
+var questions = [{"q": "log₂(64) = ?", "o": ["5", "6", "7", "8"], "a": 1}, {"q": "log₃(1/9) = ?", "o": ["2", "-2", "1/2", "-1/2"], "a": 1}, {"q": "log₅(25) + log₅(5) = ?", "o": ["3", "4", "2", "5"], "a": 0}, {"q": "log₂(32) - log₂(4) = ?", "o": ["2", "3", "4", "8"], "a": 1}, {"q": "3·log₄(64) = ?", "o": ["6", "9", "3", "12"], "a": 1}, {"q": "log₂(x) = 6. x = ?", "o": ["12", "64", "32", "128"], "a": 1}, {"q": "log₁₀(1000) = ?", "o": ["2", "3", "4", "10"], "a": 1}, {"q": "log_a(a) = ?", "o": ["0", "a", "1/a", "1"], "a": 3}, {"q": "log_a(1) = ?", "o": ["1", "a", "0", "-1"], "a": 2}, {"q": "log₄(x) = 3/2. x = ?", "o": ["6", "8", "12", "16"], "a": 1}];
+var current=0, score=0;
+var btns = document.querySelectorAll(".answers button");
+
+function shuffle(arr){var a=[...arr];for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+questions = shuffle(questions);
+
+function load(){
+  if(current>=questions.length){showResult();return;}
+  var q=questions[current];
+  document.getElementById("counter").textContent="Savol "+(current+1)+" / "+questions.length;
+  document.getElementById("pFill").style.width=(current/questions.length*100)+"%";
+  document.getElementById("question").textContent=q.q;
+  document.getElementById("result").textContent="";
+  btns.forEach(function(b,i){b.textContent=q.o[i];b.className="";b.disabled=false;});
+}
+
+function ans(i){
+  btns.forEach(function(b){b.disabled=true;});
+  var correct=questions[current].a;
+  btns[i].classList.add(i===correct?"correct":"wrong");
+  btns[correct].classList.add("correct");
+  document.getElementById("result").textContent=i===correct?"To'g'ri ✅":"Xato ❌ — To'g'ri: "+questions[current].o[correct];
+  if(i===correct)score++;
+  current++;
+  setTimeout(load,1200);
+}
+
+function showResult(){
+  localStorage.setItem("mathTestLogarifm",score);
+  var pct=Math.round(score/questions.length*100);
+  var msg=pct>=90?"Ajoyib! 🏆":pct>=70?"Yaxshi! 👍":pct>=50?"O'rtacha 📚":"Ko'proq o'qing 💪";
+  document.querySelector(".test-box").innerHTML=`
+    <div class="result-screen">
+      <h2>Test tugadi! 🎉</h2>
+      <div class="score">${score}/${questions.length}</div>
+      <p>${msg} — ${pct}% to'g'ri javob</p>
+      <div class="result-btns">
+        <button class="restart-btn" onclick="location.reload()">🔁 Qayta urinish</button>
+        <button class="lesson-btn" onclick="location.href='math-lesson-logarifm.html'">📖 Darsga qaytish</button>
+      </div>
+    </div>`;
+}
+
+load();
+</script>
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\[",right:"\\]",display:true},{left:"\\(",right:"\\)",display:false}]});});</script>
+<script>var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});</script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

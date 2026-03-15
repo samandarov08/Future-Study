@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading 7 | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .reading-wrap{max-width:860px;margin:0 auto;padding:64px 48px 100px;}
+    .passage{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:44px 48px;margin-bottom:24px;line-height:2;font-size:16px;color:var(--text);}
+    .passage h2{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:28px;text-transform:uppercase;line-height:1.4;}
+    .passage h3{font-family:var(--font);font-size:17px;font-weight:700;color:var(--accent2);margin:32px 0 14px;}
+    .passage h4{font-family:var(--font);font-size:15px;font-weight:700;color:var(--accent);margin:22px 0 10px;}
+    .passage p{margin-bottom:18px;color:var(--muted);font-weight:300;}
+    .passage b{color:var(--accent2);font-weight:600;}
+    .tr{font-style:italic;font-size:13px;color:var(--muted);opacity:0.7;margin-left:3px;}
+    .vocab-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;margin-bottom:24px;}
+    .vocab-wrap h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:24px;}
+    .comp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:40px;margin-bottom:24px;}
+    .comp-card h3{font-family:var(--font);font-size:20px;font-weight:800;color:var(--text);margin-bottom:28px;}
+    .comp-q{margin-bottom:24px;}
+    .comp-q p{font-size:15px;color:var(--text);margin-bottom:10px;font-weight:500;}
+    .comp-options{display:flex;flex-direction:column;gap:8px;}
+    .comp-opt{padding:11px 16px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:14px;color:var(--muted);transition:background var(--ease),border-color var(--ease),color var(--ease);}
+    .comp-opt:hover{background:rgba(79,142,247,0.1);border-color:var(--accent);color:var(--text);}
+    .comp-opt.correct{background:rgba(34,197,94,0.18)!important;border-color:#22c55e!important;color:#86efac!important;}
+    .comp-opt.wrong{background:rgba(239,68,68,0.18)!important;border-color:#ef4444!important;color:#fca5a5!important;}
+    .comp-opt.show-correct{background:rgba(34,197,94,0.08);border-color:rgba(34,197,94,0.35);color:#86efac;}
+    .done-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+    .done-bar p{color:var(--muted);font-size:15px;font-weight:300;}
+    .done-btn{padding:12px 28px;border:none;border-radius:99px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:15px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease);}
+    .done-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,142,247,0.4);}
+    .done-btn.done{background:linear-gradient(135deg,#22c55e,#4ade80);}
+    .nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:32px;}
+    .nav-btns a{font-size:14px;color:var(--muted);}
+    .nav-btns a.next{color:var(--accent2);font-weight:500;}
+    @media(max-width:768px){.reading-wrap{padding:40px 20px 80px;}.passage{padding:28px 22px;}}
+  </style>
+</head>
+<body class="theme-1">
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="english.html">English</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+
+<div class="reading-wrap">
+  <div class="breadcrumb reveal">English <span>›</span> Reading <span>›</span> Dars 7</div>
+  <div class="reveal" style="margin-bottom:40px;">
+    <p class="s-label">Reading 7 / 10</p>
+    <h1 style="font-family:var(--font);font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-1px;line-height:1.1;color:var(--text);margin-bottom:12px;">Tibbiyot va Texnologiyaning Birlashuvi 💊</h1>
+    <p style="font-size:15px;color:var(--muted);font-weight:300;">IELTS Academic · ~1250 so'z · Yuqori daraja</p>
+  </div>
+
+  <div class="passage reveal">
+    <h2>THE DIGITAL REVOLUTION IN HEALTHCARE: OPPORTUNITIES AND CHALLENGES</h2>
+    <p>The integration of digital technology into healthcare represents one of the most <b>transformative</b><span class="tr">(o'zgartirib yuboruvchi)</span> developments in modern medicine. From electronic health records to AI-assisted diagnostics, from <b>telemedicine</b><span class="tr">(masofaviy tibbiyot)</span> to <b>wearable devices</b><span class="tr">(kiyiladigan qurilmalar)</span> that continuously monitor vital signs, digital health technologies are reshaping how care is delivered, how diseases are detected, and how patients engage with the healthcare system.</p>
+    <p>The COVID-19 pandemic dramatically accelerated this transformation, forcing healthcare providers and patients alike to <b>rapidly adopt</b><span class="tr">(tez qabul qilmoq)</span> digital solutions out of necessity. Telehealth consultations surged, remote patient monitoring expanded, and <b>genomic sequencing</b><span class="tr">(genomik sekvenirovka)</span> played a critical role in tracking viral mutations. While significant challenges remain, the pandemic demonstrated in an <b>unprecedented</b><span class="tr">(mislsiz)</span> way the potential of digital technology to maintain and improve healthcare delivery even under extreme conditions.</p>
+
+    <h3>1. Key Digital Health Technologies</h3>
+    <h4>1.1 Artificial Intelligence in Diagnostics</h4>
+    <p>AI is proving particularly powerful in medical imaging and <b>diagnostics</b><span class="tr">(tashxis)</span>. Deep learning algorithms trained on millions of medical images can detect cancers, diabetic retinopathy, and other conditions with accuracy that matches or exceeds that of specialist physicians. In resource-limited settings where specialist physicians are scarce, AI-assisted diagnostics could dramatically improve access to high-quality care. However, concerns remain about the <b>transparency</b><span class="tr">(shaffoflik)</span> of AI decision-making — the so-called "black box" problem — and the potential for AI systems trained on <b>non-representative data</b><span class="tr">(vakil bo'lmagan ma'lumotlar)</span> to perform poorly for certain patient populations.</p>
+    <h4>1.2 Genomics and Personalised Medicine</h4>
+    <p>Advances in <b>genomics</b><span class="tr">(genomika)</span> — the study of the complete set of genes in an organism — are enabling a shift towards <b>personalised medicine</b><span class="tr">(shaxsiylashtirilgan tibbiyot)</span>: treatment approaches tailored to the individual patient's genetic makeup, lifestyle, and environment. Rather than applying one-size-fits-all treatments, personalised medicine aims to predict which patients will respond to a given therapy and at what dose — maximising <b>efficacy</b><span class="tr">(samaradorlik)</span> while minimising side effects. While genomic medicine remains expensive and complex, costs are falling rapidly as <b>sequencing technology</b><span class="tr">(sekvenirovka texnologiyasi)</span> improves.</p>
+
+    <h3>2. Telemedicine and Remote Care</h3>
+    <h4>2.1 Benefits of Telemedicine</h4>
+    <p><b>Telemedicine</b><span class="tr">(masofaviy tibbiyot)</span> — the delivery of healthcare services using telecommunications technology — offers several important advantages. It increases access to care for patients in rural or remote areas, reduces the need for costly and time-consuming hospital visits, and can enable more frequent monitoring of patients with chronic conditions. Evidence suggests that telemedicine can be as effective as face-to-face consultations for a wide range of conditions, including mental health care, <b>dermatology</b><span class="tr">(dermatologiya)</span>, and the management of chronic diseases such as diabetes and hypertension.</p>
+    <h4>2.2 Limitations and Equity Concerns</h4>
+    <p>Despite its potential, telemedicine also raises important concerns. Older patients and those from lower <b>socioeconomic</b><span class="tr">(ijtimoiy-iqtisodiy)</span> backgrounds may lack the digital skills or devices needed to access telehealth services effectively, potentially <b>exacerbating</b><span class="tr">(yomonlashtirmoq)</span> existing health inequalities. Physical examination remains impossible remotely, limiting the applicability of telemedicine for certain conditions. There are also concerns about data security and the <b>confidentiality</b><span class="tr">(maxfiylik)</span> of sensitive health information transmitted digitally.</p>
+
+    <h3>3. Data, Privacy and Ethics</h3>
+    <h4>3.1 Health Data and Privacy</h4>
+    <p>Digital health generates enormous quantities of sensitive personal data. Electronic health records, genomic databases, and wearable devices collectively create a detailed picture of individuals' health status, behaviours, and risks. While this data has enormous potential value for medical research and public health, its collection and use raises profound questions about <b>privacy</b><span class="tr">(maxfiylik)</span>, <b>consent</b><span class="tr">(rozilik)</span>, and the risk of discrimination. There are concerns that health data could be used by employers or insurers to discriminate against individuals with certain genetic predispositions or health conditions.</p>
+    <h4>3.2 Regulatory Frameworks</h4>
+    <p>The regulation of digital health technologies is still <b>evolving</b><span class="tr">(rivojlanmoqda)</span> in many jurisdictions. Ensuring that digital health products are safe, effective, and equitable requires robust <b>regulatory frameworks</b><span class="tr">(tartibga solish tizimi)</span> that can keep pace with rapid technological change. This is particularly challenging for AI-based systems, which may change their behaviour as they learn from new data, raising questions about how ongoing <b>oversight</b><span class="tr">(nazorat)</span> should be conducted.</p>
+
+    <h3>Conclusion</h3>
+    <p>The digital transformation of healthcare holds extraordinary promise for improving the quality, accessibility, and efficiency of care worldwide. However, realising this promise requires careful attention to issues of equity, privacy, safety, and <b>accountability</b><span class="tr">(javobgarlik)</span>. Technology alone cannot solve the profound challenges facing global healthcare; it must be deployed thoughtfully, within systems that prioritise the needs and rights of patients above all else.</p>
+  </div>
+
+  <div class="vocab-wrap reveal">
+    <h3>📘 Muhim so'zlar — Reading 7</h3>
+    <div class="vocab-grid">
+      <div class="vocab-card"><h4>transformative</h4><p>o'zgartirib yuboruvchi</p></div>
+      <div class="vocab-card"><h4>telemedicine</h4><p>masofaviy tibbiyot</p></div>
+      <div class="vocab-card"><h4>wearable devices</h4><p>kiyiladigan qurilmalar</p></div>
+      <div class="vocab-card"><h4>genomic sequencing</h4><p>genomik sekvenirovka</p></div>
+      <div class="vocab-card"><h4>diagnostics</h4><p>tashxis</p></div>
+      <div class="vocab-card"><h4>transparency</h4><p>shaffoflik</p></div>
+      <div class="vocab-card"><h4>genomics</h4><p>genomika</p></div>
+      <div class="vocab-card"><h4>personalised medicine</h4><p>shaxsiylashtirilgan tibbiyot</p></div>
+      <div class="vocab-card"><h4>efficacy</h4><p>samaradorlik</p></div>
+      <div class="vocab-card"><h4>sequencing technology</h4><p>sekvenirovka texnologiyasi</p></div>
+      <div class="vocab-card"><h4>dermatology</h4><p>dermatologiya</p></div>
+      <div class="vocab-card"><h4>socioeconomic</h4><p>ijtimoiy-iqtisodiy</p></div>
+      <div class="vocab-card"><h4>exacerbating</h4><p>yomonlashtirmoq</p></div>
+      <div class="vocab-card"><h4>confidentiality</h4><p>maxfiylik</p></div>
+      <div class="vocab-card"><h4>consent</h4><p>rozilik</p></div>
+      <div class="vocab-card"><h4>regulatory frameworks</h4><p>tartibga solish tizimi</p></div>
+      <div class="vocab-card"><h4>oversight</h4><p>nazorat</p></div>
+      <div class="vocab-card"><h4>accountability</h4><p>javobgarlik</p></div>
+      <div class="vocab-card"><h4>unprecedented</h4><p>mislsiz</p></div>
+      <div class="vocab-card"><h4>non-representative data</h4><p>vakil bo'lmagan ma'lumotlar</p></div>
+
+    </div>
+  </div>
+
+  <div class="comp-card reveal">
+    <h3>❓ Tushunish savollari</h3>
+    <div class="comp-q">
+      <p>1. What is the 'black box' problem in AI diagnostics?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) AI systems being too expensive to develop</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) Lack of transparency in how AI makes decisions</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) AI systems requiring too much data to function</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) AI being unable to process medical images</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>2. What is personalised medicine according to the passage?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Medicine delivered at home by personal doctors</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) Treatment tailored to a patient's genetic makeup and individual characteristics</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) A system where patients choose their own treatments</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Medicine developed by individual pharmaceutical companies</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>3. Which groups may struggle to access telemedicine according to the text?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Young people and students</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) Patients with rare diseases</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) Older patients and those from lower socioeconomic backgrounds</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Doctors working in hospitals</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>4. What concern is raised about health data being used by employers?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Employers may use it to improve workplace safety</div>
+        <div class="comp-opt" onclick="ans(this,true)">B) Health data could be used to discriminate against employees</div>
+        <div class="comp-opt" onclick="ans(this,false)">C) Employers may share it with research institutions</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) Health data is too complex for employers to understand</div>
+      </div>
+    </div>
+    <div class="comp-q">
+      <p>5. According to the conclusion, what must healthcare technology prioritise?</p>
+      <div class="comp-options">
+        <div class="comp-opt" onclick="ans(this,false)">A) Reducing costs for hospitals and insurance companies</div>
+        <div class="comp-opt" onclick="ans(this,false)">B) Speed of technological development</div>
+        <div class="comp-opt" onclick="ans(this,true)">C) The needs and rights of patients above all else</div>
+        <div class="comp-opt" onclick="ans(this,false)">D) The profits of technology developers</div>
+      </div>
+    </div>
+
+    <p id="compScore" style="margin-top:24px;font-family:var(--font);font-size:16px;font-weight:700;color:var(--accent2);min-height:24px;"></p>
+  </div>
+
+  <div class="done-bar reveal">
+    <p>📖 Matnni o'qib, savollarga javob berdingizmi?</p>
+    <button class="done-btn" id="doneBtn" onclick="markDone()">✅ O'qib bo'ldim</button>
+  </div>
+  <div class="nav-btns reveal">
+    <a href="reading-6.html">← Reading 6</a>
+    <a href="reading-8.html" class="next">Reading 8 → Shaharsozlik va atrof-muhit</a>
+  </div>
+</div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth=getAuth(initializeApp({apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",authDomain:"it-study-a45fa.firebaseapp.com",projectId:"it-study-a45fa",storageBucket:"it-study-a45fa.firebasestorage.app",messagingSenderId:"973750187023",appId:"1:973750187023:web:c38b839da825ffa0681f7a"}));
+const ua=document.getElementById("userArea");
+onAuthStateChanged(auth,u=>{if(u){const n=u.displayName||u.email;ua.outerHTML=`<div class="profile-pill"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`;}else{ua.textContent="Kirish";ua.href="login.html";}});
+</script>
+<script>
+let ca=0,cc=0;
+function ans(el,correct){const g=el.closest('.comp-options');if(g.dataset.done)return;g.dataset.done="1";ca++;if(correct){el.classList.add('correct');cc++;}else{el.classList.add('wrong');[...g.children].forEach(o=>{if(o!==el)o.classList.add('show-correct');});}if(ca===5){document.getElementById('compScore').textContent=`Natija: ${cc} / 5 ✅`;localStorage.setItem('reading7Comp',cc);}}
+if(localStorage.getItem('reading7Done')){const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi';b.classList.add('done');}
+function markDone(){localStorage.setItem('reading7Done','true');const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi!';b.classList.add('done');}
+</script>
+<script>const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.04});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

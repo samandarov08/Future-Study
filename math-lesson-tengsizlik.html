@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tengsizlik | Math | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .lesson-wrap{max-width:860px;margin:0 auto;padding:64px 48px 100px;}
+    .terms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-bottom:8px;}
+    .term-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;transition:border-color var(--ease),transform var(--ease);}
+    .term-card:hover{border-color:var(--accent);transform:translateY(-3px);}
+    .term-en{font-family:var(--font);font-size:15px;font-weight:700;color:var(--accent2);margin-bottom:4px;}
+    .term-uz{font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:300;}
+    .term-desc{font-size:13px;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);padding-top:8px;margin-top:6px;}
+    .formula-block{background:var(--bg2);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:24px 28px;margin-bottom:16px;}
+    .formula-title{font-family:var(--font);font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:14px;}
+    .formula-main{font-size:20px;color:var(--text);margin-bottom:10px;line-height:1.8;}
+    .formula-note{font-size:13px;color:var(--muted);line-height:1.7;margin-top:10px;font-weight:300;}
+    .formula-note b{color:var(--accent2);font-weight:600;}
+    .example-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:14px;}
+    .example-header{display:flex;align-items:center;gap:14px;padding:18px 26px;cursor:pointer;user-select:none;transition:background var(--ease);}
+    .example-header:hover{background:rgba(255,255,255,0.04);}
+    .example-num{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:var(--font);font-weight:700;font-size:13px;color:#fff;flex-shrink:0;}
+    .example-question{font-size:15px;color:var(--text);font-weight:500;flex:1;}
+    .example-toggle{font-size:12px;color:var(--accent);font-weight:600;white-space:nowrap;padding:5px 13px;border:1px solid rgba(79,142,247,0.3);border-radius:99px;transition:background var(--ease);}
+    .example-header:hover .example-toggle{background:rgba(79,142,247,0.1);}
+    .example-body{display:none;padding:0 26px 26px;border-top:1px solid var(--border);}
+    .example-card.open .example-body{display:block;}
+    .steps{margin-top:18px;}
+    .step{display:flex;gap:14px;margin-bottom:14px;}
+    .step-num{width:26px;height:26px;border-radius:50%;background:rgba(79,142,247,0.12);border:1px solid rgba(79,142,247,0.3);display:flex;align-items:center;justify-content:center;font-family:var(--font);font-size:11px;font-weight:700;color:var(--accent);flex-shrink:0;margin-top:2px;}
+    .step-content{flex:1;}
+    .step-label{font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+    .step-math{font-size:16px;color:var(--text);line-height:1.8;margin-bottom:5px;}
+    .step-explain{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300;}
+    .answer-box{margin-top:18px;padding:14px 18px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.25);border-radius:var(--radius-sm);display:flex;align-items:center;gap:12px;}
+    .answer-box .label{font-family:var(--font);font-size:12px;font-weight:700;color:#22c55e;letter-spacing:0.5px;white-space:nowrap;}
+    .answer-box .val{font-size:17px;color:#86efac;}
+    .try-box{margin-top:12px;padding:12px 16px;background:rgba(79,142,247,0.06);border:1px solid rgba(79,142,247,0.2);border-radius:var(--radius-sm);font-size:13px;color:var(--muted);font-style:italic;}
+    .try-box b{color:var(--accent2);font-style:normal;font-weight:600;}
+    .section-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:36px 40px;margin-bottom:24px;}
+    .done-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:8px;}
+    .done-bar p{color:var(--muted);font-size:15px;font-weight:300;}
+    .done-btn{padding:12px 28px;border:none;border-radius:99px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:15px;font-weight:600;font-family:var(--font-body);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease);}
+    .done-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,142,247,0.4);}
+    .done-btn.done{background:linear-gradient(135deg,#22c55e,#4ade80);}
+    .nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:32px;}
+    .nav-btns a{font-size:14px;color:var(--muted);}
+    .nav-btns a.next{color:var(--accent2);font-weight:500;}
+    @media(max-width:768px){.lesson-wrap{padding:40px 20px 80px;}.section-box{padding:24px 20px;}.formula-block{padding:18px 20px;}.example-header{padding:14px 18px;}.example-body{padding:0 18px 18px;}}
+  </style>
+</head>
+<body class="theme-1">
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="math.html">Math</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+<div class="lesson-wrap">
+  <div class="breadcrumb reveal">Math <span>›</span> Tengsizlik</div>
+  <div class="reveal" style="margin-bottom:48px;">
+    <p class="s-label">Math · 2-dars</p>
+    <h1 style="font-family:var(--font);font-size:clamp(32px,5vw,54px);font-weight:800;letter-spacing:-1.5px;line-height:1.08;color:var(--text);margin-bottom:14px;">
+      Tengsizlik<br>
+      <span style="background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Inequalities ⚖️</span>
+    </h1>
+    <p style="font-size:16px;color:var(--muted);font-weight:300;max-width:520px;line-height:1.7;">Atamalar → Formulalar → 10 ta yechilgan misol. Har bir qadamni tushunib o'rganing.</p>
+  </div>
+
+  <p class="s-label reveal">1-bosqich</p>
+  <h2 class="s-title reveal" style="margin-bottom:24px;">Atamalar 📖</h2>
+  <div class="section-box reveal">
+    <div class="terms-grid">
+      <div class="term-card">
+        <div class="term-en">Inequality / Tengsizlik</div>
+        <div class="term-uz">Tenglik bo'lmagan ifoda</div>
+        <div class="term-desc">Ikki ifodani >, <, ≥, ≤ belgisi bilan bog'laydigan yozuv. Masalan: \(2x + 1 > 5\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Greater than / Katta</div>
+        <div class="term-uz">\(a > b\)</div>
+        <div class="term-desc">a b dan katta. Masalan: \(7 > 3\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Less than / Kichik</div>
+        <div class="term-uz">\(a < b\)</div>
+        <div class="term-desc">a b dan kichik. Masalan: \(2 < 9\)</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Greater or equal / Katta yoki teng</div>
+        <div class="term-uz">\(a \geq b\)</div>
+        <div class="term-desc">a b dan katta yoki unga teng.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Less or equal / Kichik yoki teng</div>
+        <div class="term-uz">\(a \leq b\)</div>
+        <div class="term-desc">a b dan kichik yoki unga teng.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Number line / Son o'qi</div>
+        <div class="term-uz">Javobni ko'rsatish usuli</div>
+        <div class="term-desc">Tengsizlik yechimi son o'qida interval sifatida ko'rsatiladi.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Interval / Interval</div>
+        <div class="term-uz">Yechimlar to'plami</div>
+        <div class="term-desc">\((a,b)\) — ochiq, \([a,b]\) — yopiq interval. \((2, +\infty)\) — 2 dan katta sonlar.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Flip the sign / Ishora o'zgarishi</div>
+        <div class="term-uz">Manfiy songa ko'paytirganda</div>
+        <div class="term-desc">Manfiy songa ko'paytirish yoki bo'lganda \(>\) ↔ \(<\) almashadi!</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Compound inequality</div>
+        <div class="term-uz">Ikki tengsizlik birlashgan</div>
+        <div class="term-desc">\(a < x < b\) — x a dan katta va b dan kichik.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Quadratic inequality</div>
+        <div class="term-uz">Kvadrat tengsizlik</div>
+        <div class="term-desc">\(ax^2 + bx + c > 0\) yoki \(< 0\) ko'rinishidagi tengsizlik.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Rational inequality</div>
+        <div class="term-uz">Kasrli tengsizlik</div>
+        <div class="term-desc">\(\frac{f(x)}{g(x)} > 0\) ko'rinishidagi tengsizlik.</div>
+      </div>
+      <div class="term-card">
+        <div class="term-en">Absolute inequality</div>
+        <div class="term-uz">Modul tengsizligi</div>
+        <div class="term-desc">\(|x| < a \Rightarrow -a < x < a\)</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="s-label reveal" style="margin-top:16px;">2-bosqich</p>
+  <h2 class="s-title reveal" style="margin-bottom:24px;">Formulalar 📐</h2>
+  <div class="formula-block reveal">
+    <div class="formula-title">Asosiy qoidalar</div>
+        <div class="formula-main">\[a > b \Rightarrow a + c > b + c\]</div>
+        <div class="formula-main">\[a > b,\; c > 0 \Rightarrow ac > bc\]</div>
+        <div class="formula-main">\[a > b,\; c < 0 \Rightarrow ac < bc \;\text{(ishora o'zgaradi!)}\]</div>
+        <div class="formula-note"><b>Muhim:</b> Manfiy songa ko'paytirganda tengsizlik ishorasi o'zgaradi.</div>
+  </div>
+  <div class="formula-block reveal">
+    <div class="formula-title">Chiziqli tengsizlik</div>
+        <div class="formula-main">\[ax + b > c \Rightarrow x > \frac{c-b}{a} \;(a>0)\]</div>
+        <div class="formula-main">\[ax + b > c \Rightarrow x < \frac{c-b}{a} \;(a<0)\]</div>
+        <div class="formula-note">Koeffitsient manfiy bo'lsa ishora o'zgaradi.</div>
+  </div>
+  <div class="formula-block reveal">
+    <div class="formula-title">Kvadrat tengsizlik — \(ax^2+bx+c > 0\)</div>
+        <div class="formula-main">\[D = b^2 - 4ac,\quad x_{1,2} = \frac{-b \pm \sqrt{D}}{2a}\]</div>
+        <div class="formula-main">\[a>0,\;D>0: \quad x < x_1 \;\text{yoki}\; x > x_2\]</div>
+        <div class="formula-main">\[a>0,\;D>0,\;ax^2+bx+c < 0: \quad x_1 < x < x_2\]</div>
+        <div class="formula-note"><b>Eslab qoling:</b> a>0 bo'lsa parabola yuqoriga, a<0 bo'lsa pastga ochiladi.</div>
+  </div>
+  <div class="formula-block reveal">
+    <div class="formula-title">Modul tengsizligi</div>
+        <div class="formula-main">\[|f(x)| < a \Rightarrow -a < f(x) < a \quad (a>0)\]</div>
+        <div class="formula-main">\[|f(x)| > a \Rightarrow f(x) < -a \;\text{yoki}\; f(x) > a\]</div>
+  </div>
+  <div class="formula-block reveal">
+    <div class="formula-title">Kasrli tengsizlik — interval usuli</div>
+        <div class="formula-main">\[\frac{f(x)}{g(x)} > 0\]</div>
+        <div class="formula-note"><b>Usul:</b> Surat va mahrajni nolga tenglang → son o'qida nuqtalar belgilang → ishoralarni tekshiring.</div>
+  </div>
+
+  <p class="s-label reveal" style="margin-top:16px;">3-bosqich</p>
+  <h2 class="s-title reveal" style="margin-bottom:24px;">Yechilgan misollar 🧮</h2>
+  <p style="color:var(--muted);font-size:15px;margin-bottom:24px;font-weight:300;" class="reveal">Har bir misol ustiga bosing — bosqichma-bosqich yechimni ko'ring.</p>
+  <div class="example-card reveal" id="ex1">
+    <div class="example-header" onclick="toggleEx('ex1')">
+      <div class="example-num">1</div>
+      <div class="example-question">\(2x - 5 > 3\) tengsizligini yeching.</div>
+      <div class="example-toggle" id="ex1-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Doimiy sonni o'ng tomonga o'tkazing</div>
+            <div class="step-math">\(2x > 3 + 5\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Hisoblang</div>
+            <div class="step-math">\(2x > 8\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Koeffitsientga bo'ling (musbat — ishora o'zgarmaydi)</div>
+            <div class="step-math">\(x > 4\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-label">Intervalni yozing</div>
+            <div class="step-math">\(x \in (4, +\infty)\)</div>
+            <div class='step-explain'>Son o'qida 4 dan o'ng tomonga.</div>
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(x > 4\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex2">
+    <div class="example-header" onclick="toggleEx('ex2')">
+      <div class="example-num">2</div>
+      <div class="example-question">\(-3x + 6 \leq 0\) tengsizligini yeching.</div>
+      <div class="example-toggle" id="ex2-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Doimiy sonni o'tkazing</div>
+            <div class="step-math">\(-3x \leq -6\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Manfiy koeffitsientga bo'ling — ISHORA O'ZGARADI!</div>
+            <div class="step-math">\(x \geq \frac{-6}{-3}\)</div>
+            <div class='step-explain'>Manfiy bo'lgani uchun ≤ → ≥</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Natija</div>
+            <div class="step-math">\(x \geq 2\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-label">Interval</div>
+            <div class="step-math">\(x \in [2, +\infty)\)</div>
+            <div class='step-explain'>Kvadrat qavs — 2 ham kiradi.</div>
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(x \geq 2\)</span></div>
+      <div class="try-box">💡 <b>Eslab qoling:</b> Manfiy songa bo'lganda tengsizlik ishorasi ALBATTA o'zgaradi!</div>
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex3">
+    <div class="example-header" onclick="toggleEx('ex3')">
+      <div class="example-num">3</div>
+      <div class="example-question">\(x^2 - x - 6 < 0\) tengsizligini yeching.</div>
+      <div class="example-toggle" id="ex3-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Ildizlarni topamiz: \(x^2 - x - 6 = 0\)</div>
+            <div class="step-math">\(D = 1 + 24 = 25,\quad x_1 = 3,\quad x_2 = -2\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">a = 1 > 0, D > 0 — parabola yuqoriga ochiladi</div>
+            <div class="step-math">\(ax^2+bx+c < 0 \Rightarrow x_1 < x < x_2\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Javob</div>
+            <div class="step-math">\(-2 < x < 3\)</div>
+            <div class='step-explain'>Parabola pastda bo'lgan qism.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-label">Interval</div>
+            <div class="step-math">\(x \in (-2, 3)\)</div>
+            <div class='step-explain'>Ochiq interval — chegaralar kirmaydi.</div>
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(x \in (-2,\ 3)\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex4">
+    <div class="example-header" onclick="toggleEx('ex4')">
+      <div class="example-num">4</div>
+      <div class="example-question">\(x^2 - 4x + 4 > 0\) tengsizligini yeching.</div>
+      <div class="example-toggle" id="ex4-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Diskriminant</div>
+            <div class="step-math">\(D = 16 - 16 = 0,\quad x_0 = 2\)</div>
+            <div class='step-explain'>D=0 bo'lgani uchun bitta ildiz.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">\((x-2)^2 > 0\) — bu faqat \(x = 2\) da nolga teng</div>
+            <div class="step-math">\((x-2)^2 = 0 \Leftrightarrow x = 2\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Boshqa hamma joyda > 0</div>
+            <div class="step-math">\(x \in \mathbb{R} \setminus \{2\}\)</div>
+            <div class='step-explain'>x=2 dan tashqari barcha sonlar.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-label">Interval ko'rinishi</div>
+            <div class="step-math">\(x \in (-\infty, 2) \cup (2, +\infty)\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(x \neq 2\)</span></div>
+      <div class="try-box">💡 <b>Farq:</b> D=0 da tenglama bir ildizga ega, lekin tengsizlik \(>0\) bo'lsa bu nuqta chiqariladi.</div>
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex5">
+    <div class="example-header" onclick="toggleEx('ex5')">
+      <div class="example-num">5</div>
+      <div class="example-question">\(|x - 3| < 5\) tengsizligini yeching.</div>
+      <div class="example-toggle" id="ex5-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Modul tengsizligini ochamiz: \(|f(x)| < a \Rightarrow -a < f(x) < a\)</div>
+            <div class="step-math">\(-5 < x - 3 < 5\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Har uchala qismga +3 qo'shamiz</div>
+            <div class="step-math">\(-5 + 3 < x < 5 + 3\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Natija</div>
+            <div class="step-math">\(-2 < x < 8\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-label">Interval</div>
+            <div class="step-math">\(x \in (-2,\ 8)\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(x \in (-2,\ 8)\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex6">
+    <div class="example-header" onclick="toggleEx('ex6')">
+      <div class="example-num">6</div>
+      <div class="example-question">\(|2x + 1| \geq 7\) tengsizligini yeching.</div>
+      <div class="example-toggle" id="ex6-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Modul ≥ — ikkiga ajralamiz</div>
+            <div class="step-math">\(2x+1 \geq 7 \quad \text{yoki} \quad 2x+1 \leq -7\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">1-holat:</div>
+            <div class="step-math">\(2x \geq 6 \Rightarrow x \geq 3\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">2-holat:</div>
+            <div class="step-math">\(2x \leq -8 \Rightarrow x \leq -4\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-label">Birlashma</div>
+            <div class="step-math">\(x \in (-\infty, -4] \cup [3, +\infty)\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(x \leq -4 \;\text{yoki}\; x \geq 3\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex7">
+    <div class="example-header" onclick="toggleEx('ex7')">
+      <div class="example-num">7</div>
+      <div class="example-question">\(\frac{x+2}{x-1} > 0\) tengsizligini yeching.</div>
+      <div class="example-toggle" id="ex7-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Surat va mahrajni nolga tenglaymiz</div>
+            <div class="step-math">\(x+2=0 \Rightarrow x=-2;\quad x-1=0 \Rightarrow x=1\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Son o'qida nuqtalarni belgilaymiz</div>
+            <div class="step-math">\(-\infty \quad -2 \quad 1 \quad +\infty\)</div>
+            <div class='step-explain'>3 ta soha hosil bo'ladi.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Har bir sohada ishorani tekshiramiz: \(x=0\) da:</div>
+            <div class="step-math">\(\frac{0+2}{0-1} = \frac{2}{-1} = -2 < 0\)</div>
+            <div class='step-explain'>O'rta soha manfiy.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-label">Javob: ikki uchida musbat</div>
+            <div class="step-math">\(x < -2 \quad \text{yoki} \quad x > 1\)</div>
+            <div class='step-explain'>x=1 mahraj nolga teng — kiritilmaydi.</div>
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(x \in (-\infty,\ -2) \cup (1,\ +\infty)\)</span></div>
+      <div class="try-box">💡 <b>Interval usuli:</b> Nuqtalardan o'tganda ishorani almashtirib boring.</div>
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex8">
+    <div class="example-header" onclick="toggleEx('ex8')">
+      <div class="example-num">8</div>
+      <div class="example-question">\(3x + 2 > x + 8\) va \(x - 1 < 4\) sistemasini yeching.</div>
+      <div class="example-toggle" id="ex8-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">1-tengsizlik:</div>
+            <div class="step-math">\(3x - x > 8 - 2 \Rightarrow 2x > 6 \Rightarrow x > 3\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">2-tengsizlik:</div>
+            <div class="step-math">\(x < 4 + 1 \Rightarrow x < 5\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Kesishma:</div>
+            <div class="step-math">\(x > 3 \quad \text{va} \quad x < 5\)</div>
+            <div class='step-explain'>Ikkala shart bir vaqtda bajarilishi kerak.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-label">Natija</div>
+            <div class="step-math">\(3 < x < 5\)</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(x \in (3,\ 5)\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex9">
+    <div class="example-header" onclick="toggleEx('ex9')">
+      <div class="example-num">9</div>
+      <div class="example-question">\(x^2 - 5x + 6 \geq 0\) tengsizligini yeching.</div>
+      <div class="example-toggle" id="ex9-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Ildizlar:</div>
+            <div class="step-math">\(x^2-5x+6=0 \Rightarrow x_1=2,\; x_2=3\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">a=1>0, \(ax^2+bx+c \geq 0\)</div>
+            <div class="step-math">\(x \leq x_1 \quad \text{yoki} \quad x \geq x_2\)</div>
+            <div class='step-explain'>Parabola yuqorida bo'lgan qism.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Natija</div>
+            <div class="step-math">\(x \leq 2 \quad \text{yoki} \quad x \geq 3\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-label">Interval</div>
+            <div class="step-math">\(x \in (-\infty, 2] \cup [3, +\infty)\)</div>
+            <div class='step-explain'>Kvadrat qavslar — chegara nuqtalari kiradi.</div>
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(x \in (-\infty,\ 2] \cup [3,\ +\infty)\)</span></div>
+
+    </div>
+  </div>
+  <div class="example-card reveal" id="ex10">
+    <div class="example-header" onclick="toggleEx('ex10')">
+      <div class="example-num">10</div>
+      <div class="example-question">\(\frac{x^2-4}{x+1} \leq 0\) tengsizligini yeching.</div>
+      <div class="example-toggle" id="ex10-btn">👁 Ko'rish</div>
+    </div>
+    <div class="example-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Surat va mahrajni faktorizatsiya:</div>
+            <div class="step-math">\(x^2-4 = (x-2)(x+2),\quad x+1 \neq 0\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Nol nuqtalar:</div>
+            <div class="step-math">\(x = -2,\; x = -1,\; x = 2\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Interval usuli — 4 ta soha tekshiramiz:</div>
+            <div class="step-math">\(x < -2: \frac{(-)( -)}{(-)} = \frac{+}{-} < 0 \checkmark\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-label">Qolgan sohalar:</div>
+            <div class="step-math">\(-2<x<-1: + > 0 ✗;\quad -1<x<2: - < 0 \checkmark;\quad x>2: + > 0 ✗\)</div>
+            
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <div class="step-label">Natija (\(\leq 0\), shuning uchun ildizlar ham kiradi):</div>
+            <div class="step-math">\(x \in (-\infty,-2] \cup (-1, 2]\)</div>
+            <div class='step-explain'>x=-1 mahraj nolga teng — kiritilmaydi!</div>
+          </div>
+        </div>
+      </div>
+      <div class="answer-box"><span class="label">JAVOB:</span><span class="val">\(x \in (-\infty,\ -2] \cup (-1,\ 2]\)</span></div>
+
+    </div>
+  </div>
+
+  <div class="done-bar reveal">
+    <p>✅ Darsni o'qib, misollarni yechdingizmi?</p>
+    <button class="done-btn" id="doneBtn" onclick="markDone()">✅ Darsni tugatdim</button>
+  </div>
+  <div class="nav-btns reveal">
+    <a href="math-lesson-tenglama.html">← Tenglama</a>
+    <a href="math-lesson-funksiya.html" class="next">Funksiya →</a>
+  </div>
+</div>
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth=getAuth(initializeApp({apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",authDomain:"it-study-a45fa.firebaseapp.com",projectId:"it-study-a45fa",storageBucket:"it-study-a45fa.firebasestorage.app",messagingSenderId:"973750187023",appId:"1:973750187023:web:c38b839da825ffa0681f7a"}));
+const ua=document.getElementById("userArea");
+onAuthStateChanged(auth,u=>{if(u){const n=u.displayName||u.email;ua.outerHTML=`<div class="profile-pill"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`;}else{ua.textContent="Kirish";ua.href="login.html";}});
+</script>
+<script>
+function toggleEx(id){const c=document.getElementById(id);const b=document.getElementById(id+'-btn');const o=c.classList.toggle('open');b.textContent=o?'🙈 Yashirish':"👁 Ko'rish";}
+if(localStorage.getItem('mathTengsizlik')){const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi';b.classList.add('done');}
+function markDone(){localStorage.setItem('mathTengsizlik','true');const b=document.getElementById('doneBtn');b.textContent='✅ Bajarildi!';b.classList.add('done');}
+</script>
+<script>const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.04});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));</script>
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"\\[",right:"\\]",display:true},{left:"\\(",right:"\\)",display:false}]});});</script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>
