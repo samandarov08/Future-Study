@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IELTS Word List | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .wl-wrap { max-width: 1000px; margin: 0 auto; padding: 60px 48px 100px; }
+
+    /* Search & filter */
+    .wl-controls {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .wl-search {
+      flex: 1; min-width: 220px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 13px 18px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .wl-search input {
+      flex: 1; background: transparent; border: none; outline: none;
+      font-size: 14px; color: var(--text); font-family: var(--font-body);
+    }
+    .wl-search input::placeholder { color: var(--muted); }
+    .filter-btns { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .filter-btn {
+      padding: 8px 16px; border-radius: 99px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted); font-size: 12px; font-weight: 600;
+      cursor: pointer; transition: all var(--ease);
+      font-family: var(--font-body);
+    }
+    .filter-btn:hover { border-color: var(--accent); color: var(--text); }
+    .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    /* Stats bar */
+    .wl-stats {
+      display: flex; gap: 20px; flex-wrap: wrap;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px 24px;
+      margin-bottom: 32px;
+    }
+    .wl-stat { text-align: center; }
+    .wl-stat-val { font-family: var(--font); font-size: 22px; font-weight: 800;
+      background: linear-gradient(90deg,var(--accent),var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .wl-stat-lbl { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    /* Category section */
+    .wl-category { margin-bottom: 40px; }
+    .wl-cat-head {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 16px; padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .wl-cat-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; background: rgba(79,142,247,0.1);
+      border: 1px solid rgba(79,142,247,0.2);
+    }
+    .wl-cat-head h3 { font-family: var(--font); font-size: 17px; font-weight: 700; color: var(--text); }
+    .wl-cat-count { margin-left: auto; font-size: 12px; color: var(--muted);
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 3px 10px; border-radius: 99px; }
+
+    /* Word cards */
+    .wl-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+    .wl-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      transition: border-color var(--ease), transform var(--ease), box-shadow var(--ease);
+      cursor: pointer;
+    }
+    .wl-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(79,142,247,0.12);
+    }
+    .wl-card.hidden { display: none; }
+    .wl-card.learned { border-color: rgba(34,197,94,0.4); }
+
+    .wl-word {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .wl-en { font-family: var(--font); font-size: 16px; font-weight: 700; color: var(--text); }
+    .wl-type {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.5px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 99px;
+    }
+    .wl-type.noun { background: rgba(79,142,247,0.12); color: var(--accent2); }
+    .wl-type.verb { background: rgba(34,197,94,0.12); color: #4ade80; }
+    .wl-type.adj  { background: rgba(251,191,36,0.12); color: #fcd34d; }
+    .wl-type.adv  { background: rgba(167,139,250,0.12); color: #c4b5fd; }
+    .wl-type.phrase { background: rgba(236,72,153,0.12); color: #f9a8d4; }
+
+    .wl-uz { font-size: 14px; color: var(--accent2); font-weight: 500; margin-bottom: 10px; }
+
+    .wl-example {
+      font-size: 13px; color: var(--muted); font-weight: 300;
+      line-height: 1.6; border-top: 1px solid var(--border);
+      padding-top: 10px; font-style: italic;
+    }
+    .wl-example b { color: var(--text); font-style: normal; font-weight: 600; }
+
+    .wl-learn-btn {
+      margin-top: 10px; width: 100%; padding: 7px;
+      border-radius: var(--radius-sm); border: 1px solid var(--border);
+      background: transparent; color: var(--muted); font-size: 12px;
+      font-weight: 600; cursor: pointer; font-family: var(--font-body);
+      transition: all var(--ease);
+    }
+    .wl-learn-btn:hover { background: rgba(34,197,94,0.1); border-color: #22c55e; color: #22c55e; }
+    .wl-card.learned .wl-learn-btn {
+      background: rgba(34,197,94,0.12); border-color: rgba(34,197,94,0.3);
+      color: #22c55e;
+    }
+
+    /* No results */
+    .no-results { text-align: center; padding: 60px 20px; color: var(--muted); display: none; }
+    .no-results.show { display: block; }
+
+    @media(max-width:768px) { .wl-wrap { padding: 40px 20px 80px; } }
+  </style>
+</head>
+<body class="theme-1">
+
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="english.html">English</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+
+<div class="wl-wrap">
+
+  <div class="breadcrumb reveal">English <span>›</span> IELTS Word List</div>
+  <div class="reveal" style="margin-bottom:32px;">
+    <p class="s-label">IELTS Academic</p>
+    <h1 style="font-family:var(--font);font-size:clamp(28px,4vw,46px);font-weight:800;letter-spacing:-1px;line-height:1.1;color:var(--text);margin-bottom:12px;">
+      📋 IELTS Word List
+    </h1>
+    <p style="font-size:15px;color:var(--muted);font-weight:300;max-width:560px;line-height:1.7;">
+      IELTS imtihonida eng ko'p uchraydigan so'zlar — tarjima, so'z turi va misol jumla bilan.
+      O'rganib bo'lgan so'zlarni belgilang!
+    </p>
+  </div>
+
+  <!-- Stats -->
+  <div class="wl-stats reveal">
+    <div class="wl-stat">
+      <div class="wl-stat-val">50</div>
+      <div class="wl-stat-lbl">Jami so'z</div>
+    </div>
+    <div class="wl-stat">
+      <div class="wl-stat-val" id="learnedCount">0</div>
+      <div class="wl-stat-lbl">O'rganildi</div>
+    </div>
+    <div class="wl-stat">
+      <div class="wl-stat-val" id="remainCount">50</div>
+      <div class="wl-stat-lbl">Qoldi</div>
+    </div>
+    <div class="wl-stat" style="margin-left:auto;">
+      <div class="wl-stat-val" id="pctLearned">0%</div>
+      <div class="wl-stat-lbl">Progress</div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="wl-controls reveal">
+    <div class="wl-search">
+      <span>🔍</span>
+      <input type="text" id="searchInput" placeholder="So'z qidiring..." oninput="filterWords()">
+    </div>
+    <div class="filter-btns">
+      <button class="filter-btn active" onclick="filterCat('all', this)">Hammasi</button>
+      <button class="filter-btn" onclick="filterCat('education', this)">Ta'lim</button>
+      <button class="filter-btn" onclick="filterCat('society', this)">Jamiyat</button>
+      <button class="filter-btn" onclick="filterCat('science', this)">Fan</button>
+      <button class="filter-btn" onclick="filterCat('economy', this)">Iqtisod</button>
+      <button class="filter-btn" onclick="filterCat('environment', this)">Muhit</button>
+    </div>
+  </div>
+
+  <!-- ── EDUCATION ─────────────────────────── -->
+  <div class="wl-category reveal" data-cat="education">
+    <div class="wl-cat-head">
+      <div class="wl-cat-icon">🎓</div>
+      <h3>Ta'lim / Education</h3>
+      <span class="wl-cat-count">10 ta so'z</span>
+    </div>
+    <div class="wl-grid">
+
+      <div class="wl-card" data-cat="education" data-key="w1">
+        <div class="wl-word">
+          <span class="wl-en">compulsory</span>
+          <span class="wl-type adj">adj</span>
+        </div>
+        <div class="wl-uz">majburiy</div>
+        <div class="wl-example">Education is <b>compulsory</b> for children aged 6 to 16 in most countries.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w1', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="education" data-key="w2">
+        <div class="wl-word">
+          <span class="wl-en">curriculum</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">o'quv dasturi</div>
+        <div class="wl-example">The school's <b>curriculum</b> includes science, mathematics and foreign languages.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w2', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="education" data-key="w3">
+        <div class="wl-word">
+          <span class="wl-en">literacy</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">savodxonlik</div>
+        <div class="wl-example">Improving <b>literacy</b> rates is essential for economic development.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w3', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="education" data-key="w4">
+        <div class="wl-word">
+          <span class="wl-en">scholarship</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">stipendiya, grant</div>
+        <div class="wl-example">She received a full <b>scholarship</b> to study at Oxford University.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w4', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="education" data-key="w5">
+        <div class="wl-word">
+          <span class="wl-en">academic</span>
+          <span class="wl-type adj">adj</span>
+        </div>
+        <div class="wl-uz">akademik, o'quv</div>
+        <div class="wl-example">His <b>academic</b> performance improved significantly after he changed his study habits.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w5', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="education" data-key="w6">
+        <div class="wl-word">
+          <span class="wl-en">tuition</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">o'qish haqi; o'qitish</div>
+        <div class="wl-example">University <b>tuition</b> fees have risen dramatically over the past decade.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w6', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="education" data-key="w7">
+        <div class="wl-word">
+          <span class="wl-en">graduate</span>
+          <span class="wl-type verb">verb/noun</span>
+        </div>
+        <div class="wl-uz">bitiruvchi; bitirmoq</div>
+        <div class="wl-example">She plans to <b>graduate</b> from university next year with a degree in engineering.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w7', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="education" data-key="w8">
+        <div class="wl-word">
+          <span class="wl-en">critical thinking</span>
+          <span class="wl-type phrase">phrase</span>
+        </div>
+        <div class="wl-uz">tanqidiy fikrlash</div>
+        <div class="wl-example"><b>Critical thinking</b> skills are highly valued by employers in all industries.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w8', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="education" data-key="w9">
+        <div class="wl-word">
+          <span class="wl-en">vocational</span>
+          <span class="wl-type adj">adj</span>
+        </div>
+        <div class="wl-uz">kasbiy, amaliy</div>
+        <div class="wl-example"><b>Vocational</b> training programmes help young people develop practical workplace skills.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w9', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="education" data-key="w10">
+        <div class="wl-word">
+          <span class="wl-en">assessment</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">baholash</div>
+        <div class="wl-example">Continuous <b>assessment</b> is often considered fairer than a single final examination.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w10', this)">✓ O'rgandim</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── SOCIETY ────────────────────────────── -->
+  <div class="wl-category reveal" data-cat="society">
+    <div class="wl-cat-head">
+      <div class="wl-cat-icon" style="background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.2);">👥</div>
+      <h3>Jamiyat / Society</h3>
+      <span class="wl-cat-count">10 ta so'z</span>
+    </div>
+    <div class="wl-grid">
+
+      <div class="wl-card" data-cat="society" data-key="w11">
+        <div class="wl-word">
+          <span class="wl-en">inequality</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">tengsizlik</div>
+        <div class="wl-example">Income <b>inequality</b> has grown significantly in many developed nations.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w11', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="society" data-key="w12">
+        <div class="wl-word">
+          <span class="wl-en">diversity</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">xilma-xillik</div>
+        <div class="wl-example">Cultural <b>diversity</b> enriches society and promotes creativity and innovation.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w12', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="society" data-key="w13">
+        <div class="wl-word">
+          <span class="wl-en">welfare</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">ijtimoiy ta'minot; farovonlik</div>
+        <div class="wl-example">The government increased spending on child <b>welfare</b> programmes.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w13', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="society" data-key="w14">
+        <div class="wl-word">
+          <span class="wl-en">integration</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">integratsiya, qo'shilish</div>
+        <div class="wl-example">The <b>integration</b> of immigrants into local communities requires time and support.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w14', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="society" data-key="w15">
+        <div class="wl-word">
+          <span class="wl-en">prejudice</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">tarafkashlik, oldindan fikr</div>
+        <div class="wl-example">Racial <b>prejudice</b> continues to be a serious problem in many parts of the world.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w15', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="society" data-key="w16">
+        <div class="wl-word">
+          <span class="wl-en">cohesion</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">birlik, hamjihatlik</div>
+        <div class="wl-example">Social <b>cohesion</b> is essential for a stable and peaceful community.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w16', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="society" data-key="w17">
+        <div class="wl-word">
+          <span class="wl-en">urbanisation</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">shaharlanish jarayoni</div>
+        <div class="wl-example">Rapid <b>urbanisation</b> has led to overcrowding in many major cities.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w17', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="society" data-key="w18">
+        <div class="wl-word">
+          <span class="wl-en">demographic</span>
+          <span class="wl-type adj">adj/noun</span>
+        </div>
+        <div class="wl-uz">demografik; aholi qatlami</div>
+        <div class="wl-example">The country faces significant challenges due to an ageing <b>demographic</b>.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w18', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="society" data-key="w19">
+        <div class="wl-word">
+          <span class="wl-en">marginalised</span>
+          <span class="wl-type adj">adj</span>
+        </div>
+        <div class="wl-uz">chetga surilgan, e'tibordan chetda</div>
+        <div class="wl-example">The policy aims to improve conditions for <b>marginalised</b> communities.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w19', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="society" data-key="w20">
+        <div class="wl-word">
+          <span class="wl-en">stereotype</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">stereotip, qolip fikr</div>
+        <div class="wl-example">It is important to challenge harmful <b>stereotypes</b> about different groups of people.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w20', this)">✓ O'rgandim</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── SCIENCE & TECHNOLOGY ──────────────── -->
+  <div class="wl-category reveal" data-cat="science">
+    <div class="wl-cat-head">
+      <div class="wl-cat-icon" style="background:rgba(167,139,250,0.1);border-color:rgba(167,139,250,0.2);">🔬</div>
+      <h3>Fan va Texnologiya / Science & Technology</h3>
+      <span class="wl-cat-count">10 ta so'z</span>
+    </div>
+    <div class="wl-grid">
+
+      <div class="wl-card" data-cat="science" data-key="w21">
+        <div class="wl-word">
+          <span class="wl-en">innovation</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">innovatsiya, yangilik</div>
+        <div class="wl-example">Technological <b>innovation</b> has transformed the way we communicate and work.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w21', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="science" data-key="w22">
+        <div class="wl-word">
+          <span class="wl-en">breakthrough</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">muhim kashfiyot, yutuq</div>
+        <div class="wl-example">Scientists achieved a major <b>breakthrough</b> in cancer research last year.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w22', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="science" data-key="w23">
+        <div class="wl-word">
+          <span class="wl-en">automation</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">avtomatlashtirish</div>
+        <div class="wl-example"><b>Automation</b> is expected to replace many routine jobs in the coming decades.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w23', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="science" data-key="w24">
+        <div class="wl-word">
+          <span class="wl-en">algorithm</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">algoritm</div>
+        <div class="wl-example">Social media platforms use complex <b>algorithms</b> to determine what content users see.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w24', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="science" data-key="w25">
+        <div class="wl-word">
+          <span class="wl-en">empirical</span>
+          <span class="wl-type adj">adj</span>
+        </div>
+        <div class="wl-uz">empirik, tajribaga asoslangan</div>
+        <div class="wl-example">The study provides <b>empirical</b> evidence that exercise improves mental health.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w25', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="science" data-key="w26">
+        <div class="wl-word">
+          <span class="wl-en">hypothesis</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">gipoteza, taxmin</div>
+        <div class="wl-example">The scientist's <b>hypothesis</b> was confirmed by several independent experiments.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w26', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="science" data-key="w27">
+        <div class="wl-word">
+          <span class="wl-en">surveillance</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">kuzatuv, nazorat</div>
+        <div class="wl-example">The increasing use of <b>surveillance</b> cameras raises serious privacy concerns.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w27', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="science" data-key="w28">
+        <div class="wl-word">
+          <span class="wl-en">renewable</span>
+          <span class="wl-type adj">adj</span>
+        </div>
+        <div class="wl-uz">qayta tiklanadigan</div>
+        <div class="wl-example">Investing in <b>renewable</b> energy sources is crucial for combating climate change.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w28', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="science" data-key="w29">
+        <div class="wl-word">
+          <span class="wl-en">artificial intelligence</span>
+          <span class="wl-type phrase">phrase</span>
+        </div>
+        <div class="wl-uz">sun'iy intellekt</div>
+        <div class="wl-example"><b>Artificial intelligence</b> is transforming industries from healthcare to finance.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w29', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="science" data-key="w30">
+        <div class="wl-word">
+          <span class="wl-en">transparent</span>
+          <span class="wl-type adj">adj</span>
+        </div>
+        <div class="wl-uz">shaffof, ochiq</div>
+        <div class="wl-example">Governments must be more <b>transparent</b> about how they use citizens' data.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w30', this)">✓ O'rgandim</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── ECONOMY ───────────────────────────── -->
+  <div class="wl-category reveal" data-cat="economy">
+    <div class="wl-cat-head">
+      <div class="wl-cat-icon" style="background:rgba(251,191,36,0.1);border-color:rgba(251,191,36,0.2);">📈</div>
+      <h3>Iqtisodiyot / Economy</h3>
+      <span class="wl-cat-count">10 ta so'z</span>
+    </div>
+    <div class="wl-grid">
+
+      <div class="wl-card" data-cat="economy" data-key="w31">
+        <div class="wl-word">
+          <span class="wl-en">globalisation</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">globallashuv</div>
+        <div class="wl-example"><b>Globalisation</b> has created new opportunities for trade but also increased competition.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w31', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="economy" data-key="w32">
+        <div class="wl-word">
+          <span class="wl-en">inflation</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">inflyatsiya</div>
+        <div class="wl-example">Rising <b>inflation</b> has reduced the purchasing power of ordinary households.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w32', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="economy" data-key="w33">
+        <div class="wl-word">
+          <span class="wl-en">sustainable</span>
+          <span class="wl-type adj">adj</span>
+        </div>
+        <div class="wl-uz">barqaror, uzoq muddatli</div>
+        <div class="wl-example">We need <b>sustainable</b> economic growth that does not damage the environment.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w33', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="economy" data-key="w34">
+        <div class="wl-word">
+          <span class="wl-en">entrepreneurship</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">tadbirkorlik</div>
+        <div class="wl-example"><b>Entrepreneurship</b> drives economic growth and creates employment opportunities.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w34', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="economy" data-key="w35">
+        <div class="wl-word">
+          <span class="wl-en">subsidy</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">subsidiya, dotatsiya</div>
+        <div class="wl-example">The government provides <b>subsidies</b> to farmers to keep food prices affordable.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w35', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="economy" data-key="w36">
+        <div class="wl-word">
+          <span class="wl-en">expenditure</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">xarajat, sarf</div>
+        <div class="wl-example">Government <b>expenditure</b> on healthcare has increased significantly over the past decade.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w36', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="economy" data-key="w37">
+        <div class="wl-word">
+          <span class="wl-en">commodity</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">tovar, xomashyo</div>
+        <div class="wl-example">Oil is the world's most traded <b>commodity</b> and affects global economic stability.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w37', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="economy" data-key="w38">
+        <div class="wl-word">
+          <span class="wl-en">recession</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">iqtisodiy tanazzul</div>
+        <div class="wl-example">The country entered a severe <b>recession</b> following the financial crisis.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w38', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="economy" data-key="w39">
+        <div class="wl-word">
+          <span class="wl-en">monopoly</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">monopoliya</div>
+        <div class="wl-example">The company holds a near-complete <b>monopoly</b> over the domestic market.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w39', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="economy" data-key="w40">
+        <div class="wl-word">
+          <span class="wl-en">fluctuate</span>
+          <span class="wl-type verb">verb</span>
+        </div>
+        <div class="wl-uz">o'zgarib turmoq, tebranmoq</div>
+        <div class="wl-example">Oil prices tend to <b>fluctuate</b> depending on global supply and demand.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w40', this)">✓ O'rgandim</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── ENVIRONMENT ───────────────────────── -->
+  <div class="wl-category reveal" data-cat="environment">
+    <div class="wl-cat-head">
+      <div class="wl-cat-icon" style="background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.2);">🌍</div>
+      <h3>Muhit / Environment</h3>
+      <span class="wl-cat-count">10 ta so'z</span>
+    </div>
+    <div class="wl-grid">
+
+      <div class="wl-card" data-cat="environment" data-key="w41">
+        <div class="wl-word">
+          <span class="wl-en">emission</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">chiqindi, tarqatish (gaz)</div>
+        <div class="wl-example">Carbon <b>emissions</b> from transport account for a significant share of global warming.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w41', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="environment" data-key="w42">
+        <div class="wl-word">
+          <span class="wl-en">deforestation</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">o'rmonlarni yo'q qilish</div>
+        <div class="wl-example"><b>Deforestation</b> in the Amazon is destroying biodiversity at an alarming rate.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w42', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="environment" data-key="w43">
+        <div class="wl-word">
+          <span class="wl-en">biodiversity</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">biologik xilma-xillik</div>
+        <div class="wl-example">Protecting <b>biodiversity</b> is essential for maintaining healthy ecosystems.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w43', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="environment" data-key="w44">
+        <div class="wl-word">
+          <span class="wl-en">contamination</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">ifloslanish, zaharlanish</div>
+        <div class="wl-example">Water <b>contamination</b> from industrial waste poses serious health risks.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w44', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="environment" data-key="w45">
+        <div class="wl-word">
+          <span class="wl-en">ecosystem</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">ekotizim</div>
+        <div class="wl-example">Coral reefs are among the most diverse <b>ecosystems</b> on the planet.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w45', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="environment" data-key="w46">
+        <div class="wl-word">
+          <span class="wl-en">drought</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">qurg'oqchilik</div>
+        <div class="wl-example">Prolonged <b>drought</b> has devastated crops and threatened food supplies in the region.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w46', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="environment" data-key="w47">
+        <div class="wl-word">
+          <span class="wl-en">mitigation</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">yumshatish, kamaytirish</div>
+        <div class="wl-example">Climate change <b>mitigation</b> requires urgent action from governments worldwide.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w47', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="environment" data-key="w48">
+        <div class="wl-word">
+          <span class="wl-en">conservation</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">muhofaza qilish, saqlash</div>
+        <div class="wl-example">Wildlife <b>conservation</b> efforts have helped several endangered species recover.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w48', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="environment" data-key="w49">
+        <div class="wl-word">
+          <span class="wl-en">fossil fuels</span>
+          <span class="wl-type phrase">phrase</span>
+        </div>
+        <div class="wl-uz">qazilma yoqilg'i</div>
+        <div class="wl-example">Burning <b>fossil fuels</b> is the leading cause of greenhouse gas emissions.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w49', this)">✓ O'rgandim</button>
+      </div>
+
+      <div class="wl-card" data-cat="environment" data-key="w50">
+        <div class="wl-word">
+          <span class="wl-en">extinction</span>
+          <span class="wl-type noun">noun</span>
+        </div>
+        <div class="wl-uz">yo'q bo'lib ketish</div>
+        <div class="wl-example">Many scientists warn that we are facing a sixth mass <b>extinction</b> event.</div>
+        <button class="wl-learn-btn" onclick="toggleLearn('w50', this)">✓ O'rgandim</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="no-results" id="noResults">
+    <p style="font-size:40px;margin-bottom:16px;">🔍</p>
+    <p style="font-size:18px;font-weight:600;color:var(--text);">Hech narsa topilmadi</p>
+    <p style="margin-top:8px;">Boshqa so'z bilan qidirib ko'ring</p>
+  </div>
+
+</div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth=getAuth(initializeApp({apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",authDomain:"it-study-a45fa.firebaseapp.com",projectId:"it-study-a45fa",storageBucket:"it-study-a45fa.firebasestorage.app",messagingSenderId:"973750187023",appId:"1:973750187023:web:c38b839da825ffa0681f7a"}));
+const ua=document.getElementById("userArea");
+onAuthStateChanged(auth,u=>{if(u){const n=u.displayName||u.email;ua.outerHTML=`<div class="profile-pill" onclick="location.href='profile.html'" style="cursor:pointer"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`;}else{ua.textContent="Kirish";ua.href="login.html";}});
+</script>
+
+<script>
+var learned = JSON.parse(localStorage.getItem('ieltsLearned') || '{}');
+var totalWords = 50;
+
+// Init learned state
+Object.keys(learned).forEach(function(key) {
+  if(learned[key]) {
+    var card = document.querySelector('[data-key="' + key + '"]');
+    if(card) {
+      card.classList.add('learned');
+      card.querySelector('.wl-learn-btn').textContent = '✅ O\'rganildi';
+    }
+  }
+});
+updateStats();
+
+function toggleLearn(key, btn) {
+  var card = btn.closest('.wl-card');
+  learned[key] = !learned[key];
+  localStorage.setItem('ieltsLearned', JSON.stringify(learned));
+  if(learned[key]) {
+    card.classList.add('learned');
+    btn.textContent = '✅ O\'rganildi';
+  } else {
+    card.classList.remove('learned');
+    btn.textContent = '✓ O\'rgandim';
+  }
+  updateStats();
+}
+
+function updateStats() {
+  var count = Object.values(learned).filter(Boolean).length;
+  document.getElementById('learnedCount').textContent = count;
+  document.getElementById('remainCount').textContent = totalWords - count;
+  document.getElementById('pctLearned').textContent = Math.round(count/totalWords*100) + '%';
+}
+
+var currentCat = 'all';
+
+function filterCat(cat, btn) {
+  currentCat = cat;
+  document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  filterWords();
+}
+
+function filterWords() {
+  var q = document.getElementById('searchInput').value.toLowerCase();
+  var cards = document.querySelectorAll('.wl-card');
+  var visible = 0;
+  cards.forEach(function(card) {
+    var catMatch = currentCat === 'all' || card.dataset.cat === currentCat;
+    var en = card.querySelector('.wl-en').textContent.toLowerCase();
+    var uz = card.querySelector('.wl-uz').textContent.toLowerCase();
+    var ex = card.querySelector('.wl-example').textContent.toLowerCase();
+    var searchMatch = !q || en.includes(q) || uz.includes(q) || ex.includes(q);
+    if(catMatch && searchMatch) {
+      card.classList.remove('hidden');
+      visible++;
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+
+  // Show/hide categories
+  document.querySelectorAll('.wl-category').forEach(function(sec) {
+    var catMatch = currentCat === 'all' || sec.dataset.cat === currentCat;
+    var hasVisible = sec.querySelectorAll('.wl-card:not(.hidden)').length > 0;
+    sec.style.display = (catMatch && hasVisible) ? '' : 'none';
+  });
+
+  document.getElementById('noResults').classList.toggle('show', visible === 0);
+}
+</script>
+
+<script>
+var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.04});
+document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
+</script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

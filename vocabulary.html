@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vocabulary | IT-Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .voc-wrap { max-width: 1000px; margin: 0 auto; padding: 60px 48px 100px; }
+
+    /* Search bar */
+    .search-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .search-box input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      color: var(--text);
+      font-family: var(--font-body);
+    }
+    .search-box input::placeholder { color: var(--muted); }
+    .search-icon { font-size: 18px; flex-shrink: 0; }
+    .search-count { font-size: 13px; color: var(--muted); white-space: nowrap; }
+
+    /* Section */
+    .voc-section { margin-bottom: 48px; }
+    .voc-section-head {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .voc-section-icon {
+      width: 42px; height: 42px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .voc-section-icon.reading { background: rgba(79,142,247,0.12); border: 1px solid rgba(79,142,247,0.2); }
+    .voc-section-icon.speaking { background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.2); }
+    .voc-section-head h2 { font-family: var(--font); font-size: 20px; font-weight: 800; color: var(--text); }
+    .voc-section-head p { font-size: 13px; color: var(--muted); margin-top: 2px; }
+    .voc-section-head .count {
+      margin-left: auto;
+      font-size: 13px; font-weight: 600;
+      color: var(--accent2);
+      background: rgba(79,142,247,0.1);
+      padding: 4px 12px; border-radius: 99px;
+    }
+
+    /* Sub-topic */
+    .voc-topic { margin-bottom: 28px; }
+    .voc-topic-label {
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 12px;
+      padding-left: 4px;
+    }
+
+    /* Word cards */
+    .word-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    .word-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      transition: border-color var(--ease), transform var(--ease);
+      cursor: default;
+    }
+    .word-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .word-card.hidden { display: none; }
+    .word-en { font-family: var(--font); font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .word-uz { font-size: 13px; color: var(--muted); font-weight: 300; }
+
+    /* Test CTA */
+    .test-cta {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: var(--radius);
+      padding: 32px 36px;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      gap: 20px; flex-wrap: wrap;
+      margin-top: 48px;
+    }
+    .test-cta h3 { font-family: var(--font); font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .test-cta p { font-size: 14px; color: rgba(255,255,255,0.8); }
+    .test-cta-btn {
+      padding: 13px 28px; border: none; border-radius: 99px;
+      background: #fff; color: var(--accent);
+      font-size: 15px; font-weight: 700;
+      font-family: var(--font-body); cursor: pointer;
+      transition: transform var(--ease), box-shadow var(--ease);
+      white-space: nowrap;
+    }
+    .test-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+
+    @media(max-width:768px) { .voc-wrap { padding: 40px 20px 80px; } }
+  </style>
+</head>
+<body class="theme-1">
+
+<header class="header">
+  <div class="logo"><a href="project.html">IT-Study</a></div>
+  <nav class="menu">
+    <a href="project.html">Bosh sahifa</a>
+    <a href="english.html">English</a>
+    <a href="profile.html" id="userArea">Kirish</a>
+  </nav>
+</header>
+
+<div class="voc-wrap">
+
+  <div class="breadcrumb reveal">English <span>›</span> Vocabulary</div>
+  <div class="reveal" style="margin-bottom:40px;">
+    <p class="s-label">So'zlar</p>
+    <h1 style="font-family:var(--font);font-size:clamp(28px,4vw,46px);font-weight:800;letter-spacing:-1px;line-height:1.1;color:var(--text);margin-bottom:12px;">
+      📚 Vocabulary
+    </h1>
+    <p style="font-size:15px;color:var(--muted);font-weight:300;">Reading va Speaking darslaridan yig'ilgan barcha so'zlar — tarjimalari bilan</p>
+  </div>
+
+  <!-- Search -->
+  <div class="search-box reveal">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="So'z qidiring... (inglizcha yoki o'zbekcha)" oninput="filterWords()">
+    <span class="search-count" id="searchCount">Jami: 310 ta so'z</span>
+  </div>
+
+  <!-- ══ READING VOCABULARY ══════════════════════ -->
+  <div class="voc-section reveal" id="readingSection">
+    <div class="voc-section-head">
+      <div class="voc-section-icon reading">📖</div>
+      <div>
+        <h2>Reading Vocabulary</h2>
+        <p>10 ta reading darsi — IELTS Academic darajasi</p>
+      </div>
+      <span class="count">160 ta so'z</span>
+    </div>
+
+    <!-- Reading 1 -->
+    <div class="voc-topic">
+      <div class="voc-topic-label">📗 Reading 1 — Sog'lom ovqatlanish</div>
+      <div class="word-grid">
+        <div class="word-card"><div class="word-en">evolved</div><div class="word-uz">rivojlandi, o'zgardi</div></div>
+        <div class="word-card"><div class="word-en">personal preference</div><div class="word-uz">shaxsiy tanlov</div></div>
+        <div class="word-card"><div class="word-en">policymakers</div><div class="word-uz">siyosat ishlab chiquvchilar</div></div>
+        <div class="word-card"><div class="word-en">dietary patterns</div><div class="word-uz">ovqatlanish modeli</div></div>
+        <div class="word-card"><div class="word-en">nutrient-rich</div><div class="word-uz">ozuqaga boy</div></div>
+        <div class="word-card"><div class="word-en">wellbeing</div><div class="word-uz">farovonlik</div></div>
+        <div class="word-card"><div class="word-en">processed foods</div><div class="word-uz">qayta ishlangan ovqatlar</div></div>
+        <div class="word-card"><div class="word-en">macronutrients</div><div class="word-uz">makroelementlar</div></div>
+        <div class="word-card"><div class="word-en">micronutrients</div><div class="word-uz">mikroelementlar</div></div>
+        <div class="word-card"><div class="word-en">moderation</div><div class="word-uz">me'yor</div></div>
+        <div class="word-card"><div class="word-en">carbohydrates</div><div class="word-uz">uglevodlar</div></div>
+        <div class="word-card"><div class="word-en">inflammation</div><div class="word-uz">yallig'lanish</div></div>
+        <div class="word-card"><div class="word-en">gut microbiome</div><div class="word-uz">ichak mikrobiomi</div></div>
+        <div class="word-card"><div class="word-en">obesity</div><div class="word-uz">semizlik</div></div>
+        <div class="word-card"><div class="word-en">longevity</div><div class="word-uz">uzoq umr</div></div>
+        <div class="word-card"><div class="word-en">mindful eating</div><div class="word-uz">ongli ovqatlanish</div></div>
+      </div>
+    </div>
+
+    <!-- Reading 2 -->
+    <div class="voc-topic">
+      <div class="voc-topic-label">📗 Reading 2 — Texnologiya va AI</div>
+      <div class="word-grid">
+        <div class="word-card"><div class="word-en">artificial intelligence</div><div class="word-uz">sun'iy intellekt</div></div>
+        <div class="word-card"><div class="word-en">pervasive</div><div class="word-uz">keng tarqalgan</div></div>
+        <div class="word-card"><div class="word-en">computational power</div><div class="word-uz">hisoblash quvvati</div></div>
+        <div class="word-card"><div class="word-en">machine learning</div><div class="word-uz">mashinali o'rganish</div></div>
+        <div class="word-card"><div class="word-en">neural networks</div><div class="word-uz">neyron tarmoqlar</div></div>
+        <div class="word-card"><div class="word-en">breakthroughs</div><div class="word-uz">muhim kashfiyotlar</div></div>
+        <div class="word-card"><div class="word-en">predictive models</div><div class="word-uz">bashorat modellari</div></div>
+        <div class="word-card"><div class="word-en">automation</div><div class="word-uz">avtomatlashtirish</div></div>
+        <div class="word-card"><div class="word-en">bias</div><div class="word-uz">nohaqlik, tarafkashlik</div></div>
+        <div class="word-card"><div class="word-en">surveillance</div><div class="word-uz">kuzatuv</div></div>
+        <div class="word-card"><div class="word-en">transparency</div><div class="word-uz">shaffoflik</div></div>
+        <div class="word-card"><div class="word-en">disruption</div><div class="word-uz">tartibni buzish, inqilob</div></div>
+        <div class="word-card"><div class="word-en">geopolitical competition</div><div class="word-uz">geosiyosiy raqobat</div></div>
+        <div class="word-card"><div class="word-en">proactive</div><div class="word-uz">faol, tashabbuskor</div></div>
+        <div class="word-card"><div class="word-en">consent</div><div class="word-uz">rozilik</div></div>
+        <div class="word-card"><div class="word-en">digital rights</div><div class="word-uz">raqamli huquqlar</div></div>
+      </div>
+    </div>
+
+    <!-- Reading 3 -->
+    <div class="voc-topic">
+      <div class="voc-topic-label">📗 Reading 3 — Ta'lim va kelajak</div>
+      <div class="word-grid">
+        <div class="word-card"><div class="word-en">compulsory education</div><div class="word-uz">majburiy ta'lim</div></div>
+        <div class="word-card"><div class="word-en">curriculum</div><div class="word-uz">o'quv dasturi</div></div>
+        <div class="word-card"><div class="word-en">scholarship</div><div class="word-uz">stipendiya, grant</div></div>
+        <div class="word-card"><div class="word-en">critical thinking</div><div class="word-uz">tanqidiy fikrlash</div></div>
+        <div class="word-card"><div class="word-en">adaptability</div><div class="word-uz">moslashuvchanlik</div></div>
+        <div class="word-card"><div class="word-en">obsolete</div><div class="word-uz">eskirgan, eski</div></div>
+        <div class="word-card"><div class="word-en">project-based learning</div><div class="word-uz">loyiha asosidagi o'qitish</div></div>
+        <div class="word-card"><div class="word-en">digital divide</div><div class="word-uz">raqamli tafovut</div></div>
+        <div class="word-card"><div class="word-en">inclusive education</div><div class="word-uz">inklyuziv ta'lim</div></div>
+        <div class="word-card"><div class="word-en">micro-credentials</div><div class="word-uz">mikro-sertifikatlar</div></div>
+        <div class="word-card"><div class="word-en">vocational training</div><div class="word-uz">kasbiy o'qitish</div></div>
+        <div class="word-card"><div class="word-en">literacy</div><div class="word-uz">savodxonlik</div></div>
+      </div>
+    </div>
+
+    <!-- Reading 4 -->
+    <div class="voc-topic">
+      <div class="voc-topic-label">📗 Reading 4 — Iqtisodiyot va biznes</div>
+      <div class="word-grid">
+        <div class="word-card"><div class="word-en">globalisation</div><div class="word-uz">globallashuv</div></div>
+        <div class="word-card"><div class="word-en">entrepreneurship</div><div class="word-uz">tadbirkorlik</div></div>
+        <div class="word-card"><div class="word-en">supply chains</div><div class="word-uz">ta'minot zanjirlari</div></div>
+        <div class="word-card"><div class="word-en">trade agreements</div><div class="word-uz">savdo shartnomalari</div></div>
+        <div class="word-card"><div class="word-en">tariffs</div><div class="word-uz">bojlar</div></div>
+        <div class="word-card"><div class="word-en">wealth inequality</div><div class="word-uz">boylik tengsizligi</div></div>
+        <div class="word-card"><div class="word-en">sustainable development</div><div class="word-uz">barqaror rivojlanish</div></div>
+        <div class="word-card"><div class="word-en">circular economy</div><div class="word-uz">aylanma iqtisodiyot</div></div>
+        <div class="word-card"><div class="word-en">vulnerabilities</div><div class="word-uz">zaifliklar</div></div>
+        <div class="word-card"><div class="word-en">market gaps</div><div class="word-uz">bozordagi bo'shliqlar</div></div>
+        <div class="word-card"><div class="word-en">start-ups</div><div class="word-uz">yangi kompaniyalar</div></div>
+        <div class="word-card"><div class="word-en">poverty</div><div class="word-uz">qashshoqlik</div></div>
+      </div>
+    </div>
+
+    <!-- Reading 5 -->
+    <div class="voc-topic">
+      <div class="voc-topic-label">📗 Reading 5 — Ekologiya</div>
+      <div class="word-grid">
+        <div class="word-card"><div class="word-en">fossil fuels</div><div class="word-uz">qazilma yoqilg'i</div></div>
+        <div class="word-card"><div class="word-en">greenhouse gases</div><div class="word-uz">issiqxona gazlari</div></div>
+        <div class="word-card"><div class="word-en">deforestation</div><div class="word-uz">o'rmonlarni yo'q qilish</div></div>
+        <div class="word-card"><div class="word-en">carbon sinks</div><div class="word-uz">karbon yutuvchilar</div></div>
+        <div class="word-card"><div class="word-en">extinction</div><div class="word-uz">yo'q bo'lish</div></div>
+        <div class="word-card"><div class="word-en">food security</div><div class="word-uz">oziq-ovqat xavfsizligi</div></div>
+        <div class="word-card"><div class="word-en">mitigation</div><div class="word-uz">yumshatish, kamaytirish</div></div>
+        <div class="word-card"><div class="word-en">renewable energy</div><div class="word-uz">qayta tiklanadigan energiya</div></div>
+        <div class="word-card"><div class="word-en">Paris Agreement</div><div class="word-uz">Parij Shartnomasi</div></div>
+        <div class="word-card"><div class="word-en">climate justice</div><div class="word-uz">iqlim adolati</div></div>
+        <div class="word-card"><div class="word-en">ecosystems</div><div class="word-uz">ekotizimlar</div></div>
+        <div class="word-card"><div class="word-en">ocean acidification</div><div class="word-uz">okean kislotalanishi</div></div>
+      </div>
+    </div>
+
+    <!-- Reading 6-10 combined -->
+    <div class="voc-topic">
+      <div class="voc-topic-label">📗 Reading 6-10 — Psixologiya, Tibbiyot, Shahar, Madaniyat, Ilm-fan</div>
+      <div class="word-grid">
+        <div class="word-card"><div class="word-en">cognitive biases</div><div class="word-uz">kognitiv tarafkashlik</div></div>
+        <div class="word-card"><div class="word-en">confirmation bias</div><div class="word-uz">tasdiqlash tarafkashligi</div></div>
+        <div class="word-card"><div class="word-en">behavioural economics</div><div class="word-uz">xulqiy iqtisodiyot</div></div>
+        <div class="word-card"><div class="word-en">mental health</div><div class="word-uz">ruhiy salomatlik</div></div>
+        <div class="word-card"><div class="word-en">telemedicine</div><div class="word-uz">masofaviy tibbiyot</div></div>
+        <div class="word-card"><div class="word-en">genomics</div><div class="word-uz">genomika</div></div>
+        <div class="word-card"><div class="word-en">personalised medicine</div><div class="word-uz">shaxsiylashtirilgan tibbiyot</div></div>
+        <div class="word-card"><div class="word-en">urban areas</div><div class="word-uz">shahar hududlari</div></div>
+        <div class="word-card"><div class="word-en">smart city</div><div class="word-uz">aqlli shahar</div></div>
+        <div class="word-card"><div class="word-en">cultural homogenisation</div><div class="word-uz">madaniy bir xillashtirish</div></div>
+        <div class="word-card"><div class="word-en">paradigm shifts</div><div class="word-uz">paradigma o'zgarishlari</div></div>
+        <div class="word-card"><div class="word-en">peer review</div><div class="word-uz">tengdosh ekspertizasi</div></div>
+        <div class="word-card"><div class="word-en">scientific literacy</div><div class="word-uz">ilmiy savodxonlik</div></div>
+        <div class="word-card"><div class="word-en">misinformation</div><div class="word-uz">yolg'on ma'lumot</div></div>
+        <div class="word-card"><div class="word-en">traffic congestion</div><div class="word-uz">yo'l tirbandligi</div></div>
+        <div class="word-card"><div class="word-en">green spaces</div><div class="word-uz">yashil hududlar</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SPEAKING VOCABULARY ════════════════════ -->
+  <div class="voc-section reveal" id="speakingSection">
+    <div class="voc-section-head">
+      <div class="voc-section-icon speaking">🎤</div>
+      <div>
+        <h2>Speaking Vocabulary</h2>
+        <p>10 ta speaking mavzusi — IELTS Speaking darajasi</p>
+      </div>
+      <span class="count" style="background:rgba(34,197,94,0.1);color:#22c55e;">150 ta so'z</span>
+    </div>
+
+    <!-- Sport -->
+    <div class="voc-topic">
+      <div class="voc-topic-label">🏃 Sport va Sog'liq</div>
+      <div class="word-grid">
+        <div class="word-card"><div class="word-en">physical activity</div><div class="word-uz">jismoniy faoliyat</div></div>
+        <div class="word-card"><div class="word-en">workout</div><div class="word-uz">mashq qilish</div></div>
+        <div class="word-card"><div class="word-en">healthy lifestyle</div><div class="word-uz">sog'lom turmush tarzi</div></div>
+        <div class="word-card"><div class="word-en">stamina</div><div class="word-uz">chidamlilik</div></div>
+        <div class="word-card"><div class="word-en">injury</div><div class="word-uz">jarohat</div></div>
+        <div class="word-card"><div class="word-en">competitive</div><div class="word-uz">raqobatbardosh</div></div>
+        <div class="word-card"><div class="word-en">sedentary</div><div class="word-uz">harakatsiz</div></div>
+        <div class="word-card"><div class="word-en">endurance</div><div class="word-uz">bardosh</div></div>
+        <div class="word-card"><div class="word-en">recovery</div><div class="word-uz">tiklanish</div></div>
+        <div class="word-card"><div class="word-en">discipline</div><div class="word-uz">intizom</div></div>
+      </div>
+    </div>
+
+    <!-- Technology -->
+    <div class="voc-topic">
+      <div class="voc-topic-label">💻 Texnologiya</div>
+      <div class="word-grid">
+        <div class="word-card"><div class="word-en">device</div><div class="word-uz">qurilma</div></div>
+        <div class="word-card"><div class="word-en">social media</div><div class="word-uz">ijtimoiy tarmoq</div></div>
+        <div class="word-card"><div class="word-en">innovation</div><div class="word-uz">innovatsiya</div></div>
+        <div class="word-card"><div class="word-en">addiction</div><div class="word-uz">qaramlik</div></div>
+        <div class="word-card"><div class="word-en">connectivity</div><div class="word-uz">ulanish imkoniyati</div></div>
+        <div class="word-card"><div class="word-en">screen time</div><div class="word-uz">ekran vaqti</div></div>
+        <div class="word-card"><div class="word-en">cybersecurity</div><div class="word-uz">kiberxavfsizlik</div></div>
+        <div class="word-card"><div class="word-en">algorithm</div><div class="word-uz">algoritm</div></div>
+        <div class="word-card"><div class="word-en">privacy</div><div class="word-uz">maxfiylik</div></div>
+        <div class="word-card"><div class="word-en">access</div><div class="word-uz">kirish imkoniyati</div></div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="voc-topic">
+      <div class="voc-topic-label">🎓 Ta'lim</div>
+      <div class="word-grid">
+        <div class="word-card"><div class="word-en">higher education</div><div class="word-uz">oliy ta'lim</div></div>
+        <div class="word-card"><div class="word-en">tuition fee</div><div class="word-uz">o'qish haqi</div></div>
+        <div class="word-card"><div class="word-en">extracurricular</div><div class="word-uz">darsdan tashqari</div></div>
+        <div class="word-card"><div class="word-en">peer learning</div><div class="word-uz">tengdoshlardan o'rganish</div></div>
+        <div class="word-card"><div class="word-en">assessment</div><div class="word-uz">baholash</div></div>
+        <div class="word-card"><div class="word-en">distance learning</div><div class="word-uz">masofaviy o'qish</div></div>
+        <div class="word-card"><div class="word-en">graduate</div><div class="word-uz">bitiruvchi</div></div>
+        <div class="word-card"><div class="word-en">academic</div><div class="word-uz">akademik</div></div>
+        <div class="word-card"><div class="word-en">qualification</div><div class="word-uz">malaka, diplom</div></div>
+        <div class="word-card"><div class="word-en">tutor</div><div class="word-uz">repetitor, o'qituvchi</div></div>
+      </div>
+    </div>
+
+    <!-- Travel -->
+    <div class="voc-topic">
+      <div class="voc-topic-label">✈️ Sayohat</div>
+      <div class="word-grid">
+        <div class="word-card"><div class="word-en">destination</div><div class="word-uz">manzil</div></div>
+        <div class="word-card"><div class="word-en">itinerary</div><div class="word-uz">sayohat rejasi</div></div>
+        <div class="word-card"><div class="word-en">accommodation</div><div class="word-uz">turar joy</div></div>
+        <div class="word-card"><div class="word-en">landmark</div><div class="word-uz">mashhur joy</div></div>
+        <div class="word-card"><div class="word-en">culture shock</div><div class="word-uz">madaniy zarba</div></div>
+        <div class="word-card"><div class="word-en">backpacking</div><div class="word-uz">yengil yukli sayohat</div></div>
+        <div class="word-card"><div class="word-en">scenic</div><div class="word-uz">manzarali</div></div>
+        <div class="word-card"><div class="word-en">jet lag</div><div class="word-uz">vaqt mintaqasi charchog'i</div></div>
+        <div class="word-card"><div class="word-en">souvenir</div><div class="word-uz">sovg'a, esdalik</div></div>
+        <div class="word-card"><div class="word-en">local cuisine</div><div class="word-uz">mahalliy taom</div></div>
+      </div>
+    </div>
+
+    <!-- Family -->
+    <div class="voc-topic">
+      <div class="voc-topic-label">👨‍👩‍👧 Oila</div>
+      <div class="word-grid">
+        <div class="word-card"><div class="word-en">nuclear family</div><div class="word-uz">yadroviy oila</div></div>
+        <div class="word-card"><div class="word-en">extended family</div><div class="word-uz">katta oila</div></div>
+        <div class="word-card"><div class="word-en">generation</div><div class="word-uz">avlod</div></div>
+        <div class="word-card"><div class="word-en">upbringing</div><div class="word-uz">tarbiya</div></div>
+        <div class="word-card"><div class="word-en">role model</div><div class="word-uz">namuna bo'luvchi shaxs</div></div>
+        <div class="word-card"><div class="word-en">bond</div><div class="word-uz">aloqa, bog'liqlik</div></div>
+        <div class="word-card"><div class="word-en">sacrifice</div><div class="word-uz">fidoyilik</div></div>
+        <div class="word-card"><div class="word-en">tradition</div><div class="word-uz">an'ana</div></div>
+        <div class="word-card"><div class="word-en">supportive</div><div class="word-uz">qo'llab-quvvatlovchi</div></div>
+        <div class="word-card"><div class="word-en">responsibility</div><div class="word-uz">mas'uliyat</div></div>
+      </div>
+    </div>
+
+    <!-- Work -->
+    <div class="voc-topic">
+      <div class="voc-topic-label">💼 Ish va Kelajak</div>
+      <div class="word-grid">
+        <div class="word-card"><div class="word-en">career</div><div class="word-uz">martaba, karyera</div></div>
+        <div class="word-card"><div class="word-en">work-life balance</div><div class="word-uz">ish va hayot muvozanati</div></div>
+        <div class="word-card"><div class="word-en">remote work</div><div class="word-uz">masofaviy ish</div></div>
+        <div class="word-card"><div class="word-en">internship</div><div class="word-uz">amaliyot</div></div>
+        <div class="word-card"><div class="word-en">networking</div><div class="word-uz">aloqalar o'rnatish</div></div>
+        <div class="word-card"><div class="word-en">freelance</div><div class="word-uz">mustaqil ishlash</div></div>
+        <div class="word-card"><div class="word-en">job satisfaction</div><div class="word-uz">ishdan qoniqish</div></div>
+        <div class="word-card"><div class="word-en">ambition</div><div class="word-uz">ambitsiya, intilish</div></div>
+        <div class="word-card"><div class="word-en">promotion</div><div class="word-uz">lavozim ko'tarilishi</div></div>
+        <div class="word-card"><div class="word-en">deadline</div><div class="word-uz">muddat</div></div>
+      </div>
+    </div>
+
+    <!-- City -->
+    <div class="voc-topic">
+      <div class="voc-topic-label">🏙️ Shahar va Qishloq</div>
+      <div class="word-grid">
+        <div class="word-card"><div class="word-en">urban</div><div class="word-uz">shahar (sifat)</div></div>
+        <div class="word-card"><div class="word-en">rural</div><div class="word-uz">qishloq (sifat)</div></div>
+        <div class="word-card"><div class="word-en">infrastructure</div><div class="word-uz">infratuzilma</div></div>
+        <div class="word-card"><div class="word-en">public transport</div><div class="word-uz">jamoat transporti</div></div>
+        <div class="word-card"><div class="word-en">pollution</div><div class="word-uz">ifloslanish</div></div>
+        <div class="word-card"><div class="word-en">affordable</div><div class="word-uz">hamyonbop</div></div>
+        <div class="word-card"><div class="word-en">migration</div><div class="word-uz">ko'chish</div></div>
+        <div class="word-card"><div class="word-en">quality of life</div><div class="word-uz">hayot sifati</div></div>
+        <div class="word-card"><div class="word-en">amenity</div><div class="word-uz">qulay sharoitlar</div></div>
+        <div class="word-card"><div class="word-en">suburb</div><div class="word-uz">shahar atrofi</div></div>
+      </div>
+    </div>
+
+    <!-- Friendship -->
+    <div class="voc-topic">
+      <div class="voc-topic-label">🤝 Do'stlik</div>
+      <div class="word-grid">
+        <div class="word-card"><div class="word-en">trust</div><div class="word-uz">ishonch</div></div>
+        <div class="word-card"><div class="word-en">loyalty</div><div class="word-uz">sadoqat</div></div>
+        <div class="word-card"><div class="word-en">companionship</div><div class="word-uz">hamroh bo'lish</div></div>
+        <div class="word-card"><div class="word-en">mutual</div><div class="word-uz">o'zaro</div></div>
+        <div class="word-card"><div class="word-en">genuine</div><div class="word-uz">haqiqiy, chin</div></div>
+        <div class="word-card"><div class="word-en">empathy</div><div class="word-uz">empatiya, tushunish</div></div>
+        <div class="word-card"><div class="word-en">conflict</div><div class="word-uz">ziddiyat</div></div>
+        <div class="word-card"><div class="word-en">social circle</div><div class="word-uz">ijtimoiy doira</div></div>
+        <div class="word-card"><div class="word-en">long-distance friendship</div><div class="word-uz">uzoq masofali do'stlik</div></div>
+        <div class="word-card"><div class="word-en">acquaintance</div><div class="word-uz">tanish</div></div>
+      </div>
+    </div>
+
+    <!-- Books -->
+    <div class="voc-topic">
+      <div class="voc-topic-label">📚 Kitob va Kino</div>
+      <div class="word-grid">
+        <div class="word-card"><div class="word-en">fiction</div><div class="word-uz">badiiy adabiyot</div></div>
+        <div class="word-card"><div class="word-en">non-fiction</div><div class="word-uz">hujjatli adabiyot</div></div>
+        <div class="word-card"><div class="word-en">genre</div><div class="word-uz">janr</div></div>
+        <div class="word-card"><div class="word-en">plot</div><div class="word-uz">syujet</div></div>
+        <div class="word-card"><div class="word-en">narrative</div><div class="word-uz">hikoya uslubi</div></div>
+        <div class="word-card"><div class="word-en">soundtrack</div><div class="word-uz">film musiqasi</div></div>
+        <div class="word-card"><div class="word-en">documentary</div><div class="word-uz">hujjatli film</div></div>
+        <div class="word-card"><div class="word-en">streaming</div><div class="word-uz">internet orqali ko'rish</div></div>
+        <div class="word-card"><div class="word-en">bestseller</div><div class="word-uz">ko'p sotiladigan kitob</div></div>
+        <div class="word-card"><div class="word-en">adaptation</div><div class="word-uz">moslashtirilgan asar</div></div>
+      </div>
+    </div>
+
+    <!-- Food -->
+    <div class="voc-topic">
+      <div class="voc-topic-label">🍽️ Ovqat</div>
+      <div class="word-grid">
+        <div class="word-card"><div class="word-en">cuisine</div><div class="word-uz">oshpazlik, milliy taom</div></div>
+        <div class="word-card"><div class="word-en">ingredient</div><div class="word-uz">tarkib, ingredient</div></div>
+        <div class="word-card"><div class="word-en">nutritious</div><div class="word-uz">ozuqaviy</div></div>
+        <div class="word-card"><div class="word-en">flavour</div><div class="word-uz">ta'm, arom</div></div>
+        <div class="word-card"><div class="word-en">recipe</div><div class="word-uz">retsept</div></div>
+        <div class="word-card"><div class="word-en">organic</div><div class="word-uz">organik</div></div>
+        <div class="word-card"><div class="word-en">balanced diet</div><div class="word-uz">muvozanatli ovqatlanish</div></div>
+        <div class="word-card"><div class="word-en">food waste</div><div class="word-uz">ovqat isrof qilish</div></div>
+        <div class="word-card"><div class="word-en">street food</div><div class="word-uz">ko'cha ovqati</div></div>
+        <div class="word-card"><div class="word-en">local produce</div><div class="word-uz">mahalliy mahsulotlar</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Test CTA -->
+  <div class="test-cta reveal">
+    <div>
+      <h3>So'zlarni yaxshi bildingizmi? 🧪</h3>
+      <p>Barcha so'zlar bo'yicha 10 ta savollik testni sinab ko'ring!</p>
+    </div>
+    <button class="test-cta-btn" onclick="location.href='vocabulary-test-all.html'">Testni boshlash →</button>
+  </div>
+
+</div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth=getAuth(initializeApp({apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",authDomain:"it-study-a45fa.firebaseapp.com",projectId:"it-study-a45fa",storageBucket:"it-study-a45fa.firebasestorage.app",messagingSenderId:"973750187023",appId:"1:973750187023:web:c38b839da825ffa0681f7a"}));
+const ua=document.getElementById("userArea");
+onAuthStateChanged(auth,u=>{if(u){const n=u.displayName||u.email;ua.outerHTML=`<div class="profile-pill" onclick="location.href='profile.html'" style="cursor:pointer"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`;}else{ua.textContent="Kirish";ua.href="login.html";}});
+</script>
+
+<script>
+function filterWords() {
+  var q = document.getElementById("searchInput").value.toLowerCase();
+  var cards = document.querySelectorAll(".word-card");
+  var visible = 0;
+  cards.forEach(function(card) {
+    var en = card.querySelector(".word-en").textContent.toLowerCase();
+    var uz = card.querySelector(".word-uz").textContent.toLowerCase();
+    if (!q || en.includes(q) || uz.includes(q)) {
+      card.classList.remove("hidden");
+      visible++;
+    } else {
+      card.classList.add("hidden");
+    }
+  });
+  document.getElementById("searchCount").textContent = q ? (visible + " ta natija") : "Jami: 310 ta so'z";
+}
+</script>
+
+<script>
+var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.04});
+document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
+</script>
+<script src="theme-switcher.js"></script>
+</body>
+</html>

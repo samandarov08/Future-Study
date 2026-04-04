@@ -2,6 +2,7 @@
 <html lang="uz">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Testlar | IT-Study</title>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -217,6 +218,29 @@
     </div>
   </div>
 
+  <!-- VOCABULARY TEST -->
+  <div class="test-category reveal">
+    <div class="cat-head">
+      <div class="cat-icon" style="background:rgba(251,191,36,0.12);border-color:rgba(251,191,36,0.2);">📚</div>
+      <div>
+        <h2>Vocabulary testi</h2>
+        <p>Reading + Speaking darslari so'zlari — 10 ta savol</p>
+      </div>
+    </div>
+    <div class="tcard-big" id="tc-vocaball" onclick="location.href='vocabulary-test-all.html'">
+      <div class="tcard-big-icon">📚</div>
+      <div class="tcard-big-info">
+        <h3>Reading & Speaking Vocabulary</h3>
+        <p>310 ta so'zdan 10 ta tasodifiy savol — har safar boshqacha!</p>
+      </div>
+      <div class="tcard-big-score" id="vocabAllScore" style="display:none;">
+        <div class="val" id="vocabAllVal">—</div>
+        <div class="lbl">oxirgi natija</div>
+      </div>
+      <button class="tcard-big-btn">Boshlash →</button>
+    </div>
+  </div>
+
   <!-- ENGLISH TESTS -->
   <div class="test-category reveal">
     <div class="cat-head">
@@ -265,6 +289,98 @@
 
 </div>
 
+<!-- Firebase Auth -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const auth = getAuth(initializeApp({
+  apiKey:"AIzaSyDzd5Mq1ACloUlOtxMzpQ-M6mdzqAVhiBc",
+  authDomain:"it-study-a45fa.firebaseapp.com",
+  projectId:"it-study-a45fa",
+  storageBucket:"it-study-a45fa.firebasestorage.app",
+  messagingSenderId:"973750187023",
+  appId:"1:973750187023:web:c38b839da825ffa0681f7a"
+}));
+const ua = document.getElementById("userArea");
+onAuthStateChanged(auth, u => {
+  if(u){ const n=u.displayName||u.email; ua.outerHTML=`<div class="profile-pill" onclick="location.href='profile.html'" style="cursor:pointer"><div class="av">${n[0].toUpperCase()}</div><span>${n}</span></div>`; }
+  else { ua.textContent="Kirish"; ua.href="login.html"; }
+});
+</script>
+
+<!-- Scores -->
+<script>
+function loadScore(id, key, total) {
+  var score = localStorage.getItem(key);
+  if (score === null) return;
+  var pct  = Math.round(score / total * 100);
+  var card = document.getElementById("tc-" + id);
+  var box  = document.getElementById("ts-" + id);
+  if (!card || !box) return;
+  card.classList.add("done");
+  box.innerHTML = '<span>' + score + '/' + total + ' · ' + pct + '%</span><div class="mini-bar"><div class="mini-fill" style="width:' + pct + '%"></div></div>';
+}
+
+/* Math */
+loadScore("tenglama",      "mathTestTenglama",       10);
+loadScore("tengsizlik",    "mathTestTengsizlik",      10);
+loadScore("funksiya",      "mathTestFunksiya",        10);
+loadScore("progressiya",   "mathTestProgressiya",     10);
+loadScore("foiz",          "mathTestFoiz",            10);
+loadScore("logarifm",      "mathTestLogarifm",        10);
+loadScore("trigonometriya","mathTestTrigonometriya",  10);
+loadScore("ehtimollik",    "mathTestEhtimollik",      10);
+loadScore("kombinatorika", "mathTestKombinatorika",   10);
+loadScore("geometriya",    "mathTestGeometriya",      10);
+loadScore("stereometriya", "mathTestStereometriya",   10);
+
+/* Grammar */
+loadScore("g-presentsimple",    "grammarTestPresentSimple",        10);
+loadScore("g-pastsimple",       "grammarTestPastSimple",           10);
+loadScore("g-futuresimple",     "grammarTestFutureSimple",         10);
+loadScore("g-presentcontinuous","grammarTestPresentContinuous",    10);
+loadScore("g-presentperfect",   "grammarTestPresentPerfect",       10);
+loadScore("g-zerofirst",        "grammarTestZeroFirstConditional", 10);
+loadScore("g-second",           "grammarTestSecondConditional",    10);
+loadScore("g-passive",          "grammarTestPassiveVoice",         10);
+loadScore("g-modal",            "grammarTestModalVerbs",           10);
+loadScore("g-articles",         "grammarTestArticles",             10);
+
+/* Vocab all score */
+var vocabAll = localStorage.getItem("vocabTestAllScore");
+if (vocabAll) {
+  document.getElementById("tc-vocaball").classList.add("done");
+  document.getElementById("vocabAllScore").style.display = "block";
+  document.getElementById("vocabAllVal").textContent = vocabAll + "/10";
+}
+/* English vocab */
+var engScore = localStorage.getItem("englishTestScore");
+var engTotal = localStorage.getItem("englishTestTotal") || 52;
+if (engScore) {
+  document.getElementById("tc-engvocab").classList.add("done");
+  document.getElementById("engVocabScore").style.display = "block";
+  document.getElementById("engVocabVal").textContent = engScore + "/" + engTotal;
+}
+
+/* Web dev */
+var webScore = localStorage.getItem("webTestScore");
+if (webScore) {
+  document.getElementById("tc-webtest").classList.add("done");
+  document.getElementById("webTestScore").style.display = "block";
+  document.getElementById("webTestVal").textContent = webScore + "/10";
+}
+</script>
+
+<!-- Scroll reveal -->
+<script>
+var ro = new IntersectionObserver(
+  function(es){ es.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); }); },
+  { threshold: 0.08 }
+);
+document.querySelectorAll('.reveal').forEach(function(el){ ro.observe(el); });
+</script>
+
+<script src="theme-switcher.js"></script>
 <!-- Firebase Auth -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
